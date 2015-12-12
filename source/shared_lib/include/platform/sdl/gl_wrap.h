@@ -15,6 +15,8 @@
 #define GL_GLEXT_PROTOTYPES
 #include <SDL_opengl.h>
 
+#include "GL/GLU.h"
+
 #include <string>
 
 #include "font.h"

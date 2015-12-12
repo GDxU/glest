@@ -21,7 +21,7 @@ namespace Shared{ namespace Platform{
 // =====================================
 
 void Thread::start() {
-	thread = SDL_CreateThread(beginExecution, this);
+	thread = SDL_CreateThread(beginExecution, "NoName", this);
 }
 
 void Thread::setPriority(Thread::Priority threadPriority) {

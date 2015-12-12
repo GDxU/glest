@@ -15,7 +15,7 @@
 #include <string>
 #include <vector>
 
-#include <xercesc/util/XercesDefs.hpp>
+//#include <xercesc/util/XercesDefs.hpp>
 
 using std::string;
 using std::vector;

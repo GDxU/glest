@@ -658,7 +658,7 @@ void Pixmap2D::setComponents(int component, float32 value){
 }
 
 float splatDist(Vec2i a, Vec2i b){
-	return (max(abs(a.x-b.x),abs(a.y- b.y)) + 3.f*a.dist(b))/4.f;
+	return (Max(abs(a.x-b.x),abs(a.y- b.y)) + 3.f*a.dist(b))/4.f;
 }
 
 void Pixmap2D::splat(const Pixmap2D *leftUp, const Pixmap2D *rightUp, const Pixmap2D *leftDown, const Pixmap2D *rightDown){

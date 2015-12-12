@@ -20,7 +20,6 @@
         std::cerr << "Couldn't initialize SDL: " << SDL_GetError() << "\n";  \
         return 1;                                                            \
     }                                                                        \
-	SDL_EnableUNICODE(1);													 \
     int result = X(argc, argv);                                              \
     SDL_Quit();                                                              \
     return result;                                                           \

@@ -21,11 +21,18 @@
 #include "sdl_private.h"
 #include "leak_dumper.h"
 #include "noimpl.h"
+#include "SDL.h"
 
 using namespace Shared::Graphics::Gl;
 
+static SDL_Window* s_window = NULL;
+
+SDL_Window* getWindow() {
+    return s_window;
+}
+
 namespace Shared{ namespace Platform{
-	
+
 // ======================================
 //	class PlatformContextGl  
 // ======================================
@@ -38,13 +45,18 @@ void PlatformContextGl::init(int colorBits, int depthBits, int stencilBits) {
 	SDL_GL_SetAttribute(SDL_GL_BLUE_SIZE, 1);
 	SDL_GL_SetAttribute(SDL_GL_STENCIL_SIZE, stencilBits);
 	SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, depthBits);
-	int flags = SDL_OPENGL;
+
+    int flags = SDL_WINDOW_OPENGL;
 	if(Private::shouldBeFullscreen)
-		flags |= SDL_FULLSCREEN;
+        flags |= SDL_WINDOW_FULLSCREEN;
 
 	int resW = Private::ScreenWidth;
 	int resH = Private::ScreenHeight;
-	SDL_Surface* screen = SDL_SetVideoMode(resW, resH, colorBits, flags);
+    SDL_Window* screen = SDL_CreateWindow("Cocos2d SDL ", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, resW, resH, flags);
+	//SDL_Surface* screen = SDL_SetVideoMode(resW, resH, colorBits, flags);
+
+    s_window = screen;
+
 	if(screen == 0) {
 		std::ostringstream msg;
 		msg << "Couldn't set video mode "                                    	
@@ -62,7 +74,9 @@ void PlatformContextGl::makeCurrent() {
 }
 
 void PlatformContextGl::swapBuffers() {
-	SDL_GL_SwapBuffers();
+    SDL_GL_SwapWindow(s_window);
+
+	//SDL_GL_SwapBuffers();
 }
 
 // ======================================

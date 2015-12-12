@@ -11,7 +11,7 @@
 #include <sstream>
 #include <cassert>
 
-#include <glob.h>
+//#include <glob.h>
 #include <errno.h>
 #include <string.h>
 
@@ -127,28 +127,28 @@ void findAll(const string &path, vector<string> &results, bool cutExtension) {
 		mypath += "*";
 	}
 
-	glob_t globbuf;
-	
-	int res = glob(mypath.c_str(), 0, 0, &globbuf);
-	if(res < 0) {
-		std::stringstream msg;
-		msg << "Couldn't scan directory '" << mypath << "': " << strerror(errno);
-		throw runtime_error(msg.str());
-	}
-
-	for(size_t i = 0; i < globbuf.gl_pathc; ++i) {
-		const char* p = globbuf.gl_pathv[i];
-		const char* begin = p;
-		for( ; *p != 0; ++p) {
-			// strip the path component
-			if(*p == '/')
-				begin = p+1;
-		}
-		results.push_back(begin);
-	}
-
-	globfree(&globbuf);
-
+// 	glob_t globbuf;
+// 	
+// 	int res = glob(mypath.c_str(), 0, 0, &globbuf);
+// 	if(res < 0) {
+// 		std::stringstream msg;
+// 		msg << "Couldn't scan directory '" << mypath << "': " << strerror(errno);
+// 		throw runtime_error(msg.str());
+// 	}
+// 
+// 	for(size_t i = 0; i < globbuf.gl_pathc; ++i) {
+// 		const char* p = globbuf.gl_pathv[i];
+// 		const char* begin = p;
+// 		for( ; *p != 0; ++p) {
+// 			// strip the path component
+// 			if(*p == '/')
+// 				begin = p+1;
+// 		}
+// 		results.push_back(begin);
+// 	}
+// 
+// 	globfree(&globbuf);
+// 
 	if(results.size() == 0) {
 		throw runtime_error("No files found in: " + mypath);
 	}
@@ -185,12 +185,20 @@ void exceptionMessage(const exception &excp) {
 	std::cerr << "Exception: " << excp.what() << std::endl;
 }
 
+SDL_Window* getWindow();
+
 int getScreenW() {
-	return SDL_GetVideoSurface()->w;
+    int w, h;
+    SDL_GL_GetDrawableSize(getWindow(), &w, &h);
+	//return SDL_GetVideoSurface()->w;
+    return w;
 }
 
 int getScreenH() {
-	return SDL_GetVideoSurface()->h;
+    int w, h;
+    SDL_GL_GetDrawableSize(getWindow(), &w, &h);
+    //return SDL_GetVideoSurface()->h;
+    return h;
 }
 
 void sleep(int millis) {
@@ -203,7 +211,8 @@ void showCursor(bool b) {
 
 bool isKeyDown(int virtualKey) {
 	char key = static_cast<char> (virtualKey);
-	const Uint8* keystate = SDL_GetKeyState(0);
+    const Uint8* keystate = SDL_GetKeyboardState(0);
+    //const Uint8* keystate = SDL_GetKeyState(0);
 
 	// kinda hack and wrong...
 	if(key >= 0) {

@@ -77,7 +77,8 @@ bool Window::handleEvent() {
 						toggleFullscreen();
 					}
 					global_window->eventKeyDown(getKey(event.key.keysym));
-					global_window->eventKeyPress(static_cast<char>(event.key.keysym.unicode));
+                    //global_window->eventKeyPress(static_cast<char>(event.key.keysym.unicode));
+                    global_window->eventKeyPress(static_cast<char>(event.key.keysym.sym));
 					break;
 				case SDL_KEYUP:
 					global_window->eventKeyUp(getKey(event.key.keysym));
@@ -91,11 +92,15 @@ bool Window::handleEvent() {
 	return true;
 }
 
-string Window::getText() {
-	char* c = 0;
-	SDL_WM_GetCaption(&c, 0);
+SDL_Window* getWindow();
 
-	return string(c);
+string Window::getText() {
+// 	char* c = 0;
+// 	SDL_WM_GetCaption(&c, 0);
+// 
+// 	return string(c);
+
+    return SDL_GetWindowTitle(getWindow());
 }
 
 float Window::getAspect() {
@@ -103,7 +108,8 @@ float Window::getAspect() {
 }
 
 void Window::setText(string text) {
-	SDL_WM_SetCaption(text.c_str(), 0);
+	//SDL_WM_SetCaption(text.c_str(), 0);
+    SDL_SetWindowTitle(getWindow(), text.c_str());
 }
 
 void Window::setSize(int w, int h) {
@@ -149,7 +155,9 @@ void Window::destroy() {
 }
 
 void Window::toggleFullscreen() {
-	SDL_WM_ToggleFullScreen(SDL_GetVideoSurface());
+    //SDL_WM_ToggleFullScreen(SDL_GetVideoSurface());
+    Private::shouldBeFullscreen = !Private::shouldBeFullscreen;
+    SDL_SetWindowFullscreen(getWindow(), !!Private::shouldBeFullscreen);
 }
 
 void Window::handleMouseDown(SDL_Event event) {
@@ -185,7 +193,7 @@ MouseButton Window::getMouseButton(int sdlButton) {
 	}
 }
 
-char Window::getKey(SDL_keysym keysym) {
+char Window::getKey(SDL_Keysym keysym) {
 	switch(keysym.sym) {
 		case SDLK_PLUS:
 		case SDLK_KP_PLUS:
@@ -290,7 +298,8 @@ char Window::getKey(SDL_keysym keysym) {
 		case SDLK_z:
 			return 'Z'; 
 		default:
-			Uint16 c = keysym.unicode;
+            //Uint16 c = keysym.unicode;
+            Uint16 c = keysym.sym;
 			if((c & 0xFF80) == 0) {
 				return toupper(c);
 			}
