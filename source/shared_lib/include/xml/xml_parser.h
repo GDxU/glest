@@ -14,18 +14,9 @@
 
 #include <string>
 #include <vector>
+#include "tinyxml2.h"
 
-//#include <xercesc/util/XercesDefs.hpp>
 
-using std::string;
-using std::vector;
-
-namespace XERCES_CPP_NAMESPACE{
-	class DOMImplementation;
-	class DOMDocument;
-	class DOMNode;
-	class DOMElement;
-}
 
 namespace Shared{ namespace Xml{
 
@@ -36,34 +27,16 @@ class XmlTree;
 class XmlNode;
 class XmlAttribute;
 	
-// =====================================================
-// 	class XmlIo  
-// 
-///	Wrapper for Xerces C++ 
-// =====================================================
-
-class XmlIo{
-private:
-	static bool initialized;
-	XERCES_CPP_NAMESPACE::DOMImplementation *implementation;
-
-private:
-	XmlIo();
-
-public:
-	static XmlIo &getInstance();
-	~XmlIo();
-	XmlNode *load(const string &path);
-	void save(const string &path, const XmlNode *node);
-};
 
 // =====================================================
 //	class XmlTree
 // =====================================================
 
-class XmlTree{
+class XmlTree
+{
 private:
-	XmlNode *rootNode;
+    tinyxml2::XMLDocument doc;
+    XmlNode* root;
 
 private:
 	XmlTree(XmlTree&);
@@ -73,52 +46,53 @@ public:
 	XmlTree();
 	~XmlTree();
 	
-	void init(const string &name);
-	void load(const string &path);
-	void save(const string &path);
+	void init(const std::string &name);
+	void load(const std::string &path);
+	void save(const std::string &path);
 	
-	XmlNode *getRootNode() const	{return rootNode;}
+    XmlNode *getRootNode() const;
 };
 
 // =====================================================
 //	class XmlNode
 // =====================================================
 
-class XmlNode{
+class XmlNode
+{
 private:
-	string name;
-	string text;
-	vector<XmlNode*> children;
-	vector<XmlAttribute*> attributes; 
+    std::string name;
+    std::string text;
+	std::vector<XmlNode*> children;
+    std::vector<XmlAttribute*> attributes;
 
 private:
 	XmlNode(XmlNode&);
 	void operator =(XmlNode&);
 
 public:
-	XmlNode(XERCES_CPP_NAMESPACE::DOMNode *node);
-	XmlNode(const string &name);
+    XmlNode(const tinyxml2::XMLElement* node);
+    XmlNode(const std::string &name);
 	~XmlNode();
 
-	const string &getName() const	{return name;}
+    const std::string &getName() const	{ return name; }
 	int getChildCount() const		{return children.size();}
 	int getAttributeCount() const	{return attributes.size();}
-	const string &getText() const	{return text;}
+    const std::string &getText() const	{ return text; }
 
 	XmlAttribute *getAttribute(int i) const;
-	XmlAttribute *getAttribute(const string &name) const;
+    XmlAttribute *getAttribute(const std::string &name) const;
 	XmlNode *getChild(int i) const;
-	XmlNode *getChild(const string &childName, int childIndex=0) const;
+    XmlNode *getChild(const std::string &childName, int childIndex = 0) const;
 	XmlNode *getParent() const;
 
 
-	XmlNode *addChild(const string &name);
-	XmlAttribute *addAttribute(const string &name, const string &value);
+    XmlNode *addChild(const std::string &name);
+    XmlAttribute *addAttribute(const std::string &name, const std::string &value);
 
-	XERCES_CPP_NAMESPACE::DOMElement *buildElement(XERCES_CPP_NAMESPACE::DOMDocument *document) const;
+    //XERCES_CPP_NAMESPACE::DOMElement *buildElement(XERCES_CPP_NAMESPACE::DOMDocument *document) const;
 
 private:
-	string getTreeString() const;
+    std::string getTreeString() const;
 };
 
 // =====================================================
@@ -127,27 +101,27 @@ private:
 
 class XmlAttribute{
 private:
-	string value;
-	string name;
+    std::string value;
+    std::string name;
 
 private:
 	XmlAttribute(XmlAttribute&);
 	void operator =(XmlAttribute&);
 
 public:
-	XmlAttribute(XERCES_CPP_NAMESPACE::DOMNode *attribute);
-	XmlAttribute(const string &name, const string &value);
+    //XmlAttribute(XERCES_CPP_NAMESPACE::DOMNode *attribute);
+    XmlAttribute(const std::string &name, const std::string &value);
 
 public:
-	const string &getName() const	{return name;}
-	const string &getValue() const	{return value;}
+    const std::string &getName() const	{ return name; }
+    const std::string &getValue() const	{ return value; }
 
 	bool getBoolValue() const;
 	int getIntValue() const;		
 	int getIntValue(int min, int max) const;
 	float getFloatValue() const;		
 	float getFloatValue(float min, float max) const;
-	const string &getRestrictedValue() const;
+    const std::string &getRestrictedValue() const;
 };
 
 

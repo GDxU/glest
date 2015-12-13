@@ -22,6 +22,8 @@
 using namespace Shared::Util;
 using namespace std;
 
+SDL_Window* getWindow();
+
 namespace Shared{ namespace Platform{
 
 // =======================================
@@ -92,7 +94,6 @@ bool Window::handleEvent() {
 	return true;
 }
 
-SDL_Window* getWindow();
 
 string Window::getText() {
 // 	char* c = 0;

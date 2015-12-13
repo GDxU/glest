@@ -1,9 +1,17 @@
 
 
 #file(GLOB_RECURSE SRC_FILES ${CMAKE_CURRENT_SOURCE_DIR} *.cpp *.h *.c)
-set(CMAKE_PREFIX_PATH "C:/Program Files (x86)/OpenAL 1.1 SDK")
+
 find_package(OPENGL)
-find_package(OPENAL)
+find_package(OPENAL REQUIRED)
+
+#if (OPENAL_FOUND)
+#    message('1111')
+#
+#    message(${OPENAL_INCLUDE_DIR})
+#    message(${OPENAL_LIBRARY})
+#endif()
+
 find_package(LUA51)
 
 
@@ -56,6 +64,8 @@ macro(global_define)
 
     include_directories(${inc_path})
     add_definitions(-D_CRT_SECURE_NO_WARNINGS)
+
+    link_directories(${DEPS_LIB})
 endmacro()
 
 macro(define_files name)
@@ -67,6 +77,14 @@ macro(setup_lib name)
     global_define(name)
 
     add_library(${name}  STATIC ${SRC_FILES})
+
+    #message(${OPENAL_LIBRARIES})
+    target_link_libraries(${name} SDL2-static tinyxml2 SDL2main
+        libvorbis libvorbisfile libogg 
+       GLEW
+         wsock32 ${LUA_LIBRARIES} ${OPENAL_LIBRARY}
+        user32 gdi32 winmm imm32 ole32 oleaut32 version uuid ws2_32 OpenGL32 GlU32
+     )
 endmacro()
 
 macro(setup_exe name)
@@ -75,9 +93,10 @@ macro(setup_exe name)
     target_link_libraries(${name} lib)
 endmacro()
 
+
 add_subdirectory(shared_lib)
 
-add_subdirectory(glest_map_editor)
+#add_subdirectory(glest_map_editor)
+#add_subdirectory(g3d_viewer)
+#add_subdirectory(configurator)
 add_subdirectory(glest_game)
-add_subdirectory(g3d_viewer)
-add_subdirectory(configurator)

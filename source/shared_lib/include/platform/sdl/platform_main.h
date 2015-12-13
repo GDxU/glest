@@ -13,6 +13,7 @@
 
 #include <SDL.h>
 #include <iostream>
+#include "SDL_main.h"
 
 #define MAIN_FUNCTION(X) int main(int argc, char **argv)                     \
 {                                                                            \

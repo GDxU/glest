@@ -26,6 +26,8 @@
 
 using namespace Shared::Util;
 using namespace std;
+SDL_Window* getWindow();
+
 
 namespace Shared{ namespace Platform{
 
@@ -185,7 +187,6 @@ void exceptionMessage(const exception &excp) {
 	std::cerr << "Exception: " << excp.what() << std::endl;
 }
 
-SDL_Window* getWindow();
 
 int getScreenW() {
     int w, h;
