@@ -97,8 +97,8 @@ void ResourceType::load(const std::string &dir, Checksum* checksum){
 			break;			
 		}
 	}
-	catch(const exception &e){
-		throw runtime_error("Error loading resource type: " + path + "\n" + e.what());
+    catch (const std::exception &e){
+        throw std::runtime_error("Error loading resource type: " + path + "\n" + e.what());
 	}
 }
 
@@ -118,7 +118,7 @@ ResourceClass ResourceType::strToRc(const std::string &s){
 	if(s=="consumable"){
         return rcConsumable;
 	}
-	throw runtime_error("Error converting from std::string ro resourceClass, found: " + s);
+    throw std::runtime_error("Error converting from std::string ro resourceClass, found: " + s);
 }
 
 }}//end namespace

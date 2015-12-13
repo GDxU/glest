@@ -124,11 +124,11 @@ void Map::load(const std::string &path, TechTree *techTree, Tileset *tileset){
 			fread(&header, sizeof(MapFileHeader), 1, f);
 
 			if(next2Power(header.width) != header.width){
-				throw runtime_error("Map width is not a power of 2");
+                throw std::runtime_error("Map width is not a power of 2");
 			}
 
 			if(next2Power(header.height) != header.height){
-				throw runtime_error("Map height is not a power of 2");
+                throw std::runtime_error("Map height is not a power of 2");
 			}
 
 			heightFactor= header.altFactor;
@@ -204,12 +204,12 @@ void Map::load(const std::string &path, TechTree *techTree, Tileset *tileset){
 			}
 		}
 		else{
-			throw runtime_error("Can't open file");
+            throw std::runtime_error("Can't open file");
 		}
 		fclose(f);
 	}
-	catch(const exception &e){
-		throw runtime_error("Error loading map: "+ path+ "\n"+ e.what());
+    catch (const std::exception &e){
+        throw std::runtime_error("Error loading map: " + path + "\n" + e.what());
 	}
 }
 

@@ -17,7 +17,8 @@
 #include "util.h"
 #include "leak_dumper.h"
 
-using namespace std;
+
+
 
 namespace Shared{ namespace Util{
 

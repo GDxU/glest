@@ -17,7 +17,8 @@
 
 #include "leak_dumper.h"
 
-using namespace std;
+
+
 using namespace Shared::Util;
 
 namespace Shared{ namespace Lua{
@@ -55,7 +56,7 @@ void LuaScript::loadCode(const std::string &code, const std::string &name){
 	}
 }
 
-void LuaScript::beginCall(const string& functionName){
+void LuaScript::beginCall(const std::string& functionName){
 	lua_getglobal(luaState, functionName.c_str());
 	argumentCount= 0;
 }
@@ -90,7 +91,7 @@ std::string LuaScript::errorToString(int errorCode){
 			error+= "Unknown error";
 	}
 
-	error += string(": ")+luaL_checkstring(luaState, -1);
+    error += std::string(": ") + luaL_checkstring(luaState, -1);
 
 	return error;
 }
@@ -173,7 +174,7 @@ void LuaArguments::throwLuaError(const std::string &message) const{
 			stackString+= "Number: " + doubleToStr(luaL_checknumber(luaState, -i ));
 		}
 		else if(lua_isstring(luaState, -i)){
-			stackString+= "String: " + string(luaL_checkstring(luaState, -i));
+            stackString += "String: " + std::string(luaL_checkstring(luaState, -i));
 		}
 		else if(lua_istable(luaState, -i)){
 			stackString+= "Table (" + intToStr(luaL_getn(luaState, -i)) + ")";

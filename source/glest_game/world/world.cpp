@@ -316,12 +316,12 @@ void World::createUnit(const std::string &unitName, int factionIndex, const Vec2
 			scriptManager->onUnitCreated(unit);
 		}
 		else{
-			throw runtime_error("Unit cant be placed");    
+			throw std::runtime_error("Unit cant be placed");    
 		}
 	}
 	else
 	{
-		throw runtime_error("Invalid faction index in createUnitAtPosition: " + intToStr(factionIndex));
+		throw std::runtime_error("Invalid faction index in createUnitAtPosition: " + intToStr(factionIndex));
 	}
 }
 
@@ -333,7 +333,7 @@ void World::giveResource(const std::string &resourceName, int factionIndex, int 
 	}
 	else
 	{
-		throw runtime_error("Invalid faction index in giveResource: " + intToStr(factionIndex));
+		throw std::runtime_error("Invalid faction index in giveResource: " + intToStr(factionIndex));
 	}
 }
 
@@ -349,7 +349,7 @@ void World::givePositionCommand(int unitId, const std::string &commandName, cons
 			cc= ccAttack;
 		}
 		else{
-			throw runtime_error("Invalid position commmand: " + commandName);
+			throw std::runtime_error("Invalid position commmand: " + commandName);
 		}
 		
 		unit->giveCommand(new Command( unit->getType()->getFirstCtOfClass(cc), pos ));
@@ -403,7 +403,7 @@ int World::getResourceAmount(const std::string &resourceName, int factionIndex){
 	}
 	else
 	{
-		throw runtime_error("Invalid faction index in giveResource: " + intToStr(factionIndex));
+		throw std::runtime_error("Invalid faction index in giveResource: " + intToStr(factionIndex));
 	}
 }
 
@@ -414,14 +414,14 @@ Vec2i World::getStartLocation(int factionIndex){
 	}
 	else
 	{
-		throw runtime_error("Invalid faction index in getStartLocation: " + intToStr(factionIndex));
+		throw std::runtime_error("Invalid faction index in getStartLocation: " + intToStr(factionIndex));
 	}
 }
 
 Vec2i World::getUnitPosition(int unitId){
 	Unit* unit= findUnitById(unitId);
 	if(unit==NULL){
-		throw runtime_error("Can not find unit to get position");
+		throw std::runtime_error("Can not find unit to get position");
 	}
 	return unit->getPos();
 }
@@ -429,7 +429,7 @@ Vec2i World::getUnitPosition(int unitId){
 int World::getUnitFactionIndex(int unitId){
 	Unit* unit= findUnitById(unitId);
 	if(unit==NULL){
-		throw runtime_error("Can not find unit to get position");
+		throw std::runtime_error("Can not find unit to get position");
 	}
 	return unit->getFactionIndex();
 }
@@ -449,7 +449,7 @@ int World::getUnitCount(int factionIndex){
 	}
 	else
 	{
-		throw runtime_error("Invalid faction index in getUnitCount: " + intToStr(factionIndex));
+		throw std::runtime_error("Invalid faction index in getUnitCount: " + intToStr(factionIndex));
 	}
 }
 
@@ -468,7 +468,7 @@ int World::getUnitCountOfType(int factionIndex, const std::string &typeName){
 	}
 	else
 	{
-		throw runtime_error("Invalid faction index in getUnitCountOfType: " + intToStr(factionIndex));
+		throw std::runtime_error("Invalid faction index in getUnitCountOfType: " + intToStr(factionIndex));
 	}
 }
 
@@ -524,7 +524,7 @@ void World::initFactionTypes(GameSettings *gs){
 	Logger::getInstance().add("Faction types", true);
 
 	if(gs->getFactionCount() > map.getMaxPlayers()){
-		throw runtime_error("This map only supports "+intToStr(map.getMaxPlayers())+" players");
+		throw std::runtime_error("This map only supports "+intToStr(map.getMaxPlayers())+" players");
 	}
 
 	//create stats
@@ -573,7 +573,7 @@ void World::initUnits(){
 					unit->born();
 				}
 				else{
-					throw runtime_error("Unit cant be placed, this error is caused because there is no enough place to put the units near its start location, make a better map: "+unit->getType()->getName() + " Faction: "+intToStr(i));    
+					throw std::runtime_error("Unit cant be placed, this error is caused because there is no enough place to put the units near its start location, make a better map: "+unit->getType()->getName() + " Faction: "+intToStr(i));    
 				}
 				if(unit->getType()->hasSkillClass(scBeBuilt)){
                     map.flatternTerrain(unit);

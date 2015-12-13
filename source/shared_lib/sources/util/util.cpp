@@ -19,7 +19,8 @@
 
 #include "leak_dumper.h"
 
-using namespace std;
+
+
 
 namespace Shared{ namespace Util{
 
@@ -28,17 +29,17 @@ std::string lastDir(const std::string &s){
 	size_t j= s.find_last_of('\\');
 	size_t pos;
 
-	if(i==string::npos){
+    if (i == std::string::npos){
 		pos= j;
 	}
-	else if(j==string::npos){
+    else if (j == std::string::npos){
 		pos= i;
 	}
 	else{
 		pos= i<j? j: i;
 	}
 
-	if (pos==string::npos){ 
+    if (pos == std::string::npos){
 		throw std::runtime_error(std::string(__FILE__)+" lastDir - i==string::npos");
 	}
 
@@ -54,17 +55,17 @@ std::string cutLastFile(const std::string &s){
 	size_t j= s.find_last_of('\\');
 	size_t pos;
 
-	if(i==string::npos){
+    if (i == std::string::npos){
 		pos= j;
 	}
-	else if(j==string::npos){
+    else if (j == std::string::npos){
 		pos= i;
 	}
 	else{
 		pos= i<j? j: i;
 	}
 
-	if (pos==string::npos){
+    if (pos == std::string::npos){
 		throw std::runtime_error(std::string(__FILE__)+"cutLastFile - i==string::npos");
 	}
 
@@ -74,7 +75,7 @@ std::string cutLastFile(const std::string &s){
 std::string cutLastExt(const std::string &s){
      size_t i= s.find_last_of('.');
 
-	 if (i==string::npos){
+     if (i == std::string::npos){
           throw std::runtime_error(std::string(__FILE__)+"cutLastExt - i==string::npos");
 	 }
 
@@ -86,7 +87,7 @@ std::string ext(const std::string &s){
      
      i=s.find_last_of('.')+1;
 
-	 if (i==string::npos){
+     if (i == std::string::npos){
           throw std::runtime_error(std::string(__FILE__)+"cutLastExt - i==string::npos");
 	 }
 
@@ -115,7 +116,7 @@ std::string toLower(const std::string &s){
 	return rs;
 }
 
-void copyStringToBuffer(char *buffer, int bufferSize, const string& s){
+void copyStringToBuffer(char *buffer, int bufferSize, const std::string& s){
 	strncpy(buffer, s.c_str(), bufferSize-1);
 	buffer[bufferSize-1]= '\0';
 }

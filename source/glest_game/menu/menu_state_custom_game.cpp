@@ -40,7 +40,7 @@ MenuStateCustomGame::MenuStateCustomGame(Program *program, MainMenu *mainMenu, b
 	Lang &lang= Lang::getInstance();
 	NetworkManager &networkManager= NetworkManager::getInstance();
 
-	std::vector<string> results, teamItems, controlItems;
+    std::vector<std::string> results, teamItems, controlItems;
 
 	//create
 	buttonReturn.init(350, 200, 125);
@@ -49,7 +49,7 @@ MenuStateCustomGame::MenuStateCustomGame(Program *program, MainMenu *mainMenu, b
     //map listBox
     findAll("maps/*.gbm", results, true);
 	if(results.size()==0){
-        throw runtime_error("There is no maps");
+        throw std::runtime_error("There is no maps");
 	}
 	mapFiles= results;
 	for(int i= 0; i<results.size(); ++i){
@@ -63,7 +63,7 @@ MenuStateCustomGame::MenuStateCustomGame(Program *program, MainMenu *mainMenu, b
     //tileset listBox
     findAll("tilesets/*.", results);
 	if(results.size()==0){
-        throw runtime_error("There is no tile set");
+        throw std::runtime_error("There is no tile set");
 	}
     tilesetFiles= results;
 	for(int i= 0; i<results.size(); ++i){
@@ -76,7 +76,7 @@ MenuStateCustomGame::MenuStateCustomGame(Program *program, MainMenu *mainMenu, b
     //tech Tree listBox
     findAll("techs/*.", results);
 	if(results.size()==0){
-        throw runtime_error("There is no tech tree");
+        throw std::runtime_error("There is no tech tree");
 	}
     techTreeFiles= results;
 	for(int i= 0; i<results.size(); ++i){
@@ -117,7 +117,7 @@ MenuStateCustomGame::MenuStateCustomGame(Program *program, MainMenu *mainMenu, b
 
 	findAll("techs/"+techTreeFiles[listBoxTechTree.getSelectedItemIndex()]+"/factions/*.", results);
 	if(results.size()==0){
-        throw runtime_error("There is no factions for this tech tree");
+        throw std::runtime_error("There is no factions for this tech tree");
 	}
    
 	for(int i=0; i<GameConstants::maxPlayers; ++i){
@@ -341,7 +341,7 @@ void MenuStateCustomGame::loadMapInfo(std::string file, MapInfo *mapInfo){
 	try{
 		FILE *f= fopen(file.c_str(), "rb");
 		if(f==NULL)
-			throw runtime_error("Can't open file");
+            throw std::runtime_error("Can't open file");
 
 		MapFileHeader header;
 		fread(&header, sizeof(MapFileHeader), 1, f);
@@ -355,19 +355,19 @@ void MenuStateCustomGame::loadMapInfo(std::string file, MapInfo *mapInfo){
 
 		fclose(f);
 	}
-	catch(exception e){
-		throw runtime_error("Error loading map file: "+file+'\n'+e.what());
+    catch (std::exception e){
+        throw std::runtime_error("Error loading map file: " + file + '\n' + e.what());
 	}
 
 }
 
 void MenuStateCustomGame::reloadFactions(){
 	
-	std::vector<string> results;
+    std::vector<std::string> results;
 
 	findAll("techs/"+techTreeFiles[listBoxTechTree.getSelectedItemIndex()]+"/factions/*.", results);
 	if(results.size()==0){
-        throw runtime_error("There is no factions for this tech tree");
+        throw std::runtime_error("There is no factions for this tech tree");
 	}
 	factionFiles= results;
    	for(int i= 0; i<results.size(); ++i){

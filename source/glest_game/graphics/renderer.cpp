@@ -2093,11 +2093,11 @@ std::string Renderer::getGlInfo(){
 	
 	infoStr+= lang.get("OpenGlInfo")+":\n";
 	infoStr+= "   "+lang.get("OpenGlVersion")+": ";
-    infoStr+= string(getGlVersion())+"\n";
+    infoStr += std::string(getGlVersion()) + "\n";
     infoStr+= "   "+lang.get("OpenGlRenderer")+": ";
-    infoStr+= string(getGlRenderer())+"\n";
+    infoStr += std::string(getGlRenderer()) + "\n";
     infoStr+= "   "+lang.get("OpenGlVendor")+": ";
-    infoStr+= string(getGlVendor())+"\n";
+    infoStr += std::string(getGlVendor()) + "\n";
 	infoStr+= "   "+lang.get("OpenGlMaxLights")+": ";
     infoStr+= intToStr(getGlMaxLights())+"\n";
 	infoStr+= "   "+lang.get("OpenGlMaxTextureSize")+": ";
@@ -2151,8 +2151,8 @@ std::string Renderer::getGlMoreInfo(){
 void Renderer::autoConfig(){
 	
 	Config &config= Config::getInstance();
-	bool nvidiaCard= toLower(getGlVendor()).find("nvidia")!=string::npos;
-	bool atiCard= toLower(getGlVendor()).find("ati")!=string::npos;
+    bool nvidiaCard = toLower(getGlVendor()).find("nvidia") != std::string::npos;
+    bool atiCard = toLower(getGlVendor()).find("ati") != std::string::npos;
 	bool shadowExtensions = isGlExtensionSupported("GL_ARB_shadow") && isGlExtensionSupported("GL_ARB_shadow_ambient");
 		
 	//3D textures
@@ -2406,11 +2406,11 @@ void Renderer::checkGlCaps(){
 		std::string message;
 
 		message += "Your system supports OpenGL version \"";
- 		message += getGlVersion() + string("\"\n");
+        message += getGlVersion() + std::string("\"\n");
  		message += "Glest needs at least version 1.3 to work\n";
  		message += "You may solve this problem by installing your latest video card drivers";
 
- 		throw runtime_error(message.c_str());
+        throw std::runtime_error(message.c_str());
 	}
 
 	//opengl 1.4 or extension
@@ -2424,7 +2424,7 @@ void Renderer::checkGlOptionalCaps(){
 	//shadows
 	if(shadows==sProjected || shadows==sShadowMapping){
 		if(getGlMaxTextureUnits()<3){
-			throw runtime_error("Your system doesn't support 3 texture units, required for shadows");
+            throw std::runtime_error("Your system doesn't support 3 texture units, required for shadows");
 		}
 	}
 
@@ -2438,7 +2438,7 @@ void Renderer::checkGlOptionalCaps(){
 void Renderer::checkExtension(const std::string &extension, const std::string &msg){
 	if(!isGlExtensionSupported(extension.c_str())){
 		std::string str= "OpenGL extension not supported: " + extension +  ", required for " + msg;
-		throw runtime_error(str);
+        throw std::runtime_error(str);
 	}
 }
 
@@ -2848,7 +2848,7 @@ Texture2D::Filter Renderer::strToTextureFilter(const std::string &s){
 		return Texture2D::fTrilinear;
 	}
 	
-	throw runtime_error("Error converting from std::string to FilterType, found: "+s);
+    throw std::runtime_error("Error converting from std::string to FilterType, found: " + s);
 }
 
 }}//end namespace

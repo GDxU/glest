@@ -17,7 +17,8 @@
 
 #include "leak_dumper.h"
 
-using namespace std;
+
+
 using namespace Shared::Util;
 
 namespace Shared{ namespace Platform{
@@ -41,7 +42,7 @@ Ip::Ip(unsigned char byte0, unsigned char byte1, unsigned char byte2, unsigned c
 }
 
 
-Ip::Ip(const string& ipString){
+Ip::Ip(const std::string& ipString){
 	int offset= 0; 
 	int byteIndex= 0;
 

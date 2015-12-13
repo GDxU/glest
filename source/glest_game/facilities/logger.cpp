@@ -18,7 +18,8 @@
 #include "lang.h"
 #include "leak_dumper.h"
 
-using namespace std;
+
+
 using namespace Shared::Graphics;
 
 namespace Glest{ namespace Game{
@@ -57,7 +58,7 @@ void Logger::clear(){
 
 	FILE *f= fopen(fileName.c_str(), "wt+");
 	if(f==NULL){
-		throw runtime_error("Error opening log file"+ fileName);
+        throw std::runtime_error("Error opening log file" + fileName);
 	}
     
     fprintf(f, "%s", s.c_str());

@@ -34,10 +34,10 @@ private:
 	GraphicListBox listBoxMap;
 	GraphicListBox listBoxTechTree;
 	GraphicListBox listBoxTileset;
-	std::vector<string> mapFiles;
-	std::vector<string> techTreeFiles;
-	std::vector<string> tilesetFiles;
-	std::vector<string> factionFiles;
+    std::vector<std::string> mapFiles;
+    std::vector<std::string> techTreeFiles;
+    std::vector<std::string> tilesetFiles;
+    std::vector<std::string> factionFiles;
 	GraphicLabel labelPlayers[GameConstants::maxPlayers];
 	GraphicListBox listBoxControls[GameConstants::maxPlayers];
 	GraphicListBox listBoxFactions[GameConstants::maxPlayers];

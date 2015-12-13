@@ -21,7 +21,8 @@
 
 using namespace Shared::Xml;
 using namespace Shared::Util;
-using namespace std;
+
+
 
 namespace Glest{ namespace Game{
 
@@ -50,9 +51,9 @@ void Scenario::load(const std::string &path){
 			scripts.push_back(Script(getFunctionName(scriptNode), scriptNode->getText()));
 		}
 	}
-	//Exception handling (conversions and so on);
-	catch(const exception &e){
-		throw runtime_error("Error: " + path + "\n" + e.what());
+	//std::exception handling (conversions and so on);
+    catch (const std::exception &e){
+        throw std::runtime_error("Error: " + path + "\n" + e.what());
 	}
 }
 

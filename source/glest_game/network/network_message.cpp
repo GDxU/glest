@@ -22,7 +22,8 @@
 
 using namespace Shared::Platform;
 using namespace Shared::Util;
-using namespace std;
+
+
 
 namespace Glest{ namespace Game{
 
@@ -33,7 +34,7 @@ namespace Glest{ namespace Game{
 bool NetworkMessage::receive(Socket* socket, void* data, int dataSize){
 	if(socket->getDataToRead()>=dataSize){
 		if(socket->receive(data, dataSize)!=dataSize){
-			throw runtime_error("Error receiving NetworkMessage");
+            throw std::runtime_error("Error receiving NetworkMessage");
 		}
 		return true;
 	}
@@ -42,7 +43,7 @@ bool NetworkMessage::receive(Socket* socket, void* data, int dataSize){
 
 void NetworkMessage::send(Socket* socket, const void* data, int dataSize) const{
 	if(socket->send(data, dataSize)!=dataSize){
-		throw runtime_error("Error sending NetworkMessage");
+        throw std::runtime_error("Error sending NetworkMessage");
 	}
 }
 

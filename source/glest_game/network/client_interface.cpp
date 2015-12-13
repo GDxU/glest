@@ -21,7 +21,8 @@
 #include "lang.h"
 #include "leak_dumper.h"
 
-using namespace std;
+
+
 using namespace Shared::Platform;
 using namespace Shared::Util;
 
@@ -94,7 +95,7 @@ void ClientInterface::updateLobby(){
 				//check consistency
 				if(Config::getInstance().getBool("NetworkConsistencyChecks")){
 					if(networkMessageIntro.getVersionString()!=getNetworkVersionString()){
-						throw runtime_error("Server and client versions do not match (" + networkMessageIntro.getVersionString() + "). You have to use the same binaries.");
+						throw std::runtime_error("Server and client versions do not match (" + networkMessageIntro.getVersionString() + "). You have to use the same binaries.");
 					}	
 				}
 
@@ -136,7 +137,7 @@ void ClientInterface::updateLobby(){
 		break;
 
 		default:
-			throw runtime_error("Unexpected network message: " + intToStr(networkMessageType));
+			throw std::runtime_error("Unexpected network message: " + intToStr(networkMessageType));
 	}
 }
 
@@ -161,7 +162,7 @@ void ClientInterface::updateKeyframe(int frameCount){
 
 				//check that we are in the right frame
 				if(networkMessageCommandList.getFrameCount()!=frameCount){
-					throw runtime_error("Network synchronization error, frame counts do not match");
+					throw std::runtime_error("Network synchronization error, frame counts do not match");
 				}
 
 				// give all commands
@@ -193,7 +194,7 @@ void ClientInterface::updateKeyframe(int frameCount){
 			break;
 
 			default:
-				throw runtime_error("Unexpected message in client interface: " + intToStr(networkMessageType));
+				throw std::runtime_error("Unexpected message in client interface: " + intToStr(networkMessageType));
 		}
 	}
 }
@@ -220,11 +221,11 @@ void ClientInterface::waitUntilReady(Checksum* checksum){
 		}
 		else if(networkMessageType==nmtInvalid){
 			if(chrono.getMillis()>readyWaitTimeout){
-				throw runtime_error("Timeout waiting for server");
+				throw std::runtime_error("Timeout waiting for server");
 			}
 		}
 		else{
-			throw runtime_error("Unexpected network message: " + intToStr(networkMessageType) );
+			throw std::runtime_error("Unexpected network message: " + intToStr(networkMessageType) );
 		}
 
 		// sleep a bit
@@ -234,7 +235,7 @@ void ClientInterface::waitUntilReady(Checksum* checksum){
 	//check checksum
 	if(Config::getInstance().getBool("NetworkConsistencyChecks")){
 		if(networkMessageReady.getChecksum()!=checksum->getSum()){
-			throw runtime_error("Checksum error, you don't have the same data as the server");
+			throw std::runtime_error("Checksum error, you don't have the same data as the server");
 		}
 	}
 
@@ -259,11 +260,11 @@ void ClientInterface::waitForMessage(){
 	while(getNextMessageType()==nmtInvalid){
 
 		if(!isConnected()){
-			throw runtime_error("Disconnected");
+			throw std::runtime_error("Disconnected");
 		}
 
 		if(chrono.getMillis()>messageWaitTimeout){
-			throw runtime_error("Timeout waiting for message");
+			throw std::runtime_error("Timeout waiting for message");
 		}
 
 		sleep(waitSleepTime);

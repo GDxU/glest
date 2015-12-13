@@ -36,7 +36,7 @@ MenuStateScenario::MenuStateScenario(Program *program, MainMenu *mainMenu, const
 {
 	Lang &lang= Lang::getInstance();
 	NetworkManager &networkManager= NetworkManager::getInstance();
-    std::vector<string> results;
+    std::vector<std::string> results;
 
 	this->dir = dir;
 
@@ -58,7 +58,7 @@ MenuStateScenario::MenuStateScenario(Program *program, MainMenu *mainMenu, const
 	findAll(dir+"/*.", results);
     scenarioFiles= results;
 	if(results.size()==0){
-        throw runtime_error("There are no scenarios");
+        throw std::runtime_error("There are no scenarios");
 	}
 	for(int i= 0; i<results.size(); ++i){
 		results[i]= formatString(results[i]);
@@ -155,7 +155,7 @@ void MenuStateScenario::loadScenarioInfo(std::string file, ScenarioInfo *scenari
 
             if( teamIndex < 1 || teamIndex > GameConstants::maxPlayers )
             {
-                throw runtime_error("Team out of range: " + intToStr(teamIndex) );
+                throw std::runtime_error("Team out of range: " + intToStr(teamIndex));
             }
 
             scenarioInfo->teams[i]= playerNode->getAttribute("team")->getIntValue();

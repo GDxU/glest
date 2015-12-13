@@ -356,7 +356,7 @@ Unit *Faction::findUnit(int id){
 
 void Faction::addUnit(Unit *unit){
 	units.push_back(unit);
-	unitMap.insert(make_pair(unit->getId(), unit));
+	unitMap.insert(std::make_pair(unit->getId(), unit));
 }
 
 void Faction::removeUnit(Unit *unit){

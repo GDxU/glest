@@ -19,7 +19,8 @@
 #include "leak_dumper.h"
 
 using namespace Shared::Platform; 
-using namespace std;
+
+
 
 namespace Shared{ namespace Graphics{ namespace Gl{
 
@@ -143,7 +144,7 @@ int getGlProjectionMatrixStackDepth(){
 
 void checkGlExtension(const char *extensionName){
 	if(!isGlExtensionSupported(extensionName)){
-		throw std::runtime_error("OpenGL extension not supported: " + string(extensionName));
+        throw std::runtime_error("OpenGL extension not supported: " + std::string(extensionName));
 	}
 }
 

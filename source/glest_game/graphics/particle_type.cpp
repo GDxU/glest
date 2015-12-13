@@ -174,8 +174,8 @@ void ParticleSystemTypeProjectile::load(const std::string &dir, const std::strin
 			trajectoryFrequency= 1.0f;
 		}
 	}
-	catch(const exception &e){
-		throw runtime_error("Error loading ParticleSystem: "+ path + "\n" +e.what());
+    catch (const std::exception &e){
+        throw std::runtime_error("Error loading ParticleSystem: " + path + "\n" + e.what());
 	}
 }
 
@@ -218,8 +218,8 @@ void ParticleSystemTypeSplash::load(const std::string &dir, const std::string &p
 		horizontalSpreadA= horizontalSpreadNode->getAttribute("a")->getFloatValue(0.0f, 1.0f);
 		horizontalSpreadB= horizontalSpreadNode->getAttribute("b")->getFloatValue(-1.0f, 1.0f);
 	}
-	catch(const exception &e){
-		throw runtime_error("Error loading ParticleSystem: "+ path + "\n" +e.what());
+    catch (const std::exception &e){
+        throw std::runtime_error("Error loading ParticleSystem: " + path + "\n" + e.what());
 	}
 }
 

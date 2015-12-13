@@ -119,8 +119,8 @@ public:
 
 class Unit{
 private:
-    typedef list<Command*> Commands;
-	typedef list<UnitObserver*> Observers;
+    typedef std::list<Command*> Commands;
+    typedef std::list<UnitObserver*> Observers;
 
 public:
 	static const float speedDivider;

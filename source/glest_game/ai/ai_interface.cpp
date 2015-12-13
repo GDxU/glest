@@ -50,7 +50,7 @@ AiInterface::AiInterface(Game &game, int factionIndex, int teamIndex){
 	if(logLevel>0){
 		FILE *f= fopen(getLogFilename().c_str(), "wt");
 		if(f==NULL){
-			throw runtime_error("Can't open file: "+getLogFilename());
+            throw std::runtime_error("Can't open file: " + getLogFilename());
 		}
 		fprintf(f, "%s", "Glest AI log file\n\n");
 		fclose(f);
@@ -73,7 +73,7 @@ void AiInterface::printLog(int logLevel, const std::string &s){
 		//print log to file
 		FILE *f= fopen(getLogFilename().c_str(), "at");
 		if(f==NULL){
-			throw runtime_error("Can't open file: "+getLogFilename());
+            throw std::runtime_error("Can't open file: " + getLogFilename());
 		}
 		fprintf(f, "%s\n", logString.c_str());
 		fclose(f);

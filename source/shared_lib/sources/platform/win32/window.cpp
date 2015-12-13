@@ -19,7 +19,8 @@
 #include "leak_dumper.h"
 
 using namespace Shared::Util;
-using namespace std;
+
+
 
 namespace Shared{ namespace Platform{
 

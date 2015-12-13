@@ -18,7 +18,8 @@
 #include "conversion.h"
 #include "leak_dumper.h"
 
-using namespace std;
+
+
 
 namespace Shared{ namespace Util{
 
@@ -27,14 +28,14 @@ namespace Shared{ namespace Util{
 // =====================================================
 
 void Properties::load(const std::string &path){
-	ifstream fileStream;
+    std::ifstream fileStream;
 	char lineBuffer[maxLine];
 	std::string line, key, value;
 	int pos;
 
 	this->path= path;
 
-	fileStream.open(path.c_str(), ios_base::in);
+    fileStream.open(path.c_str(), std::ios_base::in);
 	if(fileStream.fail()){
 		throw std::runtime_error("Can't open propertyMap file: " + path);
 	}
@@ -56,7 +57,7 @@ void Properties::load(const std::string &path){
 			line= lineBuffer;
 			pos= line.find('=');
 		
-			if(pos != string::npos){
+            if (pos != std::string::npos){
 				key= line.substr(0, pos);
 				value= line.substr(pos+1);
 				propertyMap.insert(PropertyPair(key, value));
@@ -69,9 +70,9 @@ void Properties::load(const std::string &path){
 }
 	
 void Properties::save(const std::string &path){
-	ofstream fileStream;
+    std::ofstream fileStream;
 
-	fileStream.open(path.c_str(), ios_base::out | ios_base::trunc);
+    fileStream.open(path.c_str(), std::ios_base::out | std::ios_base::trunc);
 
 	fileStream << "; === propertyMap File === \n";	
 	fileStream << '\n';
@@ -92,7 +93,7 @@ bool Properties::getBool(const std::string &key) const{
 	try{
 		return strToBool(getString(key));
 	}
-	catch(exception &e){
+    catch (std::exception &e){
 		throw std::runtime_error("Error accessing value: " + key + " in: " + path+"\n" + e.what());
 	}
 }
@@ -101,7 +102,7 @@ int Properties::getInt(const std::string &key) const{
 	try{
 		return strToInt(getString(key));
 	}
-	catch(exception &e){
+    catch (std::exception &e){
 		throw std::runtime_error("Error accessing value: " + key + " in: " + path + "\n" + e.what());
 	}
 }
@@ -118,7 +119,7 @@ float Properties::getFloat(const std::string &key) const{
 	try{
 		return strToFloat(getString(key));
 	}
-	catch(exception &e){
+    catch (std::exception &e){
 		throw std::runtime_error("Error accessing value: " + key + " in: " + path + "\n" + e.what());
 	}
 }

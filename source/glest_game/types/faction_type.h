@@ -28,7 +28,7 @@ namespace Glest{ namespace Game{
 
 class FactionType{
 private:
-	typedef pair<const UnitType*, int> PairPUnitTypeInt;
+    typedef std::pair<const UnitType*, int> PairPUnitTypeInt;
 	typedef std::vector<UnitType> UnitTypes; 
 	typedef std::vector<UpgradeType> UpgradeTypes;
 	typedef std::vector<PairPUnitTypeInt> StartingUnits;

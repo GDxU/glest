@@ -207,7 +207,7 @@ CommandResult Commander::pushNetworkCommand(const NetworkCommand* networkCommand
 
 	//validate unit
 	if(unit==NULL){
-		throw runtime_error("Command refers to non existant unit. Game out of synch.");
+        throw std::runtime_error("Command refers to non existant unit. Game out of synch.");
 	}
 
 	//add the command to the interface
@@ -276,14 +276,14 @@ Command* Commander::buildCommand(const NetworkCommand* networkCommand) const{
 	
 	//validate unit
 	if(unit==NULL){
-		throw runtime_error("Can not find unit with id: " + intToStr(networkCommand->getUnitId()) + ". Game out of synch.");
+        throw std::runtime_error("Can not find unit with id: " + intToStr(networkCommand->getUnitId()) + ". Game out of synch.");
 	}
 
 	ct= unit->getType()->findCommandTypeById(networkCommand->getCommandTypeId());
 
 	//validate command type
 	if(ct==NULL){
-		throw runtime_error("Can not find command type with id: " + intToStr(networkCommand->getCommandTypeId()) + " in unit: " + unit->getType()->getName() + ". Game out of synch.");
+        throw std::runtime_error("Can not find command type with id: " + intToStr(networkCommand->getCommandTypeId()) + " in unit: " + unit->getType()->getName() + ". Game out of synch.");
 	}
 
 	//get target, the target might be dead due to lag, cope with it

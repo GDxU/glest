@@ -22,7 +22,8 @@
 
 using namespace Shared::Platform;
 
-using namespace std;
+
+
 
 namespace Shared{ namespace Graphics{
 
@@ -422,8 +423,8 @@ void Model::save(const std::string &path){
 
 		fclose(f);
     }
-	catch(exception &e){
-		throw std::runtime_error("Exception caught loading 3d file: " + path +"\n"+ e.what());
+	catch(std::exception &e){
+		throw std::runtime_error("std::exception caught loading 3d file: " + path +"\n"+ e.what());
 	}
 }*/
 
@@ -490,7 +491,7 @@ void Model::loadG3d(const std::string &path){
 
 		fclose(f);
     }
-	catch(exception &e){
+    catch (std::exception &e){
 		throw std::runtime_error("Exception caught loading 3d file: " + path +"\n"+ e.what());
 	}
 }

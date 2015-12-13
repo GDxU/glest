@@ -19,7 +19,8 @@
 #include "math_util.h"
 #include "leak_dumper.h"
 
-using namespace std;
+
+
 using namespace Shared::Util;
 using namespace Shared::Graphics;
 
@@ -110,7 +111,7 @@ void SurfaceAtlas::checkDimensions(const Pixmap2D *p){
 		surfaceSize= p->getW();
 	}
 	else if(p->getW()!=surfaceSize || p->getH()!=surfaceSize){
-		throw runtime_error("Bad surface texture dimensions");
+        throw std::runtime_error("Bad surface texture dimensions");
 	}
 }
 

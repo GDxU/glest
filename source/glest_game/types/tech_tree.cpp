@@ -34,7 +34,7 @@ namespace Glest{ namespace Game{
 void TechTree::load(const std::string &dir, Checksum* checksum){
 
 	std::string str;
-    std::vector<string> filenames;
+    std::vector<std::string> filenames;
 	std::string name= lastDir(dir);
 		
 	Logger::getInstance().add("TechTree: "+ formatString(name), true);
@@ -51,8 +51,8 @@ void TechTree::load(const std::string &dir, Checksum* checksum){
             resourceTypes[i].load(str, checksum);
         }
     }
-    catch(const exception &e){
-		throw runtime_error("Error loading Resource Types: "+ dir + "\n" + e.what());
+    catch (const std::exception &e){
+        throw std::runtime_error("Error loading Resource Types: " + dir + "\n" + e.what());
     }
 
 	//load tech tree xml info
@@ -94,8 +94,8 @@ void TechTree::load(const std::string &dir, Checksum* checksum){
 			damageMultiplierTable.setDamageMultiplier(attackType, armorType, multiplier);
 		}
     }
-    catch(const exception &e){
-		throw runtime_error("Error loading Tech Tree: "+ dir + "\n" + e.what());
+    catch (const std::exception &e){
+        throw std::runtime_error("Error loading Tech Tree: " + dir + "\n" + e.what());
     }
 
 	//load factions
@@ -109,8 +109,8 @@ void TechTree::load(const std::string &dir, Checksum* checksum){
 			factionTypes[i].load(str, this, checksum);
         }
     }
-	catch(const exception &e){
-		throw runtime_error("Error loading Faction Types: "+ dir + "\n" + e.what());
+    catch (const std::exception &e){
+        throw std::runtime_error("Error loading Faction Types: " + dir + "\n" + e.what());
     }
 
 }
@@ -128,7 +128,7 @@ const FactionType *TechTree::getType(const std::string &name) const{
                return &factionTypes[i];
           }
      }
-	 throw runtime_error("Faction not found: "+name);
+     throw std::runtime_error("Faction not found: " + name);
 }
 
 const ResourceType *TechTree::getTechResourceType(int i) const{
@@ -149,7 +149,7 @@ const ResourceType *TechTree::getFirstTechResourceType() const{
                return getResourceType(i);
      }
 
-	 throw runtime_error("This tech tree has not tech resources, one at least is required");
+     throw std::runtime_error("This tech tree has not tech resources, one at least is required");
 }
 
 const ResourceType *TechTree::getResourceType(const std::string &name) const{
@@ -160,7 +160,7 @@ const ResourceType *TechTree::getResourceType(const std::string &name) const{
 		}
 	}
 
-	throw runtime_error("Resource Type not found: "+name);
+    throw std::runtime_error("Resource Type not found: " + name);
 }
 
 const ArmorType *TechTree::getArmorType(const std::string &name) const{
@@ -170,7 +170,7 @@ const ArmorType *TechTree::getArmorType(const std::string &name) const{
 		}
 	}
 
-	throw runtime_error("Armor Type not found: "+name);
+    throw std::runtime_error("Armor Type not found: " + name);
 }
 
 const AttackType *TechTree::getAttackType(const std::string &name) const{
@@ -180,7 +180,7 @@ const AttackType *TechTree::getAttackType(const std::string &name) const{
 		}
 	}
 
-	throw runtime_error("Attack Type not found: "+name);
+    throw std::runtime_error("Attack Type not found: " + name);
 }
 
 float TechTree::getDamageMultiplier(const AttackType *att, const ArmorType *art) const{

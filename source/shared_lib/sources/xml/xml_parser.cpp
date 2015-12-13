@@ -25,7 +25,8 @@
 
 
 
-using namespace std;
+
+
 
 namespace Shared{ namespace Xml{
 

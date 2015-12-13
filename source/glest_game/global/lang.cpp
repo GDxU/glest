@@ -17,7 +17,8 @@
 #include "util.h"
 #include "leak_dumper.h"
 
-using namespace std;
+
+
 using namespace Shared::Util;
 
 namespace Glest{ namespace Game{
@@ -59,7 +60,7 @@ std::string Lang::get(const std::string &s){
 	try{
 		return strings.getString(s);
 	}
-	catch(exception &){
+	catch(std::exception &){
 		return "???" + s + "???";
 	}
 }
@@ -68,7 +69,7 @@ std::string Lang::getScenarioString(const std::string &s){
 	try{
 		return scenarioStrings.getString(s);
 	}
-	catch(exception &){
+    catch (std::exception &){
 		return "???" + s + "???";
 	}
 }

@@ -78,10 +78,10 @@ MenuStateOptions::MenuStateOptions(Program *program, MainMenu *mainMenu):
 	//sound
 
 	//lang
-	std::vector<string> langResults;
+    std::vector<std::string> langResults;
 	findAll("data/lang/*.lng", langResults, true);
 	if(langResults.empty()){
-        throw runtime_error("There is no lang file");
+        throw std::runtime_error("There is no lang file");
 	}
     listBoxLang.setItems(langResults);
 	listBoxLang.setSelectedItem(config.getString("Lang"));

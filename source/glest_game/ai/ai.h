@@ -134,8 +134,8 @@ public:
 
 private:
 	typedef std::vector<AiRule*> AiRules;
-	typedef list<const Task*> Tasks;
-	typedef deque<Vec2i> Positions;
+    typedef std::list<const Task*> Tasks;
+    typedef std::deque<Vec2i> Positions;
 
 private:
     AiInterface *aiInterface;

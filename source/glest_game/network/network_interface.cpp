@@ -22,7 +22,8 @@
 
 using namespace Shared::Platform;
 using namespace Shared::Util;
-using namespace std;
+
+
 
 namespace Glest{ namespace Game{
 
@@ -50,7 +51,7 @@ NetworkMessageType NetworkInterface::getNextMessageType(){
 
 	//sanity check new message type
 	if(messageType<0 || messageType>=nmtCount){
-		throw runtime_error("Invalid message type: " + intToStr(messageType));
+        throw std::runtime_error("Invalid message type: " + intToStr(messageType));
 	}
 
 	return static_cast<NetworkMessageType>(messageType);

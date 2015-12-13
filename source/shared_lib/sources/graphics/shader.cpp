@@ -16,7 +16,8 @@
 
 #include "leak_dumper.h"
 
-using namespace std;
+
+
 
 namespace Shared{ namespace Graphics{
 
@@ -28,14 +29,14 @@ void ShaderSource::load(const std::string &path){
 	pathInfo+= path + " ";
 
 	//open file
-	ifstream ifs(path.c_str());
+    std::ifstream ifs(path.c_str());
 	if(ifs.fail()){
 		throw std::runtime_error("Can't open shader file: " + path);
 	}
 
 	//read source
 	while(true){
-		fstream::int_type c= ifs.get();
+        std::fstream::int_type c = ifs.get();
 		if(ifs.eof() || ifs.fail() || ifs.bad()){
 			break;
 		}

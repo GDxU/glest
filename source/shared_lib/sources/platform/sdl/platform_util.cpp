@@ -25,7 +25,8 @@
 #include "noimpl.h"
 
 using namespace Shared::Util;
-using namespace std;
+
+
 SDL_Window* getWindow();
 
 
@@ -117,7 +118,7 @@ int64 Chrono::queryCounter(int multiplier) const {
 // =====================================
 
 //finds all filenames like path and stores them in resultys
-void findAll(const std::string &path, std::vector<string> &results, bool cutExtension) {
+void findAll(const std::string &path, std::vector<std::string> &results, bool cutExtension) {
 	results.clear();
 
 	std::string mypath = path;
@@ -183,7 +184,7 @@ bool ask(std::string message) {
 	return res != 0;
 }
 
-void exceptionMessage(const exception &excp) {
+void exceptionMessage(const std::exception &excp) {
 	std::cerr << "Exception: " << excp.what() << std::endl;
 }
 

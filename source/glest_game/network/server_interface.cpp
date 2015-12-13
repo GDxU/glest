@@ -21,7 +21,8 @@
 
 #include "leak_dumper.h"
 
-using namespace std;
+
+
 using namespace Shared::Platform;
 using namespace Shared::Util;
 
@@ -150,7 +151,7 @@ void ServerInterface::waitUntilReady(Checksum* checksum){
 						connectionSlot->setReady();
 					}
 					else if(networkMessageType!=nmtInvalid){
-						throw runtime_error("Unexpected network message: " + intToStr(networkMessageType));
+                        throw std::runtime_error("Unexpected network message: " + intToStr(networkMessageType));
 					}
 
 					allReady= false;
@@ -160,7 +161,7 @@ void ServerInterface::waitUntilReady(Checksum* checksum){
 
 		//check for timeout
 		if(chrono.getMillis()>readyWaitTimeout){
-			throw runtime_error("Timeout waiting for clients");
+            throw std::runtime_error("Timeout waiting for clients");
 		}
 	}
 

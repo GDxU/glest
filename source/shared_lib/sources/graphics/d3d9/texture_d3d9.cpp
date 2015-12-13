@@ -9,7 +9,8 @@
 
 #include "leak_dumper.h"
 
-using namespace std;
+
+
 using namespace Shared::Graphics;
 
 namespace Shared{ namespace Graphics{ namespace D3d9{

@@ -125,7 +125,7 @@ void Game::init(){
 
 	//check forog war
 	if(!Config::getInstance().getBool("FogOfWar") && networkManager.isNetworkGame() ){
-		throw runtime_error("Can not play online games with for of war disabled");
+        throw std::runtime_error("Can not play online games with for of war disabled");
 	}
 
 	//init world, and place camera

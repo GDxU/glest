@@ -24,14 +24,15 @@
 #include "platform_main.h"
 #include "leak_dumper.h"
 
-using namespace std;
+
+
 using namespace Shared::Platform;
 using namespace Shared::Util;
 
 namespace Glest{ namespace Game{
 
 // =====================================================
-// 	class ExceptionHandler
+// 	class std::exceptionHandler
 // =====================================================
 
 class ExceptionHandler: public PlatformExceptionHandler{
@@ -118,7 +119,7 @@ int glestMain(int argc, char** argv){
 	MainWindow *mainWindow= NULL;
 	Program *program= NULL;
 	ExceptionHandler exceptionHandler;
-	exceptionHandler.install( getCrashDumpFileName() );
+    exceptionHandler.install(getCrashDumpFileName());
 
 	try{
 		Config &config = Config::getInstance();
@@ -129,10 +130,10 @@ int glestMain(int argc, char** argv){
 		mainWindow= new MainWindow(program);
 
 		//parse command line
-		if(argc==2 && string(argv[1])=="-server"){
+        if (argc == 2 && std::string(argv[1]) == "-server"){
 			program->initServer(mainWindow);
 		}
-		else if(argc==3 && string(argv[1])=="-client"){
+        else if (argc == 3 && std::string(argv[1]) == "-client"){
 			program->initClient(mainWindow, Ip(argv[2]));
 		}
 		else{
@@ -144,7 +145,7 @@ int glestMain(int argc, char** argv){
 			program->loop();
 		}
 	}
-	catch(const exception &e){
+    catch (const std::exception &e){
 		restoreVideoMode();
 		exceptionMessage(e);
 	}	

@@ -20,7 +20,8 @@
 #include "network_message.h"
 #include "leak_dumper.h"
 
-using namespace std;
+
+
 using namespace Shared::Util;
 
 namespace Glest{ namespace Game{
@@ -82,7 +83,7 @@ void ConnectionSlot::update(){
 				break;
 
 				default:
-					throw runtime_error("Unexpected message in connection slot: " + intToStr(networkMessageType));
+                    throw std::runtime_error("Unexpected message in connection slot: " + intToStr(networkMessageType));
 			}
 		}
 		else{

@@ -38,7 +38,7 @@ private:
 	GraphicLabel labelScenario;
 	GraphicListBox listBoxScenario;
     
-	std::vector<string> scenarioFiles;
+    std::vector<std::string> scenarioFiles;
 
     ScenarioInfo scenarioInfo;
 	std::string dir;

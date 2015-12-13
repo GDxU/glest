@@ -42,7 +42,7 @@ void FactionType::load(const std::string &dir, const TechTree *techTree, Checksu
     
 	// a1) preload units
 	std::string unitsPath= dir + "/units/*.";
-	std::vector<string> unitFilenames;
+    std::vector<std::string> unitFilenames;
     findAll(unitsPath, unitFilenames);
 	unitTypes.resize(unitFilenames.size());
     for(int i=0; i<unitTypes.size(); ++i){
@@ -52,7 +52,7 @@ void FactionType::load(const std::string &dir, const TechTree *techTree, Checksu
 
 	// a2) preload upgrades
 	std::string upgradesPath= dir + "/upgrades/*.";
-	std::vector<string> upgradeFilenames;
+	std::vector<std::string> upgradeFilenames;
     findAll(upgradesPath, upgradeFilenames);
 	upgradeTypes.resize(upgradeFilenames.size());
     for(int i=0; i<upgradeTypes.size(); ++i){
@@ -67,8 +67,8 @@ void FactionType::load(const std::string &dir, const TechTree *techTree, Checksu
             unitTypes[i].load(i, str, techTree, this, checksum);
         }
     }
-	catch(const exception &e){
-		throw runtime_error("Error loading units: "+ dir + "\n" + e.what());
+    catch (const std::exception &e){
+        throw std::runtime_error("Error loading units: " + dir + "\n" + e.what());
 	}
 
 	// b2) load upgrades
@@ -78,8 +78,8 @@ void FactionType::load(const std::string &dir, const TechTree *techTree, Checksu
             upgradeTypes[i].load(str, techTree, this, checksum);
         }
     }
-	catch(const exception &e){
-		throw runtime_error("Error loading upgrades: "+ dir + "\n" + e.what());
+    catch (const std::exception &e){
+        throw std::runtime_error("Error loading upgrades: " + dir + "\n" + e.what());
 	}
 
 	//open xml file
@@ -132,7 +132,7 @@ const UnitType *FactionType::getUnitType(const std::string &name) const{
             return &unitTypes[i];
 		}
     }
-	throw runtime_error("Unit not found: "+name);
+    throw std::runtime_error("Unit not found: " + name);
 }
 
 const UpgradeType *FactionType::getUpgradeType(const std::string &name) const{     
@@ -141,7 +141,7 @@ const UpgradeType *FactionType::getUpgradeType(const std::string &name) const{
             return &upgradeTypes[i];
 		}
     }
-	throw runtime_error("Upgrade not found: "+name);
+    throw std::runtime_error("Upgrade not found: " + name);
 }
 
 int FactionType::getStartingResourceAmount(const ResourceType *resourceType) const{

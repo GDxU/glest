@@ -120,8 +120,8 @@ void UpgradeType::load(const std::string &dir, const TechTree *techTree, const F
 		prodSpeed= upgradeNode->getChild("production-speed")->getAttribute("value")->getIntValue();
 		
 	}
-	catch(const exception &e){
-		throw runtime_error("Error loading UpgradeType: "+ dir + "\n" +e.what());
+	catch(const std::exception &e){
+		throw std::runtime_error("Error loading UpgradeType: "+ dir + "\n" +e.what());
 	}
 }
 

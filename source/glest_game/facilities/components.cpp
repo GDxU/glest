@@ -20,7 +20,8 @@
 
 #include "leak_dumper.h"
 
-using namespace std;
+
+
 
 namespace Glest{ namespace Game{
 
@@ -122,7 +123,7 @@ void GraphicListBox::pushBackItem(std::string item){
     setSelectedItemIndex(0);
 }
 
-void GraphicListBox::setItems(const std::vector<string> &items){
+void GraphicListBox::setItems(const std::vector<std::string> &items){
     this->items= items; 
     setSelectedItemIndex(0);
 }
@@ -134,12 +135,12 @@ void GraphicListBox::setSelectedItemIndex(int index){
 }
 
 void GraphicListBox::setSelectedItem(std::string item){
-	std::vector<string>::iterator iter;        
+    std::vector<std::string>::iterator iter;
 
     iter= find(items.begin(), items.end(), item);
 
 	if(iter==items.end()){
-        throw runtime_error("Value not found on list box: "+item);
+        throw std::runtime_error("Value not found on list box: " + item);
 	}
 
     setSelectedItemIndex(iter-items.begin());

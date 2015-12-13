@@ -288,7 +288,7 @@ void UnitUpdater::updateBuild(Unit *unit){
 				builtUnit->create();   
 
 				if(!builtUnitType->hasSkillClass(scBeBuilt)){
-					throw runtime_error("Unit " + builtUnitType->getName() + "has no be_built skill");
+					throw std::runtime_error("Unit " + builtUnitType->getName() + "has no be_built skill");
 				}
 
 				builtUnit->setCurrSkill(scBeBuilt);

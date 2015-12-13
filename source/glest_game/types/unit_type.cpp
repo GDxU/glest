@@ -147,7 +147,7 @@ void UnitType::load(int id,const std::string &dir, const TechTree *techTree, con
 				const XmlNode *rowNode= cellMapNode->getChild("row", i);
 				std::string row= rowNode->getAttribute("value")->getRestrictedValue();
 				if(row.size()!=size){
-					throw runtime_error("Cellmap row has not the same length as unit size");
+					throw std::runtime_error("Cellmap row has not the same length as unit size");
 				}
 				for(int j=0; j<row.size(); ++j){
 					cellMap[i*size+j]= row[j]=='0'? false: true;
@@ -177,7 +177,7 @@ void UnitType::load(int id,const std::string &dir, const TechTree *techTree, con
 				fields[fAir]= true;
 			}
 			else{
-				throw runtime_error("Not a valid field: "+fieldName+": "+ path);
+				throw std::runtime_error("Not a valid field: "+fieldName+": "+ path);
 			}
 		}
 
@@ -195,7 +195,7 @@ void UnitType::load(int id,const std::string &dir, const TechTree *techTree, con
 				}
 			}
 			if(!found){
-				throw runtime_error("Unknown property: " + propertyName);
+				throw std::runtime_error("Unknown property: " + propertyName);
 			}
 		}
 
@@ -316,16 +316,16 @@ void UnitType::load(int id,const std::string &dir, const TechTree *techTree, con
 		computeFirstCtOfClass();
 
 		if(getFirstStOfClass(scStop)==NULL){
-			throw runtime_error("Every unit must have at least one stop skill: "+ path);
+			throw std::runtime_error("Every unit must have at least one stop skill: "+ path);
 		}
 		if(getFirstStOfClass(scDie)==NULL){
-			throw runtime_error("Every unit must have at least one die skill: "+ path);
+			throw std::runtime_error("Every unit must have at least one die skill: "+ path);
 		}
 	
 	}
-	//Exception handling (conversions and so on);
-	catch(const exception &e){
-		throw runtime_error("Error loading UnitType: " + path + "\n" + e.what());
+	//std::exception handling (conversions and so on);
+	catch(const std::exception &e){
+		throw std::runtime_error("Error loading UnitType: " + path + "\n" + e.what());
 	}
 }
 
@@ -391,11 +391,11 @@ const SkillType *UnitType::getSkillType(const std::string &skillName, SkillClass
 				return skillTypes[i];
 			}
 			else{
-				throw runtime_error("Skill \""+skillName+"\" is not of class \""+SkillType::skillClassToStr(skillClass));
+				throw std::runtime_error("Skill \""+skillName+"\" is not of class \""+SkillType::skillClassToStr(skillClass));
 			}
 		}
 	}
-	throw runtime_error("No skill named \""+skillName+"\"");
+	throw std::runtime_error("No skill named \""+skillName+"\"");
 }
 
 // ==================== totals ==================== 

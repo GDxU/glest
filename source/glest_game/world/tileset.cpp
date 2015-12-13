@@ -196,9 +196,9 @@ void Tileset::load(const std::string &dir, Checksum *checksum){
 		}
 
 	}
-	//Exception handling (conversions and so on);
-	catch(const exception &e){
-		throw runtime_error("Error: " + path + "\n" + e.what());
+	//std::exception handling (conversions and so on);
+	catch(const std::exception &e){
+		throw std::runtime_error("Error: " + path + "\n" + e.what());
 	}
 }
 

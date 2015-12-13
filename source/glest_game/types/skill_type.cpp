@@ -175,7 +175,7 @@ void AttackSkillType::load(const XmlNode *sn, const std::string &dir, const Tech
 			attackFields[fAir]= true;
 		}
 		else{
-			throw runtime_error("Not a valid field: "+fieldName+": "+ dir);
+            throw std::runtime_error("Not a valid field: " + fieldName + ": " + dir);
 		}
 	}
 

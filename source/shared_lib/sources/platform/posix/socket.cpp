@@ -23,7 +23,8 @@
 
 #include "conversion.h"
 
-using namespace std;
+
+
 using namespace Shared::Util;
 
 namespace Shared{ namespace Platform{

@@ -18,7 +18,8 @@
 #include "upgrade_type.h"
 #include "leak_dumper.h"
 
-using namespace std;
+
+
 using namespace Shared::Util;
 
 namespace Glest{ namespace Game{
@@ -79,7 +80,7 @@ void UpgradeManager::cancelUpgrade(const UpgradeType *upgradeType){
 		upgrades.erase(it);
 	}
 	else{
-		throw runtime_error("Error canceling upgrade, upgrade not found in upgrade manager");
+        throw std::runtime_error("Error canceling upgrade, upgrade not found in upgrade manager");
 	}
 }
 
@@ -96,7 +97,7 @@ void UpgradeManager::finishUpgrade(const UpgradeType *upgradeType){
 		(*it)->setState(usUpgraded);
 	}
 	else{
-		throw runtime_error("Error finishing upgrade, upgrade not found in upgrade manager");
+        throw std::runtime_error("Error finishing upgrade, upgrade not found in upgrade manager");
 	}
 }
 

@@ -18,7 +18,8 @@
 #include "leak_dumper.h"
 
 using namespace Shared::Platform;
-using namespace std;
+
+
 
 namespace Shared{ namespace Sound{
 
@@ -32,10 +33,10 @@ void WavSoundFileLoader::open(const std::string &path, SoundInfo *soundInfo){
     uint16 size16= 0; 
     int count;
 	
-	f.open(path.c_str(), ios_base::in | ios_base::binary);
+    f.open(path.c_str(), std::ios_base::in | std::ios_base::binary);
 
 	if(!f.is_open()){
-		throw std::runtime_error("Error opening wav file: "+ string(path));
+        throw std::runtime_error("Error opening wav file: " + std::string(path));
 	}
 
     //RIFF chunk - Id
@@ -129,7 +130,7 @@ void WavSoundFileLoader::close(){
 }
 
 void WavSoundFileLoader::restart(){
-	f.seekg(dataOffset, ios_base::beg);	
+    f.seekg(dataOffset, std::ios_base::beg);
 }
 
 // =======================================

@@ -20,7 +20,8 @@
 #include "noimpl.h"
 
 using namespace Shared::Util;
-using namespace std;
+
+
 
 SDL_Window* getWindow();
 

@@ -20,7 +20,8 @@
 #include "unit_type.h"
 #include "leak_dumper.h"
 
-using namespace std;
+
+
 using namespace Shared::Graphics;
 using namespace Shared::Util;
 
