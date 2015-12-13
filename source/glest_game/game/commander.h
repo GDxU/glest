@@ -18,7 +18,8 @@
 #include "selection.h"
 #include "command_type.h"
 
-using std::vector;
+
+
 
 namespace Glest{ namespace Game{
 
@@ -38,7 +39,7 @@ class NetworkCommand;
 
 class Commander{
 private:
-	typedef vector<CommandResult> CommandResultContainer;
+	typedef std::vector<CommandResult> CommandResultContainer;
 
 private:
     World *world;

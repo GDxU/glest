@@ -37,8 +37,8 @@ void Resource::init(const ResourceType *rt, const Vec2i &pos){
 	this->pos= pos;
 }
 
-string Resource::getDescription() const{
-     string str;
+std::string Resource::getDescription() const{
+     std::string str;
 
      str+= type->getName();
      str+="\n";

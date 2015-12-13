@@ -28,7 +28,7 @@ class NetworkMessageIntro;
 class MenuStateJoinGame: public MenuState{
 private:
 	static const int newServerIndex;
-	static const string serverFileName;
+	static const std::string serverFileName;
 
 private:
 	GraphicButton buttonReturn;

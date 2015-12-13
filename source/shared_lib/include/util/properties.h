@@ -16,10 +16,14 @@
 #include <map>
 #include <vector>
 
-using std::map;
-using std::vector;
-using std::string;
-using std::pair;
+
+
+
+
+
+
+
+
 
 namespace Shared{ namespace Util{
 
@@ -34,37 +38,37 @@ private:
 	static const int maxLine= 1024;
 
 public:	
-	typedef pair<string, string> PropertyPair;
-	typedef map<string, string> PropertyMap;
-	typedef vector<PropertyPair> PropertyVector;
+    typedef std::pair<std::string, std::string> PropertyPair;
+    typedef std::map<std::string, std::string> PropertyMap;
+	typedef std::vector<PropertyPair> PropertyVector;
 	
 private:
 	PropertyVector propertyVector;
 	PropertyMap propertyMap;
-	string path;
+	std::string path;
 
 public:
 	void clear();
-	void load(const string &path);
-	void save(const string &path);
+	void load(const std::string &path);
+	void save(const std::string &path);
 
 	int getPropertyCount()	{return propertyVector.size();}
-	string getKey(int i)	{return propertyVector[i].first;}
-	string getString(int i)	{return propertyVector[i].second;}
+	std::string getKey(int i)	{return propertyVector[i].first;}
+	std::string getString(int i)	{return propertyVector[i].second;}
 
-	bool getBool(const string &key) const;
-	int getInt(const string &key) const;
-	int getInt(const string &key, int min, int max) const;
-	float getFloat(const string &key) const;
-	float getFloat(const string &key, float min, float max) const;
-	const string &getString(const string &key) const;
+	bool getBool(const std::string &key) const;
+	int getInt(const std::string &key) const;
+	int getInt(const std::string &key, int min, int max) const;
+	float getFloat(const std::string &key) const;
+	float getFloat(const std::string &key, float min, float max) const;
+	const std::string &getString(const std::string &key) const;
 
-	void setInt(const string &key, int value);
-	void setBool(const string &key, bool value);
-	void setFloat(const string &key, float value);
-	void setString(const string &key, const string &value);
+	void setInt(const std::string &key, int value);
+	void setBool(const std::string &key, bool value);
+	void setFloat(const std::string &key, float value);
+	void setString(const std::string &key, const std::string &value);
 
-	string toString();
+	std::string toString();
 
 
 };

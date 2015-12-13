@@ -33,19 +33,19 @@ private:
 
 public:
     static Config &getInstance();
-	void save(const string &path="glest.ini");
+	void save(const std::string &path="glest.ini");
 
-	int getInt(const string &key) const;
-	bool getBool(const string &key) const;
-	float getFloat(const string &key) const;
-	const string &getString(const string &key) const;
+	int getInt(const std::string &key) const;
+	bool getBool(const std::string &key) const;
+	float getFloat(const std::string &key) const;
+	const std::string &getString(const std::string &key) const;
 
-	void setInt(const string &key, int value);
-	void setBool(const string &key, bool value);
-	void setFloat(const string &key, float value);
-	void setString(const string &key, const string &value);
+	void setInt(const std::string &key, int value);
+	void setBool(const std::string &key, bool value);
+	void setFloat(const std::string &key, float value);
+	void setString(const std::string &key, const std::string &value);
 
-	string toString();
+	std::string toString();
 };
 
 }}//end namespace

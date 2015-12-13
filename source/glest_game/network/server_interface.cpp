@@ -175,7 +175,7 @@ void ServerInterface::waitUntilReady(Checksum* checksum){
 	}
 }
 
-void ServerInterface::sendTextMessage(const string &text, int teamIndex){
+void ServerInterface::sendTextMessage(const std::string &text, int teamIndex){
 	NetworkMessageText networkMessageText(text, getHostName(), teamIndex);
 	broadcastMessage(&networkMessageText);
 }
@@ -185,9 +185,9 @@ void ServerInterface::quitGame(){
 	broadcastMessage(&networkMessageQuit);
 }
 
-string ServerInterface::getNetworkStatus() const{
+std::string ServerInterface::getNetworkStatus() const{
 	Lang &lang= Lang::getInstance();
-	string str;
+	std::string str;
 
 	for(int i= 0; i<GameConstants::maxPlayers; ++i){
 		ConnectionSlot* connectionSlot= slots[i];

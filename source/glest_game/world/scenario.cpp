@@ -33,9 +33,9 @@ Scenario::~Scenario(){
 
 }
 
-void Scenario::load(const string &path){
+void Scenario::load(const std::string &path){
 	try{
-		string name= cutLastExt(lastDir(path));
+		std::string name= cutLastExt(lastDir(path));
 		Logger::getInstance().add("Scenario: "+formatString(name), true);
 
 		//parse xml
@@ -56,12 +56,12 @@ void Scenario::load(const string &path){
 	}
 }
 
-string Scenario::getScenarioPath(const string &dir, const string &scenarioName){
+std::string Scenario::getScenarioPath(const std::string &dir, const std::string &scenarioName){
 	return dir + "/" + scenarioName + "/" + scenarioName + ".xml";
 }
 
-string Scenario::getFunctionName(const XmlNode *scriptNode){
-	string name= scriptNode->getName();
+std::string Scenario::getFunctionName(const XmlNode *scriptNode){
+	std::string name= scriptNode->getName();
 
 	for(int i= 0; i<scriptNode->getAttributeCount(); ++i){
 		name+= "_" + scriptNode->getAttribute(i)->getValue();

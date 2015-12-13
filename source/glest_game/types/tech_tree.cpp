@@ -31,11 +31,11 @@ namespace Glest{ namespace Game{
 // 	class TechTree
 // =====================================================
 
-void TechTree::load(const string &dir, Checksum* checksum){
+void TechTree::load(const std::string &dir, Checksum* checksum){
 
-	string str;
-    vector<string> filenames;
-	string name= lastDir(dir);
+	std::string str;
+    std::vector<string> filenames;
+	std::string name= lastDir(dir);
 		
 	Logger::getInstance().add("TechTree: "+ formatString(name), true);
 
@@ -58,7 +58,7 @@ void TechTree::load(const string &dir, Checksum* checksum){
 	//load tech tree xml info
 	try{
 		XmlTree	xmlTree;
-		string path= dir+"/"+lastDir(dir)+".xml";
+		std::string path= dir+"/"+lastDir(dir)+".xml";
 
 		checksum->addFile(path);
 
@@ -122,7 +122,7 @@ TechTree::~TechTree(){
 
 // ==================== get ==================== 
 
-const FactionType *TechTree::getType(const string &name) const{    
+const FactionType *TechTree::getType(const std::string &name) const{    
      for(int i=0; i<factionTypes.size(); ++i){
           if(factionTypes[i].getName()==name){
                return &factionTypes[i];
@@ -152,7 +152,7 @@ const ResourceType *TechTree::getFirstTechResourceType() const{
 	 throw runtime_error("This tech tree has not tech resources, one at least is required");
 }
 
-const ResourceType *TechTree::getResourceType(const string &name) const{
+const ResourceType *TechTree::getResourceType(const std::string &name) const{
     
 	for(int i=0; i<resourceTypes.size(); ++i){
 		if(resourceTypes[i].getName()==name){
@@ -163,7 +163,7 @@ const ResourceType *TechTree::getResourceType(const string &name) const{
 	throw runtime_error("Resource Type not found: "+name);
 }
 
-const ArmorType *TechTree::getArmorType(const string &name) const{
+const ArmorType *TechTree::getArmorType(const std::string &name) const{
 	for(int i=0; i<armorTypes.size(); ++i){
 		if(armorTypes[i].getName()==name){
 			return &armorTypes[i];
@@ -173,7 +173,7 @@ const ArmorType *TechTree::getArmorType(const string &name) const{
 	throw runtime_error("Armor Type not found: "+name);
 }
 
-const AttackType *TechTree::getAttackType(const string &name) const{
+const AttackType *TechTree::getAttackType(const std::string &name) const{
 	for(int i=0; i<attackTypes.size(); ++i){
 		if(attackTypes[i].getName()==name){
 			return &attackTypes[i];

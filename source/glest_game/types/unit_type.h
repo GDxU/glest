@@ -36,13 +36,13 @@ class FactionType;
 
 class Level{
 private:
-	string name;
+	std::string name;
 	int kills;
 
 public:
-	void init(string name, int kills);
+	void init(std::string name, int kills);
 
-	const string &getName() const	{return name;}
+	const std::string &getName() const	{return name;}
 	int getKills() const			{return kills;}
 };
 
@@ -70,10 +70,10 @@ public:
 	static const char *propertyNames[];
 
 private:
-    typedef vector<SkillType*> SkillTypes;
-    typedef vector<CommandType*> CommandTypes;
-    typedef vector<Resource> StoredResources;
-	typedef vector<Level> Levels;
+    typedef std::vector<SkillType*> SkillTypes;
+    typedef std::vector<CommandType*> CommandTypes;
+    typedef std::vector<Resource> StoredResources;
+	typedef std::vector<Level> Levels;
 
 private:
 	//basic
@@ -118,8 +118,8 @@ public:
 	//creation and loading
     UnitType();
     virtual ~UnitType();
-	void preLoad(const string &dir);
-    void load(int id, const string &dir, const TechTree *techTree, const FactionType *factionType, Checksum* checksum);
+	void preLoad(const std::string &dir);
+    void load(int id, const std::string &dir, const TechTree *techTree, const FactionType *factionType, Checksum* checksum);
 
 	//get
 	int getId() const									{return id;}
@@ -152,7 +152,7 @@ public:
 	StaticSound *getCommandSound() const				{return commandSounds.getRandSound();}
 
 	int getStore(const ResourceType *rt) const;
-	const SkillType *getSkillType(const string &skillName, SkillClass skillClass) const;
+	const SkillType *getSkillType(const std::string &skillName, SkillClass skillClass) const;
 	const SkillType *getFirstStOfClass(SkillClass skillClass) const;
     const CommandType *getFirstCtOfClass(CommandClass commandClass) const;
     const HarvestCommandType *getFirstHarvestCommand(const ResourceType *resourceType) const;

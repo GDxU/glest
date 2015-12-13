@@ -148,7 +148,7 @@ public:
 	static const int mapScale;	//horizontal scale of surface
 
 private:
-	string title;
+	std::string title;
 	float waterLevel;
 	float heightFactor;
 	int w;
@@ -169,7 +169,7 @@ public:
 	~Map();
 	
 	void init();
-	void load(const string &path, TechTree *techTree, Tileset *tileset);
+	void load(const std::string &path, TechTree *techTree, Tileset *tileset);
 
 	//get
 	Cell *getCell(int x, int y) const							{return &cells[y*w+x];}
@@ -223,7 +223,7 @@ public:
 	//static
 	static Vec2i toSurfCoords(Vec2i unitPos)		{return unitPos/cellScale;}
 	static Vec2i toUnitCoords(Vec2i surfPos)		{return surfPos*cellScale;}
-	static string getMapPath(const string &mapName)	{return "maps/"+mapName+".gbm";}
+	static std::string getMapPath(const std::string &mapName)	{return "maps/"+mapName+".gbm";}
 
 private:
 	//compute

@@ -35,7 +35,7 @@ namespace Glest{ namespace Game{
 // 	class Level 
 // ===============================
 
-void Level::init(string name, int kills){
+void Level::init(std::string name, int kills){
 	this->name= name;
 	this->kills= kills;
 }
@@ -78,14 +78,14 @@ UnitType::~UnitType(){
 	delete [] cellMap;
 }
 
-void UnitType::preLoad(const string &dir){
+void UnitType::preLoad(const std::string &dir){
 	name= lastDir(dir);
 }
 
-void UnitType::load(int id,const string &dir, const TechTree *techTree, const FactionType *factionType, Checksum* checksum){
+void UnitType::load(int id,const std::string &dir, const TechTree *techTree, const FactionType *factionType, Checksum* checksum){
     
 	this->id= id;
-    string path;
+    std::string path;
 
 	try{
 
@@ -125,8 +125,8 @@ void UnitType::load(int id,const string &dir, const TechTree *techTree, const Fa
 		//armor
 		armor= parametersNode->getChild("armor")->getAttribute("value")->getIntValue();
 		
-		//armor type string
-		string armorTypeName= parametersNode->getChild("armor-type")->getAttribute("value")->getRestrictedValue();
+		//armor type std::string
+		std::string armorTypeName= parametersNode->getChild("armor-type")->getAttribute("value")->getRestrictedValue();
 		armorType= techTree->getArmorType(armorTypeName);
 
 		//sight
@@ -145,7 +145,7 @@ void UnitType::load(int id,const string &dir, const TechTree *techTree, const Fa
 			cellMap= new bool[size*size];
 			for(int i=0; i<size; ++i){
 				const XmlNode *rowNode= cellMapNode->getChild("row", i);
-				string row= rowNode->getAttribute("value")->getRestrictedValue();
+				std::string row= rowNode->getAttribute("value")->getRestrictedValue();
 				if(row.size()!=size){
 					throw runtime_error("Cellmap row has not the same length as unit size");
 				}
@@ -169,7 +169,7 @@ void UnitType::load(int id,const string &dir, const TechTree *techTree, const Fa
 		const XmlNode *fieldsNode= parametersNode->getChild("fields");
 		for(int i=0; i<fieldsNode->getChildCount(); ++i){
 			const XmlNode *fieldNode= fieldsNode->getChild("field", i);
-			string fieldName= fieldNode->getAttribute("value")->getRestrictedValue();
+			std::string fieldName= fieldNode->getAttribute("value")->getRestrictedValue();
 			if(fieldName=="land"){
 				fields[fLand]= true;
 			}
@@ -185,7 +185,7 @@ void UnitType::load(int id,const string &dir, const TechTree *techTree, const Fa
 		const XmlNode *propertiesNode= parametersNode->getChild("properties");
 		for(int i=0; i<propertiesNode->getChildCount(); ++i){
 			const XmlNode *propertyNode= propertiesNode->getChild("property", i);
-			string propertyName= propertyNode->getAttribute("value")->getRestrictedValue();
+			std::string propertyName= propertyNode->getAttribute("value")->getRestrictedValue();
 			bool found= false;
 			for(int i=0; i<pCount; ++i){
 				if(propertyName==propertyNames[i]){
@@ -212,7 +212,7 @@ void UnitType::load(int id,const string &dir, const TechTree *techTree, const Fa
 		const XmlNode *unitRequirementsNode= parametersNode->getChild("unit-requirements");
 		for(int i=0; i<unitRequirementsNode->getChildCount(); ++i){
 			const XmlNode *unitNode= 	unitRequirementsNode->getChild("unit", i);
-			string name= unitNode->getAttribute("name")->getRestrictedValue();
+			std::string name= unitNode->getAttribute("name")->getRestrictedValue();
 			unitReqs.push_back(factionType->getUnitType(name));
 		}
 
@@ -220,7 +220,7 @@ void UnitType::load(int id,const string &dir, const TechTree *techTree, const Fa
 		const XmlNode *upgradeRequirementsNode= parametersNode->getChild("upgrade-requirements");
 		for(int i=0; i<upgradeRequirementsNode->getChildCount(); ++i){
 			const XmlNode *upgradeReqNode= upgradeRequirementsNode->getChild("upgrade", i);
-			string name= upgradeReqNode->getAttribute("name")->getRestrictedValue();
+			std::string name= upgradeReqNode->getAttribute("name")->getRestrictedValue();
 			upgradeReqs.push_back(factionType->getUpgradeType(name));
 		}
 
@@ -229,7 +229,7 @@ void UnitType::load(int id,const string &dir, const TechTree *techTree, const Fa
 		costs.resize(resourceRequirementsNode->getChildCount());
 		for(int i=0; i<costs.size(); ++i){
 			const XmlNode *resourceNode= resourceRequirementsNode->getChild("resource", i);
-			string name= resourceNode->getAttribute("name")->getRestrictedValue();
+			std::string name= resourceNode->getAttribute("name")->getRestrictedValue();
 			int amount= resourceNode->getAttribute("amount")->getIntValue();
 			costs[i].init(techTree->getResourceType(name), amount);
 		}
@@ -239,7 +239,7 @@ void UnitType::load(int id,const string &dir, const TechTree *techTree, const Fa
 		storedResources.resize(resourcesStoredNode->getChildCount());
 		for(int i=0; i<storedResources.size(); ++i){
 			const XmlNode *resourceNode= resourcesStoredNode->getChild("resource", i);
-			string name= resourceNode->getAttribute("name")->getRestrictedValue();
+			std::string name= resourceNode->getAttribute("name")->getRestrictedValue();
 			int amount= resourceNode->getAttribute("amount")->getIntValue();
 			storedResources[i].init(techTree->getResourceType(name), amount);
 		}
@@ -268,7 +268,7 @@ void UnitType::load(int id,const string &dir, const TechTree *techTree, const Fa
 			selectionSounds.resize(selectionSoundNode->getChildCount());
 			for(int i=0; i<selectionSounds.getSounds().size(); ++i){
 				const XmlNode *soundNode= selectionSoundNode->getChild("sound", i);
-				string path= soundNode->getAttribute("path")->getRestrictedValue();
+				std::string path= soundNode->getAttribute("path")->getRestrictedValue();
 				StaticSound *sound= new StaticSound();
 				sound->load(dir + "/" + path);
 				selectionSounds[i]= sound;
@@ -281,7 +281,7 @@ void UnitType::load(int id,const string &dir, const TechTree *techTree, const Fa
 			commandSounds.resize(commandSoundNode->getChildCount());
 			for(int i=0; i<commandSoundNode->getChildCount(); ++i){
 				const XmlNode *soundNode= commandSoundNode->getChild("sound", i);
-				string path= soundNode->getAttribute("path")->getRestrictedValue();
+				std::string path= soundNode->getAttribute("path")->getRestrictedValue();
 				StaticSound *sound= new StaticSound();
 				sound->load(dir + "/" + path);
 				commandSounds[i]= sound;
@@ -294,7 +294,7 @@ void UnitType::load(int id,const string &dir, const TechTree *techTree, const Fa
 		for(int i=0; i<skillTypes.size(); ++i){
 			const XmlNode *sn= skillsNode->getChild("skill", i);
 			const XmlNode *typeNode= sn->getChild("type");
-			string classId= typeNode->getAttribute("value")->getRestrictedValue();
+			std::string classId= typeNode->getAttribute("value")->getRestrictedValue();
 			SkillType *skillType= SkillTypeFactory::getInstance().newInstance(classId);
 			skillType->load(sn, dir, techTree, factionType);
 			skillTypes[i]= skillType;
@@ -306,7 +306,7 @@ void UnitType::load(int id,const string &dir, const TechTree *techTree, const Fa
 		for(int i=0; i<commandTypes.size(); ++i){
 			const XmlNode *commandNode= commandsNode->getChild("command", i);
 			const XmlNode *typeNode= commandNode->getChild("type");
-			string classId= typeNode->getAttribute("value")->getRestrictedValue();
+			std::string classId= typeNode->getAttribute("value")->getRestrictedValue();
 			CommandType *commandType= CommandTypeFactory::getInstance().newInstance(classId);
 			commandType->load(i, commandNode, dir, techTree, factionType, *this);
 			commandTypes[i]= commandType;
@@ -384,7 +384,7 @@ int UnitType::getStore(const ResourceType *rt) const{
     return 0;    
 }
 
-const SkillType *UnitType::getSkillType(const string &skillName, SkillClass skillClass) const{
+const SkillType *UnitType::getSkillType(const std::string &skillName, SkillClass skillClass) const{
 	for(int i=0; i<skillTypes.size(); ++i){
 		if(skillTypes[i]->getName()==skillName){
 			if(skillTypes[i]->getClass()==skillClass){

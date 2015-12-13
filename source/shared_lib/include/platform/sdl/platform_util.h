@@ -19,9 +19,12 @@
 
 #include "types.h"
 
-using std::string;
-using std::vector;
-using std::exception;
+
+
+
+
+
+
 
 using Shared::Platform::int64;
 
@@ -76,7 +79,7 @@ private:
 class PlatformExceptionHandler {
 public:
 	virtual ~PlatformExceptionHandler() {}
-	void install(string dumpFileName) {}
+	void install(std::string dumpFileName) {}
 	virtual void handle()=0;
 };
 
@@ -84,14 +87,14 @@ public:
 //	Misc
 // =====================================================
 
-void findAll(const string &path, vector<string> &results, bool cutExtension=false);
+void findAll(const std::string &path, std::vector<std::string> &results, bool cutExtension = false);
 
 bool changeVideoMode(int resH, int resW, int colorBits, int refreshFrequency);
 void restoreVideoMode();
 
-void message(string message);
-bool ask(string message);
-void exceptionMessage(const exception &excp);
+void message(std::string message);
+bool ask(std::string message);
+void exceptionMessage(const std::exception &excp);
 
 int getScreenW();
 int getScreenH();
@@ -100,7 +103,7 @@ void sleep(int millis);
 
 void showCursor(bool b);
 bool isKeyDown(int virtualKey);
-string getCommandLine();
+std::string getCommandLine();
 
 }}//end namespace
 

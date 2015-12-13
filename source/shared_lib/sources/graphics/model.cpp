@@ -91,18 +91,18 @@ void Mesh::updateInterpolationVertices(float t, bool cycle) const{
 
 // ==================== load ==================== 
 
-void Mesh::loadV2(const string &dir, FILE *f, TextureManager *textureManager){
+void Mesh::loadV2(const std::string &dir, FILE *f, TextureManager *textureManager){
 	//read header
 	MeshHeaderV2 meshHeader;
 	fread(&meshHeader, sizeof(MeshHeaderV2), 1, f);
 	
 
 	if(meshHeader.normalFrameCount!=meshHeader.vertexFrameCount){
-		throw runtime_error("Old model: vertex frame count different from normal frame count");
+		throw std::runtime_error("Old model: vertex frame count different from normal frame count");
 	}
 	
 	if(meshHeader.texCoordFrameCount!=1){
-		throw runtime_error("Old model: texture coord frame count is not 1");
+		throw std::runtime_error("Old model: texture coord frame count is not 1");
 	}
 
 	//init
@@ -119,7 +119,7 @@ void Mesh::loadV2(const string &dir, FILE *f, TextureManager *textureManager){
 	//texture
 	if(meshHeader.hasTexture && textureManager!=NULL){
 		texturePaths[mtDiffuse]= toLower(reinterpret_cast<char*>(meshHeader.texName));
-		string texPath= dir+"/"+texturePaths[mtDiffuse];
+		std::string texPath= dir+"/"+texturePaths[mtDiffuse];
 
 		textures[mtDiffuse]= static_cast<Texture2D*>(textureManager->getTexture(texPath));
 		if(textures[mtDiffuse]==NULL){
@@ -140,14 +140,14 @@ void Mesh::loadV2(const string &dir, FILE *f, TextureManager *textureManager){
 	fread(indices, sizeof(uint32)*indexCount, 1, f);
 }
 
-void Mesh::loadV3(const string &dir, FILE *f, TextureManager *textureManager){
+void Mesh::loadV3(const std::string &dir, FILE *f, TextureManager *textureManager){
 	//read header
 	MeshHeaderV3 meshHeader;
 	fread(&meshHeader, sizeof(MeshHeaderV3), 1, f);
 	
 
 	if(meshHeader.normalFrameCount!=meshHeader.vertexFrameCount){
-		throw runtime_error("Old model: vertex frame count different from normal frame count");
+		throw std::runtime_error("Old model: vertex frame count different from normal frame count");
 	}
 
 	//init
@@ -164,7 +164,7 @@ void Mesh::loadV3(const string &dir, FILE *f, TextureManager *textureManager){
 	//texture
 	if(!(meshHeader.properties & mp3NoTexture) && textureManager!=NULL){
 		texturePaths[mtDiffuse]= toLower(reinterpret_cast<char*>(meshHeader.texName));
-		string texPath= dir+"/"+texturePaths[mtDiffuse];
+		std::string texPath= dir+"/"+texturePaths[mtDiffuse];
 
 		textures[mtDiffuse]= static_cast<Texture2D*>(textureManager->getTexture(texPath));
 		if(textures[mtDiffuse]==NULL){
@@ -187,7 +187,7 @@ void Mesh::loadV3(const string &dir, FILE *f, TextureManager *textureManager){
 	fread(indices, sizeof(uint32)*indexCount, 1, f);
 }
 
-void Mesh::load(const string &dir, FILE *f, TextureManager *textureManager){
+void Mesh::load(const std::string &dir, FILE *f, TextureManager *textureManager){
 	//read header
 	MeshHeader meshHeader;
 	fread(&meshHeader, sizeof(MeshHeader), 1, f);
@@ -215,9 +215,9 @@ void Mesh::load(const string &dir, FILE *f, TextureManager *textureManager){
 		if((meshHeader.textures & flag) && textureManager!=NULL){
 			uint8 cMapPath[mapPathSize];
 			fread(cMapPath, mapPathSize, 1, f);
-			string mapPath= toLower(reinterpret_cast<char*>(cMapPath));
+			std::string mapPath= toLower(reinterpret_cast<char*>(cMapPath));
 
-			string mapFullPath= dir + "/" + mapPath;
+			std::string mapFullPath= dir + "/" + mapPath;
 
 			textures[i]= static_cast<Texture2D*>(textureManager->getTexture(mapFullPath));
 			if(textures[i]==NULL){
@@ -245,7 +245,7 @@ void Mesh::load(const string &dir, FILE *f, TextureManager *textureManager){
 	}
 }
 
-void Mesh::save(const string &dir, FILE *f){
+void Mesh::save(const std::string &dir, FILE *f){
 	/*MeshHeader meshHeader;
 	meshHeader.vertexFrameCount= vertexFrameCount;
 	meshHeader.normalFrameCount= normalFrameCount;
@@ -369,34 +369,34 @@ uint32 Model::getVertexCount() const{
 
 // ==================== io ==================== 
 
-void Model::load(const string &path){
-	string extension= path.substr(path.find_last_of('.')+1);
+void Model::load(const std::string &path){
+	std::string extension= path.substr(path.find_last_of('.')+1);
 	if(extension=="g3d" || extension=="G3D"){
 		loadG3d(path);
 	}
 	else{
-		throw runtime_error("Unknown model format: " + extension);
+		throw std::runtime_error("Unknown model format: " + extension);
 	}
 }
 
-void Model::save(const string &path){
-	string extension= path.substr(path.find_last_of('.')+1);
+void Model::save(const std::string &path){
+	std::string extension= path.substr(path.find_last_of('.')+1);
 	if(extension=="g3d" ||extension=="G3D" || extension=="s3d" || extension=="S3D"){
 		saveS3d(path);
 	}
 	else{
-		throw runtime_error("Unknown model format: " + extension);
+		throw std::runtime_error("Unknown model format: " + extension);
 	}
 }
 
-/*void Model::loadG3dOld(const string &path){
+/*void Model::loadG3dOld(const std::string &path){
    try{
 		FILE *f=fopen(path.c_str(),"rb");
 		if (f==NULL){ 
-			throw runtime_error("Error opening 3d model file");
+			throw std::runtime_error("Error opening 3d model file");
 		}
 
-		string dir= cutLastFile(path);
+		std::string dir= cutLastFile(path);
 
 		//read header
 		ModelHeaderOld modelHeader;
@@ -404,7 +404,7 @@ void Model::save(const string &path){
 		meshCount= modelHeader.meshCount;
 
 		if(modelHeader.id[0]!='G' || modelHeader.id[1]!='3' || modelHeader.id[2]!='D'){
-			throw runtime_error("Model: "+path+": is not a valid G3D model");
+			throw std::runtime_error("Model: "+path+": is not a valid G3D model");
 		}
 
 		switch(modelHeader.version){
@@ -417,32 +417,32 @@ void Model::save(const string &path){
 			break;
 		}
 		default:
-			throw runtime_error("Unknown model version");
+			throw std::runtime_error("Unknown model version");
 		}
 
 		fclose(f);
     }
 	catch(exception &e){
-		throw runtime_error("Exception caught loading 3d file: " + path +"\n"+ e.what());
+		throw std::runtime_error("Exception caught loading 3d file: " + path +"\n"+ e.what());
 	}
 }*/
 
 //load a model from a g3d file
-void Model::loadG3d(const string &path){
+void Model::loadG3d(const std::string &path){
 			
     try{
 		FILE *f=fopen(path.c_str(),"rb");
 		if (f==NULL){ 
-			throw runtime_error("Error opening 3d model file");
+			throw std::runtime_error("Error opening 3d model file");
 		}
 
-		string dir= cutLastFile(path);
+		std::string dir= cutLastFile(path);
 
 		//file header
 		FileHeader fileHeader;
 		fread(&fileHeader, sizeof(FileHeader), 1, f);
 		if(strncmp(reinterpret_cast<char*>(fileHeader.id), "G3D", 3)!=0){
-			throw runtime_error("Not a valid S3D model");
+			throw std::runtime_error("Not a valid S3D model");
 		}
 		fileVersion= fileHeader.version;
 
@@ -454,7 +454,7 @@ void Model::loadG3d(const string &path){
 			fread(&modelHeader, sizeof(ModelHeader), 1, f);
 			meshCount= modelHeader.meshCount;
 			if(modelHeader.type!=mtMorphMesh){
-				throw runtime_error("Invalid model type");
+				throw std::runtime_error("Invalid model type");
 			}
 
 			//load meshes
@@ -485,22 +485,22 @@ void Model::loadG3d(const string &path){
 			}
 		}
 		else{
-			throw runtime_error("Invalid model version: "+ intToStr(fileHeader.version));
+			throw std::runtime_error("Invalid model version: "+ intToStr(fileHeader.version));
 		}
 
 		fclose(f);
     }
 	catch(exception &e){
-		throw runtime_error("Exception caught loading 3d file: " + path +"\n"+ e.what());
+		throw std::runtime_error("Exception caught loading 3d file: " + path +"\n"+ e.what());
 	}
 }
 
 //save a model to a g3d file
-void Model::saveS3d(const string &path){
+void Model::saveS3d(const std::string &path){
 	
 	/*FILE *f= fopen(path.c_str(), "wb");
 	if(f==NULL){
-		throw runtime_error("Cant open file for writting: "+path);
+		throw std::runtime_error("Cant open file for writting: "+path);
 	}
 
 	ModelHeader modelHeader;
@@ -510,7 +510,7 @@ void Model::saveS3d(const string &path){
 	modelHeader.version= 3;
 	modelHeader.meshCount= meshCount;
 
-	string dir= cutLastFile(path);
+	std::string dir= cutLastFile(path);
 
 	fwrite(&modelHeader, sizeof(ModelHeader), 1, f);
 	for(int i=0; i<meshCount; ++i){

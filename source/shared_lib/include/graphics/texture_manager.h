@@ -16,7 +16,8 @@
 
 #include "texture.h"
 
-using std::vector;
+
+
 
 namespace Shared{ namespace Graphics{
 
@@ -27,7 +28,7 @@ namespace Shared{ namespace Graphics{
 //manages textures, creation on request and deletion on destruction
 class TextureManager{
 protected:
-	typedef vector<Texture*> TextureContainer;
+	typedef std::vector<Texture*> TextureContainer;
 	
 protected:
 	TextureContainer textures;
@@ -44,7 +45,7 @@ public:
 	void setFilter(Texture::Filter textureFilter);
 	void setMaxAnisotropy(int maxAnisotropy);
 
-	Texture *getTexture(const string &path);
+	Texture *getTexture(const std::string &path);
 	Texture1D *newTexture1D();
 	Texture2D *newTexture2D();
 	Texture3D *newTexture3D();

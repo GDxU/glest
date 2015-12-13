@@ -32,7 +32,7 @@ void TextRenderer2DGl::begin(const Font2D *font){
 	this->font= static_cast<const Font2DGl*>(font);
 }
 
-void TextRenderer2DGl::render(const string &text, int x, int y, bool centered){
+void TextRenderer2DGl::render(const std::string &text, int x, int y, bool centered){
 	assert(rendering);
 	
 	assertGl();
@@ -98,7 +98,7 @@ void TextRenderer3DGl::begin(const Font3D *font){
 	assertGl();
 }
 
-void TextRenderer3DGl::render(const string &text, float  x, float y, float size, bool centered){
+void TextRenderer3DGl::render(const std::string &text, float  x, float y, float size, bool centered){
 	assert(rendering);
 	
 	assertGl();

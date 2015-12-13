@@ -26,8 +26,8 @@ private:
 	GraphicLabel labelInfo;
 	GraphicLabel labelMoreInfo;
 
-	string glInfo;
-	string glMoreInfo;
+	std::string glInfo;
+	std::string glMoreInfo;
 public:
 	MenuStateGraphicInfo(Program *program, MainMenu *mainMenu);
 

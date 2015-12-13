@@ -53,7 +53,7 @@ Ip::Ip(const string& ipString){
 	}
 }
 
-string Ip::getString() const{
+std::string Ip::getString() const{
 	return intToStr(bytes[0]) + "." + intToStr(bytes[1]) + "." + intToStr(bytes[2]) + "." + intToStr(bytes[3]);
 }
 
@@ -198,14 +198,14 @@ bool Socket::isConnected(){
 	return true;
 }
 
-string Socket::getHostName() const{
+std::string Socket::getHostName() const{
 	const int strSize= 256;
 	char hostname[strSize];
 	gethostname(hostname, strSize);
 	return hostname;
 }
 
-string Socket::getIp() const{
+std::string Socket::getIp() const{
 	hostent* info= gethostbyname(getHostName().c_str());
 	unsigned char* address;
 
@@ -227,8 +227,8 @@ string Socket::getIp() const{
 		intToStr(address[3]);
 }
 
-void Socket::throwException(const string &str){
-	throw runtime_error("Network error: " + str+" (Code: " + intToStr(WSAGetLastError())+")");
+void Socket::throwException(const std::string &str){
+	throw std::runtime_error("Network error: " + str+" (Code: " + intToStr(WSAGetLastError())+")");
 }
 
 // =====================================================

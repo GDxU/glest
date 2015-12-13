@@ -19,8 +19,10 @@
 #include "conversion.h"
 #include "gl_wrap.h"
 
-using std::runtime_error;
-using std::string;
+
+
+
+
 
 namespace Shared{ namespace Graphics{ namespace Gl{
 
@@ -50,7 +52,7 @@ void inline _assertGl(const char *file, int line){
 
 	if(error != GL_NO_ERROR){
 		const char *errorString= reinterpret_cast<const char*>(gluErrorString(error));
-		throw runtime_error("OpenGL error: "+string(errorString)+" at file: "+string(file)+", line "+intToStr(line));
+        throw std::runtime_error("OpenGL error: " + std::string(errorString) + " at file: " + std::string(file) + ", line " + intToStr(line));
 	}
 
 }

@@ -28,7 +28,7 @@ class TextureManager;
 
 class ModelManager{
 protected:
-	typedef vector<Model*> ModelContainer;
+	typedef std::vector<Model*> ModelContainer;
 
 protected:
 	ModelContainer models;

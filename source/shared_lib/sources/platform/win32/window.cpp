@@ -71,7 +71,7 @@ bool Window::handleEvent(){
 	return true;
 }
 
-string Window::getText(){
+std::string Window::getText(){
 	if(handle==0){
 		return text;
 	}
@@ -99,7 +99,7 @@ float Window::getAspect(){
 	return static_cast<float>(getClientH())/getClientW();
 }
 
-void Window::setText(string text){
+void Window::setText(std::string text){
     this->text= text; 
 	if(handle!=0){	
 		SendMessage(handle, WM_SETTEXT, 0, (LPARAM) text.c_str());

@@ -12,7 +12,7 @@ int MenuBase::nextId= 1000;
 //	class MenuBase
 // =====================================================
 
-void MenuBase::init(const string &text){
+void MenuBase::init(const std::string &text){
 	this->text= text;
 	id= nextId++;
 }

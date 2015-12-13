@@ -54,7 +54,7 @@ public:
 	int getFactionIndex() const	{return factionIndex;}
 
     //misc
-    void printLog(int logLevel, const string &s);
+    void printLog(int logLevel, const std::string &s);
     
     //interact
     CommandResult giveCommand(int unitIndex, CommandClass commandClass, const Vec2i &pos=Vec2i(0));
@@ -84,7 +84,7 @@ public:
 	bool isFreeCells(const Vec2i &pos, int size, Field field);
 
 private:
-	string getLogFilename() const	{return "ai"+intToStr(factionIndex)+".log";}
+	std::string getLogFilename() const	{return "ai"+intToStr(factionIndex)+".log";}
 };
 
 }}//end namespace

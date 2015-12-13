@@ -20,7 +20,8 @@
 #include "graphics_factory_gl.h"
 #include "sound_factory_openal.h"
 
-using std::string;
+
+
 
 using Shared::Graphics::GraphicsFactory;
 using Shared::Sound::SoundFactory;
@@ -46,8 +47,8 @@ private:
 public:
 	static FactoryRepository &getInstance();
 
-	GraphicsFactory *getGraphicsFactory(const string &name);
-	SoundFactory *getSoundFactory(const string &name);
+	GraphicsFactory *getGraphicsFactory(const std::string &name);
+	SoundFactory *getSoundFactory(const std::string &name);
 };
 
 }}//end namespace

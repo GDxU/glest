@@ -758,7 +758,7 @@ bool UnitUpdater::attackableOnRange(const Unit *unit, Unit **rangedPtr, const At
 //if the unit has any enemy on range
 bool UnitUpdater::unitOnRange(const Unit *unit, int range, Unit **rangedPtr, const AttackSkillType *ast){
      
-    vector<Unit*> enemies;
+    std::vector<Unit*> enemies;
 
 	//we check command target
 	const Unit *commandTarget= NULL;

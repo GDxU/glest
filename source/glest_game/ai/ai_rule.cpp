@@ -347,7 +347,7 @@ void AiRuleProduce::execute(){
 }
 
 void AiRuleProduce::produceGeneric(const ProduceTask *pt){
-	typedef vector<const UnitType*> UnitTypes; 
+	typedef std::vector<const UnitType*> UnitTypes; 
 	UnitTypes ableUnits;
 	AiInterface *aiInterface= ai->getAiInterface();
 
@@ -424,7 +424,7 @@ void AiRuleProduce::produceSpecific(const ProduceTask *pt){
 		}
 
 		//produce specific unit
-		vector<int> producers;
+		std::vector<int> producers;
 		const CommandType *defCt= NULL;
 
 		//for each unit
@@ -502,7 +502,7 @@ void AiRuleBuild::buildGeneric(const BuildTask *bt){
 	
 	//find buildings that can be built
 	AiInterface *aiInterface= ai->getAiInterface();
-	typedef vector<const UnitType*> UnitTypes; 
+	typedef std::vector<const UnitType*> UnitTypes; 
 	UnitTypes buildings;
 	
 	//for each unit
@@ -538,7 +538,7 @@ void AiRuleBuild::buildGeneric(const BuildTask *bt){
 	buildBestBuilding(buildings);
 }
 
-void AiRuleBuild::buildBestBuilding(const vector<const UnitType*> &buildings){
+void AiRuleBuild::buildBestBuilding(const std::vector<const UnitType*> &buildings){
 	
 	if(!buildings.empty()){
 
@@ -603,7 +603,7 @@ void AiRuleBuild::buildSpecific(const BuildTask *bt){
 			return;
 		}
 
-		vector<int> builders;
+		std::vector<int> builders;
 		const BuildCommandType *defBct= NULL;
 						
 		//for each unit
@@ -722,7 +722,7 @@ void AiRuleUpgrade::execute(){
 
 void AiRuleUpgrade::upgradeGeneric(const UpgradeTask *upgt){
 	
-	typedef vector<const UpgradeType*> UpgradeTypes; 
+	typedef std::vector<const UpgradeType*> UpgradeTypes; 
 	AiInterface *aiInterface= ai->getAiInterface();
 	
 	//find upgrades that can be upgraded

@@ -19,7 +19,8 @@
 #include "command_type.h"
 #include "game_util.h"
 
-using std::string;
+
+
 
 using Shared::Graphics::Texture2D;
 using Shared::Graphics::Vec3f;
@@ -44,9 +45,9 @@ public:
 	static const int infoStringY= imageSize*4;
 
 private:
-	string title;
-	string text;
-	string infoText;
+	std::string title;
+	std::string text;
+	std::string infoText;
 	const Texture2D *upImages[upCellCount];
 	const Texture2D *downImages[downCellCount];
 	bool downLighted[downCellCount];
@@ -59,9 +60,9 @@ public:
 	Display();
 
 	//get
-	string getTitle() const							{return title;}
-	string getText() const							{return text;}
-	string getInfoText() const						{return infoText;}
+	std::string getTitle() const							{return title;}
+	std::string getText() const							{return text;}
+	std::string getInfoText() const						{return infoText;}
 	const Texture2D *getUpImage(int index) const	{return upImages[index];}
 	const Texture2D *getDownImage(int index) const	{return downImages[index];}
 	bool getDownLighted(int index) const			{return downLighted[index];}
@@ -71,9 +72,9 @@ public:
 	int getDownSelectedPos() const					{return downSelectedPos;}
 	
 	//set
-	void setTitle(const string title)					{this->title= formatString(title);}
-	void setText(const string &text)					{this->text= formatString(text);}
-	void setInfoText(const string infoText)				{this->infoText= formatString(infoText);}
+	void setTitle(const std::string title)					{this->title= formatString(title);}
+	void setText(const std::string &text)					{this->text= formatString(text);}
+	void setInfoText(const std::string infoText)				{this->infoText= formatString(infoText);}
 	void setUpImage(int i, const Texture2D *image) 		{upImages[i]= image;}
 	void setDownImage(int i, const Texture2D *image)	{downImages[i]= image;}
 	void setCommandType(int i, const CommandType *ct)	{commandTypes[i]= ct;}

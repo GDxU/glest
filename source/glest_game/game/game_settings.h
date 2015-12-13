@@ -22,13 +22,13 @@ namespace Glest{ namespace Game{
 
 class GameSettings{
 private:
-	string description;
-	string map;
-	string tileset;
-	string tech;
-	string scenario;
-	string scenarioDir;
-	string factionTypeNames[GameConstants::maxPlayers]; //faction names
+	std::string description;
+	std::string map;
+	std::string tileset;
+	std::string tech;
+	std::string scenario;
+	std::string scenarioDir;
+	std::string factionTypeNames[GameConstants::maxPlayers]; //faction names
 
 	ControlType factionControls[GameConstants::maxPlayers];
 
@@ -43,13 +43,13 @@ private:
 
 public:	
 	//get
-	const string &getDescription() const						{return description;}
-	const string &getMap() const 								{return map;}
-	const string &getTileset() const							{return tileset;}
-	const string &getTech() const								{return tech;}
-	const string &getScenario() const							{return scenario;}
-	const string &getScenarioDir() const						{return scenarioDir;}
-	const string &getFactionTypeName(int factionIndex) const	{return factionTypeNames[factionIndex];}
+	const std::string &getDescription() const						{return description;}
+	const std::string &getMap() const 								{return map;}
+	const std::string &getTileset() const							{return tileset;}
+	const std::string &getTech() const								{return tech;}
+	const std::string &getScenario() const							{return scenario;}
+	const std::string &getScenarioDir() const						{return scenarioDir;}
+	const std::string &getFactionTypeName(int factionIndex) const	{return factionTypeNames[factionIndex];}
 	ControlType getFactionControl(int factionIndex) const		{return factionControls[factionIndex];}
 
 	int getThisFactionIndex() const						{return thisFactionIndex;}
@@ -62,14 +62,14 @@ public:
 	bool getDefaultVictoryConditions() const	{return defaultVictoryConditions;}
 
 	//set
-	void setDescription(const string& description)						{this->description= description;}
-	void setMap(const string& map)										{this->map= map;}
-	void setTileset(const string& tileset)								{this->tileset= tileset;}
-	void setTech(const string& tech)									{this->tech= tech;}
-	void setScenario(const string& scenario)							{this->scenario= scenario;}
-	void setScenarioDir(const string& scenarioDir)						{this->scenarioDir= scenarioDir;}
+    void setDescription(const std::string& description)						{ this->description = description; }
+    void setMap(const std::string& map)										{ this->map = map; }
+    void setTileset(const std::string& tileset)								{ this->tileset = tileset; }
+    void setTech(const std::string& tech)									{ this->tech = tech; }
+    void setScenario(const std::string& scenario)							{ this->scenario = scenario; }
+    void setScenarioDir(const std::string& scenarioDir)						{ this->scenarioDir = scenarioDir; }
 
-	void setFactionTypeName(int factionIndex, const string& factionTypeName)	{this->factionTypeNames[factionIndex]= factionTypeName;}
+    void setFactionTypeName(int factionIndex, const std::string& factionTypeName)	{ this->factionTypeNames[factionIndex] = factionTypeName; }
 
 	void setFactionControl(int factionIndex, ControlType controller)			{this->factionControls[factionIndex]= controller;}
 

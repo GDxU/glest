@@ -32,7 +32,7 @@ namespace Glest{ namespace Game{
 ParticleSystemType::ParticleSystemType(){
 }
 
-void ParticleSystemType::load(const XmlNode *particleSystemNode, const string &dir){
+void ParticleSystemType::load(const XmlNode *particleSystemNode, const std::string &dir){
 	
 	Renderer &renderer= Renderer::getInstance();
 
@@ -58,7 +58,7 @@ void ParticleSystemType::load(const XmlNode *particleSystemNode, const string &d
 	const XmlNode *modelNode= particleSystemNode->getChild("model");
 	bool modelEnabled= modelNode->getAttribute("value")->getBoolValue();
 	if(modelEnabled){
-		string path= modelNode->getAttribute("path")->getRestrictedValue();
+		std::string path= modelNode->getAttribute("path")->getRestrictedValue();
 		model= renderer.newModel(rsGame);
 		model->load(dir + "/" + path);
 	}
@@ -139,7 +139,7 @@ void ParticleSystemType::setValues(AttackParticleSystem *ats){
 //	class ParticleSystemTypeProjectile
 // ===========================================================
 
-void ParticleSystemTypeProjectile::load(const string &dir, const string &path){
+void ParticleSystemTypeProjectile::load(const std::string &dir, const std::string &path){
 
 	try{
 		XmlTree xmlTree;
@@ -196,7 +196,7 @@ ProjectileParticleSystem *ParticleSystemTypeProjectile::create(){
 //	class ParticleSystemTypeSplash
 // ===========================================================
 
-void ParticleSystemTypeSplash::load(const string &dir, const string &path){
+void ParticleSystemTypeSplash::load(const std::string &dir, const std::string &path){
 
 	try{
 		XmlTree xmlTree;

@@ -31,14 +31,14 @@ Lang &Lang::getInstance(){
 	return lang;
 } 
 
-void Lang::loadStrings(const string &language){
+void Lang::loadStrings(const std::string &language){
 	this->language= language;
 	strings.clear();
 	strings.load("data/lang/"+language+".lng");
 }
 
-void Lang::loadScenarioStrings(const string &scenarioDir, const string &scenarioName){
-	string path= scenarioDir + "/" + scenarioName + "/" + scenarioName + "_" + language + ".lng";
+void Lang::loadScenarioStrings(const std::string &scenarioDir, const std::string &scenarioName){
+	std::string path= scenarioDir + "/" + scenarioName + "/" + scenarioName + "_" + language + ".lng";
 	
 	scenarioStrings.clear();
 	
@@ -48,14 +48,14 @@ void Lang::loadScenarioStrings(const string &scenarioDir, const string &scenario
 	}
 	else{
 		//try english otherwise
-		string path= scenarioDir + "/" +scenarioName + "/" + scenarioName + "_english.lng";
+		std::string path= scenarioDir + "/" +scenarioName + "/" + scenarioName + "_english.lng";
 		if(fileExists(path)){
 			scenarioStrings.load(path);
 		}
 	}
 }
 
-string Lang::get(const string &s){
+std::string Lang::get(const std::string &s){
 	try{
 		return strings.getString(s);
 	}
@@ -64,7 +64,7 @@ string Lang::get(const string &s){
 	}
 }
 
-string Lang::getScenarioString(const string &s){
+std::string Lang::getScenarioString(const std::string &s){
 	try{
 		return scenarioStrings.getString(s);
 	}

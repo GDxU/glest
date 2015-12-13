@@ -18,9 +18,12 @@
 #include "shader.h"
 #include "opengl.h"
 
-using std::vector;
-using std::string;
-using std::pair;
+
+
+
+
+
+
 
 namespace Shared{ namespace Graphics{ namespace Gl{
 
@@ -30,8 +33,8 @@ namespace Shared{ namespace Graphics{ namespace Gl{
 
 class ShaderProgramGl: public ShaderProgram{
 private:
-	typedef pair<string, int> AttributePair;
-	typedef vector<AttributePair> Attributes;
+    typedef std::pair<std::string, int> AttributePair;
+	typedef std::vector<AttributePair> Attributes;
 
 private:
 	Attributes attributes;
@@ -49,22 +52,22 @@ public:
 	virtual void end();
 
 	virtual void attach(VertexShader *vertexShader, FragmentShader *fragmentShader);
-	virtual bool link(string &messages);
+	virtual bool link(std::string &messages);
 	virtual void activate();
 	virtual void deactivate();
 
-	virtual void setUniform(const string &name, int value);
-	virtual void setUniform(const string &name, float value);
-	virtual void setUniform(const string &name, const Vec2f &value);
-	virtual void setUniform(const string &name, const Vec3f &value);
-	virtual void setUniform(const string &name, const Vec4f &value);
-	virtual void setUniform(const string &name, const Matrix3f &value);
-	virtual void setUniform(const string &name, const Matrix4f &value);
+	virtual void setUniform(const std::string &name, int value);
+	virtual void setUniform(const std::string &name, float value);
+	virtual void setUniform(const std::string &name, const Vec2f &value);
+	virtual void setUniform(const std::string &name, const Vec3f &value);
+	virtual void setUniform(const std::string &name, const Vec4f &value);
+	virtual void setUniform(const std::string &name, const Matrix3f &value);
+	virtual void setUniform(const std::string &name, const Matrix4f &value);
 
-	void bindAttribute(const string &name, int index);
+	void bindAttribute(const std::string &name, int index);
 
 private:
-	GLint getLocation(const string &name);
+	GLint getLocation(const std::string &name);
 };
 
 // =====================================================
@@ -83,8 +86,8 @@ public:
 	const ShaderSource *getSource() const	{return &source;}
 	GLhandleARB getHandle() const			{return handle;}
 
-	virtual void load(const string &path);
-	virtual bool compile(string &messages);
+	virtual void load(const std::string &path);
+	virtual bool compile(std::string &messages);
 	virtual void end();
 };
 

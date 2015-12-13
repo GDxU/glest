@@ -79,10 +79,10 @@ Game::~Game(){
 
 void Game::load(){
 	Logger &logger= Logger::getInstance();
-	string mapName= gameSettings.getMap();
-	string tilesetName= gameSettings.getTileset();
-	string techName= gameSettings.getTech();
-	string scenarioName= gameSettings.getScenario();
+	std::string mapName= gameSettings.getMap();
+	std::string tilesetName= gameSettings.getTileset();
+	std::string techName= gameSettings.getTech();
+	std::string scenarioName= gameSettings.getScenario();
 	
 	logger.setState(Lang::getInstance().get("Loading"));
 
@@ -443,7 +443,7 @@ void Game::keyDown(char key){
 		}
 		else if(key=='E'){
 			for(int i=0; i<100; ++i){
-				string path= "screens/screen" + intToStr(i) + ".tga";
+				std::string path= "screens/screen" + intToStr(i) + ".tga";
 				
 				FILE *f= fopen(path.c_str(), "rb");
 				if(f==NULL){
@@ -479,7 +479,7 @@ void Game::keyDown(char key){
 		//change camera mode
 		else if(key=='F'){
 			gameCamera.switchState();
-			string stateString= gameCamera.getState()==GameCamera::sGame? lang.get("GameCamera"): lang.get("FreeCamera");
+			std::string stateString= gameCamera.getState()==GameCamera::sGame? lang.get("GameCamera"): lang.get("FreeCamera");
 			console.addLine(lang.get("CameraModeSet")+" "+ stateString);
 		}
 
@@ -671,7 +671,7 @@ void Game::render2d(){
 
     //debug info
 	if(config.getBool("DebugMode")){
-        string str;
+        std::string str;
 
         str+= "MouseXY: " + intToStr(mouseX) + "," + intToStr(mouseY)+"\n";
 		str+= "PosObjWord: " + intToStr(gui.getPosObjWorld().x) + "," + intToStr(gui.getPosObjWorld().y)+"\n";
@@ -860,7 +860,7 @@ void Game::showWinMessageBox(){
 	showMessageBox(lang.get("YouWin")+", "+lang.get("ExitGame?"), lang.get("BattleOver"), false);
 }
 
-void Game::showMessageBox(const string &text, const string &header, bool toggle){
+void Game::showMessageBox(const std::string &text, const std::string &header, bool toggle){
 	if(!toggle){
 		mainMessageBox.setEnabled(false);
 	}

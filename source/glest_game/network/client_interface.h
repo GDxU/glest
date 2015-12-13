@@ -21,7 +21,8 @@
 
 using Shared::Platform::Ip;
 using Shared::Platform::ClientSocket;
-using std::vector;
+
+
 
 namespace Glest{ namespace Game{
 
@@ -37,7 +38,7 @@ private:
 private:
 	ClientSocket *clientSocket;
 	GameSettings gameSettings;
-	string serverName;
+	std::string serverName;
 	bool introDone;
 	bool launchGame;
 	int playerIndex;
@@ -56,14 +57,14 @@ public:
 	virtual void waitUntilReady(Checksum* checksum);
 
 	// message sending
-	virtual void sendTextMessage(const string &text, int teamIndex);
+	virtual void sendTextMessage(const std::string &text, int teamIndex);
 	virtual void quitGame(){}
 
 	//misc
-	virtual string getNetworkStatus() const;
+	virtual std::string getNetworkStatus() const;
 
 	//accessors
-	string getServerName() const			{return serverName;}
+	std::string getServerName() const			{return serverName;}
 	bool getLaunchGame() const				{return launchGame;}
 	bool getIntroDone() const				{return introDone;}
 	int getPlayerIndex() const				{return playerIndex;}

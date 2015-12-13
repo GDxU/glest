@@ -28,7 +28,7 @@ namespace Shared{ namespace Graphics{
 
 class FontManager{
 protected:
-	typedef vector<Font*> FontContainer;
+	typedef std::vector<Font*> FontContainer;
 
 protected:
 	FontContainer fonts;

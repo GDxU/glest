@@ -14,21 +14,22 @@
 
 #include <string>
 
-using std::string;
+
+
 
 namespace Shared{ namespace Util{
 
-const string sharedLibVersionString= "v0.4.1";
+const std::string sharedLibVersionString= "v0.4.1";
 
 //string fcs
-string lastDir(const string &s);
-string lastFile(const string &s);
-string cutLastFile(const string &s);
-string cutLastExt(const string &s);
-string ext(const string &s);
-string replaceBy(const string &s, char c1, char c2);
-string toLower(const string &s);
-void copyStringToBuffer(char *buffer, int bufferSize, const string& s);
+std::string lastDir(const std::string &s);
+std::string lastFile(const std::string &s);
+std::string cutLastFile(const std::string &s);
+std::string cutLastExt(const std::string &s);
+std::string ext(const std::string &s);
+std::string replaceBy(const std::string &s, char c1, char c2);
+std::string toLower(const std::string &s);
+void copyStringToBuffer(char *buffer, int bufferSize, const std::string& s);
 
 //numeric fcs
 int clamp(int value, int min, int max);
@@ -37,7 +38,7 @@ float saturate(float value);
 int round(float f);
 
 //misc
-bool fileExists(const string &path);
+bool fileExists(const std::string &path);
 
 template<typename T> 
 void deleteValues(T beginIt, T endIt){

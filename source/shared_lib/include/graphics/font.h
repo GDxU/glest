@@ -14,7 +14,8 @@
 
 #include <string>
 
-using std::string;
+
+
 
 namespace Shared{ namespace Graphics{
 	
@@ -34,7 +35,7 @@ public:
 	void setWidth(int i, float width)	{widths[i]= width;}
 	void setHeight(float height)		{this->height= height;}
 
-	float getTextWidth(const string &str) const;
+	float getTextWidth(const std::string &str) const;
 	float getHeight() const;
 };
 
@@ -53,7 +54,7 @@ public:
 	};
 
 protected:
-	string type;
+	std::string type;
 	int width;
 	bool inited;
 	FontMetrics metrics;
@@ -66,12 +67,12 @@ public:
 	virtual void end()=0;
 	
 	//get
-	string getType() const					{return type;}	
+	std::string getType() const					{return type;}	
 	int getWidth() const					{return width;}
 	const FontMetrics *getMetrics() const	{return &metrics;}
 
 	//set
-	void setType(string type)		{this->type= type;}
+	void setType(std::string type)		{this->type= type;}
 	void setWidth(int width)		{this->width= width;}
 };
 

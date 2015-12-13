@@ -20,7 +20,8 @@
 #include "texture_manager.h"
 #include "random.h"
 
-using std::list;
+
+
 using Shared::Util::Random;
 
 namespace Shared{ namespace Graphics{
@@ -264,7 +265,7 @@ public:
 	void setGravity(float gravity)				{this->gravity= gravity;}
 	void setPrimitive(Primitive primitive)		{this->primitive= primitive;}
 
-	static Primitive strToPrimitive(const string &str);
+	static Primitive strToPrimitive(const std::string &str);
 };
 
 // =====================================================
@@ -316,7 +317,7 @@ public:
 	void setTrajectoryFrequency(float trajectoryFrequency)	{this->trajectoryFrequency= trajectoryFrequency;}
 	void setPath(Vec3f startPos, Vec3f endPos);
 
-	static Trajectory strToTrajectory(const string &str);
+	static Trajectory strToTrajectory(const std::string &str);
 };
 
 // =====================================================
@@ -358,7 +359,7 @@ public:
 
 class ParticleManager{
 private:
-	list<ParticleSystem*> particleSystems; 
+    std::list<ParticleSystem*> particleSystems;
 
 public:
 	~ParticleManager();

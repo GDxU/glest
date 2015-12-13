@@ -31,12 +31,12 @@ using namespace	Shared::Xml;
 // 	class MenuStateScenario
 // =====================================================
 
-MenuStateScenario::MenuStateScenario(Program *program, MainMenu *mainMenu, const string &dir):
+MenuStateScenario::MenuStateScenario(Program *program, MainMenu *mainMenu, const std::string &dir):
     MenuState(program, mainMenu, "scenario")
 {
 	Lang &lang= Lang::getInstance();
 	NetworkManager &networkManager= NetworkManager::getInstance();
-    vector<string> results;
+    std::vector<string> results;
 
 	this->dir = dir;
 
@@ -127,7 +127,7 @@ void MenuStateScenario::setScenario(int i){
 	loadScenarioInfo(Scenario::getScenarioPath(dir, scenarioFiles[listBoxScenario.getSelectedItemIndex()]), &scenarioInfo);
 }
 
-void MenuStateScenario::loadScenarioInfo(string file, ScenarioInfo *scenarioInfo){
+void MenuStateScenario::loadScenarioInfo(std::string file, ScenarioInfo *scenarioInfo){
 	
     Lang &lang= Lang::getInstance();
     
@@ -146,7 +146,7 @@ void MenuStateScenario::loadScenarioInfo(string file, ScenarioInfo *scenarioInfo
     for(int i= 0; i<GameConstants::maxPlayers; ++i){
         const XmlNode* playerNode = playersNode->getChild("player", i);
         ControlType factionControl = strToControllerType( playerNode->getAttribute("control")->getValue() );
-        string factionTypeName;
+        std::string factionTypeName;
 
         scenarioInfo->factionControls[i] = factionControl;
 
@@ -182,7 +182,7 @@ void MenuStateScenario::loadScenarioInfo(string file, ScenarioInfo *scenarioInfo
 	}
 	
 	//add misc info
-	string difficultyString = "Difficulty" + intToStr(scenarioInfo->difficulty);
+	std::string difficultyString = "Difficulty" + intToStr(scenarioInfo->difficulty);
 
 	scenarioInfo->desc+= "\n";
     scenarioInfo->desc+= lang.get("Difficulty") + ": " + lang.get(difficultyString) +"\n";
@@ -222,7 +222,7 @@ void MenuStateScenario::loadGameSettings(const ScenarioInfo *scenarioInfo, GameS
 	gameSettings->setFactionCount(factionCount);
 }
 
-ControlType MenuStateScenario::strToControllerType(const string &str){
+ControlType MenuStateScenario::strToControllerType(const std::string &str){
     if(str=="closed"){
         return ctClosed;
     }

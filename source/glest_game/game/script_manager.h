@@ -21,8 +21,10 @@
 #include "components.h"
 #include "game_constants.h"
 
-using std::string;
-using std::queue;
+
+
+
+
 using Shared::Graphics::Vec2i;
 using Shared::Lua::LuaScript;
 using Shared::Lua::LuaHandle;
@@ -39,13 +41,13 @@ class GameCamera;
 
 class ScriptManagerMessage{
 private:
-	string text;
-	string header;
+	std::string text;
+	std::string header;
 
 public:
-	ScriptManagerMessage(string text, string header)	{this->text= text, this->header= header;}
-	const string &getText() const	{return text;}
-	const string &getHeader() const	{return header;}
+	ScriptManagerMessage(std::string text, std::string header)	{this->text= text, this->header= header;}
+	const std::string &getText() const	{return text;}
+	const std::string &getHeader() const	{return header;}
 };
 
 class PlayerModifiers{
@@ -69,12 +71,12 @@ private:
 
 class ScriptManager{
 private:
-	typedef queue<ScriptManagerMessage> MessageQueue;
+	typedef std::queue<ScriptManagerMessage> MessageQueue;
 
 private:
 
 	//lua
-	string code;
+	std::string code;
 	LuaScript luaScript;
 
 	//world
@@ -84,14 +86,14 @@ private:
 	//misc
 	MessageQueue messageQueue;
 	GraphicMessageBox messageBox;
-	string displayText;
+	std::string displayText;
 	
 	//last created unit
-	string lastCreatedUnitName;
+	std::string lastCreatedUnitName;
 	int lastCreatedUnitId;
 
 	//last dead unit
-	string lastDeadUnitName;
+	std::string lastDeadUnitName;
 	int lastDeadUnitId;
 
 	// end game state
@@ -111,7 +113,7 @@ public:
 	//message box functions
 	bool getMessageBoxEnabled() const									{return !messageQueue.empty();}
 	GraphicMessageBox* getMessageBox()									{return &messageBox;}
-	string getDisplayText() const										{return displayText;}
+	std::string getDisplayText() const										{return displayText;}
 	bool getGameOver() const											{return gameOver;}
 	const PlayerModifiers *getPlayerModifiers(int factionIndex) const	{return &playerModifiers[factionIndex];}	
 
@@ -123,18 +125,18 @@ public:
 
 private:
 
-	string wrapString(const string &str, int wrapCount);
+	std::string wrapString(const std::string &str, int wrapCount);
 
 	//wrappers, commands
-	void showMessage(const string &text, const string &header);
+	void showMessage(const std::string &text, const std::string &header);
 	void clearDisplayText();
-	void setDisplayText(const string &text);
+	void setDisplayText(const std::string &text);
 	void setCameraPosition(const Vec2i &pos);
-	void createUnit(const string &unitName, int factionIndex, Vec2i pos);
-	void giveResource(const string &resourceName, int factionIndex, int amount);
-	void givePositionCommand(int unitId, const string &producedName, const Vec2i &pos);
-	void giveProductionCommand(int unitId, const string &producedName);
-	void giveUpgradeCommand(int unitId, const string &upgradeName);
+	void createUnit(const std::string &unitName, int factionIndex, Vec2i pos);
+	void giveResource(const std::string &resourceName, int factionIndex, int amount);
+	void givePositionCommand(int unitId, const std::string &producedName, const Vec2i &pos);
+	void giveProductionCommand(int unitId, const std::string &producedName);
+	void giveUpgradeCommand(int unitId, const std::string &upgradeName);
 	void disableAi(int factionIndex);
 	void setPlayerAsWinner(int factionIndex);
 	void endGame();
@@ -143,13 +145,13 @@ private:
 	Vec2i getStartLocation(int factionIndex);
 	Vec2i getUnitPosition(int unitId);
 	int getUnitFaction(int unitId);
-	int getResourceAmount(const string &resourceName, int factionIndex);
-	const string &getLastCreatedUnitName();
+	int getResourceAmount(const std::string &resourceName, int factionIndex);
+	const std::string &getLastCreatedUnitName();
 	int getLastCreatedUnitId();
-	const string &getLastDeadUnitName();
+	const std::string &getLastDeadUnitName();
 	int getLastDeadUnitId();
 	int getUnitCount(int factionIndex);
-	int getUnitCountOfType(int factionIndex, const string &typeName);
+	int getUnitCountOfType(int factionIndex, const std::string &typeName);
 
 	//callbacks, commands
 	static int showMessage(LuaHandle* luaHandle);

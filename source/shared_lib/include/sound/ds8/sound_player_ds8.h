@@ -19,7 +19,8 @@
 
 #include <vector>
 
-using std::vector;
+
+
 
 namespace Shared{ namespace Sound{ namespace Ds8{
 
@@ -105,8 +106,8 @@ private:
 class SoundPlayerDs8: public SoundPlayer{
 private:
 	IDirectSound8 *dsObject;
-	vector<StaticSoundBuffer> staticSoundBuffers;
-	vector<StrSoundBuffer> strSoundBuffers;
+	std::vector<StaticSoundBuffer> staticSoundBuffers;
+	std::vector<StrSoundBuffer> strSoundBuffers;
 	SoundPlayerParams params;
 
 public:

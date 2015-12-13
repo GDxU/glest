@@ -24,7 +24,7 @@ FactoryRepository &FactoryRepository::getInstance(){
 	return factoryRepository;
 }
 
-GraphicsFactory *FactoryRepository::getGraphicsFactory(const string &name){
+GraphicsFactory *FactoryRepository::getGraphicsFactory(const std::string &name){
 	if(name == "OpenGL"){
 		return &graphicsFactoryGl;
 	}
@@ -32,15 +32,15 @@ GraphicsFactory *FactoryRepository::getGraphicsFactory(const string &name){
 		return &graphicsFactoryGl2;
 	}
 
-	throw runtime_error("Unknown graphics factory: " + name);
+	throw std::runtime_error("Unknown graphics factory: " + name);
 }
 
-SoundFactory *FactoryRepository::getSoundFactory(const string &name){
+SoundFactory *FactoryRepository::getSoundFactory(const std::string &name){
 	if(name == "DirectSound8"){
 		return &soundFactoryDs8;
 	}
 
-	throw runtime_error("Unknown sound factory: " + name);
+	throw std::runtime_error("Unknown sound factory: " + name);
 }
 
 }}//end namespace

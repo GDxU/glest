@@ -90,10 +90,10 @@ PixmapIoTga::~PixmapIoTga(){
 	}
 }
 
-void PixmapIoTga::openRead(const string &path){
+void PixmapIoTga::openRead(const std::string &path){
 	file= fopen(path.c_str(),"rb"); 
 	if (file==NULL){
-		throw runtime_error("Can't open TGA file: "+ path);
+		throw std::runtime_error("Can't open TGA file: "+ path);
 	}
 	
 	//read header
@@ -102,16 +102,16 @@ void PixmapIoTga::openRead(const string &path){
     
 	//check that we can load this tga file
 	if(fileHeader.idLength!=0){
-		throw runtime_error(path + ": id field is not 0");
+		throw std::runtime_error(path + ": id field is not 0");
 	}
 
 	if(fileHeader.dataTypeCode!=tgaUncompressedRgb && fileHeader.dataTypeCode!=tgaUncompressedBw){
-		throw runtime_error(path + ": only uncompressed BW and RGB targa images are supported"); 
+		throw std::runtime_error(path + ": only uncompressed BW and RGB targa images are supported"); 
 	}
 
 	//check bits per pixel
 	if(fileHeader.bitsPerPixel!=8 && fileHeader.bitsPerPixel!=24 && fileHeader.bitsPerPixel!=32){
-		throw runtime_error(path + ": only 8, 24 and 32 bit targa images are supported");
+		throw std::runtime_error(path + ": only 8, 24 and 32 bit targa images are supported");
 	}
 
 	h= fileHeader.height;
@@ -166,14 +166,14 @@ void PixmapIoTga::read(uint8 *pixels, int components){
 	}
 }
 
-void PixmapIoTga::openWrite(const string &path, int w, int h, int components){
+void PixmapIoTga::openWrite(const std::string &path, int w, int h, int components){
     this->w= w;
 	this->h= h;
 	this->components= components;
 
     file= fopen(path.c_str(),"wb"); 
 	if (file==NULL){
-		throw runtime_error("Can't open TGA file: "+ path);
+		throw std::runtime_error("Can't open TGA file: "+ path);
 	}
 
 	TargaFileHeader fileHeader;
@@ -217,24 +217,24 @@ PixmapIoBmp::~PixmapIoBmp(){
 	}
 }
 
-void PixmapIoBmp::openRead(const string &path){
+void PixmapIoBmp::openRead(const std::string &path){
     file= fopen(path.c_str(),"rb"); 
 	if (file==NULL){
-		throw runtime_error("Can't open BMP file: "+ path);
+		throw std::runtime_error("Can't open BMP file: "+ path);
 	}
 
 	//read file header
     BitmapFileHeader fileHeader;
     fread(&fileHeader, sizeof(BitmapFileHeader), 1, file);
 	if(fileHeader.type1!='B' || fileHeader.type2!='M'){ 
-		throw runtime_error(path +" is not a bitmap");
+		throw std::runtime_error(path +" is not a bitmap");
 	}
     
 	//read info header
 	BitmapInfoHeader infoHeader;
 	fread(&infoHeader, sizeof(BitmapInfoHeader), 1, file);
 	if(infoHeader.bitCount!=24){
-        throw runtime_error(path+" is not a 24 bit bitmap");
+        throw std::runtime_error(path+" is not a 24 bit bitmap");
 	}
 
     h= infoHeader.height;
@@ -272,14 +272,14 @@ void PixmapIoBmp::read(uint8 *pixels, int components){
     }
 }
 
-void PixmapIoBmp::openWrite(const string &path, int w, int h, int components){
+void PixmapIoBmp::openWrite(const std::string &path, int w, int h, int components){
     this->w= w;
 	this->h= h;
 	this->components= components;
 	
 	file= fopen(path.c_str(),"wb"); 
 	if (file==NULL){
-		throw runtime_error("Can't open BMP file for writting: "+ path);
+		throw std::runtime_error("Can't open BMP file for writting: "+ path);
 	}
 
 	BitmapFileHeader fileHeader;
@@ -352,8 +352,8 @@ Pixmap1D::~Pixmap1D(){
 	delete [] pixels;
 }
 
-void Pixmap1D::load(const string &path){
-	string extension= path.substr(path.find_last_of('.')+1);
+void Pixmap1D::load(const std::string &path){
+	std::string extension= path.substr(path.find_last_of('.')+1);
 	if(extension=="bmp"){
 		loadBmp(path);
 	}
@@ -361,11 +361,11 @@ void Pixmap1D::load(const string &path){
 		loadTga(path);
 	}
 	else{
-		throw runtime_error("Unknown pixmap extension: "+extension);
+		throw std::runtime_error("Unknown pixmap extension: "+extension);
 	}
 }
 
-void Pixmap1D::loadBmp(const string &path){
+void Pixmap1D::loadBmp(const std::string &path){
 	
 	PixmapIoBmp plb;
 	plb.openRead(path);
@@ -378,7 +378,7 @@ void Pixmap1D::loadBmp(const string &path){
 		w= plb.getH();
 	}
 	else{
-		throw runtime_error("One of the texture dimensions must be 1");
+		throw std::runtime_error("One of the texture dimensions must be 1");
 	}
 
 	if(components==-1){
@@ -392,7 +392,7 @@ void Pixmap1D::loadBmp(const string &path){
 	plb.read(pixels, components);
 }
 
-void Pixmap1D::loadTga(const string &path){
+void Pixmap1D::loadTga(const std::string &path){
 	
 	PixmapIoTga plt;
 	plt.openRead(path);
@@ -405,7 +405,7 @@ void Pixmap1D::loadTga(const string &path){
 		w= plt.getH();
 	}
 	else{
-		throw runtime_error("One of the texture dimensions must be 1");
+		throw std::runtime_error("One of the texture dimensions must be 1");
 	}
 
 	int fileComponents= plt.getComponents();
@@ -460,8 +460,8 @@ Pixmap2D::~Pixmap2D(){
 	delete [] pixels;
 }
 
-void Pixmap2D::load(const string &path){
-	string extension= path.substr(path.find_last_of('.')+1);
+void Pixmap2D::load(const std::string &path){
+	std::string extension= path.substr(path.find_last_of('.')+1);
 	if(extension=="bmp"){
 		loadBmp(path);
 	}
@@ -469,11 +469,11 @@ void Pixmap2D::load(const string &path){
 		loadTga(path);
 	}
 	else{
-		throw runtime_error("Unknown pixmap extension: "+extension);
+		throw std::runtime_error("Unknown pixmap extension: "+extension);
 	}
 }
 
-void Pixmap2D::loadBmp(const string &path){
+void Pixmap2D::loadBmp(const std::string &path){
 	
 	PixmapIoBmp plb;
 	plb.openRead(path);
@@ -492,7 +492,7 @@ void Pixmap2D::loadBmp(const string &path){
 	plb.read(pixels, components);
 }
 
-void Pixmap2D::loadTga(const string &path){
+void Pixmap2D::loadTga(const std::string &path){
 	
 	PixmapIoTga plt;
 	plt.openRead(path);
@@ -514,8 +514,8 @@ void Pixmap2D::loadTga(const string &path){
 	plt.read(pixels, components);
 }
 
-void Pixmap2D::save(const string &path){
-	string extension= path.substr(path.find_last_of('.')+1);
+void Pixmap2D::save(const std::string &path){
+	std::string extension= path.substr(path.find_last_of('.')+1);
 	if(extension=="bmp"){
 		saveBmp(path);
 	}
@@ -523,17 +523,17 @@ void Pixmap2D::save(const string &path){
 		saveTga(path);
 	}
 	else{
-		throw runtime_error("Unknown pixmap extension: "+extension);
+		throw std::runtime_error("Unknown pixmap extension: "+extension);
 	}
 }
 
-void Pixmap2D::saveBmp(const string &path){
+void Pixmap2D::saveBmp(const std::string &path){
 	PixmapIoBmp psb;
 	psb.openWrite(path, w, h, components);
 	psb.write(pixels);
 }
 
-void Pixmap2D::saveTga(const string &path){
+void Pixmap2D::saveTga(const std::string &path){
 	PixmapIoTga pst;
 	pst.openWrite(path, w, h, components);
 	pst.write(pixels);
@@ -673,7 +673,7 @@ void Pixmap2D::splat(const Pixmap2D *leftUp, const Pixmap2D *rightUp, const Pixm
 		!doDimensionsAgree(leftDown) ||
 		!doDimensionsAgree(rightDown))
 	{
-		throw runtime_error("Pixmap2D::splat: pixmap dimensions don't agree");
+		throw std::runtime_error("Pixmap2D::splat: pixmap dimensions don't agree");
 	}
 
 	for(int i=0; i<w; ++i){
@@ -715,7 +715,7 @@ void Pixmap2D::lerp(float t, const Pixmap2D *pixmap1, const Pixmap2D *pixmap2){
 		!doDimensionsAgree(pixmap1) ||
 		!doDimensionsAgree(pixmap2))
 	{
-		throw runtime_error("Pixmap2D::lerp: pixmap dimensions don't agree");
+		throw std::runtime_error("Pixmap2D::lerp: pixmap dimensions don't agree");
 	}
 
 	for(int i=0; i<w; ++i){
@@ -730,7 +730,7 @@ void Pixmap2D::copy(const Pixmap2D *sourcePixmap){
 	assert(components==sourcePixmap->getComponents());
 
 	if(w!=sourcePixmap->getW() || h!=sourcePixmap->getH()){
-		throw runtime_error("Pixmap2D::copy() dimensions must agree");
+		throw std::runtime_error("Pixmap2D::copy() dimensions must agree");
 	}
 	memcpy(pixels, sourcePixmap->getPixels(), w*h*sourcePixmap->getComponents());
 }
@@ -739,7 +739,7 @@ void Pixmap2D::subCopy(int x, int y, const Pixmap2D *sourcePixmap){
 	assert(components==sourcePixmap->getComponents());
 
 	if(w<sourcePixmap->getW() && h<sourcePixmap->getH()){
-		throw runtime_error("Pixmap2D::subCopy(), bad dimensions");
+		throw std::runtime_error("Pixmap2D::subCopy(), bad dimensions");
 	}
 
 	uint8 *pixel= new uint8[components];
@@ -797,8 +797,8 @@ Pixmap3D::~Pixmap3D(){
 	delete [] pixels;
 }
 
-void Pixmap3D::loadSlice(const string &path, int slice){
-	string extension= path.substr(path.find_last_of('.')+1);
+void Pixmap3D::loadSlice(const std::string &path, int slice){
+	std::string extension= path.substr(path.find_last_of('.')+1);
 	if(extension=="bmp"){
 		loadSliceBmp(path, slice);
 	}
@@ -806,11 +806,11 @@ void Pixmap3D::loadSlice(const string &path, int slice){
 		loadSliceTga(path, slice);
 	}
 	else{
-		throw runtime_error("Unknown pixmap extension: "+extension);
+		throw std::runtime_error("Unknown pixmap extension: "+extension);
 	}
 }
 
-void Pixmap3D::loadSliceBmp(const string &path, int slice){
+void Pixmap3D::loadSliceBmp(const std::string &path, int slice){
 
 	PixmapIoBmp plb;
 	plb.openRead(path);
@@ -829,7 +829,7 @@ void Pixmap3D::loadSliceBmp(const string &path, int slice){
 	plb.read(&pixels[slice*w*h*components], components);
 }
 
-void Pixmap3D::loadSliceTga(const string &path, int slice){
+void Pixmap3D::loadSliceTga(const std::string &path, int slice){
 	PixmapIoTga plt;
 	plt.openRead(path);
 
@@ -861,15 +861,15 @@ void PixmapCube::init(int w, int h, int components){
 }
 	
 	//load & save
-void PixmapCube::loadFace(const string &path, int face){
+void PixmapCube::loadFace(const std::string &path, int face){
 	faces[face].load(path);
 }
 
-void PixmapCube::loadFaceBmp(const string &path, int face){
+void PixmapCube::loadFaceBmp(const std::string &path, int face){
 	faces[face].loadBmp(path);
 }
 
-void PixmapCube::loadFaceTga(const string &path, int face){
+void PixmapCube::loadFaceTga(const std::string &path, int face){
 	faces[face].loadTga(path);
 }
 

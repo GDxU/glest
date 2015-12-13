@@ -17,7 +17,8 @@
 #include "vec.h"
 #include "skill_type.h"
 
-using std::string;
+
+
 
 using Shared::Graphics::Vec2i;
 
@@ -47,7 +48,7 @@ public:
 	virtual ~AiRule() {}
 
 	virtual int getTestInterval() const= 0;	//in milliseconds
-	virtual string getName() const= 0;
+	virtual std::string getName() const= 0;
 
 	virtual bool test()= 0;
 	virtual void execute()= 0;
@@ -65,7 +66,7 @@ public:
 	AiRuleWorkerHarvest(Ai *ai);
 	
 	virtual int getTestInterval() const	{return 2000;}
-	virtual string getName() const		{return "Worker stopped => Order worker to harvest";}
+	virtual std::string getName() const		{return "Worker stopped => Order worker to harvest";}
 
 	virtual bool test();
 	virtual void execute();
@@ -83,7 +84,7 @@ public:
 	AiRuleRefreshHarvester(Ai *ai);
 	
 	virtual int getTestInterval() const	{return 20000;}
-	virtual string getName() const		{return "Worker reasigned to needed resource";}
+	virtual std::string getName() const		{return "Worker reasigned to needed resource";}
 
 	virtual bool test();
 	virtual void execute();
@@ -98,7 +99,7 @@ public:
 	AiRuleScoutPatrol(Ai *ai);
 	
 	virtual int getTestInterval() const	{return 10000;}
-	virtual string getName() const		{return "Base is stable => Send scout patrol";}
+	virtual std::string getName() const		{return "Base is stable => Send scout patrol";}
 
 	virtual bool test();
 	virtual void execute();
@@ -116,7 +117,7 @@ public:
 	AiRuleRepair(Ai *ai);
 	
 	virtual int getTestInterval() const	{return 10000;}
-	virtual string getName() const		{return "Building Damaged => Repair";}
+	virtual std::string getName() const		{return "Building Damaged => Repair";}
 
 	virtual bool test();
 	virtual void execute();
@@ -133,7 +134,7 @@ public:
 	AiRuleReturnBase(Ai *ai);
 	
 	virtual int getTestInterval() const	{return 5000;}
-	virtual string getName() const		{return "Stopped unit => Order return base";}
+	virtual std::string getName() const		{return "Stopped unit => Order return base";}
 
 	virtual bool test();
 	virtual void execute();
@@ -156,7 +157,7 @@ public:
 	AiRuleMassiveAttack(Ai *ai);
 	
 	virtual int getTestInterval() const	{return 1000;}
-	virtual string getName() const		{return "Unit under attack => Order massive attack";}
+	virtual std::string getName() const		{return "Unit under attack => Order massive attack";}
 
 	virtual bool test();
 	virtual void execute();
@@ -171,7 +172,7 @@ public:
 	AiRuleAddTasks(Ai *ai);
 	
 	virtual int getTestInterval() const	{return 5000;}
-	virtual string getName() const		{return "Tasks empty => Add tasks";}
+	virtual std::string getName() const		{return "Tasks empty => Add tasks";}
 
 	virtual bool test();
 	virtual void execute();
@@ -189,7 +190,7 @@ public:
 	AiRuleBuildOneFarm(Ai *ai);
 
 	virtual int getTestInterval() const	{return 10000;}
-	virtual string getName() const		{return "No farms => Build one";}
+	virtual std::string getName() const		{return "No farms => Build one";}
 
 	virtual bool test();
 	virtual void execute();
@@ -211,7 +212,7 @@ public:
 	AiRuleProduceResourceProducer(Ai *ai);
 	
 	virtual int getTestInterval() const	{return interval;}
-	virtual string getName() const		{return "No resources => Build Resource Producer";}
+	virtual std::string getName() const		{return "No resources => Build Resource Producer";}
 
 	virtual bool test();
 	virtual void execute();
@@ -229,7 +230,7 @@ public:
 	AiRuleProduce(Ai *ai);
 
 	virtual int getTestInterval() const	{return 2000;}
-	virtual string getName() const		{return "Performing produce task";}
+	virtual std::string getName() const		{return "Performing produce task";}
 
 	virtual bool test();
 	virtual void execute();
@@ -250,7 +251,7 @@ public:
 	AiRuleBuild(Ai *ai);
 
 	virtual int getTestInterval() const	{return 2000;}
-	virtual string getName() const		{return "Performing build task";}
+	virtual std::string getName() const		{return "Performing build task";}
 
 	virtual bool test();
 	virtual void execute();
@@ -258,7 +259,7 @@ public:
 private:
 	void buildGeneric(const BuildTask *bt);
 	void buildSpecific(const BuildTask *bt);
-	void buildBestBuilding(const vector<const UnitType*> &buildings);
+	void buildBestBuilding(const std::vector<const UnitType*> &buildings);
 
 	bool isDefensive(const UnitType *building);
 	bool isResourceProducer(const UnitType *building);
@@ -277,7 +278,7 @@ public:
 	AiRuleUpgrade(Ai *ai);
 
 	virtual int getTestInterval() const	{return 2000;}
-	virtual string getName() const		{return "Performing upgrade task";}
+	virtual std::string getName() const		{return "Performing upgrade task";}
 
 	virtual bool test();
 	virtual void execute();
@@ -303,7 +304,7 @@ public:
 	AiRuleExpand(Ai *ai);
 
 	virtual int getTestInterval() const	{return 30000;}
-	virtual string getName() const		{return "Expanding";}
+	virtual std::string getName() const		{return "Expanding";}
 
 	virtual bool test();
 	virtual void execute();

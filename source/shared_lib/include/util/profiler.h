@@ -19,8 +19,10 @@
 #include <list>
 #include <string>
 
-using std::list;
-using std::string;
+
+
+
+
 
 using Shared::Platform::Chrono;
 
@@ -36,17 +38,17 @@ class Section{
 public:
 	typedef list<Section*> SectionContainer;
 private:
-	string name;
+	std::string name;
 	Chrono chrono;
 	int64 milisElapsed;
 	Section *parent;
 	SectionContainer children;
 
 public:
-	Section(const string &name);
+	Section(const std::string &name);
 
 	Section *getParent()				{return parent;}
-	const string &getName() const		{return name;}
+	const std::string &getName() const		{return name;}
 
 	void setParent(Section *parent)	{this->parent= parent;}
 
@@ -54,7 +56,7 @@ public:
 	void stop()		{milisElapsed+=chrono.getMillis();}
 
 	void addChild(Section *child)	{children.push_back(child);}
-	Section *getChild(const string &name);
+	Section *getChild(const std::string &name);
 
 	void print(FILE *outSream, int tabLevel=0);
 };
@@ -72,8 +74,8 @@ private:
 public:
 	~Profiler();
 	static Profiler &getInstance();
-	void sectionBegin(const string &name);
-	void sectionEnd(const string &name);
+	void sectionBegin(const std::string &name);
+	void sectionEnd(const std::string &name);
 };
 
 #endif //SL_PROFILE
@@ -82,13 +84,13 @@ public:
 //	class funtions
 // =====================================================
 
-inline void profileBegin(const string &sectionName){
+inline void profileBegin(const std::string &sectionName){
 #ifdef SL_PROFILE
 	Profiler::getInstance().sectionBegin(sectionName);
 #endif
 }
 
-inline void profileEnd(const string &sectionName){
+inline void profileEnd(const std::string &sectionName){
 #ifdef SL_PROFILE
 	Profiler::getInstance().sectionEnd(sectionName);
 #endif

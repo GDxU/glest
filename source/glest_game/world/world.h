@@ -52,7 +52,7 @@ class ScriptManager;
 
 class World{
 private:
-	typedef vector<Faction> Factions;
+	typedef std::vector<Faction> Factions;
 
 public:
 	static const int generationArea= 100;
@@ -116,10 +116,10 @@ public:
 
 	//init & load
 	void init(Game *game, bool createUnits);
-	void loadTileset(const string &dir, Checksum* checksum);
-	void loadTech(const string &dir, Checksum* checksum);
-	void loadMap(const string &path, Checksum* checksum);
-	void loadScenario(const string &path, Checksum* checksum);
+	void loadTileset(const std::string &dir, Checksum* checksum);
+	void loadTech(const std::string &dir, Checksum* checksum);
+	void loadMap(const std::string &path, Checksum* checksum);
+	void loadScenario(const std::string &path, Checksum* checksum);
 	
 	//misc
 	void update();
@@ -132,17 +132,17 @@ public:
 	Unit *nearestStore(const Vec2i &pos, int factionIndex, const ResourceType *rt);
 
 	//scripting interface
-	void createUnit(const string &unitName, int factionIndex, const Vec2i &pos);
-	void givePositionCommand(int unitId, const string &commandName, const Vec2i &pos);
-	void giveProductionCommand(int unitId, const string &producedName);
-	void giveUpgradeCommand(int unitId, const string &upgradeName);
-	void giveResource(const string &resourceName, int factionIndex, int amount);
-	int getResourceAmount(const string &resourceName, int factionIndex);
+	void createUnit(const std::string &unitName, int factionIndex, const Vec2i &pos);
+	void givePositionCommand(int unitId, const std::string &commandName, const Vec2i &pos);
+	void giveProductionCommand(int unitId, const std::string &producedName);
+	void giveUpgradeCommand(int unitId, const std::string &upgradeName);
+	void giveResource(const std::string &resourceName, int factionIndex, int amount);
+	int getResourceAmount(const std::string &resourceName, int factionIndex);
 	Vec2i getStartLocation(int factionIndex);
 	Vec2i getUnitPosition(int unitId);
 	int getUnitFactionIndex(int unitId);
 	int getUnitCount(int factionIndex);
-	int getUnitCountOfType(int factionIndex, const string &typeName);
+	int getUnitCountOfType(int factionIndex, const std::string &typeName);
 
 private:
 	

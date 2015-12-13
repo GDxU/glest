@@ -83,7 +83,7 @@ void PlatformContextGl::swapBuffers() {
 //	Global Fcs  
 // ======================================
 
-void createGlFontBitmaps(uint32 &base, const string &type, int size, int width,
+void createGlFontBitmaps(uint32 &base, const std::string &type, int size, int width,
 						 int charCount, FontMetrics &metrics) {
 #ifdef X11_AVAILABLE
 	Display* display = glXGetCurrentDisplay();
@@ -118,7 +118,7 @@ void createGlFontBitmaps(uint32 &base, const string &type, int size, int width,
 #endif
 }
 
-void createGlFontOutlines(uint32 &base, const string &type, int width,
+void createGlFontOutlines(uint32 &base, const std::string &type, int width,
 						  float depth, int charCount, FontMetrics &metrics) {
 	NOIMPL;
 }

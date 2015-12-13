@@ -70,7 +70,7 @@ enum SkillClass{
 class SkillType{
 protected:
     SkillClass skillClass;
-	string name;
+	std::string name;
 	int mpCost;
     int speed;
     int animSpeed;
@@ -81,10 +81,10 @@ protected:
 public:
     //varios
     virtual ~SkillType();
-    virtual void load(const XmlNode *sn, const string &dir, const TechTree *tt, const FactionType *ft);	
+    virtual void load(const XmlNode *sn, const std::string &dir, const TechTree *tt, const FactionType *ft);	
 		
     //get
-	const string &getName() const		{return name;}
+	const std::string &getName() const		{return name;}
 	SkillClass getClass() const			{return skillClass;}
 	int getEpCost() const				{return mpCost;}
 	int getSpeed() const				{return speed;}
@@ -94,10 +94,10 @@ public:
 	float getSoundStartTime() const		{return soundStartTime;}
 
 	//other
-	virtual string toString() const= 0;	
+	virtual std::string toString() const= 0;	
 	virtual int getTotalSpeed(const TotalUpgrade *) const	{return speed;}
-	static string skillClassToStr(SkillClass skillClass); 
-	static string fieldToStr(Field field);
+	static std::string skillClassToStr(SkillClass skillClass); 
+	static std::string fieldToStr(Field field);
 };
 
 // ===============================
@@ -107,7 +107,7 @@ public:
 class StopSkillType: public SkillType{
 public:
     StopSkillType();
-    virtual string toString() const;
+    virtual std::string toString() const;
 };
 
 // ===============================
@@ -117,7 +117,7 @@ public:
 class MoveSkillType: public SkillType{
 public:
     MoveSkillType();
-    virtual string toString() const;
+    virtual std::string toString() const;
 
 	virtual int getTotalSpeed(const TotalUpgrade *totalUpgrade) const;
 };
@@ -147,8 +147,8 @@ private:
 public:
     AttackSkillType();
     ~AttackSkillType();
-    virtual void load(const XmlNode *sn, const string &dir, const TechTree *tt, const FactionType *ft);
-	virtual string toString() const;
+    virtual void load(const XmlNode *sn, const std::string &dir, const TechTree *tt, const FactionType *ft);
+	virtual std::string toString() const;
     
 	//get
 	int getAttackStrength() const				{return attackStrength;}
@@ -182,7 +182,7 @@ public:
 class BuildSkillType: public SkillType{
 public:
     BuildSkillType();
-    virtual string toString() const;
+    virtual std::string toString() const;
 };
 
 // ===============================
@@ -192,7 +192,7 @@ public:
 class HarvestSkillType: public SkillType{
 public:
     HarvestSkillType();
-	virtual string toString() const;
+	virtual std::string toString() const;
 };
 
 // ===============================
@@ -202,7 +202,7 @@ public:
 class RepairSkillType: public SkillType{
 public:
     RepairSkillType();
-    virtual string toString() const;
+    virtual std::string toString() const;
 };
 
 // ===============================
@@ -212,7 +212,7 @@ public:
 class ProduceSkillType: public SkillType{
 public:
     ProduceSkillType();
-    virtual string toString() const;
+    virtual std::string toString() const;
 
 	virtual int getTotalSpeed(const TotalUpgrade *totalUpgrade) const;
 };
@@ -224,7 +224,7 @@ public:
 class UpgradeSkillType: public SkillType{
 public:
     UpgradeSkillType();
-	virtual string toString() const;
+	virtual std::string toString() const;
 
 	virtual int getTotalSpeed(const TotalUpgrade *totalUpgrade) const;
 };
@@ -237,7 +237,7 @@ public:
 class BeBuiltSkillType: public SkillType{
 public:
     BeBuiltSkillType();
-    virtual string toString() const;
+    virtual std::string toString() const;
 };
 
 // ===============================
@@ -247,7 +247,7 @@ public:
 class MorphSkillType: public SkillType{
 public:
     MorphSkillType();
-    virtual string toString() const;
+    virtual std::string toString() const;
 
 	virtual int getTotalSpeed(const TotalUpgrade *totalUpgrade) const;
 };
@@ -264,8 +264,8 @@ public:
     DieSkillType();
     bool getFade() const	{return fade;}
 	
-	virtual void load(const XmlNode *sn, const string &dir, const TechTree *tt, const FactionType *ft);
-	virtual string toString() const;
+	virtual void load(const XmlNode *sn, const std::string &dir, const TechTree *tt, const FactionType *ft);
+	virtual std::string toString() const;
 };
 
 // ===============================

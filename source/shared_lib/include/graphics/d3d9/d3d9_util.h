@@ -8,16 +8,18 @@
 
 #define D3DCALL(X) checkResult(X, #X);
 
-using std::string;
-using std::runtime_error;
+
+
+
+
 
 namespace Shared{ namespace Graphics{ namespace D3d9{
 
-string d3dErrorToStr(HRESULT result);
+std::string d3dErrorToStr(HRESULT result);
 
-inline void checkResult(HRESULT result, const string &functionCall){
+inline void checkResult(HRESULT result, const std::string &functionCall){
 	if(result!=D3D_OK){
-		throw runtime_error("Direct3D Error\nCode: " + d3dErrorToStr(result) + "\nFunction: " + functionCall);
+		throw std::runtime_error("Direct3D Error\nCode: " + d3dErrorToStr(result) + "\nFunction: " + functionCall);
 	}
 }
 

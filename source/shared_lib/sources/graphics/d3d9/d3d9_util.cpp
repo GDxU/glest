@@ -2,7 +2,7 @@
 
 namespace Shared{ namespace Graphics{ namespace D3d9{
 
-string d3dErrorToStr(HRESULT result){
+std::string d3dErrorToStr(HRESULT result){
 	switch(result){
 	case D3D_OK: return "D3D_OK";
 	case D3DERR_DEVICELOST: return "D3DERR_DEVICELOST";

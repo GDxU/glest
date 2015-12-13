@@ -39,10 +39,10 @@ DisplayableType::DisplayableType(){
 // 	class RequirableType
 // =====================================================
 
-string RequirableType::getReqDesc() const{
+std::string RequirableType::getReqDesc() const{
 	bool anyReqs= false;
 
-	string reqString;
+	std::string reqString;
 	for(int i=0; i<getUnitReqCount(); ++i){
         reqString+= getUnitReq(i)->getName();
         reqString+= "\n";
@@ -55,7 +55,7 @@ string RequirableType::getReqDesc() const{
 		anyReqs= true;
     }
 
-	string str= getName();
+	std::string str= getName();
 	if(anyReqs){
 		return str + " " + Lang::getInstance().get("Reqs") + ":\n" + reqString;
 	}
@@ -84,8 +84,8 @@ const Resource *ProducibleType::getCost(const ResourceType *rt) const{
 	return NULL;
 }
 
-string ProducibleType::getReqDesc() const{
-    string str= getName()+" "+Lang::getInstance().get("Reqs")+":\n";
+std::string ProducibleType::getReqDesc() const{
+    std::string str= getName()+" "+Lang::getInstance().get("Reqs")+":\n";
     for(int i=0; i<getCostCount(); ++i){
         if(getCost(i)->getAmount()!=0){
             str+= getCost(i)->getType()->getName();

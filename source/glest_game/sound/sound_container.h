@@ -17,7 +17,8 @@
 #include "sound.h"
 #include "random.h"
 
-using std::vector;
+
+
 using Shared::Util::Random;
 using Shared::Sound::StaticSound;
 
@@ -31,7 +32,7 @@ namespace Glest{ namespace Game{
 
 class SoundContainer{
 public:
-	typedef vector<StaticSound*> Sounds;
+	typedef std::vector<StaticSound*> Sounds;
 
 private:
 	Sounds sounds;

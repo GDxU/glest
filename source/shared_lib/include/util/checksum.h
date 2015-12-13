@@ -16,7 +16,8 @@
 
 #include "types.h"
 
-using std::string;
+
+
 using Shared::Platform::int32;
 using Shared::Platform::int8;
 
@@ -39,8 +40,8 @@ public:
 	int32 getSum() const	{return sum;}
 
 	void addByte(int8 value);
-	void addString(const string &value);
-	void addFile(const string &path);
+	void addString(const std::string &value);
+	void addFile(const std::string &path);
 };
 
 }}//end namespace

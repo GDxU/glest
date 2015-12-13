@@ -20,8 +20,10 @@
 
 struct OggVorbis_File;
 
-using std::string;
-using std::ifstream;
+
+
+
+
 
 namespace Shared{ namespace Sound{
 
@@ -41,7 +43,7 @@ class SoundFileLoader{
 public:
 	virtual ~SoundFileLoader(){}
 
-	virtual void open(const string &path, SoundInfo *soundInfo)= 0;
+	virtual void open(const std::string &path, SoundInfo *soundInfo)= 0;
 	virtual uint32 read(int8 *samples, uint32 size)= 0;
 	virtual void close()= 0;
 	virtual void restart()= 0;
@@ -61,10 +63,10 @@ private:
 	uint32 dataOffset;
 	uint32 dataSize;
 	uint32 bytesPerSecond;
-	ifstream f;
+    std::ifstream f;
 
 public:
-	virtual void open(const string &path, SoundInfo *soundInfo);
+	virtual void open(const std::string &path, SoundInfo *soundInfo);
 	virtual uint32 read(int8 *samples, uint32 size);
 	virtual void close();
 	virtual void restart();
@@ -82,7 +84,7 @@ private:
 	FILE *f;
 
 public:
-	virtual void open(const string &path, SoundInfo *soundInfo);
+	virtual void open(const std::string &path, SoundInfo *soundInfo);
 	virtual uint32 read(int8 *samples, uint32 size);
 	virtual void close();
 	virtual void restart();

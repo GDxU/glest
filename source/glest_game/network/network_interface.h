@@ -19,8 +19,10 @@
 #include "network_message.h"
 #include "network_types.h"
 
-using std::string;
-using std::vector;
+
+
+
+
 using Shared::Util::Checksum;
 
 namespace Glest{ namespace Game{
@@ -39,8 +41,8 @@ public:
 	virtual Socket* getSocket()= 0;
 	virtual const Socket* getSocket() const= 0;
 
-	string getIp() const		{return getSocket()->getIp();}
-	string getHostName() const	{return getSocket()->getHostName();}
+	std::string getIp() const		{return getSocket()->getIp();}
+	std::string getHostName() const	{return getSocket()->getHostName();}
 
 	void sendMessage(const NetworkMessage* networkMessage);
 	NetworkMessageType getNextMessageType();
@@ -58,14 +60,14 @@ public:
 
 class GameNetworkInterface: public NetworkInterface{
 private:
-	typedef vector<NetworkCommand> Commands;
+	typedef std::vector<NetworkCommand> Commands;
 
 protected:
 	Commands requestedCommands;	//commands requested by the user
 	Commands pendingCommands;	//commands ready to be given
 	bool quit;
-	string chatText;
-	string chatSender;
+	std::string chatText;
+	std::string chatSender;
 	int chatTeamIndex;
 
 public:
@@ -78,11 +80,11 @@ public:
 	virtual void waitUntilReady(Checksum* checksum)= 0;
 
 	//message sending
-	virtual void sendTextMessage(const string &text, int teamIndex)= 0;
+	virtual void sendTextMessage(const std::string &text, int teamIndex)= 0;
 	virtual void quitGame()=0;
 
 	//misc
-	virtual string getNetworkStatus() const= 0;
+	virtual std::string getNetworkStatus() const= 0;
 
 	//access functions
 	void requestCommand(const NetworkCommand *networkCommand)	{requestedCommands.push_back(*networkCommand);}
@@ -90,8 +92,8 @@ public:
 	const NetworkCommand* getPendingCommand(int i) const		{return &pendingCommands[i];}
 	void clearPendingCommands()									{pendingCommands.clear();}
 	bool getQuit() const										{return quit;}
-	const string getChatText() const							{return chatText;}
-	const string getChatSender() const							{return chatSender;}
+	const std::string getChatText() const							{return chatText;}
+	const std::string getChatSender() const							{return chatSender;}
 	int getChatTeamIndex() const								{return chatTeamIndex;}
 };
 

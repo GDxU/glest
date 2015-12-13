@@ -55,11 +55,11 @@ public:
 
 class UpgradeType: public UpgradeTypeBase, public ProducibleType{
 private:
-    vector<const UnitType*> effects; 
+    std::vector<const UnitType*> effects; 
     
 public:
-	void preLoad(const string &dir);
-    void load(const string &dir, const TechTree *techTree, const FactionType *factionType, Checksum* checksum);
+	void preLoad(const std::string &dir);
+    void load(const std::string &dir, const TechTree *techTree, const FactionType *factionType, Checksum* checksum);
 
     //get all
 	int getEffectCount() const				{return effects.size();}
@@ -67,7 +67,7 @@ public:
 	bool isAffected(const UnitType *unitType) const; 
 
     //other methods
-	virtual string getReqDesc() const;
+	virtual std::string getReqDesc() const;
 };
 
 // ===============================

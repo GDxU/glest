@@ -18,8 +18,10 @@
 #include "types.h"
 #include "platform_menu.h"
 
-using std::map;
-using std::string;
+
+
+
+
 
 namespace Shared{ namespace Platform{
 
@@ -84,12 +86,12 @@ private:
 protected:
 	WindowHandle handle;
 	WindowStyle windowStyle;
-	string text;
+	std::string text;
 	int x;
 	int y;
 	int w;
 	int h;
-	string className;
+	std::string className;
 	DWORD style;
 	DWORD exStyle;
 	bool ownDc;
@@ -102,7 +104,7 @@ public:
 	virtual ~Window();
 	
 	WindowHandle getHandle()	{return handle;}
-	string getText();
+	std::string getText();
 	int getX()					{return x;}
 	int getY()					{return y;}
 	int getW()					{return w;}
@@ -114,7 +116,7 @@ public:
 	float getAspect();
 
 	//object state
-	void setText(string text);
+	void setText(std::string text);
 	void setStyle(WindowStyle windowStyle);
 	void setSize(int w, int h);
 	void setPos(int x, int y);

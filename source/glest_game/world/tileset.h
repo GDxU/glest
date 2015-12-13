@@ -34,7 +34,8 @@ using Shared::Graphics::Texture3D;
 using Shared::Util::Random;
 using Shared::Util::Checksum;
 
-using std::map;
+
+
 
 enum FogMode{
 	fmExp,
@@ -88,7 +89,7 @@ public:
 	StaticSound *getDayStart()		{return &dayStart;}
 	StaticSound *getNightStart()	{return &nightStart;}
 
-	void load(const string &dir, const XmlNode *xmlNode);
+	void load(const std::string &dir, const XmlNode *xmlNode);
 };
 
 // =====================================================
@@ -105,8 +106,8 @@ public:
 	static const int transitionVars= 2; //number or different transition textures 
 
 public:
-	typedef vector<float> SurfProbs;
-	typedef vector<Pixmap2D> SurfPixmaps;
+	typedef std::vector<float> SurfProbs;
+	typedef std::vector<Pixmap2D> SurfPixmaps;
 
 private:
 	SurfaceAtlas surfaceAtlas;
@@ -130,7 +131,7 @@ private:
 
 public:
     ~Tileset();
-	void load(const string &dir, Checksum *checksum);
+	void load(const std::string &dir, Checksum *checksum);
 
     //get
 	const SurfaceAtlas *getSurfaceAtlas() const		{return &surfaceAtlas;}

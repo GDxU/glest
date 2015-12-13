@@ -135,7 +135,7 @@ void Texture1DGl::init(Filter filter, int maxAnisotropy){
 				glFormat, GL_UNSIGNED_BYTE, pixels);
 		
 			if(error!=0){
-				throw runtime_error("Error building texture 1D mipmaps");
+				throw std::runtime_error("Error building texture 1D mipmaps");
 			}
 		}
 		else{
@@ -149,7 +149,7 @@ void Texture1DGl::init(Filter filter, int maxAnisotropy){
 
 			GLint error= glGetError();
 			if(error!=GL_NO_ERROR){
-				throw runtime_error("Error creating texture 1D");
+				throw std::runtime_error("Error creating texture 1D");
 			}
 		}
 		inited= true;
@@ -209,7 +209,7 @@ void Texture2DGl::init(Filter filter, int maxAnisotropy){
 				glFormat, GL_UNSIGNED_BYTE, pixels);
 		
 			if(error!=0){
-				throw runtime_error("Error building texture 2D mipmaps");
+				throw std::runtime_error("Error building texture 2D mipmaps");
 			}
 		}
 		else{
@@ -224,7 +224,7 @@ void Texture2DGl::init(Filter filter, int maxAnisotropy){
 
 			GLint error= glGetError();
 			if(error!=GL_NO_ERROR){
-				throw runtime_error("Error creating texture 2D");
+				throw std::runtime_error("Error creating texture 2D");
 			}
 		}
 		inited= true;
@@ -278,7 +278,7 @@ void Texture3DGl::init(Filter filter, int maxAnisotropy){
 
 		GLint error= glGetError();
 		if(error!=GL_NO_ERROR){
-			throw runtime_error("Error creating texture 3D");
+			throw std::runtime_error("Error creating texture 3D");
 		}
 		inited= true;
 	}
@@ -341,7 +341,7 @@ void TextureCubeGl::init(Filter filter, int maxAnisotropy){
 					glFormat, GL_UNSIGNED_BYTE, pixels);
 				
 				if(error!=0){
-					throw runtime_error("Error building texture cube mipmaps");
+					throw std::runtime_error("Error building texture cube mipmaps");
 				}
 			}
 			else{
@@ -352,7 +352,7 @@ void TextureCubeGl::init(Filter filter, int maxAnisotropy){
 			}
 
 			if(glGetError()!=GL_NO_ERROR){
-				throw runtime_error("Error creating texture cube");
+				throw std::runtime_error("Error creating texture cube");
 			}
 		}
 		inited= true;

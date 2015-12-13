@@ -29,13 +29,13 @@ namespace Glest{ namespace Game{
 class FactionType{
 private:
 	typedef pair<const UnitType*, int> PairPUnitTypeInt;
-	typedef vector<UnitType> UnitTypes; 
-	typedef vector<UpgradeType> UpgradeTypes;
-	typedef vector<PairPUnitTypeInt> StartingUnits;
-	typedef vector<Resource> Resources;
+	typedef std::vector<UnitType> UnitTypes; 
+	typedef std::vector<UpgradeType> UpgradeTypes;
+	typedef std::vector<PairPUnitTypeInt> StartingUnits;
+	typedef std::vector<Resource> Resources;
 
 private:
-    string name;
+    std::string name;
     UnitTypes unitTypes;
     UpgradeTypes upgradeTypes;
 	StartingUnits startingUnits;
@@ -45,13 +45,13 @@ private:
 public:
 	//init
 	FactionType();
-    void load(const string &dir, const TechTree *techTree, Checksum* checksum);
+    void load(const std::string &dir, const TechTree *techTree, Checksum* checksum);
 	~FactionType();
 
     //get
 	int getUnitTypeCount() const						{return unitTypes.size();}
 	int getUpgradeTypeCount() const						{return upgradeTypes.size();}
-	string getName() const								{return name;}
+	std::string getName() const								{return name;}
 	const UnitType *getUnitType(int i) const			{return &unitTypes[i];}
 	const UpgradeType *getUpgradeType(int i) const		{return &upgradeTypes[i];}
 	StrSound *getMusic() const							{return music;}
@@ -59,8 +59,8 @@ public:
 	const UnitType *getStartingUnit(int i) const		{return startingUnits[i].first;}
 	int getStartingUnitAmount(int i) const				{return startingUnits[i].second;}
 	
-	const UnitType *getUnitType(const string &name) const;  
-	const UpgradeType *getUpgradeType(const string &name) const;  
+	const UnitType *getUnitType(const std::string &name) const;  
+	const UpgradeType *getUpgradeType(const std::string &name) const;  
 	int getStartingResourceAmount(const ResourceType *resourceType) const;
 };
 

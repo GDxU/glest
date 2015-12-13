@@ -117,12 +117,12 @@ void GraphicListBox::init(int x, int y, int w, int h){
 }       
 
 //queryes
-void GraphicListBox::pushBackItem(string item){
+void GraphicListBox::pushBackItem(std::string item){
     items.push_back(item);
     setSelectedItemIndex(0);
 }
 
-void GraphicListBox::setItems(const vector<string> &items){
+void GraphicListBox::setItems(const std::vector<string> &items){
     this->items= items; 
     setSelectedItemIndex(0);
 }
@@ -133,8 +133,8 @@ void GraphicListBox::setSelectedItemIndex(int index){
     setText(getSelectedItem());
 }
 
-void GraphicListBox::setSelectedItem(string item){
-	vector<string>::iterator iter;        
+void GraphicListBox::setSelectedItem(std::string item){
+	std::vector<string>::iterator iter;        
 
     iter= find(items.begin(), items.end(), item);
 
@@ -183,7 +183,7 @@ bool GraphicListBox::mouseClick(int x, int y){
 const int GraphicMessageBox::defH= 240;
 const int GraphicMessageBox::defW= 350;
 
-void GraphicMessageBox::init(const string &button1Str, const string &button2Str){
+void GraphicMessageBox::init(const std::string &button1Str, const std::string &button2Str){
 	init(button1Str);
 
 	button1.init(x+(w-GraphicButton::defW)/4, y+25);
@@ -193,7 +193,7 @@ void GraphicMessageBox::init(const string &button1Str, const string &button2Str)
 	buttonCount= 2;
 }
 
-void GraphicMessageBox::init(const string &button1Str){
+void GraphicMessageBox::init(const std::string &button1Str){
 	font= CoreData::getInstance().getMenuFontNormal();
 
 	h= defH;

@@ -40,7 +40,7 @@ CoreData::~CoreData(){
 }
 
 void CoreData::load(){
-	const string dir="data/core";
+	const std::string dir="data/core";
 	Logger::getInstance().add("Core data");
 
 	Renderer &renderer= Renderer::getInstance();
@@ -81,14 +81,14 @@ void CoreData::load(){
 
 	//display font
 	Config &config= Config::getInstance();
-	string displayFontName= config.getString("FontDisplay");
+	std::string displayFontName= config.getString("FontDisplay");
 
 	displayFont= renderer.newFont(rsGlobal);
 	displayFont->setType(displayFontName);
 	displayFont->setSize(computeFontSize(15));
 
 	//menu fonts
-	string menuFontName= config.getString("FontMenu");
+	std::string menuFontName= config.getString("FontMenu");
 
 	menuFontSmall= renderer.newFont(rsGlobal);
 	menuFontSmall->setType(menuFontName);
@@ -108,7 +108,7 @@ void CoreData::load(){
 	menuFontVeryBig->setSize(computeFontSize(25));
 
 	//console font
-	string consoleFontName= Config::getInstance().getString("FontConsole");
+	std::string consoleFontName= Config::getInstance().getString("FontConsole");
 
 	consoleFont= renderer.newFont(rsGlobal);
 	consoleFont->setType(consoleFontName);

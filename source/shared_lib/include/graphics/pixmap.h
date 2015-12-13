@@ -17,7 +17,8 @@
 #include "vec.h"
 #include "types.h"
 
-using std::string;
+
+
 using Shared::Platform::int8;
 using Shared::Platform::uint8;
 using Shared::Platform::int16;
@@ -45,11 +46,11 @@ public:
 	int getH() const			{return h;}
 	int getComponents() const	{return components;}
 
-	virtual void openRead(const string &path)= 0;
+	virtual void openRead(const std::string &path)= 0;
 	virtual void read(uint8 *pixels)= 0;
 	virtual void read(uint8 *pixels, int components)= 0;
 
-	virtual void openWrite(const string &path, int w, int h, int components)= 0;
+	virtual void openWrite(const std::string &path, int w, int h, int components)= 0;
 	virtual void write(uint8 *pixels)= 0;
 };
 
@@ -65,11 +66,11 @@ public:
 	PixmapIoTga();
 	virtual ~PixmapIoTga();
 
-	virtual void openRead(const string &path);
+	virtual void openRead(const std::string &path);
 	virtual void read(uint8 *pixels);
 	virtual void read(uint8 *pixels, int components);
 
-	virtual void openWrite(const string &path, int w, int h, int components);
+	virtual void openWrite(const std::string &path, int w, int h, int components);
 	virtual void write(uint8 *pixels);
 };
 
@@ -85,11 +86,11 @@ public:
 	PixmapIoBmp();
 	virtual ~PixmapIoBmp();
 	
-	virtual void openRead(const string &path);
+	virtual void openRead(const std::string &path);
 	virtual void read(uint8 *pixels);
 	virtual void read(uint8 *pixels, int components);
 
-	virtual void openWrite(const string &path, int w, int h, int components);
+	virtual void openWrite(const std::string &path, int w, int h, int components);
 	virtual void write(uint8 *pixels);
 };
 
@@ -113,9 +114,9 @@ public:
 	~Pixmap1D();
 	
 	//load & save
-	void load(const string &path);
-	void loadTga(const string &path);
-	void loadBmp(const string &path);
+	void load(const std::string &path);
+	void loadTga(const std::string &path);
+	void loadBmp(const std::string &path);
 
 	//get 
 	int getW() const			{return w;}
@@ -144,12 +145,12 @@ public:
 	~Pixmap2D();
 	
 	//load & save
-	void load(const string &path);
-	void loadTga(const string &path);
-	void loadBmp(const string &path);
-	void save(const string &path);
-	void saveBmp(const string &path);
-	void saveTga(const string &path);
+	void load(const std::string &path);
+	void loadTga(const std::string &path);
+	void loadBmp(const std::string &path);
+	void save(const std::string &path);
+	void saveBmp(const std::string &path);
+	void saveTga(const std::string &path);
 
 	//get 
 	int getW() const			{return w;}
@@ -218,9 +219,9 @@ public:
 	~Pixmap3D();
 	
 	//load & save
-	void loadSlice(const string &path, int slice);
-	void loadSliceBmp(const string &path, int slice);
-	void loadSliceTga(const string &path, int slice);
+	void loadSlice(const std::string &path, int slice);
+	void loadSliceBmp(const std::string &path, int slice);
+	void loadSliceTga(const std::string &path, int slice);
 	
 	//get 
 	int getW() const			{return w;}
@@ -253,9 +254,9 @@ public:
 	void init(int w, int h, int components);
 
 	//load & save
-	void loadFace(const string &path, int face);
-	void loadFaceBmp(const string &path, int face);
-	void loadFaceTga(const string &path, int face);
+	void loadFace(const std::string &path, int face);
+	void loadFaceBmp(const std::string &path, int face);
+	void loadFaceTga(const std::string &path, int face);
 	
 	//get 
 	Pixmap2D *getFace(int face)				{return &faces[face];}

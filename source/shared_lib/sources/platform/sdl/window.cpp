@@ -95,7 +95,7 @@ bool Window::handleEvent() {
 }
 
 
-string Window::getText() {
+std::string Window::getText() {
 // 	char* c = 0;
 // 	SDL_WM_GetCaption(&c, 0);
 // 
@@ -108,7 +108,7 @@ float Window::getAspect() {
 	return static_cast<float>(getClientH())/getClientW();
 }
 
-void Window::setText(string text) {
+void Window::setText(std::string text) {
 	//SDL_WM_SetCaption(text.c_str(), 0);
     SDL_SetWindowTitle(getWindow(), text.c_str());
 }

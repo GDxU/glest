@@ -59,7 +59,7 @@ Ip::Ip(const string& ipString){
 	}
 }
 
-string Ip::getString() const{
+std::string Ip::getString() const{
 	return intToStr(bytes[0]) + "." + intToStr(bytes[1]) + "." + intToStr(bytes[2]) + "." + intToStr(bytes[3]);
 }
 
@@ -177,25 +177,25 @@ bool Socket::isConnected(){
 	return true;
 }
 
-string Socket::getHostName() const {
+std::string Socket::getHostName() const {
 	const int strSize= 256;
 	char hostname[strSize];
 	gethostname(hostname, strSize);
 	return hostname;
 }
 
-string Socket::getIp() const{
+std::string Socket::getIp() const{
 	hostent* info= gethostbyname(getHostName().c_str());
 	unsigned char* address;
 
 	if(info==NULL){
-		throw runtime_error("Error getting host by name");
+		throw std::runtime_error("Error getting host by name");
 	}
 
 	address= reinterpret_cast<unsigned char*>(info->h_addr_list[0]);
 
 	if(address==NULL){
-		throw runtime_error("Error getting host ip");
+		throw std::runtime_error("Error getting host ip");
 	}
 
 	return 
@@ -205,10 +205,10 @@ string Socket::getIp() const{
 		intToStr(address[3]);
 }
 
-void Socket::throwException(const string &str){
+void Socket::throwException(const std::string &str){
 	std::stringstream msg;
 	msg << str << " (Error: " << strerror(errno) << ")";
-	throw runtime_error(msg.str());
+	throw std::runtime_error(msg.str());
 }
 
 // ===============================================

@@ -24,13 +24,13 @@ namespace Shared{ namespace Graphics{
 //	class ShaderSource
 // =====================================================
 
-void ShaderSource::load(const string &path){
+void ShaderSource::load(const std::string &path){
 	pathInfo+= path + " ";
 
 	//open file
 	ifstream ifs(path.c_str());
 	if(ifs.fail()){
-		throw runtime_error("Can't open shader file: " + path);
+		throw std::runtime_error("Can't open shader file: " + path);
 	}
 
 	//read source

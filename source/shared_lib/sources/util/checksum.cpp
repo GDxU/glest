@@ -39,13 +39,13 @@ void Checksum::addByte(int8 value){
 	sum+= cipher;
 }
 
-void Checksum::addString(const string &value){
+void Checksum::addString(const std::string &value){
 	for(int i= 0; i<value.size(); ++i){
 		addByte(value[i]);
 	}
 }
 
-void Checksum::addFile(const string &path){
+void Checksum::addFile(const std::string &path){
 	
 	FILE* file= fopen(path.c_str(), "rb");
 
@@ -62,7 +62,7 @@ void Checksum::addFile(const string &path){
 	}
 	else
 	{
-		throw runtime_error("Can not open file: " + path);
+		throw std::runtime_error("Can not open file: " + path);
 	}
 	fclose(file);
 }

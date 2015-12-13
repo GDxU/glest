@@ -19,7 +19,8 @@
 #include "vec.h"
 #include "texture.h"
 
-using std::vector;
+
+
 
 using Shared::Graphics::Vec2i;
 using Shared::Graphics::Vec2f;
@@ -35,7 +36,7 @@ namespace Glest{ namespace Game{
 
 class Text{
 private:
-	string text;
+	std::string text;
 	Vec2i pos;
     Vec2i size;
 	int time;
@@ -43,10 +44,10 @@ private:
 	const Texture2D *texture;
 
 public:
-	Text(const string &text, const Vec2i &pos, int time, const Font2D *font);
+	Text(const std::string &text, const Vec2i &pos, int time, const Font2D *font);
 	Text(const Texture2D *texture, const Vec2i &pos, const Vec2i &size, int time);
 
-	const string &getText() const		{return text;}
+	const std::string &getText() const		{return text;}
 	const Font2D *getFont() const		{return font;}
 	const Vec2i &getPos() const			{return pos;}
 	const Vec2i &getSize() const		{return size;}
@@ -68,7 +69,7 @@ private:
 	static const int disapearTime;
 
 private:
-	vector<Text> texts;
+	std::vector<Text> texts;
 	int timer;
 
 public:

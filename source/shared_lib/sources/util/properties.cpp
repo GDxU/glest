@@ -26,17 +26,17 @@ namespace Shared{ namespace Util{
 //	class Properties
 // =====================================================
 
-void Properties::load(const string &path){
+void Properties::load(const std::string &path){
 	ifstream fileStream;
 	char lineBuffer[maxLine];
-	string line, key, value;
+	std::string line, key, value;
 	int pos;
 
 	this->path= path;
 
 	fileStream.open(path.c_str(), ios_base::in);
 	if(fileStream.fail()){
-		throw runtime_error("Can't open propertyMap file: " + path);
+		throw std::runtime_error("Can't open propertyMap file: " + path);
 	}
 
 	propertyMap.clear();
@@ -68,7 +68,7 @@ void Properties::load(const string &path){
 	fileStream.close();
 }
 	
-void Properties::save(const string &path){
+void Properties::save(const std::string &path){
 	ofstream fileStream;
 
 	fileStream.open(path.c_str(), ios_base::out | ios_base::trunc);
@@ -88,79 +88,79 @@ void Properties::clear(){
 	propertyVector.clear();
 }
 
-bool Properties::getBool(const string &key) const{
+bool Properties::getBool(const std::string &key) const{
 	try{
 		return strToBool(getString(key));
 	}
 	catch(exception &e){
-		throw runtime_error("Error accessing value: " + key + " in: " + path+"\n" + e.what());
+		throw std::runtime_error("Error accessing value: " + key + " in: " + path+"\n" + e.what());
 	}
 }
 
-int Properties::getInt(const string &key) const{
+int Properties::getInt(const std::string &key) const{
 	try{
 		return strToInt(getString(key));
 	}
 	catch(exception &e){
-		throw runtime_error("Error accessing value: " + key + " in: " + path + "\n" + e.what());
+		throw std::runtime_error("Error accessing value: " + key + " in: " + path + "\n" + e.what());
 	}
 }
 
-int Properties::getInt(const string &key, int min, int max) const{
+int Properties::getInt(const std::string &key, int min, int max) const{
 	int i= getInt(key);
 	if(i<min || i>max){
-		throw runtime_error("Value out of range: " + key + ", min: " + intToStr(min) + ", max: " + intToStr(max));
+		throw std::runtime_error("Value out of range: " + key + ", min: " + intToStr(min) + ", max: " + intToStr(max));
 	}
 	return i;
 }
 
-float Properties::getFloat(const string &key) const{
+float Properties::getFloat(const std::string &key) const{
 	try{
 		return strToFloat(getString(key));
 	}
 	catch(exception &e){
-		throw runtime_error("Error accessing value: " + key + " in: " + path + "\n" + e.what());
+		throw std::runtime_error("Error accessing value: " + key + " in: " + path + "\n" + e.what());
 	}
 }
 
-float Properties::getFloat(const string &key, float min, float max) const{
+float Properties::getFloat(const std::string &key, float min, float max) const{
 	float f= getFloat(key);
 	if(f<min || f>max){
-		throw runtime_error("Value out of range: " + key + ", min: " + floatToStr(min) + ", max: " + floatToStr(max));
+		throw std::runtime_error("Value out of range: " + key + ", min: " + floatToStr(min) + ", max: " + floatToStr(max));
 	}
 	return f;
 }
 
-const string &Properties::getString(const string &key) const{
+const std::string &Properties::getString(const std::string &key) const{
 	PropertyMap::const_iterator it;
 	it= propertyMap.find(key);
 	if(it==propertyMap.end()){
-		throw runtime_error("Value not found in propertyMap: " + key + ", loaded from: " + path);
+		throw std::runtime_error("Value not found in propertyMap: " + key + ", loaded from: " + path);
 	}
 	else{
 		return it->second;
 	}
 }
 
-void Properties::setInt(const string &key, int value){
+void Properties::setInt(const std::string &key, int value){
 	setString(key, intToStr(value));
 }
 
-void Properties::setBool(const string &key, bool value){
+void Properties::setBool(const std::string &key, bool value){
 	setString(key, boolToStr(value));
 }
 
-void Properties::setFloat(const string &key, float value){
+void Properties::setFloat(const std::string &key, float value){
 	setString(key, floatToStr(value));
 }
 
-void Properties::setString(const string &key, const string &value){
+void Properties::setString(const std::string &key, const std::string &value){
 	propertyMap.erase(key);
 	propertyMap.insert(PropertyPair(key, value));
 }
 
-string Properties::toString(){
-	string rStr;
+std::string Properties::toString(){
+	std::string rStr;
 	
 	for(PropertyMap::iterator pi= propertyMap.begin(); pi!=propertyMap.end(); pi++)
 		rStr+= pi->first + "=" + pi->second + "\n";

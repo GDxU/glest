@@ -23,7 +23,7 @@ using namespace std;
 
 namespace Shared{ namespace Util{
 
-string lastDir(const string &s){
+std::string lastDir(const std::string &s){
 	size_t i= s.find_last_of('/');
 	size_t j= s.find_last_of('\\');
 	size_t pos;
@@ -39,17 +39,17 @@ string lastDir(const string &s){
 	}
 
 	if (pos==string::npos){ 
-		throw runtime_error(string(__FILE__)+" lastDir - i==string::npos");
+		throw std::runtime_error(std::string(__FILE__)+" lastDir - i==string::npos");
 	}
 
 	return (s.substr(pos+1, s.length()));
 }
 
-string lastFile(const string &s){
+std::string lastFile(const std::string &s){
 	return lastDir(s);
 }
 
-string cutLastFile(const string &s){
+std::string cutLastFile(const std::string &s){
 	size_t i= s.find_last_of('/');
 	size_t j= s.find_last_of('\\');
 	size_t pos;
@@ -65,36 +65,36 @@ string cutLastFile(const string &s){
 	}
 
 	if (pos==string::npos){
-		throw runtime_error(string(__FILE__)+"cutLastFile - i==string::npos");
+		throw std::runtime_error(std::string(__FILE__)+"cutLastFile - i==string::npos");
 	}
 
 	return (s.substr(0, pos));
 }
 
-string cutLastExt(const string &s){
+std::string cutLastExt(const std::string &s){
      size_t i= s.find_last_of('.');
 
 	 if (i==string::npos){
-          throw runtime_error(string(__FILE__)+"cutLastExt - i==string::npos");
+          throw std::runtime_error(std::string(__FILE__)+"cutLastExt - i==string::npos");
 	 }
 
      return (s.substr(0, i));
 }
 
-string ext(const string &s){
+std::string ext(const std::string &s){
      size_t i;
      
      i=s.find_last_of('.')+1;
 
 	 if (i==string::npos){
-          throw runtime_error(string(__FILE__)+"cutLastExt - i==string::npos");
+          throw std::runtime_error(std::string(__FILE__)+"cutLastExt - i==string::npos");
 	 }
 
      return (s.substr(i, s.size()-i));
 }
 
-string replaceBy(const string &s, char c1, char c2){
-	string rs= s;
+std::string replaceBy(const std::string &s, char c1, char c2){
+	std::string rs= s;
 	
 	for(size_t i=0; i<s.size(); ++i){
 		if (rs[i]==c1){
@@ -105,8 +105,8 @@ string replaceBy(const string &s, char c1, char c2){
 	return rs;
 }
 
-string toLower(const string &s){
-	string rs= s;
+std::string toLower(const std::string &s){
+	std::string rs= s;
 	
 	for(size_t i=0; i<s.size(); ++i){
 		rs[i]= tolower(s[i]);
@@ -158,7 +158,7 @@ int round(float f){
 
 // ==================== misc ====================
 
-bool fileExists(const string &path){
+bool fileExists(const std::string &path){
 	FILE* file= fopen(path.c_str(), "rb");
 	if(file!=NULL){
 		fclose(file);

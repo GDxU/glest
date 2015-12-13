@@ -80,7 +80,7 @@ public:
 
 	int8 *getSamples() const		{return samples;}
 	
-	void load(const string &path);
+	void load(const std::string &path);
 };
 
 // =====================================================
@@ -98,7 +98,7 @@ public:
 	StrSound *getNext() const		{return next;}
 	void setNext(StrSound *next)	{this->next= next;}
 
-	void open(const string &path);
+	void open(const std::string &path);
 	uint32 read(int8 *samples, uint32 size);
 	void close();
 	void restart();

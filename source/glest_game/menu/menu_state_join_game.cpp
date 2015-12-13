@@ -35,7 +35,7 @@ using namespace Shared::Util;
 // ===============================
 
 const int MenuStateJoinGame::newServerIndex= 0;
-const string MenuStateJoinGame::serverFileName= "servers.ini";
+const std::string MenuStateJoinGame::serverFileName= "servers.ini";
 
 MenuStateJoinGame::MenuStateJoinGame(Program *program, MainMenu *mainMenu, bool connect, Ip serverIp):
 	MenuState(program, mainMenu, "join-game")
@@ -221,7 +221,7 @@ void MenuStateJoinGame::keyDown(char key){
 	
 	if(!clientInterface->isConnected()){
 		if(key==vkBack){
-			string text= labelServerIp.getText();
+			std::string text= labelServerIp.getText();
 
 			if(text.size()>1){
 				text.erase(text.end()-2);
@@ -241,7 +241,7 @@ void MenuStateJoinGame::keyPress(char c){
 		if(c>='0' && c<='9'){
 
 			if(labelServerIp.getText().size()<maxTextSize){
-				string text= labelServerIp.getText();
+				std::string text= labelServerIp.getText();
 
 				text.insert(text.end()-1, c);
 
@@ -250,7 +250,7 @@ void MenuStateJoinGame::keyPress(char c){
 		}
 		else if (c=='.'){
 			if(labelServerIp.getText().size()<maxTextSize){
-				string text= labelServerIp.getText();
+				std::string text= labelServerIp.getText();
 
 				text.insert(text.end()-1, '.');
 

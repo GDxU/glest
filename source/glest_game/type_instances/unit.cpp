@@ -244,8 +244,8 @@ const Level *Unit::getNextLevel() const{
 	return NULL;
 }
 
-string Unit::getFullName() const{
-	string str;
+std::string Unit::getFullName() const{
+	std::string str;
 	if(level!=NULL){
 		str+= level->getName() + " ";
 	}
@@ -722,7 +722,7 @@ bool Unit::decHp(int i){
     return false;
 }
 
-string Unit::getDesc() const{
+std::string Unit::getDesc() const{
 
     Lang &lang= Lang::getInstance();
 
@@ -730,7 +730,7 @@ string Unit::getDesc() const{
     //str+="Pos: "+v2iToStr(pos)+"\n";
 
 	//hp
-	string str= "\n" + lang.get("Hp")+ ": " + intToStr(hp) + "/" + intToStr(type->getTotalMaxHp(&totalUpgrade));
+	std::string str= "\n" + lang.get("Hp")+ ": " + intToStr(hp) + "/" + intToStr(type->getTotalMaxHp(&totalUpgrade));
 	if(type->getHpRegeneration()!=0){
 		str+= " (" + lang.get("Regeneration") + ": " + intToStr(type->getHpRegeneration()) + ")";
 	}

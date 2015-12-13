@@ -87,7 +87,7 @@ private:
     bool attackableOnSight(const Unit *unit, Unit **enemyPtr, const AttackSkillType *ast);
     bool attackableOnRange(const Unit *unit, Unit **enemyPtr, const AttackSkillType *ast);
 	bool unitOnRange(const Unit *unit, int range, Unit **enemyPtr, const AttackSkillType *ast);
-	void enemiesAtDistance(const Unit *unit, const Unit *priorityUnit, int distance, vector<Unit*> &enemies);
+	void enemiesAtDistance(const Unit *unit, const Unit *priorityUnit, int distance, std::vector<Unit*> &enemies);
 };
 
 // =====================================================

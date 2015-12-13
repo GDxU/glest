@@ -30,8 +30,8 @@ namespace Glest{ namespace Game{
 // 	class AmbientSounds
 // =====================================================
 
-void AmbientSounds::load(const string &dir, const XmlNode *xmlNode){
-	string path;
+void AmbientSounds::load(const std::string &dir, const XmlNode *xmlNode){
+	std::string path;
 
 	//day
 	const XmlNode *dayNode= xmlNode->getChild("day-sound");
@@ -89,12 +89,12 @@ void AmbientSounds::load(const string &dir, const XmlNode *xmlNode){
 // 	class Tileset
 // =====================================================
 
-void Tileset::load(const string &dir, Checksum *checksum){
+void Tileset::load(const std::string &dir, Checksum *checksum){
 	
 	random.init(time(NULL));
 
-	string name= lastDir(dir);
-	string path= dir+"/"+name+".xml";
+	std::string name= lastDir(dir);
+	std::string path= dir+"/"+name+".xml";
 
 	checksum->addFile(path);
 

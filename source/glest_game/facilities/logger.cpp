@@ -40,7 +40,7 @@ Logger & Logger::getInstance(){
 	return logger;
 }
 
-void Logger::add(const string &str,  bool renderScreen){
+void Logger::add(const std::string &str,  bool renderScreen){
 	FILE *f=fopen(fileName.c_str(), "at+");
 	if(f!=NULL){
 		fprintf(f, "%s\n", str.c_str());
@@ -53,7 +53,7 @@ void Logger::add(const string &str,  bool renderScreen){
 }
 
 void Logger::clear(){
-    string s="Log file\n";
+    std::string s="Log file\n";
 
 	FILE *f= fopen(fileName.c_str(), "wt+");
 	if(f==NULL){

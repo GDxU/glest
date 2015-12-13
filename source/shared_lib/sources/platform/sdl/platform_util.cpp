@@ -117,7 +117,7 @@ int64 Chrono::queryCounter(int multiplier) const {
 // =====================================
 
 //finds all filenames like path and stores them in resultys
-void findAll(const string &path, vector<string> &results, bool cutExtension) {
+void findAll(const std::string &path, std::vector<string> &results, bool cutExtension) {
 	results.clear();
 
 	std::string mypath = path;
@@ -135,7 +135,7 @@ void findAll(const string &path, vector<string> &results, bool cutExtension) {
 // 	if(res < 0) {
 // 		std::stringstream msg;
 // 		msg << "Couldn't scan directory '" << mypath << "': " << strerror(errno);
-// 		throw runtime_error(msg.str());
+// 		throw std::runtime_error(msg.str());
 // 	}
 // 
 // 	for(size_t i = 0; i < globbuf.gl_pathc; ++i) {
@@ -152,7 +152,7 @@ void findAll(const string &path, vector<string> &results, bool cutExtension) {
 // 	globfree(&globbuf);
 // 
 	if(results.size() == 0) {
-		throw runtime_error("No files found in: " + mypath);
+		throw std::runtime_error("No files found in: " + mypath);
 	}
 
 	if(cutExtension) {
@@ -170,13 +170,13 @@ bool changeVideoMode(int resW, int resH, int colorBits, int ) {
 void restoreVideoMode() {
 }
 
-void message(string message) {
+void message(std::string message) {
 	std::cerr << "******************************************************\n";
 	std::cerr << "    " << message << "\n";
 	std::cerr << "******************************************************\n";
 }
 
-bool ask(string message) {
+bool ask(std::string message) {
 	std::cerr << "Confirmation: " << message << "\n";
 	int res;
 	std::cin >> res;

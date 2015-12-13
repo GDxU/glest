@@ -15,7 +15,8 @@
 #include "unit.h"
 #include <vector>
 
-using std::vector;
+
+
 
 namespace Glest{ namespace Game{
 
@@ -29,7 +30,7 @@ class Gui;
 
 class Selection: public UnitObserver{
 public:
-	typedef vector<Unit*> UnitContainer;
+	typedef std::vector<Unit*> UnitContainer;
 	typedef UnitContainer::const_iterator UnitIterator;
 
 public:

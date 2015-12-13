@@ -88,8 +88,8 @@ void ChatManager::keyPress(char c){
 
 void ChatManager::updateNetwork(){
 	GameNetworkInterface *gameNetworkInterface= NetworkManager::getInstance().getGameNetworkInterface();
-	string text;
-	string sender;
+	std::string text;
+	std::string sender;
 	
 	if(!gameNetworkInterface->getChatText().empty()){
 		int teamIndex= gameNetworkInterface->getChatTeamIndex();

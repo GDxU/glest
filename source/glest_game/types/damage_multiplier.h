@@ -14,7 +14,8 @@
 
 #include <string>
 
-using std::string;
+
+
 
 namespace Glest{ namespace Game{
 
@@ -24,14 +25,14 @@ namespace Glest{ namespace Game{
 
 class AttackType{
 private:
-	string name;
+	std::string name;
 	int id;
 
 public:
 	int getId() const					{return id;}
-	const string &getName() const		{return name;}
+	const std::string &getName() const		{return name;}
 
-	void setName(const string &name)	{this->name= name;}
+	void setName(const std::string &name)	{this->name= name;}
 	void setId(int id)					{this->id= id;}
 };
 
@@ -41,14 +42,14 @@ public:
 
 class ArmorType{
 private:
-	string name;
+	std::string name;
 	int id;
 
 public:
 	int getId() const					{return id;}
-	const string &getName() const		{return name;}
+	const std::string &getName() const		{return name;}
 
-	void setName(const string &name)	{this->name= name;}
+	void setName(const std::string &name)	{this->name= name;}
 	void setId(int id)					{this->id= id;}
 };
 

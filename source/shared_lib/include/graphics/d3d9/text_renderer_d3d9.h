@@ -16,7 +16,7 @@ private:
 
 public:
 	virtual void begin(const Font2D *font);
-	virtual void render(const string &text, int x, int y, bool centered= false);
+	virtual void render(const std::string &text, int x, int y, bool centered= false);
 	virtual void end();
 };
 

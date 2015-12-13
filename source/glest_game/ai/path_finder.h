@@ -16,7 +16,8 @@
 
 #include <vector>
 
-using std::vector;
+
+
 using Shared::Graphics::Vec2i;
 
 namespace Glest{ namespace Game{
@@ -44,7 +45,7 @@ public:
 		float heuristic;
 		bool exploredCell;
 	};
-	typedef vector<Node*> Nodes;
+	typedef std::vector<Node*> Nodes;
 
 public:
 	static const int maxFreeSearchRadius;

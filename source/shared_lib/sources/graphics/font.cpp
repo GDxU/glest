@@ -32,7 +32,7 @@ FontMetrics::~FontMetrics(){
 	delete [] widths;
 }
 
-float FontMetrics::getTextWidth(const string &str) const{
+float FontMetrics::getTextWidth(const std::string &str) const{
 	float width= 0.f;
 	for(int i=0; i<str.size(); ++i){
 		width+= widths[str[i]];

@@ -242,12 +242,12 @@ void ClientInterface::waitUntilReady(Checksum* checksum){
 	sleep(GameConstants::networkExtraLatency);
 }
 
-void ClientInterface::sendTextMessage(const string &text, int teamIndex){
+void ClientInterface::sendTextMessage(const std::string &text, int teamIndex){
 	NetworkMessageText networkMessageText(text, getHostName(), teamIndex);
 	sendMessage(&networkMessageText);
 }
 
-string ClientInterface::getNetworkStatus() const{
+std::string ClientInterface::getNetworkStatus() const{
 	return Lang::getInstance().get("Server") + ": " + serverName;
 }
 

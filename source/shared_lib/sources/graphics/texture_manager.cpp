@@ -55,7 +55,7 @@ void TextureManager::setMaxAnisotropy(int maxAnisotropy){
 	this->maxAnisotropy= maxAnisotropy;
 }
 
-Texture *TextureManager::getTexture(const string &path){
+Texture *TextureManager::getTexture(const std::string &path){
 	for(int i=0; i<textures.size(); ++i){
 		if(textures[i]->getPath()==path){
 			return textures[i];

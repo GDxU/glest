@@ -56,7 +56,7 @@ void XmlTree::load(const std::string &path)
     tinyxml2::XMLError err = doc.LoadFile(path.c_str());
 
     if (err != tinyxml2::XML_SUCCESS)
-        throw runtime_error("Can not parse URL: " + path);
+        throw std::runtime_error("Can not parse URL: " + path);
 
     root = new XmlNode(doc.FirstChildElement());
 }
@@ -66,7 +66,7 @@ void XmlTree::save(const std::string &path){
     tinyxml2::XMLError err = doc.SaveFile(path.c_str());
 
     if (err != tinyxml2::XML_SUCCESS)
-        throw runtime_error("Can not Save : " + path);
+        throw std::runtime_error("Can not Save : " + path);
 
 }
 
@@ -117,7 +117,7 @@ XmlNode::~XmlNode(){
 
 XmlAttribute *XmlNode::getAttribute(int i) const{
 	if(i>=attributes.size()){
-		throw runtime_error(getName()+" node doesn't have "+intToStr(i)+" attributes");
+		throw std::runtime_error(getName()+" node doesn't have "+intToStr(i)+" attributes");
 	}
 	return attributes[i];
 }
@@ -128,19 +128,19 @@ XmlAttribute *XmlNode::getAttribute(const std::string &name) const{
 			return attributes[i];
 		}
 	}
-	throw runtime_error("\"" + getName() + "\" node doesn't have a attribute named \"" + name + "\"");
+	throw std::runtime_error("\"" + getName() + "\" node doesn't have a attribute named \"" + name + "\"");
 }
 
 XmlNode *XmlNode::getChild(int i) const {
 	if(i>=children.size())
-		throw runtime_error("\"" + getName()+"\" node doesn't have "+intToStr(i+1)+" children");
+		throw std::runtime_error("\"" + getName()+"\" node doesn't have "+intToStr(i+1)+" children");
 	return children[i];
 }
 
 
 XmlNode *XmlNode::getChild(const std::string &childName, int i) const{
 	if(i>=children.size()){
-		throw runtime_error("\"" + name + "\" node doesn't have "+intToStr(i+1)+" children named \"" + childName + "\"\n\nTree: "+getTreeString());
+		throw std::runtime_error("\"" + name + "\" node doesn't have "+intToStr(i+1)+" children named \"" + childName + "\"\n\nTree: "+getTreeString());
 	}
 
 	int count= 0;
@@ -153,7 +153,7 @@ XmlNode *XmlNode::getChild(const std::string &childName, int i) const{
 		}
 	}
 
-	throw runtime_error("Node \""+getName()+"\" doesn't have "+intToStr(i+1)+" children named  \""+childName+"\"\n\nTree: "+getTreeString());
+	throw std::runtime_error("Node \""+getName()+"\" doesn't have "+intToStr(i+1)+" children named  \""+childName+"\"\n\nTree: "+getTreeString());
 }
 
 XmlNode *XmlNode::addChild(const std::string &name){
@@ -235,7 +235,7 @@ bool XmlAttribute::getBoolValue() const{
 		return false;
 	}
 	else{
-		throw runtime_error("Not a valid bool value (true or false): " +getName()+": "+ value);
+		throw std::runtime_error("Not a valid bool value (true or false): " +getName()+": "+ value);
 	}
 }
 
@@ -246,7 +246,7 @@ int XmlAttribute::getIntValue() const{
 int XmlAttribute::getIntValue(int min, int max) const{
 	int i= strToInt(value);
 	if(i<min || i>max){
-		throw runtime_error("Xml Attribute int out of range: " + getName() + ": " + value);
+		throw std::runtime_error("Xml Attribute int out of range: " + getName() + ": " + value);
 	}
 	return i;
 }
@@ -258,7 +258,7 @@ float XmlAttribute::getFloatValue() const{
 float XmlAttribute::getFloatValue(float min, float max) const{
 	float f= strToFloat(value);
 	if(f<min || f>max){
-		throw runtime_error("Xml attribute float out of range: " + getName() + ": " + value);
+		throw std::runtime_error("Xml attribute float out of range: " + getName() + ": " + value);
 	}
 	return f;
 }
@@ -269,8 +269,8 @@ const std::string &XmlAttribute::getRestrictedValue() const
 
 	for(int i= 0; i<value.size(); ++i){
 		if(allowedCharacters.find(value[i])==std::string::npos){
-			throw runtime_error(
-				std::string("The string \"" + value + "\" contains a character that is not allowed: \"") + value[i] +
+			throw std::runtime_error(
+				std::string("The std::string \"" + value + "\" contains a character that is not allowed: \"") + value[i] +
 				"\"\nFor portability reasons the only allowed characters in this field are: " + allowedCharacters);
 		}
 	}

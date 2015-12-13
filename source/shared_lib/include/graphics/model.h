@@ -21,9 +21,12 @@
 #include "texture.h"
 #include "model_header.h"
 
-using std::string;
-using std::map;
-using std::pair;
+
+
+
+
+
+
 
 namespace Shared{ namespace Graphics{
 
@@ -43,7 +46,7 @@ class Mesh{
 private:
 	//mesh data
 	Texture2D *textures[meshTextureCount];
-	string texturePaths[meshTextureCount];
+	std::string texturePaths[meshTextureCount];
 
 	//vertex data counts
 	uint32 frameCount;
@@ -111,10 +114,10 @@ public:
 	void updateInterpolationVertices(float t, bool cycle) const;
 
 	//load
-	void loadV2(const string &dir, FILE *f, TextureManager *textureManager);
-	void loadV3(const string &dir, FILE *f, TextureManager *textureManager);
-	void load(const string &dir, FILE *f, TextureManager *textureManager);
-	void save(const string &dir, FILE *f);
+	void loadV2(const std::string &dir, FILE *f, TextureManager *textureManager);
+	void loadV3(const std::string &dir, FILE *f, TextureManager *textureManager);
+	void load(const std::string &dir, FILE *f, TextureManager *textureManager);
+	void save(const std::string &dir, FILE *f);
 
 private:
 	void computeTangents();
@@ -156,10 +159,10 @@ public:
 	uint32 getVertexCount() const;
 	
 	//io
-	void load(const string &path);
-	void save(const string &path);
-	void loadG3d(const string &path);
-	void saveS3d(const string &path);
+	void load(const std::string &path);
+	void save(const std::string &path);
+	void loadG3d(const std::string &path);
+	void saveS3d(const std::string &path);
 
 	void setTextureManager(TextureManager *textureManager)	{this->textureManager= textureManager;}
 

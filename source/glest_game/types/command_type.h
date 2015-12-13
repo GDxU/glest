@@ -68,9 +68,9 @@ public:
 
 public:
     virtual void update(UnitUpdater *unitUpdater, Unit *unit) const= 0;
-    virtual void load(int id, const XmlNode *n, const string &dir, const TechTree *tt, const FactionType *ft, const UnitType &ut);
-    virtual string getDesc(const TotalUpgrade *totalUpgrade) const= 0;
-	virtual string toString() const= 0;
+    virtual void load(int id, const XmlNode *n, const std::string &dir, const TechTree *tt, const FactionType *ft, const UnitType &ut);
+    virtual std::string getDesc(const TotalUpgrade *totalUpgrade) const= 0;
+	virtual std::string toString() const= 0;
 	virtual const ProducibleType *getProduced() const	{return NULL;}
 	virtual bool isQueuable() const						{return false;}
 
@@ -91,9 +91,9 @@ private:
 public:
     StopCommandType();
 	virtual void update(UnitUpdater *unitUpdater, Unit *unit) const;
-    virtual void load(int id, const XmlNode *n, const string &dir, const TechTree *tt, const FactionType *ft, const UnitType &ut);
-    virtual string getDesc(const TotalUpgrade *totalUpgrade) const;
-	virtual string toString() const;
+    virtual void load(int id, const XmlNode *n, const std::string &dir, const TechTree *tt, const FactionType *ft, const UnitType &ut);
+    virtual std::string getDesc(const TotalUpgrade *totalUpgrade) const;
+	virtual std::string toString() const;
 
     //get
 	const StopSkillType *getStopSkillType() const	{return stopSkillType;};
@@ -111,9 +111,9 @@ private:
 public:
     MoveCommandType();
 	virtual void update(UnitUpdater *unitUpdater, Unit *unit) const;
-    virtual void load(int id, const XmlNode *n, const string &dir, const TechTree *tt, const FactionType *ft, const UnitType &ut);
-    virtual string getDesc(const TotalUpgrade *totalUpgrade) const;
-	virtual string toString() const;
+    virtual void load(int id, const XmlNode *n, const std::string &dir, const TechTree *tt, const FactionType *ft, const UnitType &ut);
+    virtual std::string getDesc(const TotalUpgrade *totalUpgrade) const;
+	virtual std::string toString() const;
 
     //get
 	const MoveSkillType *getMoveSkillType() const	{return moveSkillType;};
@@ -132,9 +132,9 @@ private:
 public:
     AttackCommandType();
 	virtual void update(UnitUpdater *unitUpdater, Unit *unit) const;
-    virtual void load(int id, const XmlNode *n, const string &dir, const TechTree *tt, const FactionType *ft, const UnitType &ut);
-    virtual string getDesc(const TotalUpgrade *totalUpgrade) const;
-	virtual string toString() const;
+    virtual void load(int id, const XmlNode *n, const std::string &dir, const TechTree *tt, const FactionType *ft, const UnitType &ut);
+    virtual std::string getDesc(const TotalUpgrade *totalUpgrade) const;
+	virtual std::string toString() const;
 
     //get
 	const MoveSkillType * getMoveSkillType() const			{return moveSkillType;}
@@ -153,9 +153,9 @@ private:
 public:
     AttackStoppedCommandType();
 	virtual void update(UnitUpdater *unitUpdater, Unit *unit) const;
-    virtual void load(int id, const XmlNode *n, const string &dir, const TechTree *tt, const FactionType *ft, const UnitType &ut);
-    virtual string getDesc(const TotalUpgrade *totalUpgrade) const;
-	virtual string toString() const;
+    virtual void load(int id, const XmlNode *n, const std::string &dir, const TechTree *tt, const FactionType *ft, const UnitType &ut);
+    virtual std::string getDesc(const TotalUpgrade *totalUpgrade) const;
+	virtual std::string toString() const;
 
     //get
 	const StopSkillType * getStopSkillType() const		{return stopSkillType;}
@@ -171,7 +171,7 @@ class BuildCommandType: public CommandType{
 private:
     const MoveSkillType* moveSkillType;
     const BuildSkillType* buildSkillType;
-	vector<const UnitType*> buildings;
+	std::vector<const UnitType*> buildings;
     SoundContainer startSounds;
     SoundContainer builtSounds;
 
@@ -179,9 +179,9 @@ public:
     BuildCommandType();
     ~BuildCommandType();
 	virtual void update(UnitUpdater *unitUpdater, Unit *unit) const;
-    virtual void load(int id, const XmlNode *n, const string &dir, const TechTree *tt, const FactionType *ft, const UnitType &ut);
-    virtual string getDesc(const TotalUpgrade *totalUpgrade) const;
-	virtual string toString() const;
+    virtual void load(int id, const XmlNode *n, const std::string &dir, const TechTree *tt, const FactionType *ft, const UnitType &ut);
+    virtual std::string getDesc(const TotalUpgrade *totalUpgrade) const;
+	virtual std::string toString() const;
 
     //get
 	const MoveSkillType *getMoveSkillType() const	{return moveSkillType;}
@@ -203,16 +203,16 @@ private:
     const MoveSkillType *moveLoadedSkillType;
     const HarvestSkillType *harvestSkillType;
     const StopSkillType *stopLoadedSkillType;
-	vector<const ResourceType*> harvestedResources;
+	std::vector<const ResourceType*> harvestedResources;
 	int maxLoad;
     int hitsPerUnit;
 
 public:
     HarvestCommandType();
 	virtual void update(UnitUpdater *unitUpdater, Unit *unit) const;
-    virtual void load(int id, const XmlNode *n, const string &dir, const TechTree *tt, const FactionType *ft, const UnitType &ut);
-    virtual string getDesc(const TotalUpgrade *totalUpgrade) const;
-	virtual string toString() const;
+    virtual void load(int id, const XmlNode *n, const std::string &dir, const TechTree *tt, const FactionType *ft, const UnitType &ut);
+    virtual std::string getDesc(const TotalUpgrade *totalUpgrade) const;
+	virtual std::string toString() const;
 
     //get
 	const MoveSkillType *getMoveSkillType() const			{return moveSkillType;}
@@ -235,15 +235,15 @@ class RepairCommandType: public CommandType{
 private:
     const MoveSkillType* moveSkillType;
     const RepairSkillType* repairSkillType;
-    vector<const UnitType*>  repairableUnits;
+    std::vector<const UnitType*>  repairableUnits;
 
 public:
     RepairCommandType();
     ~RepairCommandType();
 	virtual void update(UnitUpdater *unitUpdater, Unit *unit) const;
-    virtual void load(int id, const XmlNode *n, const string &dir, const TechTree *tt, const FactionType *ft, const UnitType &ut);
-    virtual string getDesc(const TotalUpgrade *totalUpgrade) const;
-	virtual string toString() const;
+    virtual void load(int id, const XmlNode *n, const std::string &dir, const TechTree *tt, const FactionType *ft, const UnitType &ut);
+    virtual std::string getDesc(const TotalUpgrade *totalUpgrade) const;
+	virtual std::string toString() const;
 
     //get
 	const MoveSkillType *getMoveSkillType() const			{return moveSkillType;};
@@ -264,10 +264,10 @@ private:
 public:
     ProduceCommandType();
 	virtual void update(UnitUpdater *unitUpdater, Unit *unit) const;
-    virtual void load(int id, const XmlNode *n, const string &dir, const TechTree *tt, const FactionType *ft, const UnitType &ut);
-    virtual string getDesc(const TotalUpgrade *totalUpgrade) const;
-    virtual string getReqDesc() const;
-	virtual string toString() const;
+    virtual void load(int id, const XmlNode *n, const std::string &dir, const TechTree *tt, const FactionType *ft, const UnitType &ut);
+    virtual std::string getDesc(const TotalUpgrade *totalUpgrade) const;
+    virtual std::string getReqDesc() const;
+	virtual std::string toString() const;
 	virtual const ProducibleType *getProduced() const;
 	virtual bool isQueuable() const						{return true;}
 
@@ -289,10 +289,10 @@ private:
 public:
     UpgradeCommandType();
 	virtual void update(UnitUpdater *unitUpdater, Unit *unit) const;
-    virtual void load(int id, const XmlNode *n, const string &dir, const TechTree *tt, const FactionType *ft, const UnitType &ut);
-    virtual string getDesc(const TotalUpgrade *totalUpgrade) const;
-	virtual string toString() const;
-	virtual string getReqDesc() const;
+    virtual void load(int id, const XmlNode *n, const std::string &dir, const TechTree *tt, const FactionType *ft, const UnitType &ut);
+    virtual std::string getDesc(const TotalUpgrade *totalUpgrade) const;
+	virtual std::string toString() const;
+	virtual std::string getReqDesc() const;
 	virtual const ProducibleType *getProduced() const;
 	virtual bool isQueuable() const						{return true;}
 
@@ -314,10 +314,10 @@ private:
 public:
     MorphCommandType();
 	virtual void update(UnitUpdater *unitUpdater, Unit *unit) const;
-    virtual void load(int id, const XmlNode *n, const string &dir, const TechTree *tt, const FactionType *ft, const UnitType &ut);
-    virtual string getDesc(const TotalUpgrade *totalUpgrade) const;
-	virtual string toString() const;
-	virtual string getReqDesc() const;
+    virtual void load(int id, const XmlNode *n, const std::string &dir, const TechTree *tt, const FactionType *ft, const UnitType &ut);
+    virtual std::string getDesc(const TotalUpgrade *totalUpgrade) const;
+	virtual std::string toString() const;
+	virtual std::string getReqDesc() const;
 	virtual const ProducibleType *getProduced() const;
 
     //get

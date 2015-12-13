@@ -17,7 +17,8 @@
 #include "vec.h"
 #include "font.h"
 
-using std::string;
+
+
 
 namespace Shared{ namespace Graphics{
 
@@ -30,7 +31,7 @@ public:
 	virtual ~TextRenderer2D(){};
 
 	virtual void begin(const Font2D *font)= 0;
-	virtual void render(const string &text, int x, int y, bool centered= false)= 0;
+	virtual void render(const std::string &text, int x, int y, bool centered= false)= 0;
 	virtual void end()= 0;
 };
 
@@ -43,7 +44,7 @@ public:
 	virtual ~TextRenderer3D(){};
 
 	virtual void begin(const Font3D *font)= 0;
-	virtual void render(const string &text, float x, float y, float size, bool centered= false)= 0;
+	virtual void render(const std::string &text, float x, float y, float size, bool centered= false)= 0;
 	virtual void end()= 0;
 };
 

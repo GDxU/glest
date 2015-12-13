@@ -66,9 +66,9 @@ void AiInterface::update(){
 
 // ==================== misc ==================== 
 
-void AiInterface::printLog(int logLevel, const string &s){
+void AiInterface::printLog(int logLevel, const std::string &s){
     if(this->logLevel>=logLevel){
-		string logString= "(" + intToStr(factionIndex) + ") " + s;
+		std::string logString= "(" + intToStr(factionIndex) + ") " + s;
 
 		//print log to file
 		FILE *f= fopen(getLogFilename().c_str(), "at");

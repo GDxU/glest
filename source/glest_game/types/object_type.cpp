@@ -26,7 +26,7 @@ void ObjectType::init(int modelCount, int objectClass, bool walkable){
 	this->walkable= walkable;
 }
 
-void ObjectType::loadModel(const string &path){
+void ObjectType::loadModel(const std::string &path){
 	Model *model= Renderer::getInstance().newModel(rsGame);
 	model->load(path);
 	color= Vec3f(0.f);

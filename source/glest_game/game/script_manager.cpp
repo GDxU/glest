@@ -131,9 +131,9 @@ void ScriptManager::onUnitDied(const Unit* unit){
 
 // ========================== lua wrappers ===============================================
 
-string ScriptManager::wrapString(const string &str, int wrapCount){
+std::string ScriptManager::wrapString(const std::string &str, int wrapCount){
 
-	string returnString;
+	std::string returnString;
 
 	int letterCount= 0;
 	for(int i= 0; i<str.size(); ++i){
@@ -151,7 +151,7 @@ string ScriptManager::wrapString(const string &str, int wrapCount){
 	return returnString;
 }
 
-void ScriptManager::showMessage(const string &text, const string &header){
+void ScriptManager::showMessage(const std::string &text, const std::string &header){
 	Lang &lang= Lang::getInstance();
 	
 	messageQueue.push(ScriptManagerMessage(text, header));
@@ -164,7 +164,7 @@ void ScriptManager::clearDisplayText(){
 	displayText= "";
 }
 
-void ScriptManager::setDisplayText(const string &text){
+void ScriptManager::setDisplayText(const std::string &text){
 	displayText= wrapString(Lang::getInstance().getScenarioString(text), displayTextWrapCount);
 }
 
@@ -172,23 +172,23 @@ void ScriptManager::setCameraPosition(const Vec2i &pos){
 	gameCamera->centerXZ(pos.x, pos.y);
 }
 
-void ScriptManager::createUnit(const string &unitName, int factionIndex, Vec2i pos){
+void ScriptManager::createUnit(const std::string &unitName, int factionIndex, Vec2i pos){
 	world->createUnit(unitName, factionIndex, pos);
 }
 
-void ScriptManager::giveResource(const string &resourceName, int factionIndex, int amount){
+void ScriptManager::giveResource(const std::string &resourceName, int factionIndex, int amount){
 	world->giveResource(resourceName, factionIndex, amount);
 }
 
-void ScriptManager::givePositionCommand(int unitId, const string &commandName, const Vec2i &pos){
+void ScriptManager::givePositionCommand(int unitId, const std::string &commandName, const Vec2i &pos){
 	world->givePositionCommand(unitId, commandName, pos);
 }
 
-void ScriptManager::giveProductionCommand(int unitId, const string &producedName){
+void ScriptManager::giveProductionCommand(int unitId, const std::string &producedName){
 	world->giveProductionCommand(unitId, producedName);
 }
 
-void ScriptManager::giveUpgradeCommand(int unitId, const string &producedName){
+void ScriptManager::giveUpgradeCommand(int unitId, const std::string &producedName){
 	world->giveUpgradeCommand(unitId, producedName);
 }
 
@@ -221,11 +221,11 @@ int ScriptManager::getUnitFaction(int unitId){
 	return world->getUnitFactionIndex(unitId);
 }
 
-int ScriptManager::getResourceAmount(const string &resourceName, int factionIndex){
+int ScriptManager::getResourceAmount(const std::string &resourceName, int factionIndex){
 	return world->getResourceAmount(resourceName, factionIndex);
 }
 
-const string &ScriptManager::getLastCreatedUnitName(){
+const std::string &ScriptManager::getLastCreatedUnitName(){
 	return lastCreatedUnitName;
 }
 
@@ -233,7 +233,7 @@ int ScriptManager::getLastCreatedUnitId(){
 	return lastCreatedUnitId;
 }
 
-const string &ScriptManager::getLastDeadUnitName(){
+const std::string &ScriptManager::getLastDeadUnitName(){
 	return lastDeadUnitName;
 }
 
@@ -245,7 +245,7 @@ int ScriptManager::getUnitCount(int factionIndex){
 	return world->getUnitCount(factionIndex);
 }
 
-int ScriptManager::getUnitCountOfType(int factionIndex, const string &typeName){
+int ScriptManager::getUnitCountOfType(int factionIndex, const std::string &typeName){
 	return world->getUnitCountOfType(factionIndex, typeName);
 }
 

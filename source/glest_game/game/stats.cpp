@@ -28,7 +28,7 @@ PlayerStats::PlayerStats(){
 // class Stats
 // =====================================================
 
-void Stats::init(int factionCount, int thisFactionIndex, const string& description){
+void Stats::init(int factionCount, int thisFactionIndex, const std::string& description){
 	this->thisFactionIndex= thisFactionIndex;
 	this->factionCount= factionCount;
 	this->description= description;

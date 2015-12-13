@@ -649,7 +649,7 @@ void Renderer::renderChatManager(const ChatManager *chatManager){
 	Lang &lang= Lang::getInstance();
 
 	if(chatManager->getEditEnabled()){
-		string text;
+		std::string text;
 
 		if(chatManager->getTeamMode()){
 			text+= lang.get("Team");
@@ -694,7 +694,7 @@ void Renderer::renderResourceStatus(){
 		//draw resource status
 		if(showResource){
 		
-			string str= intToStr(r->getAmount());
+			std::string str= intToStr(r->getAmount());
 			
 			glEnable(GL_TEXTURE_2D);
 			renderQuad(j*100+200, metrics.getVirtualH()-30, 16, 16, rt->getImage());
@@ -746,7 +746,7 @@ void Renderer::renderSelectionQuad(){
     }
 }
 
-Vec2i computeCenteredPos(const string &text, const Font2D *font, int x, int y){
+Vec2i computeCenteredPos(const std::string &text, const Font2D *font, int x, int y){
 	Vec2i textPos;
 
 	const Metrics &metrics= Metrics::getInstance();
@@ -759,7 +759,7 @@ Vec2i computeCenteredPos(const string &text, const Font2D *font, int x, int y){
 	return textPos;
 }
 
-void Renderer::renderText(const string &text, const Font2D *font, float alpha, int x, int y, bool centered){
+void Renderer::renderText(const std::string &text, const Font2D *font, float alpha, int x, int y, bool centered){
 	glPushAttrib(GL_ENABLE_BIT | GL_CURRENT_BIT);
 	glEnable(GL_BLEND);
 	glColor4fv(Vec4f(1.f, 1.f, 1.f, alpha).ptr());
@@ -773,7 +773,7 @@ void Renderer::renderText(const string &text, const Font2D *font, float alpha, i
 	glPopAttrib();
 }
 
-void Renderer::renderText(const string &text, const Font2D *font, const Vec3f &color, int x, int y, bool centered){
+void Renderer::renderText(const std::string &text, const Font2D *font, const Vec3f &color, int x, int y, bool centered){
 	glPushAttrib(GL_CURRENT_BIT);
 	glColor3fv(color.ptr());
 	
@@ -786,7 +786,7 @@ void Renderer::renderText(const string &text, const Font2D *font, const Vec3f &c
 	glPopAttrib();
 }
 
-void Renderer::renderTextShadow(const string &text, const Font2D *font, int x, int y, bool centered){
+void Renderer::renderTextShadow(const std::string &text, const Font2D *font, int x, int y, bool centered){
 	glPushAttrib(GL_CURRENT_BIT);
 	
 	Vec2i pos= centered? computeCenteredPos(text, font, x, y): Vec2i(x, y);
@@ -2087,8 +2087,8 @@ void Renderer::renderShadowsToTexture(){
 
 // ==================== gl wrap ==================== 
 
-string Renderer::getGlInfo(){
-	string infoStr;
+std::string Renderer::getGlInfo(){
+	std::string infoStr;
 	Lang &lang= Lang::getInstance();
 	
 	infoStr+= lang.get("OpenGlInfo")+":\n";
@@ -2112,14 +2112,14 @@ string Renderer::getGlInfo(){
 	return infoStr;
 }
 
-string Renderer::getGlMoreInfo(){
-	string infoStr;
+std::string Renderer::getGlMoreInfo(){
+	std::string infoStr;
 	Lang &lang= Lang::getInstance();
 	
 	//gl extensions
 	infoStr+= lang.get("OpenGlExtensions")+":\n   ";
 	
-	string extensions= getGlExtensions();
+	std::string extensions= getGlExtensions();
 	int charCount= 0;
 	for(int i=0; i<extensions.size(); ++i){
 		infoStr+= extensions[i];
@@ -2135,7 +2135,7 @@ string Renderer::getGlMoreInfo(){
 	infoStr+= lang.get("OpenGlPlatformExtensions")+":\n   ";
 	
 	charCount= 0;
-	string platformExtensions= getGlPlatformExtensions();
+	std::string platformExtensions= getGlPlatformExtensions();
 	for(int i=0; i<platformExtensions.size(); ++i){
 		infoStr+= platformExtensions[i];
 		if(charCount>120 && platformExtensions[i]==' '){
@@ -2159,7 +2159,7 @@ void Renderer::autoConfig(){
 	config.setBool("Textures3D", isGlExtensionSupported("GL_EXT_texture3D"));
 
 	//shadows
-	string shadows;
+	std::string shadows;
 	if(getGlMaxTextureUnits()>=3){
 		if(nvidiaCard && shadowExtensions){
 			shadows= shadowsToStr(sShadowMapping);
@@ -2214,7 +2214,7 @@ void Renderer::loadConfig(){
 	}
 }
 
-void Renderer::saveScreen(const string &path){
+void Renderer::saveScreen(const std::string &path){
 	
 	const Metrics &sm= Metrics::getInstance();
 
@@ -2403,7 +2403,7 @@ void Renderer::checkGlCaps(){
 
 	//opengl 1.3
 	if(!isGlVersionSupported(1, 3, 0)){
-		string message;
+		std::string message;
 
 		message += "Your system supports OpenGL version \"";
  		message += getGlVersion() + string("\"\n");
@@ -2435,9 +2435,9 @@ void Renderer::checkGlOptionalCaps(){
 	}
 }
 
-void Renderer::checkExtension(const string &extension, const string &msg){
+void Renderer::checkExtension(const std::string &extension, const std::string &msg){
 	if(!isGlExtensionSupported(extension.c_str())){
-		string str= "OpenGL extension not supported: " + extension +  ", required for " + msg;
+		std::string str= "OpenGL extension not supported: " + extension +  ", required for " + msg;
 		throw runtime_error(str);
 	}
 }
@@ -2816,7 +2816,7 @@ void Renderer::renderQuad(int x, int y, int w, int h, const Texture2D *texture){
 	glEnd();
 }
 
-Renderer::Shadows Renderer::strToShadows(const string &s){
+Renderer::Shadows Renderer::strToShadows(const std::string &s){
 	if(s=="Projected"){
 		return sProjected;
 	}
@@ -2826,7 +2826,7 @@ Renderer::Shadows Renderer::strToShadows(const string &s){
 	return sDisabled;
 }
 
-string Renderer::shadowsToStr(Shadows shadows){
+std::string Renderer::shadowsToStr(Shadows shadows){
 	switch(shadows){
 	case sDisabled:
 		return "Disabled";
@@ -2840,7 +2840,7 @@ string Renderer::shadowsToStr(Shadows shadows){
 	}
 }
 
-Texture2D::Filter Renderer::strToTextureFilter(const string &s){
+Texture2D::Filter Renderer::strToTextureFilter(const std::string &s){
 	if(s=="Bilinear"){
 		return Texture2D::fBilinear;
 	}
@@ -2848,7 +2848,7 @@ Texture2D::Filter Renderer::strToTextureFilter(const string &s){
 		return Texture2D::fTrilinear;
 	}
 	
-	throw runtime_error("Error converting from string to FilterType, found: "+s);
+	throw runtime_error("Error converting from std::string to FilterType, found: "+s);
 }
 
 }}//end namespace

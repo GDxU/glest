@@ -26,13 +26,13 @@ namespace Shared{ namespace Graphics{
 
 class ShaderManager{
 protected:
-	typedef vector<ShaderProgram*> ShaderProgramContainer;
-	typedef vector<Shader*> ShaderContainer;
+	typedef std::vector<ShaderProgram*> ShaderProgramContainer;
+	typedef std::vector<Shader*> ShaderContainer;
 
 protected:
 	ShaderProgramContainer shaderPrograms;
 	ShaderContainer shaders;
-	string logString;
+	std::string logString;
 
 public:
 	ShaderManager(){}
@@ -45,7 +45,7 @@ public:
 	void init();
 	void end();
 
-	const string &getLogString() const	{return logString;}
+	const std::string &getLogString() const	{return logString;}
 };
 
 }}//end namespace

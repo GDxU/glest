@@ -77,10 +77,10 @@ private:
 
 public:
 	NetworkMessageIntro();
-	NetworkMessageIntro(const string &versionString, const string &name, int playerIndex);
+	NetworkMessageIntro(const std::string &versionString, const std::string &name, int playerIndex);
 
-	string getVersionString() const		{return data.versionString.getString();}
-	string getName() const				{return data.name.getString();}
+	std::string getVersionString() const		{return data.versionString.getString();}
+	std::string getName() const				{return data.name.getString();}
 	int getPlayerIndex() const			{return data.playerIndex;}
 
 	virtual bool receive(Socket* socket);
@@ -215,10 +215,10 @@ private:
 
 public:
 	NetworkMessageText(){}
-	NetworkMessageText(const string &text, const string &sender, int teamIndex);
+	NetworkMessageText(const std::string &text, const std::string &sender, int teamIndex);
 
-	string getText() const		{return data.text.getString();}
-	string getSender() const	{return data.sender.getString();}
+	std::string getText() const		{return data.text.getString();}
+	std::string getSender() const	{return data.sender.getString();}
 	int getTeamIndex() const	{return data.teamIndex;}
 
 	virtual bool receive(Socket* socket);

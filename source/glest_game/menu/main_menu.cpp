@@ -150,7 +150,7 @@ void MainMenu::setState(MenuState *state){
 // 	class MenuState
 // =====================================================
 
-MenuState::MenuState(Program *program, MainMenu *mainMenu, const string &stateName){
+MenuState::MenuState(Program *program, MainMenu *mainMenu, const std::string &stateName){
 	this->program= program;
 	this->mainMenu= mainMenu;
 

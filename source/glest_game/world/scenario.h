@@ -17,9 +17,12 @@
 
 #include "xml_parser.h"
 
-using std::string;
-using std::vector;
-using std::pair;
+
+
+
+
+
+
 
 using Shared::Xml::XmlNode;
 
@@ -31,14 +34,14 @@ namespace Glest{ namespace Game{
 
 class Script{
 private:
-	string name;
-	string code;
+	std::string name;
+	std::string code;
 
 public:
-	Script(const string &name, const string &code)	{this->name= name; this->code= code;}
+	Script(const std::string &name, const std::string &code)	{this->name= name; this->code= code;}
 
-	const string &getName() const	{return name;}
-	const string &getCode() const	{return code;}
+	const std::string &getName() const	{return name;}
+	const std::string &getCode() const	{return code;}
 };
 
 // =====================================================
@@ -47,22 +50,22 @@ public:
 
 class Scenario{
 private:
-	typedef pair<string, string> NameScriptPair;
-	typedef vector<Script> Scripts;
+    typedef std::pair<std::string, std::string> NameScriptPair;
+	typedef std::vector<Script> Scripts;
 
 	Scripts scripts;
 
 public:
     ~Scenario();
-	void load(const string &path);
+	void load(const std::string &path);
 
 	int getScriptCount() const				{return scripts.size();}
 	const Script* getScript(int i) const	{return &scripts[i];}
 
-	static string getScenarioPath(const string &dir, const string &scenarioName);
+	static std::string getScenarioPath(const std::string &dir, const std::string &scenarioName);
 
 private:
-	string getFunctionName(const XmlNode *scriptNode);
+	std::string getFunctionName(const XmlNode *scriptNode);
 };
 
 }}//end namespace

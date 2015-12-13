@@ -21,27 +21,27 @@ using namespace Shared::Util;
 
 namespace Glest{ namespace Game{
 
-const string mailString= "contact_game@glest.org";
-const string glestVersionString= "v3.2.2";
+const std::string mailString= "contact_game@glest.org";
+const std::string glestVersionString= "v3.2.2";
 
-string getCrashDumpFileName(){
+std::string getCrashDumpFileName(){
 	return "glest"+glestVersionString+".dmp";
 }
 
-string getNetworkVersionString(){
-	return glestVersionString + " - " + string(__DATE__) + " - " + string(__TIME__);
+std::string getNetworkVersionString(){
+    return glestVersionString + " - " + std::string(__DATE__) + " - " + std::string(__TIME__);
 }
 
-string getAboutString1(int i){
+std::string getAboutString1(int i){
 	switch(i){
 	case 0: return "Glest " + glestVersionString + " (" + "Shared Library " + sharedLibVersionString + ")";
-	case 1: return "Built: " + string(__DATE__);
+    case 1: return "Built: " + std::string(__DATE__);
 	case 2: return "Copyright 2001-2009 The Glest Team";
 	}
 	return "";
 }
 
-string getAboutString2(int i){
+std::string getAboutString2(int i){
 	switch(i){
 	case 0: return "Web: http://glest.org";
 	case 1: return "Mail: " + mailString;
@@ -50,12 +50,12 @@ string getAboutString2(int i){
 	return "";
 }
 
-string getTeammateName(int i){
+std::string getTeammateName(int i){
 	switch(i){
 	case 0: return "Martiño Figueroa";
-	case 1: return "José Luis González";
+	case 1: return "Jos?Luis González";
 	case 2: return "Tucho Fernández";
-	case 3: return "José Zanni";
+	case 3: return "Jos?Zanni";
 	case 4: return "Félix Menéndez";
 	case 5: return "Marcos Caruncho";
 	case 6: return "Matthias Braun";
@@ -63,7 +63,7 @@ string getTeammateName(int i){
 	return "";
 }
 
-string getTeammateRole(int i){
+std::string getTeammateRole(int i){
 	Lang &l= Lang::getInstance();
 
 	switch(i){
@@ -78,8 +78,8 @@ string getTeammateRole(int i){
 	return "";
 }
 
-string formatString(const string &str){
-	string outStr = str;
+std::string formatString(const std::string &str){
+	std::string outStr = str;
 
 	if(!outStr.empty()){
 		outStr[0]= toupper(outStr[0]);

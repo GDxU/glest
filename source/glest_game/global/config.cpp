@@ -30,43 +30,43 @@ Config &Config::getInstance(){
 	return config;
 }
 
-void Config::save(const string &path){
+void Config::save(const std::string &path){
 	properties.save(path);
 }
 
-int Config::getInt(const string &key) const{
+int Config::getInt(const std::string &key) const{
 	return properties.getInt(key);
 }
 
-bool Config::getBool(const string &key) const{
+bool Config::getBool(const std::string &key) const{
 	return properties.getBool(key);
 }
 
-float Config::getFloat(const string &key) const{
+float Config::getFloat(const std::string &key) const{
 	return properties.getFloat(key);
 }
 
-const string &Config::getString(const string &key) const{
+const std::string &Config::getString(const std::string &key) const{
 	return properties.getString(key);
 }
 
-void Config::setInt(const string &key, int value){
+void Config::setInt(const std::string &key, int value){
 	properties.setInt(key, value);
 }
 
-void Config::setBool(const string &key, bool value){
+void Config::setBool(const std::string &key, bool value){
 	properties.setBool(key, value);
 }
 
-void Config::setFloat(const string &key, float value){
+void Config::setFloat(const std::string &key, float value){
 	properties.setFloat(key, value);
 }
 
-void Config::setString(const string &key, const string &value){
+void Config::setString(const std::string &key, const std::string &value){
 	properties.setString(key, value);
 }
 
-string Config::toString(){
+std::string Config::toString(){
 	return properties.toString();
 }
 

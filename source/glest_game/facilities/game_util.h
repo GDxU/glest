@@ -17,23 +17,24 @@
 
 #include "util.h"
 
-using std::string;
+
+
 using Shared::Util::sharedLibVersionString;
 
 namespace Glest{ namespace Game{
 
-extern const string mailString;
-extern const string glestVersionString;
-extern const string networkVersionString;
+extern const std::string mailString;
+extern const std::string glestVersionString;
+extern const std::string networkVersionString;
 
-string getCrashDumpFileName();
-string getNetworkVersionString();
-string getAboutString1(int i);
-string getAboutString2(int i);
-string getTeammateName(int i);
-string getTeammateRole(int i);
+std::string getCrashDumpFileName();
+std::string getNetworkVersionString();
+std::string getAboutString1(int i);
+std::string getAboutString2(int i);
+std::string getTeammateName(int i);
+std::string getTeammateRole(int i);
 
-string formatString(const string &str);
+std::string formatString(const std::string &str);
 
 }}//end namespace
 

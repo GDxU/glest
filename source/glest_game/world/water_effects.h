@@ -16,7 +16,8 @@
 
 #include "vec.h"
 
-using std::vector;
+
+
 
 using Shared::Graphics::Vec2f;
 
@@ -52,7 +53,7 @@ public:
 
 class WaterEffects{
 public:
-	typedef vector<WaterSplash> WaterSplashes;
+	typedef std::vector<WaterSplash> WaterSplashes;
 
 private:
 	WaterSplashes waterSplashes;

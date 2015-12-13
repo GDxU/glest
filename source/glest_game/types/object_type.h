@@ -16,7 +16,8 @@
 #include "model.h"
 #include "vec.h"
 
-using std::vector;
+
+
 
 namespace Glest{ namespace Game{
 
@@ -31,7 +32,7 @@ using Shared::Graphics::Vec3f;
 
 class ObjectType{
 private:
-	typedef vector<Model*> Models;
+	typedef std::vector<Model*> Models;
 
 private:
 	static const int tree1= 0;
@@ -47,7 +48,7 @@ private:
 public:
 	void init(int modelCount, int objectClass, bool walkable);
 
-	void loadModel(const string &path);
+	void loadModel(const std::string &path);
 
 	Model *getModel(int i)			{return models[i];}
 	int getModelCount() const		{return models.size();}

@@ -81,24 +81,24 @@ void World::init(Game *game, bool createUnits){
 }
 
 //load tileset
-void World::loadTileset(const string &dir, Checksum *checksum){
+void World::loadTileset(const std::string &dir, Checksum *checksum){
 	tileset.load(dir, checksum);
 	timeFlow.init(&tileset);
 }
 
 //load tech
-void World::loadTech(const string &dir, Checksum *checksum){
+void World::loadTech(const std::string &dir, Checksum *checksum){
 	 techTree.load(dir, checksum);
 }
 
 //load map
-void World::loadMap(const string &path, Checksum *checksum){
+void World::loadMap(const std::string &path, Checksum *checksum){
 	checksum->addFile(path);
 	map.load(path, &techTree, &tileset);
 }
 
 //load map
-void World::loadScenario(const string &path, Checksum *checksum){
+void World::loadScenario(const std::string &path, Checksum *checksum){
 	checksum->addFile(path);
 	scenario.load(path);
 }
@@ -303,7 +303,7 @@ bool World::toRenderUnit(const Unit *unit) const{
         map.getSurfaceCell(Map::toSurfCoords(unit->getTargetPos()))->isVisible(thisTeamIndex));
 }
 
-void World::createUnit(const string &unitName, int factionIndex, const Vec2i &pos){
+void World::createUnit(const std::string &unitName, int factionIndex, const Vec2i &pos){
 	if(factionIndex<factions.size()){
 		Faction* faction= &factions[factionIndex];
 		const FactionType* ft= faction->getType();
@@ -325,7 +325,7 @@ void World::createUnit(const string &unitName, int factionIndex, const Vec2i &po
 	}
 }
 
-void World::giveResource(const string &resourceName, int factionIndex, int amount){
+void World::giveResource(const std::string &resourceName, int factionIndex, int amount){
 	if(factionIndex<factions.size()){
 		Faction* faction= &factions[factionIndex];
 		const ResourceType* rt= techTree.getResourceType(resourceName);
@@ -337,7 +337,7 @@ void World::giveResource(const string &resourceName, int factionIndex, int amoun
 	}
 }
 
-void World::givePositionCommand(int unitId, const string &commandName, const Vec2i &pos){
+void World::givePositionCommand(int unitId, const std::string &commandName, const Vec2i &pos){
 	Unit* unit= findUnitById(unitId);
 	if(unit!=NULL){
 		CommandClass cc;
@@ -356,7 +356,7 @@ void World::givePositionCommand(int unitId, const string &commandName, const Vec
 	}
 }
 
-void World::giveProductionCommand(int unitId, const string &producedName){
+void World::giveProductionCommand(int unitId, const std::string &producedName){
 	Unit *unit= findUnitById(unitId);
 	if(unit!=NULL){
 		const UnitType *ut= unit->getType();
@@ -375,7 +375,7 @@ void World::giveProductionCommand(int unitId, const string &producedName){
 	}
 }
 
-void World::giveUpgradeCommand(int unitId, const string &upgradeName){
+void World::giveUpgradeCommand(int unitId, const std::string &upgradeName){
 	Unit *unit= findUnitById(unitId);
 	if(unit!=NULL){
 		const UnitType *ut= unit->getType();
@@ -395,7 +395,7 @@ void World::giveUpgradeCommand(int unitId, const string &upgradeName){
 }
 
 
-int World::getResourceAmount(const string &resourceName, int factionIndex){
+int World::getResourceAmount(const std::string &resourceName, int factionIndex){
 	if(factionIndex<factions.size()){
 		Faction* faction= &factions[factionIndex];
 		const ResourceType* rt= techTree.getResourceType(resourceName);
@@ -453,7 +453,7 @@ int World::getUnitCount(int factionIndex){
 	}
 }
 
-int World::getUnitCountOfType(int factionIndex, const string &typeName){
+int World::getUnitCountOfType(int factionIndex, const std::string &typeName){
 	if(factionIndex<factions.size()){
 		Faction* faction= &factions[factionIndex];
 		int count= 0;

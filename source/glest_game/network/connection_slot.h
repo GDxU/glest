@@ -20,7 +20,8 @@
 
 using Shared::Platform::ServerSocket;
 using Shared::Platform::Socket;
-using std::vector;
+
+
 
 namespace Glest{ namespace Game{
 
@@ -35,7 +36,7 @@ private:
 	ServerInterface* serverInterface;
 	Socket* socket;
 	int playerIndex;
-	string name;
+	std::string name;
 	bool ready;
 
 public:
@@ -45,7 +46,7 @@ public:
 	virtual void update();
 
 	void setReady()					{ready= true;}
-	const string &getName() const	{return name;}
+	const std::string &getName() const	{return name;}
 	bool isReady() const			{return ready;}
 
 protected:

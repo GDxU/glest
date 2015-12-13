@@ -34,10 +34,10 @@ private:
 	GraphicListBox listBoxMap;
 	GraphicListBox listBoxTechTree;
 	GraphicListBox listBoxTileset;
-	vector<string> mapFiles;
-	vector<string> techTreeFiles;
-	vector<string> tilesetFiles;
-	vector<string> factionFiles;
+	std::vector<string> mapFiles;
+	std::vector<string> techTreeFiles;
+	std::vector<string> tilesetFiles;
+	std::vector<string> factionFiles;
 	GraphicLabel labelPlayers[GameConstants::maxPlayers];
 	GraphicListBox listBoxControls[GameConstants::maxPlayers];
 	GraphicListBox listBoxFactions[GameConstants::maxPlayers];
@@ -55,7 +55,7 @@ public:
 
 private:
     void loadGameSettings(GameSettings *gameSettings);
-	void loadMapInfo(string file, MapInfo *mapInfo);
+	void loadMapInfo(std::string file, MapInfo *mapInfo);
 	void reloadFactions();
 	void updateControlers();
 	void closeUnusedSlots();

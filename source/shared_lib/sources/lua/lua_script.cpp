@@ -32,7 +32,7 @@ LuaScript::LuaScript(){
 	luaL_openlibs(luaState);
 
 	if(luaState==NULL){
-		throw runtime_error("Can not allocate lua state");
+		throw std::runtime_error("Can not allocate lua state");
 	}
 
 	argumentCount= -1;
@@ -42,16 +42,16 @@ LuaScript::~LuaScript(){
 	lua_close(luaState);
 }
 
-void LuaScript::loadCode(const string &code, const string &name){
+void LuaScript::loadCode(const std::string &code, const std::string &name){
 	int errorCode= luaL_loadbuffer(luaState, code.c_str(), code.size(), name.c_str());
 	if(errorCode!=0){
-		throw runtime_error("Error loading lua code: " + errorToString(errorCode));
+		throw std::runtime_error("Error loading lua code: " + errorToString(errorCode));
 	}
 
 	//run code
 	errorCode= lua_pcall(luaState, 0, 0, 0)!=0;
 	if(errorCode!=0){
-		throw runtime_error("Error initializing lua: " + errorToString(errorCode));
+		throw std::runtime_error("Error initializing lua: " + errorToString(errorCode));
 	}
 }
 
@@ -64,14 +64,14 @@ void LuaScript::endCall(){
 	lua_pcall(luaState, argumentCount, 0, 0);
 }
 
-void LuaScript::registerFunction(LuaFunction luaFunction, const string &functionName){
+void LuaScript::registerFunction(LuaFunction luaFunction, const std::string &functionName){
     lua_pushcfunction(luaState, luaFunction);
 	lua_setglobal(luaState, functionName.c_str());
 }
 
-string LuaScript::errorToString(int errorCode){
+std::string LuaScript::errorToString(int errorCode){
 
-	string error;
+	std::string error;
 		
 	switch(errorCode){
 		case LUA_ERRSYNTAX: 
@@ -111,9 +111,9 @@ int LuaArguments::getInt(int argumentIndex) const{
 	return luaL_checkint(luaState, argumentIndex);
 }
 
-string LuaArguments::getString(int argumentIndex) const{
+std::string LuaArguments::getString(int argumentIndex) const{
 	if(!lua_isstring(luaState, argumentIndex)){
-		throwLuaError("Can not get string from Lua state");
+		throwLuaError("Can not get std::string from Lua state");
 	}
 	return luaL_checkstring(luaState, argumentIndex);
 }
@@ -145,7 +145,7 @@ void LuaArguments::returnInt(int value){
 	lua_pushinteger(luaState, value);
 }
 
-void LuaArguments::returnString(const string &value){
+void LuaArguments::returnString(const std::string &value){
 	++returnCount;
 	lua_pushstring(luaState, value.c_str());
 }
@@ -162,11 +162,11 @@ void LuaArguments::returnVec2i(const Vec2i &value){
 	lua_rawseti(luaState, -2, 2);
 }
 
-void LuaArguments::throwLuaError(const string &message) const{
-	string stackString;
+void LuaArguments::throwLuaError(const std::string &message) const{
+	std::string stackString;
 	int stackSize = lua_gettop(luaState);
 
-	//build stack string
+	//build stack std::string
 	for(int i= 1; i<=stackSize; ++i){
 		stackString+= "-" + intToStr(i) + ": ";
 		if(lua_isnumber(luaState, -i)){
@@ -185,7 +185,7 @@ void LuaArguments::throwLuaError(const string &message) const{
 		stackString+= "\n";
 	}
 	
-	throw runtime_error("Lua error: " + message + "\n\nLua Stack:\n" + stackString);
+	throw std::runtime_error("Lua error: " + message + "\n\nLua Stack:\n" + stackString);
 }
 
 }}//end namespace

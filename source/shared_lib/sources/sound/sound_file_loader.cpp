@@ -26,7 +26,7 @@ namespace Shared{ namespace Sound{
 //	class WavSoundFileLoader
 // =====================================================
 
-void WavSoundFileLoader::open(const string &path, SoundInfo *soundInfo){
+void WavSoundFileLoader::open(const std::string &path, SoundInfo *soundInfo){
     char chunkId[]={'-', '-', '-', '-', '\0'};
     uint32 size32= 0;
     uint16 size16= 0; 
@@ -35,14 +35,14 @@ void WavSoundFileLoader::open(const string &path, SoundInfo *soundInfo){
 	f.open(path.c_str(), ios_base::in | ios_base::binary);
 
 	if(!f.is_open()){
-		throw runtime_error("Error opening wav file: "+ string(path));
+		throw std::runtime_error("Error opening wav file: "+ string(path));
 	}
 
     //RIFF chunk - Id
     f.read(chunkId, 4);
 
 	if(strcmp(chunkId, "RIFF")!=0){
-		throw runtime_error("Not a valid wav file (first four bytes are not RIFF):" + path);
+		throw std::runtime_error("Not a valid wav file (first four bytes are not RIFF):" + path);
 	}
 
     //RIFF chunk - Size 
@@ -52,7 +52,7 @@ void WavSoundFileLoader::open(const string &path, SoundInfo *soundInfo){
     f.read(chunkId, 4);
     
 	if(strcmp(chunkId, "WAVE")!=0){
-		throw runtime_error("Not a valid wav file (wave data don't start by WAVE): " + path);
+		throw std::runtime_error("Not a valid wav file (wave data don't start by WAVE): " + path);
 	}
 
     // === HEADER ===
@@ -61,7 +61,7 @@ void WavSoundFileLoader::open(const string &path, SoundInfo *soundInfo){
     f.read(chunkId, 4);
     
 	if(strcmp(chunkId, "fmt ")!=0){
-		throw runtime_error("Not a valid wav file (first sub-chunk Id is not fmt): "+ path);
+		throw std::runtime_error("Not a valid wav file (first sub-chunk Id is not fmt): "+ path);
 	}
 
     //first sub-chunk (header) - Size 
@@ -89,7 +89,7 @@ void WavSoundFileLoader::open(const string &path, SoundInfo *soundInfo){
 	soundInfo->setBitsPerSample(size16);
 
 	if (soundInfo->getBitsPerSample() != 8 && soundInfo->getBitsPerSample()!=16){
-		throw runtime_error("Bits per sample must be 8 or 16: " + path);
+		throw std::runtime_error("Bits per sample must be 8 or 16: " + path);
 	}
 	bytesPerSecond= soundInfo->getBitsPerSample()*8*soundInfo->getSamplesPerSecond()*soundInfo->getChannels();
 
@@ -112,7 +112,7 @@ void WavSoundFileLoader::open(const string &path, SoundInfo *soundInfo){
     while(strncmp(chunkId, "data", 4)!=0 && count<maxDataRetryCount);
 
 	if(f.bad() || count==maxDataRetryCount){
-		throw runtime_error("Error reading samples: "+ path);
+		throw std::runtime_error("Error reading samples: "+ path);
 	}
 
 	dataOffset= f.tellg();
@@ -136,10 +136,10 @@ void WavSoundFileLoader::restart(){
 //        Ogg Sound File Loader
 // =======================================
 
-void OggSoundFileLoader::open(const string &path, SoundInfo *soundInfo){
+void OggSoundFileLoader::open(const std::string &path, SoundInfo *soundInfo){
 	f= fopen(path.c_str(), "rb");
 	if(f==NULL){
-		throw runtime_error("Can't open ogg file: "+path);
+		throw std::runtime_error("Can't open ogg file: "+path);
 	}
 
 	vf= new OggVorbis_File();

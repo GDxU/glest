@@ -73,7 +73,7 @@ void BattleEnd::render(){
 		int resourcesHarvested= stats.getResourcesHarvested(i);
 
 		int score= kills*100 + unitsProduced*50 + resourcesHarvested/10;
-		string controlString;
+		std::string controlString;
 
 		switch(stats.getControl(i)){
 		case ctCpu:
@@ -118,7 +118,7 @@ void BattleEnd::render(){
 
 	textRenderer->begin(CoreData::getInstance().getMenuFontVeryBig());
 
-	string header = stats.getDescription() + " - ";
+	std::string header = stats.getDescription() + " - ";
 
 	if(stats.getVictory(stats.getThisFactionIndex())){
 		header += lang.get("Victory");

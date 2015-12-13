@@ -21,12 +21,12 @@ using Shared::Util::Properties;
 // =====================================================
 // 	class Lang
 //
-//	String table
+//	std::string table
 // =====================================================
 
 class Lang{
 private:
-	string language;
+	std::string language;
 	Properties strings;
 	Properties scenarioStrings;
 
@@ -35,10 +35,10 @@ private:
 
 public:
 	static Lang &getInstance();    
-	void loadStrings(const string &language);
-	void loadScenarioStrings(const string &scenarioDir, const string &scenarioName);
-	string get(const string &s);
-	string getScenarioString(const string &s);
+	void loadStrings(const std::string &language);
+	void loadScenarioStrings(const std::string &scenarioDir, const std::string &scenarioName);
+	std::string get(const std::string &s);
+	std::string getScenarioString(const std::string &s);
 };
 
 }}//end namespace

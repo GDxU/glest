@@ -34,7 +34,7 @@ void VertexBuffer::setTexCoordPointer(void *pointer, int texCoordIndex, int coor
 	texCoordCoordCounts[texCoordIndex]= coordCount;
 }
 
-void VertexBuffer::setAttribPointer(void *pointer, int attribIndex, int coordCount, const string &name){
+void VertexBuffer::setAttribPointer(void *pointer, int attribIndex, int coordCount, const std::string &name){
 	attribPointers[attribIndex]= pointer;
 	attribCoordCounts[attribIndex]= coordCount;
 	attribNames[attribIndex]= name;

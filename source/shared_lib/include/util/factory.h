@@ -16,10 +16,14 @@
 #include <string>
 #include <stdexcept>
 
-using std::map;
-using std::string;
-using std::pair;
-using std::runtime_error;
+
+
+
+
+
+
+
+
 
 namespace Shared{ namespace Util{
 
@@ -50,8 +54,8 @@ public:
 template<typename T>
 class MultiFactory{
 private:
-	typedef map<string, SingleFactoryBase*> Factories;
-	typedef pair<string, SingleFactoryBase*> FactoryPair;
+    typedef std::map<std::string, SingleFactoryBase*> Factories;
+    typedef std::pair<std::string, SingleFactoryBase*> FactoryPair;
 
 private:
 	Factories factories;
@@ -64,19 +68,19 @@ public:
 	}
 
 	template<typename R>
-	void registerClass(string classId){
+	void registerClass(std::string classId){
 		factories.insert(FactoryPair(classId, new SingleFactory<R>()));
 	}
 
-	T *newInstance(string classId){
+	T *newInstance(std::string classId){
 		Factories::iterator it= factories.find(classId);
 		if(it == factories.end()){
-			throw runtime_error("Unknown class identifier: " + classId);
+			throw std::runtime_error("Unknown class identifier: " + classId);
 		}
 		return static_cast<T*>(it->second->newInstance());
 	}
 
-	bool isClassId(string classId){
+	bool isClassId(std::string classId){
 		return factories.find(classId)!=factories.end();
 	}
 };

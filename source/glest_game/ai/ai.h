@@ -20,9 +20,12 @@
 #include "command.h"
 #include "random.h"
 
-using std::deque;
-using std::vector;
-using std::list;
+
+
+
+
+
+
 using Shared::Util::Random;
 
 namespace Glest{ namespace Game{
@@ -49,7 +52,7 @@ protected:
 public:
 	virtual ~Task(){}
 	TaskClass getClass() const	{return taskClass;}
-	virtual string toString() const= 0;
+	virtual std::string toString() const= 0;
 };
 
 // ==================== ProduceTask ====================
@@ -68,7 +71,7 @@ public:
 	UnitClass getUnitClass() const					{return unitClass;} 
 	const UnitType *getUnitType() const				{return unitType;}
 	const ResourceType *getResourceType() const		{return resourceType;}
-	virtual string toString() const;
+	virtual std::string toString() const;
 };
 
 // ==================== BuildTask ====================
@@ -89,7 +92,7 @@ public:
 	const ResourceType *getResourceType() const	{return resourceType;}
 	bool getForcePos() const					{return forcePos;}
 	Vec2i getPos() const						{return pos;}
-	virtual string toString() const;
+	virtual std::string toString() const;
 };
 
 // ==================== UpgradeTask ====================
@@ -101,7 +104,7 @@ private:
 public:
 	UpgradeTask(const UpgradeType *upgradeType= NULL);
 	const UpgradeType *getUpgradeType() const	{return upgradeType;}
-	virtual string toString() const;
+	virtual std::string toString() const;
 };
 
 // ===============================
@@ -130,7 +133,7 @@ public:
 	};
 
 private:
-	typedef vector<AiRule*> AiRules;
+	typedef std::vector<AiRule*> AiRules;
 	typedef list<const Task*> Tasks;
 	typedef deque<Vec2i> Positions;
 

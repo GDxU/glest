@@ -48,8 +48,8 @@ StaticSound::~StaticSound(){
 	delete [] samples;
 }
 
-void StaticSound::load(const string &path){
-	string ext= path.substr(path.find_last_of('.')+1);
+void StaticSound::load(const std::string &path){
+	std::string ext= path.substr(path.find_last_of('.')+1);
 
 	soundFileLoader= SoundFileLoaderFactory::getInstance()->newInstance(ext);
 
@@ -74,8 +74,8 @@ StrSound::~StrSound(){
 	close();
 }
 
-void StrSound::open(const string &path){
-	string ext= path.substr(path.find_last_of('.')+1);
+void StrSound::open(const std::string &path){
+	std::string ext= path.substr(path.find_last_of('.')+1);
 
 	soundFileLoader= SoundFileLoaderFactory::getInstance()->newInstance(ext);
 	soundFileLoader->open(path, &info);

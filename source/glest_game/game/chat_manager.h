@@ -14,7 +14,8 @@
 
 #include <string>
 
-using std::string;
+
+
 
 namespace Glest{ namespace Game{
 
@@ -32,7 +33,7 @@ private:
 	bool editEnabled;
 	bool teamMode;
 	Console* console;
-	string text;
+	std::string text;
 	int thisTeamIndex;
 
 public:
@@ -45,7 +46,7 @@ public:
 
 	bool getEditEnabled() const	{return editEnabled;}
 	bool getTeamMode() const	{return teamMode;}
-	string getText() const		{return text;}
+	std::string getText() const		{return text;}
 };
 
 }}//end namespace

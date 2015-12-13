@@ -30,13 +30,13 @@ void ShaderManager::init(){
 	for(int i=0; i<shaders.size(); ++i){
 		shaders[i]->init();
 		if(!shaders[i]->compile(logString)){
-			throw runtime_error("Can't compile shader\n");
+			throw std::runtime_error("Can't compile shader\n");
 		}
 	}	
 	for(int i=0; i<shaderPrograms.size(); ++i){
 		shaderPrograms[i]->init();
 		if(!shaderPrograms[i]->link(logString)){
-			throw runtime_error("Can't link shader\n");
+			throw std::runtime_error("Can't link shader\n");
 		}
 	}	
 }

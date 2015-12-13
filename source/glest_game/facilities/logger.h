@@ -15,8 +15,10 @@
 #include <string>
 #include <deque>
 
-using std::string;
-using std::deque;
+
+
+
+
 
 namespace Glest{ namespace Game{
 
@@ -31,13 +33,13 @@ private:
 	static const int logLineCount;
 
 private:
-	typedef deque<string> Strings;
+	typedef std::deque<std::string> Strings;
 
 private:
-	string fileName;
-	string state;
-	string subtitle;
-	string current;
+	std::string fileName;
+	std::string state;
+	std::string subtitle;
+	std::string current;
 
 private:
 	Logger();
@@ -45,11 +47,11 @@ private:
 public:
 	static Logger & getInstance();
 	
-	void setFile(const string &fileName)		{this->fileName= fileName;}
-	void setState(const string &state)			{this->state= state;}
-	void setSubtitle(const string &subtitle)	{this->subtitle= subtitle;}
+	void setFile(const std::string &fileName)		{this->fileName= fileName;}
+	void setState(const std::string &state)			{this->state= state;}
+	void setSubtitle(const std::string &subtitle)	{this->subtitle= subtitle;}
 
-	void add(const string &str, bool renderScreen= false);
+	void add(const std::string &str, bool renderScreen= false);
 	void renderLoadingScreen();
 
 	void clear();

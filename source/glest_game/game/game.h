@@ -23,7 +23,8 @@
 #include "script_manager.h"
 #include "game_settings.h"
 
-using std::vector;
+
+
 
 namespace Glest{ namespace Game{
 
@@ -44,8 +45,8 @@ public:
 	};
 
 private:
-	typedef vector<Ai*> Ais;
-	typedef vector<AiInterface*> AiInterfaces;
+	typedef std::vector<Ai*> Ais;
+	typedef std::vector<AiInterface*> AiInterfaces;
 
 private:
 	//main data
@@ -60,7 +61,7 @@ private:
 
 	//misc
 	Checksum checksum;
-    string loadingText;
+    std::string loadingText;
     int mouse2d;
     int mouseX, mouseY; //coords win32Api
 	int updateFps, lastUpdateFps;
@@ -127,7 +128,7 @@ private:
 	int getUpdateLoops();
 	void showLoseMessageBox();
 	void showWinMessageBox();
-	void showMessageBox(const string &text, const string &header, bool toggle);
+	void showMessageBox(const std::string &text, const std::string &header, bool toggle);
 };
 
 }}//end namespace

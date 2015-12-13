@@ -18,7 +18,7 @@ void TextRenderer2DD3d9::begin(const Font2D *font){
 	this->color= Vec4f(1.0f);
 }
 
-void TextRenderer2DD3d9::render(const string &text, int x, int y, bool centered){
+void TextRenderer2DD3d9::render(const std::string &text, int x, int y, bool centered){
    	RECT rect;
 	rect.bottom= y;
 	rect.left= x;

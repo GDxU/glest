@@ -5,8 +5,10 @@
 #include <string>
 #include <windows.h>
 
-using std::vector;
-using std::string;
+
+
+
+
 
 namespace Shared{ namespace Platform{
 
@@ -22,18 +24,18 @@ private:
 
 protected:
 	int id;
-	string text;
+	std::string text;
 	HMENU handle;
 
 public:
-	void init(const string &text="");
+	void init(const std::string &text="");
 	virtual ~MenuBase(){};
 
 	virtual void create(Menu *parent)= 0;
 	virtual void destroy(){};
 
 	int getId() const				{return id;}
-	const string &getText() const	{return text;}
+	const std::string &getText() const	{return text;}
 	HMENU getHandle() const			{return handle;}
 };
 
@@ -43,7 +45,7 @@ public:
 
 class Menu: public MenuBase{
 private:
-	typedef vector<MenuBase*> MenuChildren; 
+	typedef std::vector<MenuBase*> MenuChildren; 
 
 private:
 	MenuChildren children;

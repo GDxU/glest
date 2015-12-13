@@ -30,7 +30,7 @@ namespace Glest{ namespace Game{
 // 	class Text  
 // =====================================================
 
-Text::Text(const string &text, const Vec2i &pos, int time, const Font2D *font){
+Text::Text(const std::string &text, const Vec2i &pos, int time, const Font2D *font){
 	this->text= text;
 	this->pos= pos;
 	this->time= time;

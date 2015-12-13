@@ -32,7 +32,7 @@ public:
 	TextRenderer2DGl();
 
 	virtual void begin(const Font2D *font);
-	virtual void render(const string &text, int x, int y, bool centered);
+	virtual void render(const std::string &text, int x, int y, bool centered);
 	virtual void end();
 };
 
@@ -49,7 +49,7 @@ public:
 	TextRenderer3DGl();
 
 	virtual void begin(const Font3D *font);
-	virtual void render(const string &text, float x, float y, float size, bool centered);
+	virtual void render(const std::string &text, float x, float y, float size, bool centered);
 	virtual void end();
 };
 

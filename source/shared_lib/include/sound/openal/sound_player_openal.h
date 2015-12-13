@@ -17,7 +17,8 @@
 
 #include <vector>
 
-using std::vector;
+
+
 
 namespace Shared{ namespace Sound{ namespace OpenAL{
 

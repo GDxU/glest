@@ -18,7 +18,8 @@
 
 #include <vec.h>
 
-using std::string;
+
+
 
 using Shared::Graphics::Vec2i;
 
@@ -40,15 +41,15 @@ public:
 	LuaScript();
 	~LuaScript();
 
-	void loadCode(const string &code, const string &name);
+	void loadCode(const std::string &code, const std::string &name);
 
-	void beginCall(const string& functionName);
+    void beginCall(const std::string& functionName);
 	void endCall();
 
-	void registerFunction(LuaFunction luaFunction, const string &functionName);
+	void registerFunction(LuaFunction luaFunction, const std::string &functionName);
 
 private:
-	string errorToString(int errorCode);
+	std::string errorToString(int errorCode);
 };
 
 // =====================================================
@@ -64,16 +65,16 @@ public:
 	LuaArguments(lua_State *luaState);
 
 	int getInt(int argumentIndex) const;
-	string getString(int argumentIndex) const;
+	std::string getString(int argumentIndex) const;
 	Vec2i getVec2i(int argumentIndex) const;
 	int getReturnCount() const					{return returnCount;}
 
 	void returnInt(int value);
-	void returnString(const string &value);
+	void returnString(const std::string &value);
 	void returnVec2i(const Vec2i &value);
 
 private:
-	void throwLuaError(const string &message) const;
+	void throwLuaError(const std::string &message) const;
 };
 
 }}//end namespace

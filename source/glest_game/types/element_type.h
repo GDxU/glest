@@ -18,8 +18,10 @@
 #include "texture.h"
 #include "resource.h"
 
-using std::vector;
-using std::string;
+
+
+
+
 
 using Shared::Graphics::Texture2D;
 
@@ -40,7 +42,7 @@ class ResourceType;
 
 class DisplayableType{
 protected:
-	string name;		//name
+	std::string name;		//name
 	Texture2D *image;	//portrait  
 
 public:
@@ -48,7 +50,7 @@ public:
 	virtual ~DisplayableType(){};
 
 	//get
-	string getName() const				{return name;}
+	std::string getName() const				{return name;}
 	const Texture2D *getImage() const	{return image;}
 };
 
@@ -61,8 +63,8 @@ public:
 
 class RequirableType: public DisplayableType{
 private:
-	typedef vector<const UnitType*> UnitReqs;
-	typedef vector<const UpgradeType*> UpgradeReqs;
+	typedef std::vector<const UnitType*> UnitReqs;
+	typedef std::vector<const UpgradeType*> UpgradeReqs;
 
 protected:
 	UnitReqs unitReqs;			//needed units
@@ -76,7 +78,7 @@ public:
 	const UnitType *getUnitReq(int i) const				{return unitReqs[i];}
     
     //other
-    virtual string getReqDesc() const;
+    virtual std::string getReqDesc() const;
 };
 
 
@@ -88,7 +90,7 @@ public:
 
 class ProducibleType: public RequirableType{
 private:
-	typedef vector<Resource> Costs;
+	typedef std::vector<Resource> Costs;
 
 protected:
 	Costs costs;
@@ -109,7 +111,7 @@ public:
     //varios
     void checkCostStrings(TechTree *techTree);
     
-	virtual string getReqDesc() const;
+	virtual std::string getReqDesc() const;
 };
 
 }}//end namespace

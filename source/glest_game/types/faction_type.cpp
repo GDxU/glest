@@ -34,36 +34,36 @@ FactionType::FactionType(){
 }
 
 //load a faction, given a directory
-void FactionType::load(const string &dir, const TechTree *techTree, Checksum* checksum){
+void FactionType::load(const std::string &dir, const TechTree *techTree, Checksum* checksum){
 
     name= lastDir(dir);
 
 	Logger::getInstance().add("Faction type: "+ formatString(name), true);
     
 	// a1) preload units
-	string unitsPath= dir + "/units/*.";
-	vector<string> unitFilenames;
+	std::string unitsPath= dir + "/units/*.";
+	std::vector<string> unitFilenames;
     findAll(unitsPath, unitFilenames);
 	unitTypes.resize(unitFilenames.size());
     for(int i=0; i<unitTypes.size(); ++i){
-		string str= dir + "/units/" + unitFilenames[i];
+		std::string str= dir + "/units/" + unitFilenames[i];
 		unitTypes[i].preLoad(str);
     }
 
 	// a2) preload upgrades
-	string upgradesPath= dir + "/upgrades/*.";
-	vector<string> upgradeFilenames;
+	std::string upgradesPath= dir + "/upgrades/*.";
+	std::vector<string> upgradeFilenames;
     findAll(upgradesPath, upgradeFilenames);
 	upgradeTypes.resize(upgradeFilenames.size());
     for(int i=0; i<upgradeTypes.size(); ++i){
-		string str= dir + "/upgrades/" + upgradeFilenames[i];
+		std::string str= dir + "/upgrades/" + upgradeFilenames[i];
 		upgradeTypes[i].preLoad(str);
     }
 	
 	// b1) load units
 	try{
 		for(int i=0; i<unitTypes.size(); ++i){
-            string str= dir + "/units/" + unitTypes[i].getName();
+            std::string str= dir + "/units/" + unitTypes[i].getName();
             unitTypes[i].load(i, str, techTree, this, checksum);
         }
     }
@@ -74,7 +74,7 @@ void FactionType::load(const string &dir, const TechTree *techTree, Checksum* ch
 	// b2) load upgrades
 	try{
 		for(int i=0; i<upgradeTypes.size(); ++i){
-            string str= dir + "/upgrades/" + upgradeTypes[i].getName();
+            std::string str= dir + "/upgrades/" + upgradeTypes[i].getName();
             upgradeTypes[i].load(str, techTree, this, checksum);
         }
     }
@@ -83,7 +83,7 @@ void FactionType::load(const string &dir, const TechTree *techTree, Checksum* ch
 	}
 
 	//open xml file
-    string path= dir+"/"+name+".xml";
+    std::string path= dir+"/"+name+".xml";
 
 	checksum->addFile(path);
 
@@ -97,7 +97,7 @@ void FactionType::load(const string &dir, const TechTree *techTree, Checksum* ch
 	startingResources.resize(startingResourcesNode->getChildCount());
 	for(int i=0; i<startingResources.size(); ++i){
 		const XmlNode *resourceNode= startingResourcesNode->getChild("resource", i);
-		string name= resourceNode->getAttribute("name")->getRestrictedValue();
+		std::string name= resourceNode->getAttribute("name")->getRestrictedValue();
 		int amount= resourceNode->getAttribute("amount")->getIntValue();
 		startingResources[i].init(techTree->getResourceType(name), amount);
 	}
@@ -106,7 +106,7 @@ void FactionType::load(const string &dir, const TechTree *techTree, Checksum* ch
 	const XmlNode *startingUnitsNode= factionNode->getChild("starting-units");
 	for(int i=0; i<startingUnitsNode->getChildCount(); ++i){
 		const XmlNode *unitNode= startingUnitsNode->getChild("unit", i);
-		string name= unitNode->getAttribute("name")->getRestrictedValue();
+		std::string name= unitNode->getAttribute("name")->getRestrictedValue();
 		int amount= unitNode->getAttribute("amount")->getIntValue();
 		startingUnits.push_back(PairPUnitTypeInt(getUnitType(name), amount)); 
 	}
@@ -126,7 +126,7 @@ FactionType::~FactionType(){
 
 // ==================== get ==================== 
 
-const UnitType *FactionType::getUnitType(const string &name) const{     
+const UnitType *FactionType::getUnitType(const std::string &name) const{     
     for(int i=0; i<unitTypes.size();i++){
 		if(unitTypes[i].getName()==name){
             return &unitTypes[i];
@@ -135,7 +135,7 @@ const UnitType *FactionType::getUnitType(const string &name) const{
 	throw runtime_error("Unit not found: "+name);
 }
 
-const UpgradeType *FactionType::getUpgradeType(const string &name) const{     
+const UpgradeType *FactionType::getUpgradeType(const std::string &name) const{     
     for(int i=0; i<upgradeTypes.size();i++){
 		if(upgradeTypes[i].getName()==name){
             return &upgradeTypes[i];

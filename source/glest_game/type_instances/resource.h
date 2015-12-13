@@ -15,7 +15,8 @@
 
 #include "vec.h"
 
-using std::string;
+
+
 
 namespace Glest{ namespace Game{
 
@@ -44,7 +45,7 @@ public:
 	const ResourceType * getType() const	{return type;}
 	Vec2i getPos() const					{return pos;}
 	int getBalance() const					{return balance;}
-	string getDescription() const;
+	std::string getDescription() const;
 
 	void setAmount(int amount)				{this->amount= amount;}
 	void setBalance(int balance)			{this->balance= balance;}

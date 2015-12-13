@@ -18,8 +18,10 @@
 
 #include "types.h"
 
-using std::map;
-using std::string;
+
+
+
+
 
 namespace Shared{ namespace Platform{
 
@@ -88,7 +90,7 @@ public:
 	virtual ~Window();
 	
 	WindowHandle getHandle()	{return 0;}
-	string getText();
+	std::string getText();
 	int getX()					{ return 0; }
 	int getY()					{ return 0; }
 	int getW()					{ return w; }
@@ -100,7 +102,7 @@ public:
 	float getAspect();
 
 	//object state
-	void setText(string text);
+	void setText(std::string text);
 	void setStyle(WindowStyle windowStyle);
 	void setSize(int w, int h);
 	void setPos(int x, int y);

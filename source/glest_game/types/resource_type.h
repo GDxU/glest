@@ -44,7 +44,7 @@ private:
     Model *model;
 
 public:
-    void load(const string &dir, Checksum* checksum);
+    void load(const std::string &dir, Checksum* checksum);
 
     //get
 	int getClass() const			{return resourceClass;}
@@ -54,7 +54,7 @@ public:
 	int getDefResPerPatch() const	{return defResPerPatch;}
 	const Model *getModel() const	{return model;}
 
-	static ResourceClass strToRc(const string &s);
+	static ResourceClass strToRc(const std::string &s);
 };
 
 }} //end namespace

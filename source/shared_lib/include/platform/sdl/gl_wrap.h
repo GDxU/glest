@@ -24,7 +24,8 @@
 #include "font.h"
 #include "types.h"
 
-using std::string;
+
+
 
 using Shared::Graphics::FontMetrics;
 
@@ -51,8 +52,8 @@ public:
 //	Global Fcs  
 // =====================================================
 
-void createGlFontBitmaps(uint32 &base, const string &type, int size, int width, int charCount, FontMetrics &metrics);
-void createGlFontOutlines(uint32 &base, const string &type, int width, float depth, int charCount, FontMetrics &metrics);
+void createGlFontBitmaps(uint32 &base, const std::string &type, int size, int width, int charCount, FontMetrics &metrics);
+void createGlFontOutlines(uint32 &base, const std::string &type, int width, float depth, int charCount, FontMetrics &metrics);
 const char *getPlatformExtensions(const PlatformContextGl *pcgl);
 void* getGlProcAddress(const char *procName);
 

@@ -17,7 +17,8 @@
 #include "types.h"
 #include "vec.h"
 
-using std::string;
+
+
 using Shared::Platform::int8;
 using Shared::Platform::int16;
 using Shared::Platform::int32;
@@ -36,8 +37,8 @@ private:
 
 public:
 	NetworkString()						{memset(buffer, 0, S);}
-	void operator=(const string& str)	{strncpy(buffer, str.c_str(), S-1);}
-	string getString() const			{return buffer;}
+    void operator=(const std::string& str)	{ strncpy(buffer, str.c_str(), S - 1); }
+	std::string getString() const			{return buffer;}
 };
 
 // =====================================================

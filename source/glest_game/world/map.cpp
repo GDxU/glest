@@ -101,7 +101,7 @@ Map::~Map(){
 	delete [] startLocations;
 }
 
-void Map::load(const string &path, TechTree *techTree, Tileset *tileset){
+void Map::load(const std::string &path, TechTree *techTree, Tileset *tileset){
 	
 	struct MapFileHeader{
 		int32 version;

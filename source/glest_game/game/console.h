@@ -16,9 +16,12 @@
 #include <string>
 #include <vector>
 
-using std::string;
-using std::vector;
-using std::pair;
+
+
+
+
+
+
 
 namespace Glest{ namespace Game{
 
@@ -33,8 +36,8 @@ private:
 	static const int consoleLines= 5;
 
 public:
-	typedef pair<string, float> StringTimePair;
-	typedef vector<StringTimePair> Lines;
+	typedef std::pair<std::string, float> StringTimePair;
+	typedef std::vector<StringTimePair> Lines;
 	typedef Lines::const_iterator LineIterator;
 
 private:
@@ -52,11 +55,11 @@ public:
 	Console();
 	
 	int getLineCount() const		{return lines.size();}
-	string getLine(int i) const		{return lines[i].first;}
+	std::string getLine(int i) const		{return lines[i].first;}
 
 
-	void addStdMessage(const string &s);
-	void addLine(string line, bool playSound= false);
+	void addStdMessage(const std::string &s);
+	void addLine(std::string line, bool playSound= false);
 	void update();
 	bool isEmpty();
 };

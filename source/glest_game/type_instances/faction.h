@@ -20,8 +20,10 @@
 #include "resource.h"
 #include "game_constants.h"
 
-using std::map;
-using std::vector;
+
+
+
+
 
 using Shared::Graphics::Texture2D;
 
@@ -43,11 +45,11 @@ class UnitType;
 
 class Faction{
 private:
-    typedef vector<Resource> Resources;
-    typedef vector<Resource> Store;
-	typedef vector<Faction*> Allies;
-	typedef vector<Unit*> Units;
-	typedef map<int, Unit*> UnitMap;
+    typedef std::vector<Resource> Resources;
+    typedef std::vector<Resource> Store;
+	typedef std::vector<Faction*> Allies;
+	typedef std::vector<Unit*> Units;
+    typedef std::map<int, Unit*> UnitMap;
 
 private:
 	UpgradeManager upgradeManager; 

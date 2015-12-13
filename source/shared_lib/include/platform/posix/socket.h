@@ -23,7 +23,8 @@
 #include <netdb.h>
 #include <fcntl.h>
 
-using std::string;
+
+
 
 namespace Shared{ namespace Platform{
 
@@ -41,7 +42,7 @@ public:
 	Ip(const string& ipString);
 
 	unsigned char getByte(int byteIndex)	{return bytes[byteIndex];}
-	string getString() const;
+	std::string getString() const;
 };
 
 // =====================================================
@@ -67,11 +68,11 @@ public:
 	bool isWritable();
 	bool isConnected();
 
-	string getHostName() const;
-	string getIp() const;
+	std::string getHostName() const;
+	std::string getIp() const;
 
 protected:
-	static void throwException(const string &str);
+	static void throwException(const std::string &str);
 };
 
 // =====================================================

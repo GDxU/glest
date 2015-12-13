@@ -23,13 +23,13 @@ namespace Shared{ namespace Util{
 //	class Section
 // =====================================================
 
-Section::Section(const string &name){
+Section::Section(const std::string &name){
 	this->name= name;
 	milisElapsed= 0;
 	parent= NULL;
 }
 
-Section *Section::getChild(const string &name){
+Section *Section::getChild(const std::string &name){
 	SectionContainer::iterator it;
 	for(it= children.begin(); it!=children.end(); ++it){
 		if((*it)->getName()==name){
@@ -43,7 +43,7 @@ Section *Section::getChild(const string &name){
 void Section::print(FILE *outStream, int tabLevel){
 
 	float percent= (parent==NULL || parent->milisElapsed==0)? 100.0f: 100.0f*milisElapsed/parent->milisElapsed;
-	string pname= parent==NULL? "": parent->getName();
+	std::string pname= parent==NULL? "": parent->getName();
 	
 	for(int i=0; i<tabLevel; ++i)
 		fprintf(outStream, "\t");
@@ -73,7 +73,7 @@ Profiler::~Profiler(){
 
 	FILE *f= fopen("profiler.log", "w");
 	if(f==NULL)
-		throw runtime_error("Can not open file: profiler.log");
+		throw std::runtime_error("Can not open file: profiler.log");
 
 	fprintf(f, "Profiler Results\n\n");
 
@@ -87,7 +87,7 @@ Profiler &Profiler::getInstance(){
 	return profiler;
 }
 
-void Profiler::sectionBegin(const string &name){
+void Profiler::sectionBegin(const std::string &name){
 	Section *childSection= currSection->getChild(name);
 	if(childSection==NULL){
 		childSection= new Section(name);
@@ -98,13 +98,13 @@ void Profiler::sectionBegin(const string &name){
 	childSection->start();
 }
 
-void Profiler::sectionEnd(const string &name){
+void Profiler::sectionEnd(const std::string &name){
 	if(name==currSection->getName()){
 		currSection->stop();
 		currSection= currSection->getParent();
 	}
 	else{
-		throw runtime_error("Profile: Leaving section is not current section: "+name);
+		throw std::runtime_error("Profile: Leaving section is not current section: "+name);
 	}
 }
 

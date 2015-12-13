@@ -20,9 +20,12 @@
 
 #include "types.h"
 
-using std::string;
-using std::vector;
-using std::exception;
+
+
+
+
+
+
 
 using Shared::Platform::int64;
 
@@ -83,25 +86,25 @@ private:
 
 private:
 	static LONG WINAPI handler(LPEXCEPTION_POINTERS pointers);
-	string dumpFileName;
+	std::string dumpFileName;
 
 public:
-	void install(string dumpFileName);
+	void install(std::string dumpFileName);
 	virtual void handle()=0;
-	static string codeToStr(DWORD code);
+	static std::string codeToStr(DWORD code);
 };
 
 // =====================================================
 //	Misc
 // =====================================================
 
-void findAll(const string &path, vector<string> &results, bool cutExtension=false);
+void findAll(const std::string &path, std::vector<string> &results, bool cutExtension=false);
 
 bool changeVideoMode(int resH, int resW, int colorBits, int refreshFrequency);
 void restoreVideoMode();
 
-void message(string message);
-bool ask(string message);
+void message(std::string message);
+bool ask(std::string message);
 void exceptionMessage(const exception &excp);
 
 int getScreenW();
@@ -111,7 +114,7 @@ void sleep(int millis);
 
 void showCursor(bool b);
 bool isKeyDown(int virtualKey);
-string getCommandLine();
+std::string getCommandLine();
 
 }}//end namespace
 

@@ -41,7 +41,7 @@ CommandClass CommandType::getClass() const{
     return commandTypeClass;
 }
 
-void CommandType::load(int id, const XmlNode *n, const string &dir, const TechTree *tt, const FactionType *ft, const UnitType &ut){
+void CommandType::load(int id, const XmlNode *n, const std::string &dir, const TechTree *tt, const FactionType *ft, const UnitType &ut){
 	this->id= id;
 	name= n->getChild("name")->getAttribute("value")->getRestrictedValue();
 
@@ -54,7 +54,7 @@ void CommandType::load(int id, const XmlNode *n, const string &dir, const TechTr
 	const XmlNode *unitRequirementsNode= n->getChild("unit-requirements");
 	for(int i=0; i<unitRequirementsNode->getChildCount(); ++i){
 		const XmlNode *unitNode= 	unitRequirementsNode->getChild("unit", i);
-		string name= unitNode->getAttribute("name")->getRestrictedValue();
+		std::string name= unitNode->getAttribute("name")->getRestrictedValue();
 		unitReqs.push_back(ft->getUnitType(name));
 	}
 
@@ -62,7 +62,7 @@ void CommandType::load(int id, const XmlNode *n, const string &dir, const TechTr
 	const XmlNode *upgradeRequirementsNode= n->getChild("upgrade-requirements");
 	for(int i=0; i<upgradeRequirementsNode->getChildCount(); ++i){
 		const XmlNode *upgradeReqNode= upgradeRequirementsNode->getChild("upgrade", i);
-		string name= upgradeReqNode->getAttribute("name")->getRestrictedValue();
+		std::string name= upgradeReqNode->getAttribute("name")->getRestrictedValue();
 		upgradeReqs.push_back(ft->getUpgradeType(name));
 	}
 }
@@ -81,8 +81,8 @@ void StopCommandType::update(UnitUpdater *unitUpdater, Unit *unit) const{
 	unitUpdater->updateStop(unit);
 }
 
-string StopCommandType::getDesc(const TotalUpgrade *totalUpgrade) const{
-    string str;
+std::string StopCommandType::getDesc(const TotalUpgrade *totalUpgrade) const{
+    std::string str;
 	Lang &lang= Lang::getInstance();
 	
     str= name+"\n";
@@ -93,16 +93,16 @@ string StopCommandType::getDesc(const TotalUpgrade *totalUpgrade) const{
     return str;
 }
 
-string StopCommandType::toString() const{
+std::string StopCommandType::toString() const{
 	Lang &lang= Lang::getInstance();
 	return lang.get("Stop");
 }
 
-void StopCommandType::load(int id, const XmlNode *n, const string &dir, const TechTree *tt, const FactionType *ft, const UnitType &ut){
+void StopCommandType::load(int id, const XmlNode *n, const std::string &dir, const TechTree *tt, const FactionType *ft, const UnitType &ut){
 	CommandType::load(id, n, dir, tt, ft, ut);
 
 	//stop
-   	string skillName= n->getChild("stop-skill")->getAttribute("value")->getRestrictedValue();
+   	std::string skillName= n->getChild("stop-skill")->getAttribute("value")->getRestrictedValue();
 	stopSkillType= static_cast<const StopSkillType*>(ut.getSkillType(skillName, scStop));
 }
 
@@ -121,16 +121,16 @@ void MoveCommandType::update(UnitUpdater *unitUpdater, Unit *unit) const{
 	unitUpdater->updateMove(unit);
 }
 
-void MoveCommandType::load(int id, const XmlNode *n, const string &dir, const TechTree *tt, const FactionType *ft, const UnitType &ut){
+void MoveCommandType::load(int id, const XmlNode *n, const std::string &dir, const TechTree *tt, const FactionType *ft, const UnitType &ut){
     CommandType::load(id, n, dir, tt, ft, ut);
 
 	//move
-   	string skillName= n->getChild("move-skill")->getAttribute("value")->getRestrictedValue();
+   	std::string skillName= n->getChild("move-skill")->getAttribute("value")->getRestrictedValue();
 	moveSkillType= static_cast<const MoveSkillType*>(ut.getSkillType(skillName, scMove));
 }
 
-string MoveCommandType::getDesc(const TotalUpgrade *totalUpgrade) const{
-    string str;
+std::string MoveCommandType::getDesc(const TotalUpgrade *totalUpgrade) const{
+    std::string str;
 	Lang &lang= Lang::getInstance();
 	
     str= name+"\n";
@@ -146,7 +146,7 @@ string MoveCommandType::getDesc(const TotalUpgrade *totalUpgrade) const{
     return str;
 }
 
-string MoveCommandType::toString() const{
+std::string MoveCommandType::toString() const{
 	Lang &lang= Lang::getInstance();
 	return lang.get("Move");
 }
@@ -165,11 +165,11 @@ void AttackCommandType::update(UnitUpdater *unitUpdater, Unit *unit) const{
 	unitUpdater->updateAttack(unit);
 }
 
-void AttackCommandType::load(int id, const XmlNode *n, const string &dir, const TechTree *tt, const FactionType *ft, const UnitType &ut){
+void AttackCommandType::load(int id, const XmlNode *n, const std::string &dir, const TechTree *tt, const FactionType *ft, const UnitType &ut){
     CommandType::load(id, n, dir, tt, ft, ut);
 	
     //move
-   	string skillName= n->getChild("move-skill")->getAttribute("value")->getRestrictedValue();
+   	std::string skillName= n->getChild("move-skill")->getAttribute("value")->getRestrictedValue();
 	moveSkillType= static_cast<const MoveSkillType*>(ut.getSkillType(skillName, scMove));
 
     //attack
@@ -177,8 +177,8 @@ void AttackCommandType::load(int id, const XmlNode *n, const string &dir, const 
 	attackSkillType= static_cast<const AttackSkillType*>(ut.getSkillType(skillName, scAttack));
 }
 
-string AttackCommandType::getDesc(const TotalUpgrade *totalUpgrade) const{
-    string str;
+std::string AttackCommandType::getDesc(const TotalUpgrade *totalUpgrade) const{
+    std::string str;
 	Lang &lang= Lang::getInstance();
 	
     str= name+"\n";
@@ -232,7 +232,7 @@ string AttackCommandType::getDesc(const TotalUpgrade *totalUpgrade) const{
     return str;
 }
 
-string AttackCommandType::toString() const{
+std::string AttackCommandType::toString() const{
 	Lang &lang= Lang::getInstance();
 		return lang.get("Attack");
 }
@@ -252,11 +252,11 @@ void AttackStoppedCommandType::update(UnitUpdater *unitUpdater, Unit *unit) cons
 	unitUpdater->updateAttackStopped(unit);
 }
 
-void AttackStoppedCommandType::load(int id, const XmlNode *n, const string &dir, const TechTree *tt, const FactionType *ft, const UnitType &ut){
+void AttackStoppedCommandType::load(int id, const XmlNode *n, const std::string &dir, const TechTree *tt, const FactionType *ft, const UnitType &ut){
     CommandType::load(id, n, dir, tt, ft, ut);
 
 	//stop
-   	string skillName= n->getChild("stop-skill")->getAttribute("value")->getRestrictedValue();
+   	std::string skillName= n->getChild("stop-skill")->getAttribute("value")->getRestrictedValue();
 	stopSkillType= static_cast<const StopSkillType*>(ut.getSkillType(skillName, scStop));
 
     //attack
@@ -264,9 +264,9 @@ void AttackStoppedCommandType::load(int id, const XmlNode *n, const string &dir,
 	attackSkillType= static_cast<const AttackSkillType*>(ut.getSkillType(skillName, scAttack));
 }
 
-string AttackStoppedCommandType::getDesc(const TotalUpgrade *totalUpgrade) const{
+std::string AttackStoppedCommandType::getDesc(const TotalUpgrade *totalUpgrade) const{
     Lang &lang= Lang::getInstance();
-	string str;
+	std::string str;
 
     str= name+"\n";
 	if(attackSkillType->getEpCost()!=0){
@@ -309,7 +309,7 @@ string AttackStoppedCommandType::getDesc(const TotalUpgrade *totalUpgrade) const
     return str;
 }
 
-string AttackStoppedCommandType::toString() const{
+std::string AttackStoppedCommandType::toString() const{
 	Lang &lang= Lang::getInstance();
 	return lang.get("AttackStopped");
 }
@@ -334,11 +334,11 @@ void BuildCommandType::update(UnitUpdater *unitUpdater, Unit *unit) const{
 	unitUpdater->updateBuild(unit);
 }
 
-void BuildCommandType::load(int id, const XmlNode *n, const string &dir, const TechTree *tt, const FactionType *ft, const UnitType &ut){
+void BuildCommandType::load(int id, const XmlNode *n, const std::string &dir, const TechTree *tt, const FactionType *ft, const UnitType &ut){
     CommandType::load(id, n, dir, tt, ft, ut);
 
 	//move
-   	string skillName= n->getChild("move-skill")->getAttribute("value")->getRestrictedValue();
+   	std::string skillName= n->getChild("move-skill")->getAttribute("value")->getRestrictedValue();
 	moveSkillType= static_cast<const MoveSkillType*>(ut.getSkillType(skillName, scMove));
 
     //build
@@ -349,7 +349,7 @@ void BuildCommandType::load(int id, const XmlNode *n, const string &dir, const T
 	const XmlNode *buildingsNode= n->getChild("buildings");
 	for(int i=0; i<buildingsNode->getChildCount(); ++i){
 		const XmlNode *buildingNode= buildingsNode->getChild("building", i);
-		string name= buildingNode->getAttribute("name")->getRestrictedValue(); 
+		std::string name= buildingNode->getAttribute("name")->getRestrictedValue(); 
 		buildings.push_back(ft->getUnitType(name));
 	}
 
@@ -359,7 +359,7 @@ void BuildCommandType::load(int id, const XmlNode *n, const string &dir, const T
 		startSounds.resize(startSoundNode->getChildCount());
 		for(int i=0; i<startSoundNode->getChildCount(); ++i){
 			const XmlNode *soundFileNode= startSoundNode->getChild("sound-file", i);
-			string path= soundFileNode->getAttribute("path")->getRestrictedValue();
+			std::string path= soundFileNode->getAttribute("path")->getRestrictedValue();
 			StaticSound *sound= new StaticSound();
 			sound->load(dir + "/" + path);
 			startSounds[i]= sound;
@@ -372,7 +372,7 @@ void BuildCommandType::load(int id, const XmlNode *n, const string &dir, const T
 		builtSounds.resize(builtSoundNode->getChildCount());
 		for(int i=0; i<builtSoundNode->getChildCount(); ++i){
 			const XmlNode *soundFileNode= builtSoundNode->getChild("sound-file", i);
-			string path= soundFileNode->getAttribute("path")->getRestrictedValue();
+			std::string path= soundFileNode->getAttribute("path")->getRestrictedValue();
 			StaticSound *sound= new StaticSound();
 			sound->load(dir + "/" + path);
 			builtSounds[i]= sound;
@@ -380,8 +380,8 @@ void BuildCommandType::load(int id, const XmlNode *n, const string &dir, const T
 	}
 }
 
-string BuildCommandType::getDesc(const TotalUpgrade *totalUpgrade) const{
-    string str;
+std::string BuildCommandType::getDesc(const TotalUpgrade *totalUpgrade) const{
+    std::string str;
 	Lang &lang= Lang::getInstance();
 	
     str= name+"\n";
@@ -393,7 +393,7 @@ string BuildCommandType::getDesc(const TotalUpgrade *totalUpgrade) const{
     return str;
 }
 
-string BuildCommandType::toString() const{
+std::string BuildCommandType::toString() const{
 	Lang &lang= Lang::getInstance();
 	return lang.get("Build");
 }
@@ -412,12 +412,12 @@ void HarvestCommandType::update(UnitUpdater *unitUpdater, Unit *unit) const{
 	unitUpdater->updateHarvest(unit);
 }
 
-void HarvestCommandType::load(int id, const XmlNode *n, const string &dir, const TechTree *tt, const FactionType *ft, const UnitType &ut){
+void HarvestCommandType::load(int id, const XmlNode *n, const std::string &dir, const TechTree *tt, const FactionType *ft, const UnitType &ut){
     
 	CommandType::load(id, n, dir, tt, ft, ut);
 	
 	//move
-   	string skillName= n->getChild("move-skill")->getAttribute("value")->getRestrictedValue();
+   	std::string skillName= n->getChild("move-skill")->getAttribute("value")->getRestrictedValue();
 	moveSkillType= static_cast<const MoveSkillType*>(ut.getSkillType(skillName, scMove));
 
     //harvest
@@ -443,10 +443,10 @@ void HarvestCommandType::load(int id, const XmlNode *n, const string &dir, const
 	hitsPerUnit= n->getChild("hits-per-unit")->getAttribute("value")->getIntValue();
 }
 
-string HarvestCommandType::getDesc(const TotalUpgrade *totalUpgrade) const{
+std::string HarvestCommandType::getDesc(const TotalUpgrade *totalUpgrade) const{
     
 	Lang &lang= Lang::getInstance();
-	string str;
+	std::string str;
 
     str= name+"\n";
     str+= lang.get("HarvestSpeed")+": "+ intToStr(harvestSkillType->getSpeed()/hitsPerUnit)+"\n";
@@ -463,7 +463,7 @@ string HarvestCommandType::getDesc(const TotalUpgrade *totalUpgrade) const{
     return str;
 }
 
-string HarvestCommandType::toString() const{
+std::string HarvestCommandType::toString() const{
 	Lang &lang= Lang::getInstance();
 	return lang.get("Harvest");
 }
@@ -489,12 +489,12 @@ void RepairCommandType::update(UnitUpdater *unitUpdater, Unit *unit) const{
 	unitUpdater->updateRepair(unit);
 }
 
-void RepairCommandType::load(int id, const XmlNode *n, const string &dir, const TechTree *tt, const FactionType *ft, const UnitType &ut){
+void RepairCommandType::load(int id, const XmlNode *n, const std::string &dir, const TechTree *tt, const FactionType *ft, const UnitType &ut){
     
 	CommandType::load(id, n, dir, tt, ft, ut);
 
 	//move
-   	string skillName= n->getChild("move-skill")->getAttribute("value")->getRestrictedValue();
+   	std::string skillName= n->getChild("move-skill")->getAttribute("value")->getRestrictedValue();
 	moveSkillType= static_cast<const MoveSkillType*>(ut.getSkillType(skillName, scMove));
 
 	//repair
@@ -509,9 +509,9 @@ void RepairCommandType::load(int id, const XmlNode *n, const string &dir, const 
 	}
 }
 
-string RepairCommandType::getDesc(const TotalUpgrade *totalUpgrade) const{
+std::string RepairCommandType::getDesc(const TotalUpgrade *totalUpgrade) const{
     Lang &lang= Lang::getInstance();
-	string str;
+	std::string str;
 
     str= name+"\n";
     str+= lang.get("RepairSpeed")+": "+ intToStr(repairSkillType->getSpeed())+"\n";
@@ -527,7 +527,7 @@ string RepairCommandType::getDesc(const TotalUpgrade *totalUpgrade) const{
     return str;
 }
 
-string RepairCommandType::toString() const{
+std::string RepairCommandType::toString() const{
 	Lang &lang= Lang::getInstance();
 	return lang.get("Repair");
 }
@@ -556,19 +556,19 @@ void ProduceCommandType::update(UnitUpdater *unitUpdater, Unit *unit) const{
 	unitUpdater->updateProduce(unit);
 }
 
-void ProduceCommandType::load(int id, const XmlNode *n, const string &dir, const TechTree *tt, const FactionType *ft, const UnitType &ut){
+void ProduceCommandType::load(int id, const XmlNode *n, const std::string &dir, const TechTree *tt, const FactionType *ft, const UnitType &ut){
     CommandType::load(id, n, dir, tt, ft, ut);
 
 	//produce
-   	string skillName= n->getChild("produce-skill")->getAttribute("value")->getRestrictedValue();
+   	std::string skillName= n->getChild("produce-skill")->getAttribute("value")->getRestrictedValue();
 	produceSkillType= static_cast<const ProduceSkillType*>(ut.getSkillType(skillName, scProduce));
 
-    string producedUnitName= n->getChild("produced-unit")->getAttribute("name")->getRestrictedValue();   
+    std::string producedUnitName= n->getChild("produced-unit")->getAttribute("name")->getRestrictedValue();   
 	producedUnit= ft->getUnitType(producedUnitName);
 }
 
-string ProduceCommandType::getDesc(const TotalUpgrade *totalUpgrade) const{
-    string str= name+"\n";
+std::string ProduceCommandType::getDesc(const TotalUpgrade *totalUpgrade) const{
+    std::string str= name+"\n";
 	Lang &lang= Lang::getInstance();
     
     //prod speed
@@ -588,12 +588,12 @@ string ProduceCommandType::getDesc(const TotalUpgrade *totalUpgrade) const{
     return str;
 }
 
-string ProduceCommandType::toString() const{
+std::string ProduceCommandType::toString() const{
 	Lang &lang= Lang::getInstance();
 	return lang.get("Produce");
 }
 
-string ProduceCommandType::getReqDesc() const{
+std::string ProduceCommandType::getReqDesc() const{
     return RequirableType::getReqDesc()+"\n"+getProducedUnit()->getReqDesc();
 }
 
@@ -615,21 +615,21 @@ void UpgradeCommandType::update(UnitUpdater *unitUpdater, Unit *unit) const{
 	unitUpdater->updateUpgrade(unit);
 }
 
-void UpgradeCommandType::load(int id, const XmlNode *n, const string &dir, const TechTree *tt, const FactionType *ft, const UnitType &ut){
+void UpgradeCommandType::load(int id, const XmlNode *n, const std::string &dir, const TechTree *tt, const FactionType *ft, const UnitType &ut){
     
 	CommandType::load(id, n, dir, tt, ft, ut);
 
 	//upgrade
-   	string skillName= n->getChild("upgrade-skill")->getAttribute("value")->getRestrictedValue();
+   	std::string skillName= n->getChild("upgrade-skill")->getAttribute("value")->getRestrictedValue();
 	upgradeSkillType= static_cast<const UpgradeSkillType*>(ut.getSkillType(skillName, scUpgrade));
 
-    string producedUpgradeName= n->getChild("produced-upgrade")->getAttribute("name")->getRestrictedValue();   
+    std::string producedUpgradeName= n->getChild("produced-upgrade")->getAttribute("name")->getRestrictedValue();   
 	producedUpgrade= ft->getUpgradeType(producedUpgradeName);
 	
 }
 
-string UpgradeCommandType::getDesc(const TotalUpgrade *totalUpgrade) const{
-    string str;
+std::string UpgradeCommandType::getDesc(const TotalUpgrade *totalUpgrade) const{
+    std::string str;
 	Lang &lang= Lang::getInstance();
 
     str= name+"\n";
@@ -642,12 +642,12 @@ string UpgradeCommandType::getDesc(const TotalUpgrade *totalUpgrade) const{
     return str;
 }
 
-string UpgradeCommandType::toString() const{
+std::string UpgradeCommandType::toString() const{
 	Lang &lang= Lang::getInstance();
 	return lang.get("Upgrade");
 }
 
-string UpgradeCommandType::getReqDesc() const{
+std::string UpgradeCommandType::getReqDesc() const{
     return RequirableType::getReqDesc()+"\n"+getProducedUpgrade()->getReqDesc();
 }
 
@@ -669,23 +669,23 @@ void MorphCommandType::update(UnitUpdater *unitUpdater, Unit *unit) const{
 	unitUpdater->updateMorph(unit);
 }
 
-void MorphCommandType::load(int id, const XmlNode *n, const string &dir, const TechTree *tt, const FactionType *ft, const UnitType &ut){
+void MorphCommandType::load(int id, const XmlNode *n, const std::string &dir, const TechTree *tt, const FactionType *ft, const UnitType &ut){
     CommandType::load(id, n, dir, tt, ft, ut);
 
 	//morph skill
-   	string skillName= n->getChild("morph-skill")->getAttribute("value")->getRestrictedValue();
+   	std::string skillName= n->getChild("morph-skill")->getAttribute("value")->getRestrictedValue();
 	morphSkillType= static_cast<const MorphSkillType*>(ut.getSkillType(skillName, scMorph));
 
     //morph unit
-   	string morphUnitName= n->getChild("morph-unit")->getAttribute("name")->getRestrictedValue();   
+   	std::string morphUnitName= n->getChild("morph-unit")->getAttribute("name")->getRestrictedValue();   
 	morphUnit= ft->getUnitType(morphUnitName);
 
     //discount
 	discount= n->getChild("discount")->getAttribute("value")->getIntValue();   
 }
 
-string MorphCommandType::getDesc(const TotalUpgrade *totalUpgrade) const{
-    string str= name+"\n";
+std::string MorphCommandType::getDesc(const TotalUpgrade *totalUpgrade) const{
+    std::string str= name+"\n";
 	Lang &lang= Lang::getInstance();
     
     //prod speed
@@ -706,12 +706,12 @@ string MorphCommandType::getDesc(const TotalUpgrade *totalUpgrade) const{
     return str;
 }
 
-string MorphCommandType::toString() const{
+std::string MorphCommandType::toString() const{
 	Lang &lang= Lang::getInstance();
 	return lang.get("Morph");
 }
 
-string MorphCommandType::getReqDesc() const{
+std::string MorphCommandType::getReqDesc() const{
     return RequirableType::getReqDesc() + "\n" + getProduced()->getReqDesc();
 }
 

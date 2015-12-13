@@ -3,7 +3,8 @@
 
 #include <string>
 
-using std::string;
+
+
 
 namespace Shared{ namespace Graphics{
 
@@ -25,7 +26,7 @@ private:
 
 	void *attribPointers[attribCount];
 	int attribCoordCounts[attribCount];
-	string attribNames[attribCount];
+	std::string attribNames[attribCount];
 
 public:
 	VertexBuffer();
@@ -36,7 +37,7 @@ public:
 	void setPositionPointer(void *pointer);
 	void setNormalPointer(void *pointer);
 	void setTexCoordPointer(void *pointer, int texCoordIndex, int coordCount);
-	void setAttribPointer(void *pointer, int attribIndex, int coordCount, const string &name);
+	void setAttribPointer(void *pointer, int attribIndex, int coordCount, const std::string &name);
 };
 
 // =====================================================

@@ -40,7 +40,7 @@ MenuStateCustomGame::MenuStateCustomGame(Program *program, MainMenu *mainMenu, b
 	Lang &lang= Lang::getInstance();
 	NetworkManager &networkManager= NetworkManager::getInstance();
 
-	vector<string> results, teamItems, controlItems;
+	std::vector<string> results, teamItems, controlItems;
 
 	//create
 	buttonReturn.init(350, 200, 125);
@@ -324,7 +324,7 @@ void MenuStateCustomGame::loadGameSettings(GameSettings *gameSettings){
 
 // ============ PRIVATE ===========================
 
-void MenuStateCustomGame::loadMapInfo(string file, MapInfo *mapInfo){
+void MenuStateCustomGame::loadMapInfo(std::string file, MapInfo *mapInfo){
 
 	struct MapFileHeader{
 		int32 version;
@@ -363,7 +363,7 @@ void MenuStateCustomGame::loadMapInfo(string file, MapInfo *mapInfo){
 
 void MenuStateCustomGame::reloadFactions(){
 	
-	vector<string> results;
+	std::vector<string> results;
 
 	findAll("techs/"+techTreeFiles[listBoxTechTree.getSelectedItemIndex()]+"/factions/*.", results);
 	if(results.size()==0){

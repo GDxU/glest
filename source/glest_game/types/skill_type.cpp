@@ -35,7 +35,7 @@ SkillType::~SkillType(){
 	deleteValues(sounds.getSounds().begin(), sounds.getSounds().end());
 }
 
-void SkillType::load(const XmlNode *sn, const string &dir, const TechTree *tt, const FactionType *ft){
+void SkillType::load(const XmlNode *sn, const std::string &dir, const TechTree *tt, const FactionType *ft){
 	//name
 	name= sn->getChild("name")->getAttribute("value")->getRestrictedValue();
 	
@@ -49,7 +49,7 @@ void SkillType::load(const XmlNode *sn, const string &dir, const TechTree *tt, c
 	animSpeed= sn->getChild("anim-speed")->getAttribute("value")->getIntValue();
 	
 	//model
-	string path= sn->getChild("animation")->getAttribute("path")->getRestrictedValue();
+	std::string path= sn->getChild("animation")->getAttribute("path")->getRestrictedValue();
 	animation= Renderer::getInstance().newModel(rsGame);
 	animation->load(dir + "/" + path);
 	
@@ -62,7 +62,7 @@ void SkillType::load(const XmlNode *sn, const string &dir, const TechTree *tt, c
 		sounds.resize(soundNode->getChildCount());
 		for(int i=0; i<soundNode->getChildCount(); ++i){
 			const XmlNode *soundFileNode= soundNode->getChild("sound-file", i);
-			string path= soundFileNode->getAttribute("path")->getRestrictedValue();
+			std::string path= soundFileNode->getAttribute("path")->getRestrictedValue();
 			StaticSound *sound= new StaticSound();
 			sound->load(dir + "/" + path);
 			sounds[i]= sound;
@@ -70,7 +70,7 @@ void SkillType::load(const XmlNode *sn, const string &dir, const TechTree *tt, c
 	}
 }
 
-string SkillType::skillClassToStr(SkillClass skillClass){
+std::string SkillType::skillClassToStr(SkillClass skillClass){
 	switch(skillClass){
 	case scStop: return "Stop";
 	case scMove: return "Move";
@@ -88,7 +88,7 @@ string SkillType::skillClassToStr(SkillClass skillClass){
 	};
 }
 
-string SkillType::fieldToStr(Field field){
+std::string SkillType::fieldToStr(Field field){
 	switch(field){
 	case fLand: return "Land";
 	case fAir: return "Air";
@@ -107,7 +107,7 @@ StopSkillType::StopSkillType(){
     skillClass= scStop;
 }
 
-string StopSkillType::toString() const{
+std::string StopSkillType::toString() const{
 	return Lang::getInstance().get("Stop");
 }
 
@@ -119,7 +119,7 @@ MoveSkillType::MoveSkillType(){
 	skillClass= scMove;
 }
 
-string MoveSkillType::toString() const{
+std::string MoveSkillType::toString() const{
 	return Lang::getInstance().get("Move");
 }
 
@@ -151,7 +151,7 @@ AttackSkillType::~AttackSkillType(){
 	deleteValues(projSounds.getSounds().begin(), projSounds.getSounds().end());
 }
 
-void AttackSkillType::load(const XmlNode *sn, const string &dir, const TechTree *tt, const FactionType *ft){
+void AttackSkillType::load(const XmlNode *sn, const std::string &dir, const TechTree *tt, const FactionType *ft){
     
 	SkillType::load(sn, dir, tt, ft);
 
@@ -159,7 +159,7 @@ void AttackSkillType::load(const XmlNode *sn, const string &dir, const TechTree 
 	attackStrength= sn->getChild("attack-strenght")->getAttribute("value")->getIntValue();
     attackVar= sn->getChild("attack-var")->getAttribute("value")->getIntValue();
     attackRange= sn->getChild("attack-range")->getAttribute("value")->getIntValue();
-	string attackTypeName= sn->getChild("attack-type")->getAttribute("value")->getRestrictedValue();
+	std::string attackTypeName= sn->getChild("attack-type")->getAttribute("value")->getRestrictedValue();
 	attackType= tt->getAttackType(attackTypeName);
 	attackStartTime= sn->getChild("attack-start-time")->getAttribute("value")->getFloatValue();
 
@@ -167,7 +167,7 @@ void AttackSkillType::load(const XmlNode *sn, const string &dir, const TechTree 
 	const XmlNode *attackFieldsNode= sn->getChild("attack-fields");
 	for(int i=0; i<attackFieldsNode->getChildCount(); ++i){
 		const XmlNode *fieldNode= attackFieldsNode->getChild("field", i);
-		string fieldName= fieldNode->getAttribute("value")->getRestrictedValue();
+		std::string fieldName= fieldNode->getAttribute("value")->getRestrictedValue();
 		if(fieldName=="land"){
 			attackFields[fLand]= true;
 		}		
@@ -188,7 +188,7 @@ void AttackSkillType::load(const XmlNode *sn, const string &dir, const TechTree 
 		const XmlNode *particleNode= projectileNode->getChild("particle");
 		bool particleEnabled= particleNode->getAttribute("value")->getBoolValue();
 		if(particleEnabled){
-			string path= particleNode->getAttribute("path")->getRestrictedValue();	
+			std::string path= particleNode->getAttribute("path")->getRestrictedValue();	
 			projectileParticleSystemType= new ParticleSystemTypeProjectile();
 			projectileParticleSystemType->load(dir,  dir + "/" + path);
 		}
@@ -200,7 +200,7 @@ void AttackSkillType::load(const XmlNode *sn, const string &dir, const TechTree 
 			projSounds.resize(soundNode->getChildCount());
 			for(int i=0; i<soundNode->getChildCount(); ++i){
 				const XmlNode *soundFileNode= soundNode->getChild("sound-file", i);
-				string path= soundFileNode->getAttribute("path")->getRestrictedValue();
+				std::string path= soundFileNode->getAttribute("path")->getRestrictedValue();
 				StaticSound *sound= new StaticSound();
 				sound->load(dir + "/" + path);
 				projSounds[i]= sound;
@@ -219,14 +219,14 @@ void AttackSkillType::load(const XmlNode *sn, const string &dir, const TechTree 
 		const XmlNode *particleNode= splashNode->getChild("particle");
 		bool particleEnabled= particleNode->getAttribute("value")->getBoolValue();
 		if(particleEnabled){
-			string path= particleNode->getAttribute("path")->getRestrictedValue();	
+			std::string path= particleNode->getAttribute("path")->getRestrictedValue();	
 			splashParticleSystemType= new ParticleSystemTypeSplash();
 			splashParticleSystemType->load(dir,  dir + "/" + path);
 		}
 	}
 }
 
-string AttackSkillType::toString() const{
+std::string AttackSkillType::toString() const{
 	return Lang::getInstance().get("Attack");
 }
 
@@ -247,7 +247,7 @@ BuildSkillType::BuildSkillType(){
     skillClass= scBuild;
 }
 
-string BuildSkillType::toString() const{
+std::string BuildSkillType::toString() const{
 	return Lang::getInstance().get("Build");
 }
 
@@ -259,7 +259,7 @@ HarvestSkillType::HarvestSkillType(){
     skillClass= scHarvest;
 }
 
-string HarvestSkillType::toString() const{
+std::string HarvestSkillType::toString() const{
 	return Lang::getInstance().get("Harvest");
 }
 
@@ -271,7 +271,7 @@ RepairSkillType::RepairSkillType(){
     skillClass= scRepair;
 }
 
-string RepairSkillType::toString() const{
+std::string RepairSkillType::toString() const{
 	return Lang::getInstance().get("Repair");
 }
 
@@ -283,7 +283,7 @@ ProduceSkillType::ProduceSkillType(){
     skillClass= scProduce;
 }
 
-string ProduceSkillType::toString() const{
+std::string ProduceSkillType::toString() const{
 	return Lang::getInstance().get("Produce");
 }
 
@@ -299,7 +299,7 @@ UpgradeSkillType::UpgradeSkillType(){
     skillClass= scUpgrade;
 }
 
-string UpgradeSkillType::toString() const{
+std::string UpgradeSkillType::toString() const{
 	return Lang::getInstance().get("Upgrade");
 }
 
@@ -315,7 +315,7 @@ BeBuiltSkillType::BeBuiltSkillType(){
     skillClass= scBeBuilt;
 }
 
-string BeBuiltSkillType::toString() const{
+std::string BeBuiltSkillType::toString() const{
 	return "Be built";
 }
 
@@ -327,7 +327,7 @@ MorphSkillType::MorphSkillType(){
     skillClass= scMorph;
 }
 
-string MorphSkillType::toString() const{
+std::string MorphSkillType::toString() const{
 	return "Morph";
 }
 
@@ -343,13 +343,13 @@ DieSkillType::DieSkillType(){
     skillClass= scDie;
 }
 
-void DieSkillType::load(const XmlNode *sn, const string &dir, const TechTree *tt, const FactionType *ft){
+void DieSkillType::load(const XmlNode *sn, const std::string &dir, const TechTree *tt, const FactionType *ft){
 	SkillType::load(sn, dir, tt, ft);
 
 	fade= sn->getChild("fade")->getAttribute("value")->getBoolValue();
 }
 
-string DieSkillType::toString() const{
+std::string DieSkillType::toString() const{
 	return "Die";
 }
 

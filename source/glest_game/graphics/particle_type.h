@@ -20,7 +20,8 @@
 #include "vec.h"
 #include "xml_parser.h"
 
-using std::string;
+
+
 
 namespace Glest{ namespace Game{
 
@@ -43,10 +44,10 @@ using Shared::Xml::XmlNode;
 
 class ParticleSystemType{
 protected:
-	string type;
+	std::string type;
 	Texture2D *texture;
 	Model *model;
-	string primitive;
+	std::string primitive;
 	Vec3f offset;
 	Vec4f color;
 	Vec4f colorNoEnergy;
@@ -60,7 +61,7 @@ protected:
 
 public:
 	ParticleSystemType();
-	void load(const XmlNode *particleSystemNode, const string &dir);
+	void load(const XmlNode *particleSystemNode, const std::string &dir);
 
 protected:
 	void setValues(AttackParticleSystem *ats);
@@ -72,13 +73,13 @@ protected:
 
 class ParticleSystemTypeProjectile: public ParticleSystemType{
 private:
-	string trajectory;
+	std::string trajectory;
 	float trajectorySpeed;
 	float trajectoryScale;
 	float trajectoryFrequency;
 
 public:
-	void load(const string &dir, const string &path);
+	void load(const std::string &dir, const std::string &path);
 	ProjectileParticleSystem *create();
 };
 
@@ -88,7 +89,7 @@ public:
 
 class ParticleSystemTypeSplash: public ParticleSystemType{
 public:
-	void load(const string &dir, const string &path);
+	void load(const std::string &dir, const std::string &path);
 	SplashParticleSystem *create();
 
 private:

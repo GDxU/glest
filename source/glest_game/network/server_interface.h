@@ -19,7 +19,8 @@
 #include "connection_slot.h"
 #include "socket.h"
 
-using std::vector;
+
+
 using Shared::Platform::ServerSocket;
 
 namespace Glest{ namespace Game{
@@ -47,11 +48,11 @@ public:
 	virtual void waitUntilReady(Checksum* checksum);
 
 	// message sending
-	virtual void sendTextMessage(const string &text, int teamIndex);
+	virtual void sendTextMessage(const std::string &text, int teamIndex);
 	virtual void quitGame();
 
 	//misc
-	virtual string getNetworkStatus() const;
+	virtual std::string getNetworkStatus() const;
 
 	ServerSocket* getServerSocket()		{return &serverSocket;}
 	void addSlot(int playerIndex);

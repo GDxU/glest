@@ -29,7 +29,7 @@ void ShaderProgramD3d9::attach(VertexShader *vs, FragmentShader *fs){
 	pixelShader= static_cast<PixelShaderD3d9*>(fs);
 }
 
-bool ShaderProgramD3d9::link(string &messages){
+bool ShaderProgramD3d9::link(std::string &messages){
 	d3dVsConstantTable= vertexShader->getD3dConstantTable();
 	d3dPsConstantTable= pixelShader->getD3dConstantTable();
 	return true;
@@ -40,35 +40,35 @@ void ShaderProgramD3d9::activate(){
 	d3dDevice->SetPixelShader(pixelShader->getD3dPixelShader());
 }
 
-void ShaderProgramD3d9::setUniform(const string &name, int value){
+void ShaderProgramD3d9::setUniform(const std::string &name, int value){
 	D3DXHANDLE vsHandle= d3dVsConstantTable->GetConstantByName(NULL, name.c_str());
 	D3DXHANDLE psHandle= d3dPsConstantTable->GetConstantByName(NULL, name.c_str());
 	HRESULT vsResult= d3dVsConstantTable->SetInt(d3dDevice, vsHandle, value);
 	HRESULT psResult= d3dPsConstantTable->SetInt(d3dDevice, psHandle, value);
 	if(vsResult!=D3D_OK && psResult!=D3D_OK){
-		throw runtime_error("Error setting shader uniform: "+string(name));
+		throw std::runtime_error("Error setting shader uniform: "+string(name));
 	}
 }
 
-void ShaderProgramD3d9::setUniform(const string &name, float value){
+void ShaderProgramD3d9::setUniform(const std::string &name, float value){
 	D3DXHANDLE vsHandle= d3dVsConstantTable->GetConstantByName(NULL, name.c_str());
 	D3DXHANDLE psHandle= d3dPsConstantTable->GetConstantByName(NULL, name.c_str());
 	HRESULT vsResult= d3dVsConstantTable->SetFloat(d3dDevice, vsHandle, value);
 	HRESULT psResult= d3dPsConstantTable->SetFloat(d3dDevice, psHandle, value);
 	if(vsResult!=D3D_OK && psResult!=D3D_OK){
-		throw runtime_error("Error setting shader uniform: "+string(name));
+		throw std::runtime_error("Error setting shader uniform: "+string(name));
 	}
 }
 
-void ShaderProgramD3d9::setUniform(const string &name, const Vec2f &value){
+void ShaderProgramD3d9::setUniform(const std::string &name, const Vec2f &value){
 	setUniform(name, Vec4f(value.x, value.y, 0.0f, 0.0f));
 }
 
-void ShaderProgramD3d9::setUniform(const string &name, const Vec3f &value){
+void ShaderProgramD3d9::setUniform(const std::string &name, const Vec3f &value){
 	setUniform(name, Vec4f(value.x, value.y, value.z, 0.0f));
 }
 
-void ShaderProgramD3d9::setUniform(const string &name, const Vec4f &value){
+void ShaderProgramD3d9::setUniform(const std::string &name, const Vec4f &value){
 	D3DXVECTOR4 v;
 	memcpy(&v, &value, sizeof(float)*4);
 
@@ -77,15 +77,15 @@ void ShaderProgramD3d9::setUniform(const string &name, const Vec4f &value){
 	HRESULT vsResult= d3dVsConstantTable->SetVector(d3dDevice, vsHandle, &v);
 	HRESULT psResult= d3dPsConstantTable->SetVector(d3dDevice, psHandle, &v);
 	if(vsResult!=D3D_OK && psResult!=D3D_OK){
-		throw runtime_error("Error setting shader uniform: "+string(name));
+		throw std::runtime_error("Error setting shader uniform: "+string(name));
 	}
 }
 
-void ShaderProgramD3d9::setUniform(const string &name, const Matrix3f &value){
-	throw runtime_error("Not implemented");
+void ShaderProgramD3d9::setUniform(const std::string &name, const Matrix3f &value){
+	throw std::runtime_error("Not implemented");
 }
 
-void ShaderProgramD3d9::setUniform(const string &name, const Matrix4f &value){
+void ShaderProgramD3d9::setUniform(const std::string &name, const Matrix4f &value){
 	D3DXMATRIX m;
 	memcpy(&m, &value, sizeof(float)*16);
 
@@ -94,11 +94,11 @@ void ShaderProgramD3d9::setUniform(const string &name, const Matrix4f &value){
 	HRESULT vsResult= d3dVsConstantTable->SetMatrix(d3dDevice, vsHandle, &m);
 	HRESULT psResult= d3dPsConstantTable->SetMatrix(d3dDevice, psHandle, &m);
 	if(vsResult!=D3D_OK && psResult!=D3D_OK){
-		throw runtime_error("Error setting shader uniform: "+string(name));
+		throw std::runtime_error("Error setting shader uniform: "+string(name));
 	}
 }
 
-/*void ShaderD3d9::setUniform(const string &name, const Texture *value){
+/*void ShaderD3d9::setUniform(const std::string &name, const Texture *value){
 	D3DXHANDLE handle= d3dConstantTable->GetConstantByName(NULL, name);
 	D3DXCONSTANT_DESC d3dDesc;
 	UINT i=1;
@@ -107,7 +107,7 @@ void ShaderProgramD3d9::setUniform(const string &name, const Matrix4f &value){
 	if(result==D3D_OK)
 		d3dDevice->SetTexture(d3dDesc.RegisterIndex, d3dTexture);
 	else
-		throw runtime_error("Error setting shader uniform sampler: "+string(name));
+		throw std::runtime_error("Error setting shader uniform sampler: "+string(name));
 }
 
 bool ShaderD3d9::isUniform(char *name){
@@ -135,7 +135,7 @@ void ShaderD3d9::end(){
 	}
 }
 
-void ShaderD3d9::load(const string &path){
+void ShaderD3d9::load(const std::string &path){
 	source.load(path);
 }
 
@@ -156,7 +156,7 @@ void VertexShaderD3d9::end(){
 	}
 }
 
-bool VertexShaderD3d9::compile(string &messages){
+bool VertexShaderD3d9::compile(std::string &messages){
 	//compile shader
 	ID3DXBuffer *code= NULL;
 	ID3DXBuffer *errors= NULL;
@@ -210,7 +210,7 @@ void PixelShaderD3d9::end(){
 	}
 }
 
-bool PixelShaderD3d9::compile(string &messages){
+bool PixelShaderD3d9::compile(std::string &messages){
 	
 	messages+= "Compiling shader: " + source.getPathInfo() + "\n";
 	

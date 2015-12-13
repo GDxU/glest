@@ -78,7 +78,7 @@ MenuStateOptions::MenuStateOptions(Program *program, MainMenu *mainMenu):
 	//sound
 
 	//lang
-	vector<string> langResults;
+	std::vector<string> langResults;
 	findAll("data/lang/*.lng", langResults, true);
 	if(langResults.empty()){
         throw runtime_error("There is no lang file");
@@ -91,7 +91,7 @@ MenuStateOptions::MenuStateOptions(Program *program, MainMenu *mainMenu):
 		listBoxShadows.pushBackItem(lang.get(Renderer::shadowsToStr(static_cast<Renderer::Shadows>(i))));
 	}
 
-	string str= config.getString("Shadows");
+	std::string str= config.getString("Shadows");
 	listBoxShadows.setSelectedItemIndex(clamp(Renderer::strToShadows(str), 0, Renderer::sCount-1));
 
 	//filter

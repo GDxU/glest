@@ -55,7 +55,7 @@ NetworkMessageIntro::NetworkMessageIntro(){
 	data.playerIndex= -1;
 }
 
-NetworkMessageIntro::NetworkMessageIntro(const string &versionString, const string &name, int playerIndex){
+NetworkMessageIntro::NetworkMessageIntro(const std::string &versionString, const std::string &name, int playerIndex){
 	data.messageType=nmtIntro; 
 	data.versionString= versionString;
 	data.name= name;
@@ -182,7 +182,7 @@ void NetworkMessageCommandList::send(Socket* socket) const{
 //	class NetworkMessageText
 // =====================================================
 
-NetworkMessageText::NetworkMessageText(const string &text, const string &sender, int teamIndex){
+NetworkMessageText::NetworkMessageText(const std::string &text, const std::string &sender, int teamIndex){
 	data.messageType= nmtText; 
 	data.text= text;
 	data.sender= sender;

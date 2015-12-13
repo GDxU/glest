@@ -27,7 +27,7 @@ namespace Glest{ namespace Game{
 struct MapInfo{
 	Vec2i size;
 	int players;
-	string desc;
+	std::string desc;
 };
 
 struct ScenarioInfo
@@ -35,17 +35,17 @@ struct ScenarioInfo
 	int difficulty;
     ControlType factionControls[GameConstants::maxPlayers];
     int teams[GameConstants::maxPlayers];
-    string factionTypeNames[GameConstants::maxPlayers];
+    std::string factionTypeNames[GameConstants::maxPlayers];
 
-    string mapName;
-    string tilesetName;
-    string techTreeName;
+    std::string mapName;
+    std::string tilesetName;
+    std::string techTreeName;
 
 	bool defaultUnits;
 	bool defaultResources;
 	bool defaultVictoryConditions;
 
-    string desc;
+    std::string desc;
 };
 
 class MenuState;
@@ -104,7 +104,7 @@ protected:
 	Camera camera;
 
 public:
-	MenuState(Program *program, MainMenu *mainMenu, const string &stateName);
+	MenuState(Program *program, MainMenu *mainMenu, const std::string &stateName);
 	virtual ~MenuState(){};
 	virtual void mouseClick(int x, int y, MouseButton mouseButton)=0;
 	virtual void mouseMove(int x, int y, const MouseState *mouseState)=0;

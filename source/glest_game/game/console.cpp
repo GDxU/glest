@@ -33,11 +33,11 @@ Console::Console(){
 	timeElapsed= 0.0f;
 }
 
-void Console::addStdMessage(const string &s){
+void Console::addStdMessage(const std::string &s){
 	addLine(Lang::getInstance().get(s));
 }
 
-void Console::addLine(string line, bool playSound){
+void Console::addLine(std::string line, bool playSound){
 	if(playSound){
 		SoundRenderer::getInstance().playFx(CoreData::getInstance().getClickSoundA());
 	}

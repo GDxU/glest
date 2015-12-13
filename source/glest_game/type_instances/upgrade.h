@@ -14,7 +14,8 @@
 
 #include <vector>
 
-using std::vector;
+
+
 
 namespace Glest{ namespace Game{
 
@@ -65,7 +66,7 @@ private:
 
 class UpgradeManager{
 private:	
-	typedef vector<Upgrade*> Upgrades;
+	typedef std::vector<Upgrade*> Upgrades;
 	Upgrades upgrades;
 public:
 	~UpgradeManager();

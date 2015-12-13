@@ -14,23 +14,24 @@
 
 #include <string>
 
-using std::string;
+
+
 
 namespace Shared{ namespace Util{
 
-bool strToBool(const string &s);
-int strToInt(const string &s);
-float strToFloat(const string &s); 
+bool strToBool(const std::string &s);
+int strToInt(const std::string &s);
+float strToFloat(const std::string &s); 
 
-bool strToBool(const string &s, bool *b);
-bool strToInt(const string &s, int *i);
-bool strToFloat(const string &s, float *f);
+bool strToBool(const std::string &s, bool *b);
+bool strToInt(const std::string &s, int *i);
+bool strToFloat(const std::string &s, float *f);
 
-string boolToStr(bool b);
-string intToStr(int i);
-string intToHex(int i);
-string floatToStr(float f);
-string doubleToStr(double f);
+std::string boolToStr(bool b);
+std::string intToStr(int i);
+std::string intToHex(int i);
+std::string floatToStr(float f);
+std::string doubleToStr(double f);
 
 }}//end namespace
 

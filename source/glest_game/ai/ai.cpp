@@ -49,8 +49,8 @@ ProduceTask::ProduceTask(const ResourceType *resourceType){
 	this->resourceType= resourceType;
 }
 
-string ProduceTask::toString() const{
-	string str= "Produce ";
+std::string ProduceTask::toString() const{
+	std::string str= "Produce ";
 	if(unitType!=NULL){
 		str+= unitType->getName();
 	}
@@ -83,8 +83,8 @@ BuildTask::BuildTask(const UnitType *unitType, const Vec2i &pos){
 	this->pos= pos;
 }
 
-string BuildTask::toString() const{
-	string str= "Build ";
+std::string BuildTask::toString() const{
+	std::string str= "Build ";
 	if(unitType!=NULL){
 		str+= unitType->getName();
 	}
@@ -100,8 +100,8 @@ UpgradeTask::UpgradeTask(const UpgradeType *upgradeType){
 	this->upgradeType= upgradeType;
 }
 
-string UpgradeTask::toString() const{
-	string str= "Build ";
+std::string UpgradeTask::toString() const{
+	std::string str= "Build ";
 	if(upgradeType!=NULL){
 		str+= upgradeType->getName();
 	}
@@ -234,7 +234,7 @@ bool Ai::isStableBase(){
 }
 
 bool Ai::findAbleUnit(int *unitIndex, CommandClass ability, bool idleOnly){
-	vector<int> units;
+	std::vector<int> units;
 
 	*unitIndex= -1;
 	for(int i=0; i<aiInterface->getMyUnitCount(); ++i){
@@ -256,7 +256,7 @@ bool Ai::findAbleUnit(int *unitIndex, CommandClass ability, bool idleOnly){
 }
 
 bool Ai::findAbleUnit(int *unitIndex, CommandClass ability, CommandClass currentCommand){
-	vector<int> units;
+	std::vector<int> units;
 
 	*unitIndex= -1;
 	for(int i=0; i<aiInterface->getMyUnitCount(); ++i){

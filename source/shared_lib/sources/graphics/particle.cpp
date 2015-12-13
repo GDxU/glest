@@ -397,7 +397,7 @@ void AttackParticleSystem::render(ParticleRenderer *pr, ModelRenderer *mr){
 	}
 }
 
-AttackParticleSystem::Primitive AttackParticleSystem::strToPrimitive(const string &str){
+AttackParticleSystem::Primitive AttackParticleSystem::strToPrimitive(const std::string &str){
 	if(str=="quad"){
 		return pQuad;
 	}
@@ -558,7 +558,7 @@ void ProjectileParticleSystem::setPath(Vec3f startPos, Vec3f endPos){
 	this->endPos= endPos;
 }
 
-ProjectileParticleSystem::Trajectory ProjectileParticleSystem::strToTrajectory(const string &str){
+ProjectileParticleSystem::Trajectory ProjectileParticleSystem::strToTrajectory(const std::string &str){
 	if(str=="linear"){
 		return tLinear;
 	}
@@ -643,7 +643,7 @@ ParticleManager::~ParticleManager(){
 }
 
 void ParticleManager::render(ParticleRenderer *pr, ModelRenderer *mr) const{
-	list<ParticleSystem*>::const_iterator it;
+    std::list<ParticleSystem*>::const_iterator it;
 
 	for (it=particleSystems.begin(); it!=particleSystems.end(); it++){
 		if((*it)->getVisible()){
@@ -653,7 +653,7 @@ void ParticleManager::render(ParticleRenderer *pr, ModelRenderer *mr) const{
 }
 
 void ParticleManager::update(){
-	list<ParticleSystem*>::iterator it;
+    std::list<ParticleSystem*>::iterator it;
 
 	for (it=particleSystems.begin(); it!=particleSystems.end(); it++){
 		(*it)->update();

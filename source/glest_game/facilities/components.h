@@ -17,8 +17,10 @@
 
 #include "font.h"
 
-using std::string;
-using std::vector;
+
+
+
+
 
 using Shared::Graphics::Font2D;
 
@@ -37,7 +39,7 @@ public:
 
 protected:
     int x, y, w, h;
-    string text;
+    std::string text;
 	const Font2D *font; 
 	bool enabled;
 
@@ -54,13 +56,13 @@ public:
 	int getY() const				{return y;}
 	int getW() const				{return w;}
 	int getH() const				{return h;}
-	const string &getText() const	{return text;}
+	const std::string &getText() const	{return text;}
 	const Font2D *getFont() const	{return font;}
 	bool getEnabled() const			{return enabled;}
 
 	void setX(int x)					{this->x= x;}
 	void setY(int y)					{this->y= y;}
-	void setText(const string &text)	{this->text= text;}
+	void setText(const std::string &text)	{this->text= text;}
 	void setFont(const Font2D *font)	{this->font= font;}
 	void setEnabled(bool enabled)		{this->enabled= enabled;}
 
@@ -125,7 +127,7 @@ public:
 
 private:
     GraphicButton graphButton1, graphButton2;
-    vector<string> items;
+    std::vector<std::string> items;
     int selectedItemIndex;
 	
 public:       
@@ -133,14 +135,14 @@ public:
     
 	int getItemCount() const				{return items.size();}
 	int getSelectedItemIndex() const		{return selectedItemIndex;}
-	string getSelectedItem() const			{return items[selectedItemIndex];}
+	std::string getSelectedItem() const			{return items[selectedItemIndex];}
 	const GraphicButton *getButton1() const	{return &graphButton1;}
 	const GraphicButton *getButton2() const	{return &graphButton2;}
 
-    void pushBackItem(string item);
-    void setItems(const vector<string> &items);
+    void pushBackItem(std::string item);
+    void setItems(const std::vector<std::string> &items);
 	void setSelectedItemIndex(int index);
-    void setSelectedItem(string item);
+    void setSelectedItem(std::string item);
     
     virtual bool mouseMove(int x, int y);
     virtual bool mouseClick(int x, int y);
@@ -159,18 +161,18 @@ private:
 	GraphicButton button1;
 	GraphicButton button2;
 	int buttonCount;
-	string header;
+	std::string header;
 
 public:
-	void init(const string &button1Str, const string &button2Str);
-	void init(const string &button1Str);
+	void init(const std::string &button1Str, const std::string &button2Str);
+	void init(const std::string &button1Str);
 
 	int getButtonCount() const				{return buttonCount;}
 	const GraphicButton *getButton1() const	{return &button1;}
 	const GraphicButton *getButton2() const	{return &button2;}
-	string getHeader() const				{return header;}
+	std::string getHeader() const				{return header;}
 	
-	void setHeader(string header)			{this->header= header;}
+	void setHeader(std::string header)			{this->header= header;}
 
     virtual bool mouseMove(int x, int y);
     virtual bool mouseClick(int x, int y);

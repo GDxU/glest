@@ -28,9 +28,9 @@ namespace Glest{ namespace Game{
 // 	class ResourceType
 // =====================================================
 
-void ResourceType::load(const string &dir, Checksum* checksum){
+void ResourceType::load(const std::string &dir, Checksum* checksum){
 
-	string path, str;
+	std::string path, str;
 	Renderer &renderer= Renderer::getInstance();
 
 	try{
@@ -59,7 +59,7 @@ void ResourceType::load(const string &dir, Checksum* checksum){
 		case rcTech:{
 			//model
 			const XmlNode *modelNode= typeNode->getChild("model");
-			string path=dir+"/" + modelNode->getAttribute("path")->getRestrictedValue();
+			std::string path=dir+"/" + modelNode->getAttribute("path")->getRestrictedValue();
 			
 			model= renderer.newModel(rsGame);
 			model->load(path);
@@ -105,7 +105,7 @@ void ResourceType::load(const string &dir, Checksum* checksum){
 
 // ==================== misc ==================== 
 
-ResourceClass ResourceType::strToRc(const string &s){
+ResourceClass ResourceType::strToRc(const std::string &s){
 	if(s=="tech"){
         return rcTech;
 	}
@@ -118,7 +118,7 @@ ResourceClass ResourceType::strToRc(const string &s){
 	if(s=="consumable"){
         return rcConsumable;
 	}
-	throw runtime_error("Error converting from string ro resourceClass, found: " + s);
+	throw runtime_error("Error converting from std::string ro resourceClass, found: " + s);
 }
 
 }}//end namespace

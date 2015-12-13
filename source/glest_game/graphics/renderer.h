@@ -218,9 +218,9 @@ public:
 	void renderChatManager(const ChatManager *chatManager);
 	void renderResourceStatus();
 	void renderSelectionQuad();
-	void renderText(const string &text, const Font2D *font, float alpha, int x, int y, bool centered= false);
-	void renderText(const string &text, const Font2D *font, const Vec3f &color, int x, int y, bool centered= false);
-	void renderTextShadow(const string &text, const Font2D *font, int x, int y, bool centered= false);	
+	void renderText(const std::string &text, const Font2D *font, float alpha, int x, int y, bool centered= false);
+	void renderText(const std::string &text, const Font2D *font, const Vec3f &color, int x, int y, bool centered= false);
+	void renderTextShadow(const std::string &text, const Font2D *font, int x, int y, bool centered= false);	
 	
     //components
 	void renderLabel(const GraphicLabel *label);
@@ -244,8 +244,8 @@ public:
 	void computeSelected(Selection::UnitContainer &units, const Vec2i &posDown, const Vec2i &posUp);
 
     //gl wrap
-	string getGlInfo();
-	string getGlMoreInfo();
+	std::string getGlInfo();
+	std::string getGlMoreInfo();
 	void autoConfig();
 	
 	//clear
@@ -257,12 +257,12 @@ public:
 
 	//misc
 	void loadConfig();
-	void saveScreen(const string &path);
+	void saveScreen(const std::string &path);
 	Quad2i getVisibleQuad() const		{return visibleQuad;}
 
 	//static
-	static Shadows strToShadows(const string &s);
-	static string shadowsToStr(Shadows shadows);
+	static Shadows strToShadows(const std::string &s);
+	static std::string shadowsToStr(Shadows shadows);
 
 private:
 	//private misc
@@ -272,7 +272,7 @@ private:
 	Vec4f computeMoonPos(float time);
 	Vec3f computeLightColor(float time);
 	Vec4f computeWaterColor(float waterLevel, float cellHeight);
-	void checkExtension(const string &extension, const string &msg);
+	void checkExtension(const std::string &extension, const std::string &msg);
 	
 	//selection render
 	void renderObjectsFast();
@@ -299,7 +299,7 @@ private:
 	void renderQuad(int x, int y, int w, int h, const Texture2D *texture);
 	
 	//static
-    static Texture2D::Filter strToTextureFilter(const string &s);
+    static Texture2D::Filter strToTextureFilter(const std::string &s);
 };
 
 }} //end namespace

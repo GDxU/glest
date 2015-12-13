@@ -43,12 +43,12 @@ bool UpgradeType::isAffected(const UnitType *unitType) const{
 
 // ==================== misc ==================== 
 
-void UpgradeType::preLoad(const string &dir){
+void UpgradeType::preLoad(const std::string &dir){
 	name=lastDir(dir);
 }
 
-void UpgradeType::load(const string &dir, const TechTree *techTree, const FactionType *factionType, Checksum* checksum){
-	string path;
+void UpgradeType::load(const std::string &dir, const TechTree *techTree, const FactionType *factionType, Checksum* checksum){
+	std::string path;
 
 	Logger::getInstance().add("Upgrade type: "+ formatString(name), true);
 
@@ -79,7 +79,7 @@ void UpgradeType::load(const string &dir, const TechTree *techTree, const Factio
 		const XmlNode *unitRequirementsNode= upgradeNode->getChild("unit-requirements");
 		for(int i=0; i<unitRequirementsNode->getChildCount(); ++i){
 			const XmlNode *unitNode= 	unitRequirementsNode->getChild("unit", i);
-			string name= unitNode->getAttribute("name")->getRestrictedValue();
+			std::string name= unitNode->getAttribute("name")->getRestrictedValue();
 			unitReqs.push_back(factionType->getUnitType(name));
 		}
 
@@ -87,7 +87,7 @@ void UpgradeType::load(const string &dir, const TechTree *techTree, const Factio
 		const XmlNode *upgradeRequirementsNode= upgradeNode->getChild("upgrade-requirements");
 		for(int i=0; i<upgradeRequirementsNode->getChildCount(); ++i){
 			const XmlNode *upgradeReqNode= upgradeRequirementsNode->getChild("upgrade", i);
-			string name= upgradeReqNode->getAttribute("name")->getRestrictedValue();
+			std::string name= upgradeReqNode->getAttribute("name")->getRestrictedValue();
 			upgradeReqs.push_back(factionType->getUpgradeType(name));
 		}
 
@@ -96,7 +96,7 @@ void UpgradeType::load(const string &dir, const TechTree *techTree, const Factio
 		costs.resize(resourceRequirementsNode->getChildCount());
 		for(int i=0; i<costs.size(); ++i){
 			const XmlNode *resourceNode= 	resourceRequirementsNode->getChild("resource", i);
-			string name= resourceNode->getAttribute("name")->getRestrictedValue();
+			std::string name= resourceNode->getAttribute("name")->getRestrictedValue();
 			int amount= resourceNode->getAttribute("amount")->getIntValue();
 			costs[i].init(techTree->getResourceType(name), amount);
 		}
@@ -105,7 +105,7 @@ void UpgradeType::load(const string &dir, const TechTree *techTree, const Factio
 		const XmlNode *effectsNode= upgradeNode->getChild("effects");
 		for(int i=0; i<effectsNode->getChildCount(); ++i){
 			const XmlNode *unitNode= effectsNode->getChild("unit", i);
-			string name= unitNode->getAttribute("name")->getRestrictedValue();
+			std::string name= unitNode->getAttribute("name")->getRestrictedValue();
 			effects.push_back(factionType->getUnitType(name));
 		}
 
@@ -125,9 +125,9 @@ void UpgradeType::load(const string &dir, const TechTree *techTree, const Factio
 	}
 }
 
-string UpgradeType::getReqDesc() const{
+std::string UpgradeType::getReqDesc() const{
     
-    string str;
+    std::string str;
     int i;
 	Lang &lang= Lang::getInstance();
 

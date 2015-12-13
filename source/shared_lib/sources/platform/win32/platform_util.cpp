@@ -34,7 +34,7 @@ void PerformanceTimer::init(int fps, int maxTimes){
 	int64 freq;
 
 	if(QueryPerformanceFrequency((LARGE_INTEGER*) &freq)==0){
-		throw runtime_error("Performance counters not supported");
+		throw std::runtime_error("Performance counters not supported");
 	}
 
 	times= 0;
@@ -68,7 +68,7 @@ void PerformanceTimer::reset(){
 
 Chrono::Chrono(){
 	if(!QueryPerformanceFrequency((LARGE_INTEGER*) &freq)){
-		throw runtime_error("Performance counters not supported");
+		throw std::runtime_error("Performance counters not supported");
 	}
 	stopped= true;
 	accumCount= 0;
@@ -146,7 +146,7 @@ LONG WINAPI PlatformExceptionHandler::handler(LPEXCEPTION_POINTERS pointers){
 	return EXCEPTION_EXECUTE_HANDLER;
 }
 
-void PlatformExceptionHandler::install(string dumpFileName){
+void PlatformExceptionHandler::install(std::string dumpFileName){
 	thisPointer= this;
 	this->dumpFileName= dumpFileName;
 	SetUnhandledExceptionFilter(handler);
@@ -157,7 +157,7 @@ void PlatformExceptionHandler::install(string dumpFileName){
 // =====================================================
 
 //finds all filenames like path and stores them in resultys
-void findAll(const string &path, vector<string> &results, bool cutExtension){
+void findAll(const std::string &path, std::vector<string> &results, bool cutExtension){
 
 	int i= 0;
 	struct _finddata_t fi;
@@ -179,11 +179,11 @@ void findAll(const string &path, vector<string> &results, bool cutExtension){
 		while(_findnext(handle, &fi)==0);
 	}
 	else{
-		throw runtime_error("Error opening files: "+ path);
+		throw std::runtime_error("Error opening files: "+ path);
 	}
 
 	if(i==0){
-		throw runtime_error("No files found: "+ path);
+		throw std::runtime_error("No files found: "+ path);
 	}
 
 	if(cutExtension){
@@ -223,16 +223,16 @@ void restoreVideoMode(){
 	assert(dispChangeErr==DISP_CHANGE_SUCCESSFUL);
 }
 
-void message(string message){
+void message(std::string message){
 	MessageBox(NULL, message.c_str(), "Message", MB_OK);
 }
 
-bool ask(string message){
+bool ask(std::string message){
 	return MessageBox(NULL, message.c_str(), "Confirmation", MB_YESNO)==IDYES;
 }
 
 void exceptionMessage(const exception &excp){
-	string message, title;
+	std::string message, title;
 	showCursor(true);
 
 	message+= "ERROR(S):\n\n";

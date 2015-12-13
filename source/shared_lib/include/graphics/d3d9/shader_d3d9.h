@@ -34,16 +34,16 @@ public:
 	virtual void attach(VertexShader *vs, FragmentShader *fs);
 	virtual void activate();
 
-	virtual bool link(string &messages);
+	virtual bool link(std::string &messages);
 	
-	virtual void setUniform(const string &name, int value);
-	virtual void setUniform(const string &name, float value);
-	virtual void setUniform(const string &name, const Vec2f &value);
-	virtual void setUniform(const string &name, const Vec3f &value);
-	virtual void setUniform(const string &name, const Vec4f &value);
-	virtual void setUniform(const string &name, const Matrix3f &value);
-	virtual void setUniform(const string &name, const Matrix4f &value);
-	//virtual void setUniform(const string &name, const Texture *value);
+	virtual void setUniform(const std::string &name, int value);
+	virtual void setUniform(const std::string &name, float value);
+	virtual void setUniform(const std::string &name, const Vec2f &value);
+	virtual void setUniform(const std::string &name, const Vec3f &value);
+	virtual void setUniform(const std::string &name, const Vec4f &value);
+	virtual void setUniform(const std::string &name, const Matrix3f &value);
+	virtual void setUniform(const std::string &name, const Matrix4f &value);
+	//virtual void setUniform(const std::string &name, const Texture *value);
 };
 
 
@@ -54,7 +54,7 @@ public:
 class ShaderD3d9: virtual public Shader{
 protected:
 	ShaderSource source;
-	string target;
+	std::string target;
 
 	IDirect3DDevice9 *d3dDevice;
 	ID3DXConstantTable *d3dConstantTable;
@@ -63,11 +63,11 @@ public:
 	ShaderD3d9();
 	virtual void init(){};
 	virtual void end();
-	virtual void load(const string &path);
+	virtual void load(const std::string &path);
 
 	ID3DXConstantTable *getD3dConstantTable() const	{return d3dConstantTable;}
 
-	void setTarget(const string &target)	{this->target= target;}
+	void setTarget(const std::string &target)	{this->target= target;}
 };
 
 // ===============================
@@ -82,7 +82,7 @@ public:
 	VertexShaderD3d9();
 	virtual void end();
 
-	virtual bool compile(string &messages);
+	virtual bool compile(std::string &messages);
 
 	IDirect3DVertexShader9 *getD3dVertexShader() const	{return d3dVertexShader;}
 };
@@ -99,7 +99,7 @@ public:
 	PixelShaderD3d9();
 	virtual void end();
 
-	virtual bool compile(string &messages);
+	virtual bool compile(std::string &messages);
 
 	IDirect3DPixelShader9 *getD3dPixelShader() const	{return d3dPixelShader;}
 };

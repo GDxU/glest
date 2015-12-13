@@ -54,7 +54,7 @@ void PlatformContextGl::init(int colorBits, int depthBits, int stencilBits){
 
 	glch= wglCreateContext(dch);
 	if(glch==NULL){
-		throw runtime_error("Error initing OpenGL device context");
+		throw std::runtime_error("Error initing OpenGL device context");
 	}
 
 	makeCurrent();
@@ -79,7 +79,7 @@ void PlatformContextGl::swapBuffers(){
 //	Global Fcs  
 // ======================================
 
-void createGlFontBitmaps(uint32 &base, const string &type, int size, int width, int charCount, FontMetrics &metrics){
+void createGlFontBitmaps(uint32 &base, const std::string &type, int size, int width, int charCount, FontMetrics &metrics){
 	HFONT font= CreateFont(
 		size, 0, 0, 0, width, 0, FALSE, FALSE, ANSI_CHARSET,
 		OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS, PROOF_QUALITY, 
@@ -123,7 +123,7 @@ void createGlFontBitmaps(uint32 &base, const string &type, int size, int width, 
 	assert(err);
 }
 
-void createGlFontOutlines(uint32 &base, const string &type, int width, float depth, int charCount, FontMetrics &metrics){
+void createGlFontOutlines(uint32 &base, const std::string &type, int width, float depth, int charCount, FontMetrics &metrics){
 	HFONT font= CreateFont(
 		10, 0, 0, 0, width, 0, FALSE, FALSE, ANSI_CHARSET,
 		OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS, PROOF_QUALITY, 

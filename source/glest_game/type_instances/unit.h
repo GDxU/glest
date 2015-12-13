@@ -99,7 +99,7 @@ private:
 
 private:
 	int blockCount;
-	vector<Vec2i> pathQueue;
+	std::vector<Vec2i> pathQueue;
 
 public:
 	bool isBlocked();
@@ -210,7 +210,7 @@ public:
 	int getKills()								{return kills;}
 	const Level *getLevel() const				{return level;}
 	const Level *getNextLevel() const;
-	string getFullName() const;
+	std::string getFullName() const;
 	const UnitPath *getPath() const				{return &unitPath;}
 	UnitPath *getPath()							{return &unitPath;}
 
@@ -272,7 +272,7 @@ public:
     //other
 	void resetHighlight();
 	const CommandType *computeCommandType(const Vec2i &pos, const Unit *targetUnit= NULL) const;
-	string getDesc() const;
+	std::string getDesc() const;
     bool computeEp();
     bool repair();
     bool decHp(int i);

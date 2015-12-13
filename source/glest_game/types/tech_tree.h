@@ -27,13 +27,13 @@ namespace Glest{ namespace Game{
 
 class TechTree{
 private:
-	typedef vector<ResourceType> ResourceTypes;
-	typedef vector<FactionType> FactionTypes;
-	typedef vector<ArmorType> ArmorTypes;
-	typedef vector<AttackType> AttackTypes;
+	typedef std::vector<ResourceType> ResourceTypes;
+	typedef std::vector<FactionType> FactionTypes;
+	typedef std::vector<ArmorType> ArmorTypes;
+	typedef std::vector<AttackType> AttackTypes;
 
 private:
-    string desc;
+    std::string desc;
     ResourceTypes resourceTypes;
     FactionTypes factionTypes;
 	ArmorTypes armorTypes;
@@ -41,7 +41,7 @@ private:
 	DamageMultiplierTable damageMultiplierTable;
 
 public:
-    void load(const string &dir, Checksum* checksum);
+    void load(const std::string &dir, Checksum* checksum);
     ~TechTree();
     
     //get
@@ -49,13 +49,13 @@ public:
 	int getTypeCount() const									{return factionTypes.size();}
 	const FactionType *getType(int i) const						{return &factionTypes[i];}
 	const ResourceType *getResourceType(int i) const			{return &resourceTypes[i];}
-    const string &getDesc() const								{return desc;}
-	const FactionType *getType(const string &name) const;
-	const ResourceType *getResourceType(const string &name) const;
+    const std::string &getDesc() const								{return desc;}
+	const FactionType *getType(const std::string &name) const;
+	const ResourceType *getResourceType(const std::string &name) const;
     const ResourceType *getTechResourceType(int i) const;
     const ResourceType *getFirstTechResourceType() const;
-	const ArmorType *getArmorType(const string &name) const;
-	const AttackType *getAttackType(const string &name) const;
+	const ArmorType *getArmorType(const std::string &name) const;
+	const AttackType *getAttackType(const std::string &name) const;
 	float getDamageMultiplier(const AttackType *att, const ArmorType *art) const;
 };
 
