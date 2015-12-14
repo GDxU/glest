@@ -57,7 +57,7 @@ void XmlTree::load(const std::string &path)
     tinyxml2::XMLError err = doc.LoadFile(path.c_str());
 
     if (err != tinyxml2::XML_SUCCESS)
-        throw std::runtime_error("Can not parse URL: " + path);
+        throw std::runtime_error("Can not parse XML: " + path);
 
     root = new XmlNode(doc.FirstChildElement());
 }
@@ -86,6 +86,10 @@ XmlNode::XmlNode(const tinyxml2::XMLElement* node)
 {
     const tinyxml2::XMLAttribute* attr = node->FirstAttribute();
 
+	this->name = node->Name();
+	const char* textVa = node->GetText();
+	if (textVa)
+		this->text = textVa;
 
     while (attr)
     {

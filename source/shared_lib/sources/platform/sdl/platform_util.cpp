@@ -24,6 +24,11 @@
 #include "window.h"
 #include "noimpl.h"
 
+#include <Windows.h>
+#include <minwinbase.h>
+#include <winbase.h>
+#include <wtypes.h>
+
 using namespace Shared::Util;
 
 
@@ -116,7 +121,34 @@ int64 Chrono::queryCounter(int multiplier) const {
 // =====================================
 //         Misc    
 // =====================================
+static std::string getExtension(const std::string& fullname)
+{
+	int i = fullname.find_last_of('.');
 
+	if (i != -1)
+		return fullname.substr(i + 1);
+	else
+		return "";
+}
+static std::string getDirectory(const std::string& name)
+{
+	int i = name.find_last_of("/\\");
+	if (i != -1)
+		return name.substr(0, i);
+
+	return ".";
+}
+static void normalizePath(std::string* path)
+{
+	size_t pos = std::string::npos;
+	while ((pos = path->find_first_of("/\\", pos + 1)) != std::string::npos)
+	{
+		path->replace(pos, 1, "/");
+	}
+
+	if (path->operator[](path->size() - 1) != '/')
+		path->append("/");
+}
 //finds all filenames like path and stores them in resultys
 void findAll(const std::string &path, std::vector<std::string> &results, bool cutExtension) {
 	results.clear();
@@ -126,8 +158,29 @@ void findAll(const std::string &path, std::vector<std::string> &results, bool cu
 	 * specified as wildcard
 	 */
 	if(mypath.compare(mypath.size() - 2, 2, "*.") == 0) {
-		mypath = mypath.substr(0, mypath.size() - 2);
 		mypath += "*";
+	}
+
+	std::string dir = getDirectory(mypath);
+	normalizePath(&dir);
+
+	WIN32_FIND_DATA info;
+	HANDLE handle = FindFirstFile(mypath.c_str(), &info);
+	if (handle != INVALID_HANDLE_VALUE)
+	{
+		do
+		{
+			std::string filename = info.cFileName;
+			if (!filename.empty() && filename != "." &&filename != "..")
+				//!(info.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY) &&
+				//!(info.dwFileAttributes & FILE_ATTRIBUTE_HIDDEN) &&
+			{
+				results.push_back(filename);
+			}
+
+		} while (FindNextFile(handle, &info));
+
+		FindClose(handle);
 	}
 
 // 	glob_t globbuf;
