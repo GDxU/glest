@@ -269,6 +269,9 @@ bool isKeyDown(int virtualKey) {
     const Uint8* keystate = SDL_GetKeyboardState(0);
     //const Uint8* keystate = SDL_GetKeyState(0);
 
+	if (strlen((char*)keystate) == 0)
+		return false;
+
 	// kinda hack and wrong...
 	if(key >= 0) {
 		return keystate[key];

@@ -144,7 +144,8 @@ void OggSoundFileLoader::open(const std::string &path, SoundInfo *soundInfo){
 	}
 
 	vf= new OggVorbis_File();
-	ov_open(f, vf, NULL, 0);
+	if (ov_open_callbacks(f, vf, NULL, 0, OV_CALLBACKS_DEFAULT) < 0)
+		throw std::runtime_error("Vorbis Can't open ogg file: " + path);
 
 	vorbis_info *vi= ov_info(vf, -1);
 
