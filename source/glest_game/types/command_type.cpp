@@ -24,9 +24,9 @@
 #include "unit_updater.h"
 #include "renderer.h"
 
-using namespace Shared::Util;
 
-namespace Glest{ namespace Game{
+
+namespace Glest {
 
 
 // =====================================================
@@ -739,4 +739,4 @@ CommandTypeFactory &CommandTypeFactory::getInstance(){
 	return ctf;
 }
 
-}}//end namespace
+}//end namespace

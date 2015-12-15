@@ -11,7 +11,7 @@
 
 #include "network_manager.h"
 
-namespace Glest{ namespace Game{
+namespace Glest {
 
 // =====================================================
 //	class NetworkManager
@@ -75,4 +75,4 @@ ClientInterface* NetworkManager::getClientInterface(){
 	return static_cast<ClientInterface*>(gameNetworkInterface);
 }
 
-}}//end namespace
+}//end namespace

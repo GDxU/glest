@@ -19,10 +19,9 @@
 #include "game_constants.h"
 
 
-using namespace Shared::Xml;
-using namespace Shared::Graphics;
 
-namespace Glest{ namespace Game{
+
+namespace Glest {
 
 // =====================================================
 // 	class ParticleSystemType
@@ -236,4 +235,4 @@ SplashParticleSystem *ParticleSystemTypeSplash::create(){
 	return ps;
 }
 
-}}//end mamespace
+}//end mamespace

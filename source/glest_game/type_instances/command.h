@@ -17,9 +17,9 @@
 #include "unit.h"
 #include "vec.h"
 
-namespace Glest{ namespace Game{
+namespace Glest {
 
-using Shared::Graphics::Vec2i;
+
 
 class CommandType;
 
@@ -54,6 +54,6 @@ public:
     void setUnit(Unit *unit);
 };   
 
-}}//end namespace
+}//end namespace
 
 #endif

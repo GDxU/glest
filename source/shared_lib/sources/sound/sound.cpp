@@ -15,7 +15,7 @@
 #include <stdexcept>
 
 
-namespace Shared{ namespace Sound{
+namespace Glest {
 // =====================================================
 //	class SoundInfo
 // =====================================================
@@ -96,4 +96,4 @@ void StrSound::restart(){
 	soundFileLoader->restart();
 }
 
-}}//end namespace
+}//end namespace

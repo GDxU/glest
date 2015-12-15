@@ -17,7 +17,7 @@
 
 
 
-namespace Shared{ namespace Util{
+namespace Glest {
 
 const std::string sharedLibVersionString= "v0.4.1";
 
@@ -54,6 +54,6 @@ void deleteMapValues(T beginIt, T endIt){
 	}
 }
 
-}}//end namespace
+}//end namespace
 
 #endif

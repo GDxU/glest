@@ -25,9 +25,9 @@
 
 
 
-using namespace Shared::Util;
 
-namespace Shared{ namespace Platform{
+
+namespace Glest {
 
 // =====================================================
 //	class Ip
@@ -323,5 +323,5 @@ Socket *ServerSocket::accept(){
 	return new Socket(newSock);
 }
 
-}}//end namespace
+}//end namespace
 

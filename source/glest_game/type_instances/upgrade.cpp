@@ -19,9 +19,9 @@
 
 
 
-using namespace Shared::Util;
 
-namespace Glest{ namespace Game{
+
+namespace Glest {
 
 // =====================================================
 // 	class Upgrade
@@ -141,4 +141,4 @@ void UpgradeManager::computeTotalUpgrade(const Unit *unit, TotalUpgrade *totalUp
 
 }
 
-}}// end namespace
+}// end namespace

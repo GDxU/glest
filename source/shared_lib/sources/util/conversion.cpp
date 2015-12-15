@@ -19,7 +19,7 @@
 
 
 
-namespace Shared{ namespace Util{
+namespace Glest {
 
 const int strSize = 256;
 
@@ -123,4 +123,4 @@ std::string doubleToStr(double d){
 }
 
 
-}}//end namespace
+}//end namespace

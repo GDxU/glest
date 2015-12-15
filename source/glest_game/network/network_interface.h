@@ -23,9 +23,9 @@
 
 
 
-using Shared::Util::Checksum;
 
-namespace Glest{ namespace Game{
+
+namespace Glest {
 
 // =====================================================
 //	class NetworkInterface
@@ -97,6 +97,6 @@ public:
 	int getChatTeamIndex() const								{return chatTeamIndex;}
 };
 
-}}//end namespace
+}//end namespace
 
 #endif

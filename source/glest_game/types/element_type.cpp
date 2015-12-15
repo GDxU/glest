@@ -22,9 +22,9 @@
 #include "lang.h"
 #include "renderer.h"
 
-using namespace Shared::Util;
 
-namespace Glest{ namespace Game{
+
+namespace Glest {
 
 // =====================================================
 // 	class DisplayableType
@@ -106,4 +106,4 @@ std::string ProducibleType::getReqDesc() const{
     return str;
 }   
 
-}}//end namespace
+}//end namespace

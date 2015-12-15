@@ -21,15 +21,15 @@
 
 #include <cassert>
 
-namespace Glest{ namespace Game{
+namespace Glest {
 
-using Shared::Graphics::Vec4f;
-using Shared::Graphics::Quad2i;
-using Shared::Graphics::Rect2i;
-using Shared::Graphics::Vec4f;
-using Shared::Graphics::Vec2f;
-using Shared::Graphics::Vec2i;
-using Shared::Graphics::Texture2D;
+
+
+
+
+
+
+
 
 class Tileset;
 class Unit;
@@ -268,6 +268,6 @@ public:
 	const Vec2i &getPos();
 };
 
-} } //end namespace
+}//end namespace
 
 #endif

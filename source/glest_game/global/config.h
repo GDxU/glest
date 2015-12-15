@@ -14,9 +14,9 @@
 
 #include "properties.h"
 
-namespace Glest{ namespace Game{
+namespace Glest {
 
-using Shared::Util::Properties;
+
 
 // =====================================================
 // 	class Config
@@ -48,6 +48,6 @@ public:
 	std::string toString();
 };
 
-}}//end namespace
+}//end namespace
 
 #endif

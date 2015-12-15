@@ -14,7 +14,7 @@
 
 #include <cstdlib>
 
-namespace Shared{ namespace Graphics{
+namespace Glest {
 
 class Context;
 
@@ -83,6 +83,6 @@ public:
 	virtual FragmentShader *newFragmentShader()		{return NULL;}
 };
 
-}}//end namespace
+}//end namespace
 
 #endif

@@ -17,12 +17,12 @@
 #include "window.h"
 #include "vec.h"
 
-namespace Glest{ namespace Game{
+namespace Glest {
 
-using Shared::Sound::StrSound;
-using Shared::Sound::StaticSound;
-using Shared::Sound::SoundPlayer;
-using Shared::Graphics::Vec3f;
+
+
+
+
 
 // =====================================================
 // 	class SoundRenderer
@@ -71,6 +71,6 @@ public:
 	void loadConfig();
 };
 
-}}//end namespace
+}//end namespace
 
 #endif

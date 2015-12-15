@@ -14,7 +14,7 @@
 #include "graphics_interface.h"
 #include "graphics_factory.h"
 
-namespace Shared{ namespace Graphics{
+namespace Glest {
 
 // =====================================================
 //	class FontManager
@@ -51,4 +51,4 @@ void FontManager::end(){
 }
 
 
-}}//end namespace
+}//end namespace

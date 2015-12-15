@@ -20,7 +20,7 @@
 
 
 
-namespace Shared{ namespace Graphics{
+namespace Glest {
 
 // =====================================================
 //	class InterpolationData
@@ -100,4 +100,4 @@ void InterpolationData::updateNormals(float t, bool cycle){
 	}
 }
 
-}}//end namespace 
+}//end namespace 

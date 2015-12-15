@@ -19,10 +19,10 @@
 #include "platform_util.h"
 #include "game_util.h"
 
-using namespace Shared::Util;
-using namespace Shared::Xml;
 
-namespace Glest{ namespace Game{
+
+
+namespace Glest {
 
 // ======================================================
 //          Class FactionType                   
@@ -152,4 +152,4 @@ int FactionType::getStartingResourceAmount(const ResourceType *resourceType) con
 	return 0;
 }
 
-}}//end namespace
+}//end namespace

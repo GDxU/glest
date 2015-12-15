@@ -19,7 +19,7 @@
 
 
 
-namespace Shared{ namespace Graphics{ namespace Gl{
+namespace Glest {
 
 // =====================================================
 //	class ShaderProgramGl
@@ -238,4 +238,4 @@ void FragmentShaderGl::init(){
 	}
 }
 
-}}}//end namespace
+}//end namespace

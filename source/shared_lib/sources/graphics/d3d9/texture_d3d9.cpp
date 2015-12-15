@@ -11,9 +11,9 @@
 
 
 
-using namespace Shared::Graphics;
 
-namespace Shared{ namespace Graphics{ namespace D3d9{
+
+namespace Glest {
 
 // ===============================================
 //	class Texture2DD3d9
@@ -190,4 +190,4 @@ void TextureCubeD3d9::end(){
 	}
 }
 
-}}}//end namespace
+}//end namespace

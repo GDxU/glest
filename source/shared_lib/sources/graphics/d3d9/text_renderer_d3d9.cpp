@@ -7,7 +7,7 @@
 #include "d3d9_util.h"
 #include "leak_dumper.h"
 
-namespace Shared{ namespace Graphics{ namespace D3d9{
+namespace Glest {
 
 // ===============================================
 //	class TextRenderer2DD3d9
@@ -37,4 +37,4 @@ void TextRenderer2DD3d9::render(const std::string &text, int x, int y, bool cent
 void TextRenderer2DD3d9::end(){
 }
 
-}}}//end namespace
+}//end namespace

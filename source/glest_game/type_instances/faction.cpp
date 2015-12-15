@@ -21,9 +21,9 @@
 #include "renderer.h"
 #include "tech_tree.h"
 
-using namespace Shared::Util;
 
-namespace Glest{ namespace Game{
+
+namespace Glest {
 
 // =====================================================
 // 	class Faction
@@ -415,4 +415,4 @@ void Faction::resetResourceAmount(const ResourceType *rt){
 	assert(false);
 }
 
-}}//end namespace
+}//end namespace

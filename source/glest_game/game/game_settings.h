@@ -14,7 +14,7 @@
 
 #include "game_constants.h"
 
-namespace Glest{ namespace Game{
+namespace Glest {
 
 // =====================================================
 //	class GameSettings
@@ -83,6 +83,6 @@ public:
 	void setDefaultVictoryConditions(bool defaultVictoryConditions) {this->defaultVictoryConditions= defaultVictoryConditions;}
 };
 
-}}//end namespace
+}//end namespace
 
 #endif

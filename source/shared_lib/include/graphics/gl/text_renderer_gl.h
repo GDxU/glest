@@ -14,7 +14,7 @@
 
 #include "text_renderer.h"
 
-namespace Shared{ namespace Graphics{ namespace Gl{
+namespace Glest {
 
 class Font2DGl;
 class Font3DGl;
@@ -53,6 +53,6 @@ public:
 	virtual void end();
 };
 
-}}}//end namespace
+}//end namespace
 
 #endif

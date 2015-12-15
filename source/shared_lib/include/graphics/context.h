@@ -14,9 +14,8 @@
 
 #include "types.h"
 
-namespace Shared{ namespace Graphics{
+namespace Glest {
 
-using Platform::uint32;
 
 // =====================================================
 //	class Context
@@ -48,6 +47,6 @@ public:
 	virtual void swapBuffers()= 0;
 };
 
-}}//end namespace
+}//end namespace
 
 #endif

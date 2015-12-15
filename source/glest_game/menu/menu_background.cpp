@@ -20,11 +20,9 @@
 #include "util.h"
 #include "game_constants.h"
 
-using namespace Shared::Util;
-using namespace Shared::Xml;
-using namespace Shared::Graphics;
 
-namespace Glest{ namespace Game{
+
+namespace Glest {
 
 // =====================================================
 // 	class MenuBackground
@@ -175,5 +173,5 @@ Vec2f MenuBackground::computeRaindropPos(){
 	return Vec2f(random.randRange(-f, f), random.randRange(-f, f));
 }
 
-}}//end namespace
+}//end namespace
 

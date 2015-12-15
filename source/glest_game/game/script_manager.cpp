@@ -16,10 +16,8 @@
 #include "game_camera.h"
 
 
-using namespace Shared::Platform;
-using namespace Shared::Lua;
 
-namespace Glest{ namespace Game{
+namespace Glest {
 
 // =====================================================
 //	class PlayerModifiers
@@ -396,4 +394,4 @@ int ScriptManager::getUnitCountOfType(LuaHandle* luaHandle){
 	return luaArguments.getReturnCount();
 }
 
-}}//end namespace
+}//end namespace

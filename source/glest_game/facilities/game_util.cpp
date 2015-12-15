@@ -16,9 +16,9 @@
 #include "game_constants.h"
 #include "config.h"
 
-using namespace Shared::Util;
 
-namespace Glest{ namespace Game{
+
+namespace Glest {
 
 const std::string mailString= "contact_game@glest.org";
 const std::string glestVersionString= "v3.2.2";
@@ -100,4 +100,4 @@ std::string formatString(const std::string &str){
 	return outStr;
 }
 
-}}//end namespace
+}//end namespace

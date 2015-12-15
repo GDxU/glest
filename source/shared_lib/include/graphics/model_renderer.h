@@ -15,7 +15,7 @@
 
 #include "model.h"
 
-namespace Shared{ namespace Graphics{
+namespace Glest {
 
 class Texture;
 
@@ -53,6 +53,6 @@ public:
 	virtual void renderNormalsOnly(const Model *model)=0;
 };
 
-}}//end namespace
+}//end namespace
 
 #endif

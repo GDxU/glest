@@ -9,7 +9,7 @@
 #include "shader_d3d9.h"
 #include "graphics_factory.h"
 
-namespace Shared{ namespace Graphics{ namespace D3d9{
+namespace Glest {
 
 // ===============================
 //	class GraphicsFactoryD3d9  
@@ -28,6 +28,6 @@ public:
 	virtual FragmentShader *newFragmentShader()		{return new PixelShaderD3d9();}
 };
 
-}}}//end namespace
+}//end namespace
 
 #endif

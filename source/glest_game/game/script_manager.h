@@ -25,11 +25,11 @@
 
 
 
-using Shared::Graphics::Vec2i;
-using Shared::Lua::LuaScript;
-using Shared::Lua::LuaHandle;
 
-namespace Glest{ namespace Game{
+
+
+
+namespace Glest {
 
 class World;
 class Unit;
@@ -180,6 +180,6 @@ private:
 	static int getUnitCountOfType(LuaHandle* luaHandle);
 };
 
-}}//end namespace
+}//end namespace
 
 #endif

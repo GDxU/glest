@@ -24,11 +24,11 @@
 #include "renderer.h"
 #include "game_util.h"
 
-using namespace Shared::Xml;
-using namespace Shared::Graphics;
-using namespace Shared::Util;
 
-namespace Glest{ namespace Game{
+
+
+
+namespace Glest {
 
 // ===============================
 // 	class Level 
@@ -495,4 +495,4 @@ const CommandType* UnitType::findCommandTypeById(int id) const{
 	return NULL;
 }
 
-}}//end namespace
+}//end namespace

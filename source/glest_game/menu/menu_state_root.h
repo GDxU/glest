@@ -14,7 +14,7 @@
 
 #include "main_menu.h"
 
-namespace Glest{ namespace Game{
+namespace Glest {
 
 // ===============================
 // 	class MenuStateRoot  
@@ -39,6 +39,6 @@ public:
 };
 
 
-}}//end namespace
+}//end namespace
 
 #endif

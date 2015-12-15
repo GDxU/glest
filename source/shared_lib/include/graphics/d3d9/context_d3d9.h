@@ -5,7 +5,7 @@
 
 #include <d3d9.h>
 
-namespace Shared{ namespace Graphics{ namespace D3d9{
+namespace Glest {
 
 // ===============================
 //	class ContextD3d9  
@@ -43,6 +43,6 @@ public:
 	IDirect3DDevice9 *getD3dDevice() {return d3dDevice;}
 };
 
-}}}//end namespace
+}//end namespace
 
 #endif

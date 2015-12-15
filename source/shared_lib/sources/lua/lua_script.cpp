@@ -18,9 +18,9 @@
 
 
 
-using namespace Shared::Util;
 
-namespace Shared{ namespace Lua{
+
+namespace Glest {
 
 // =====================================================
 //	class LuaScript
@@ -188,4 +188,4 @@ void LuaArguments::throwLuaError(const std::string &message) const{
 	throw std::runtime_error("Lua error: " + message + "\n\nLua Stack:\n" + stackString);
 }
 
-}}//end namespace
+}//end namespace

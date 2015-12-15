@@ -12,7 +12,7 @@
 #include "quaternion.h"
 
 
-namespace Shared{ namespace Graphics{
+namespace Glest {
 
 // =====================================================
 //	class AxisAngle
@@ -206,4 +206,4 @@ Vec3f Quaternion::getLocalZAxis() const{
 		1.0f - 2*v.x*v.x - 2*v.y*v.y);
 }
 
-}}//end namespace
+}//end namespace

@@ -23,7 +23,7 @@
 
 
 
-namespace Shared{ namespace Platform{
+namespace Glest {
 
 class Timer;
 class PlatformContextGl;
@@ -141,6 +141,6 @@ private:
     static void toggleFullscreen();
 };
 
-}}//end namespace
+}//end namespace
 
 #endif

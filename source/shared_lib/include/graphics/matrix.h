@@ -16,7 +16,7 @@
 
 #include "vec.h"
 
-namespace Shared{ namespace Graphics{
+namespace Glest {
 
 // =====================================================
 //	class Matrix3
@@ -157,6 +157,6 @@ typedef Matrix4<float> Matrix4f;
 typedef Matrix4<double> Matrix4d;
 
 
-}} //enmd namespace
+} //enmd namespace
 
 #endif

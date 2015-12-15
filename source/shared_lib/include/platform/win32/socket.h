@@ -18,7 +18,7 @@
 
 
 
-namespace Shared{ namespace Platform{
+namespace Glest {
 
 // =====================================================
 //	class IP
@@ -95,6 +95,6 @@ public:
 	Socket *accept();
 };
 
-}}//end namespace
+}//end namespace
 
 #endif

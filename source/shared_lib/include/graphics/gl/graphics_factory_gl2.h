@@ -16,7 +16,7 @@
 #include "shader_gl.h"
 #include "shader_manager.h"
 
-namespace Shared{ namespace Graphics{ namespace Gl{
+namespace Glest {
 
 // =====================================================
 //	class GraphicsFactoryGl
@@ -57,6 +57,6 @@ public:
 	virtual FragmentShader *newFragmentShader()		{return new FragmentShaderGl();}
 };
 
-}}}//end namespace
+}//end namespace
 
 #endif

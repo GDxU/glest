@@ -31,7 +31,7 @@ SDL_Window* getWindow() {
     return s_window;
 }
 
-namespace Shared{ namespace Graphics{ namespace Gl{
+namespace Glest {
 
 // =====================================================
 //	class ContextGl
@@ -52,11 +52,11 @@ void ContextGl::init(){
     SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 24);
 
     int flags = SDL_WINDOW_OPENGL;
-    if (Platform::Private::shouldBeFullscreen)
+    if (Private::shouldBeFullscreen)
         flags |= SDL_WINDOW_FULLSCREEN;
 
-    int resW = Platform::Private::ScreenWidth;
-    int resH = Platform::Private::ScreenHeight;
+    int resW = Private::ScreenWidth;
+    int resH = Private::ScreenHeight;
     SDL_Window* screen = SDL_CreateWindow("Cocos2d SDL ", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, resW, resH, flags);
     //SDL_Surface* screen = SDL_SetVideoMode(resW, resH, colorBits, flags);
 
@@ -111,4 +111,4 @@ void ContextGl::swapBuffers(){
 
 }
 
-}}}//end namespace
+}//end namespace

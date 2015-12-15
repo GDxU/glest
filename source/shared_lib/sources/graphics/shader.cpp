@@ -18,7 +18,7 @@
 
 
 
-namespace Shared{ namespace Graphics{
+namespace Glest {
 
 // =====================================================
 //	class ShaderSource
@@ -43,4 +43,4 @@ void ShaderSource::load(const std::string &path){
 	}
 }
 
-}}//end namespace
+}//end namespace

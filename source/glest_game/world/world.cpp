@@ -22,10 +22,10 @@
 #include "sound_renderer.h"
 #include "game_settings.h"
 
-using namespace Shared::Graphics;
-using namespace Shared::Util;
 
-namespace Glest{ namespace Game{
+
+
+namespace Glest {
 
 // =====================================================
 // 	class World
@@ -717,4 +717,4 @@ void World::computeFow(){
 	}
 }
 
-}}//end namespace 
+}//end namespace 

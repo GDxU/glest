@@ -21,9 +21,9 @@
 #include "metrics.h"
 #include "auto_test.h"
 
-using namespace Shared::Graphics;
 
-namespace Glest{ namespace Game{ 
+
+namespace Glest { 
 
 // =====================================================
 // 	class Text  
@@ -129,4 +129,4 @@ void Intro::mouseUpLeft(int x, int y){
 	program->setState(new MainMenu(program));
 }
 
-}}//end namespace
+}//end namespace

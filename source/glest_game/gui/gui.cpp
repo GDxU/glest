@@ -26,10 +26,8 @@
 #include "util.h"
 #include "faction.h"
 
-using namespace Shared::Graphics;
-using namespace Shared::Util;
 
-namespace Glest{ namespace Game{
+namespace Glest {
 
 // =====================================================
 // 	class Mouse3d
@@ -845,4 +843,4 @@ bool Gui::computeTarget(const Vec2i &screenPos, Vec2i &targetPos, const Unit *&t
 	}
 }
 
-}}//end namespace
+}//end namespace

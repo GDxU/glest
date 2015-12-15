@@ -17,10 +17,10 @@
 #include "program.h"
 #include "window_gl.h"
 
-using Shared::Platform::MouseButton;
-using Shared::Platform::MouseState;
 
-namespace Glest{ namespace Game{
+
+
+namespace Glest {
 
 // =====================================================
 // 	class MainWindow 
@@ -28,7 +28,8 @@ namespace Glest{ namespace Game{
 ///	Main program window
 // =====================================================
 
-class MainWindow: public WindowGl{
+class MainWindow: public WindowGl
+{
 private:
     Program* program;
 
@@ -50,6 +51,6 @@ public:
 	virtual void eventClose();
 };
 
-}}//end namespace
+}//end namespace
 
 #endif

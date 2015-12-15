@@ -13,7 +13,7 @@
 
 #include "element_type.h"
 
-namespace Glest{ namespace Game{
+namespace Glest {
 
 
 // =====================================================
@@ -73,4 +73,4 @@ bool Metrics::isInMinimap(int x, int y) const{
         y < minimapY+minimapH;
 }
 
-}}// end namespace
+}// end namespace

@@ -28,13 +28,13 @@
 #include <winbase.h>
 #include <wtypes.h>
 
-using namespace Shared::Util;
+
 
 
 SDL_Window* getWindow();
 
 
-namespace Shared{ namespace Platform{
+namespace Glest {
 
 namespace Private{
 
@@ -307,4 +307,4 @@ bool isKeyDown(int virtualKey) {
 	return false;
 }
 
-}}//end namespace
+}//end namespace

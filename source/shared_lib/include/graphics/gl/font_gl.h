@@ -15,7 +15,7 @@
 #include "font.h"
 #include "opengl.h"
 
-namespace Shared{ namespace Graphics{ namespace Gl{
+namespace Glest {
 
 // =====================================================
 //	class FontGl
@@ -53,6 +53,6 @@ public:
 	virtual void end();
 };
 
-}}}//end namespace
+}//end namespace
 
 #endif

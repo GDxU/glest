@@ -16,9 +16,9 @@
 
 #include "random.h"
 
-using Shared::Util::Random;
 
-namespace Glest{ namespace Game{
+
+namespace Glest {
 
 class Program;
 class MainMenu;
@@ -52,6 +52,6 @@ public:
 	void updateBattleEnd(Program *program);
 };
 
-}}//end namespace
+}//end namespace
 
 #endif

@@ -1,7 +1,7 @@
 #include "buffer.h"
 
 
-namespace Shared{ namespace Graphics{
+namespace Glest {
 
 // =====================================================
 //	class VertexBuffer
@@ -51,4 +51,4 @@ void IndexBuffer::setIndexPointer(void *pointer){
 	indexPointer= pointer;
 }
 
-}}//end namespace
+}//end namespace

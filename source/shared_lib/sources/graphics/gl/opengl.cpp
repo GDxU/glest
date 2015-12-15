@@ -16,11 +16,11 @@
 #include "graphics_interface.h"
 #include "context_gl.h"
 
-using namespace Shared::Platform; 
 
 
 
-namespace Shared{ namespace Graphics{ namespace Gl{
+
+namespace Glest {
 
 // =====================================================
 //	class Globals
@@ -146,4 +146,4 @@ void checkGlExtension(const char *extensionName){
 	}
 }
 
-}}}// end namespace
+}// end namespace

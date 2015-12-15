@@ -20,10 +20,10 @@
 
 
 
-using namespace Shared::Util;
-using namespace Shared::Graphics;
 
-namespace Glest{ namespace Game{
+
+
+namespace Glest {
 
 // =====================================================
 //	class PixmapInfo
@@ -114,4 +114,4 @@ void SurfaceAtlas::checkDimensions(const Pixmap2D *p){
 	}
 }
 
-}}//end namespace
+}//end namespace

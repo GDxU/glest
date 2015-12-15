@@ -27,15 +27,13 @@
 #include "menu_state_custom_game.h"
 #include "menu_state_join_game.h"
 
-using namespace Shared::Util;
-using namespace Shared::Graphics;
-using namespace Shared::Graphics::Gl;
+
 
 // =====================================================
 // 	class Program
 // =====================================================
 
-namespace Glest{ namespace Game{
+namespace Glest {
 
 const int Program::maxTimes= 10;
 
@@ -250,4 +248,4 @@ void Program::restoreDisplaySettings(){
 	}
 }
 
-}}//end namespace
+}//end namespace

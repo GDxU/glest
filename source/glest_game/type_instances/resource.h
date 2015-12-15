@@ -18,9 +18,9 @@
 
 
 
-namespace Glest{ namespace Game{
+namespace Glest {
 
-using Shared::Graphics::Vec2i;
+
 
 class ResourceType;
 
@@ -53,6 +53,6 @@ public:
     bool decAmount(int i);
 };
 
-}}// end namespace
+}// end namespace
 
 #endif

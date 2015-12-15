@@ -22,11 +22,11 @@
 
 
 
-using Shared::Graphics::Texture2D;
-using Shared::Graphics::Vec3f;
-using Shared::Util::replaceBy;
 
-namespace Glest{ namespace Game{
+
+
+
+namespace Glest {
 
 // =====================================================
 // 	class Display
@@ -92,6 +92,6 @@ public:
 	int computeUpY(int index) const;
 };
 
-}}//end namespace 
+}//end namespace 
 
 #endif

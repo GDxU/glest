@@ -22,11 +22,11 @@
 
 
 
-using Shared::Graphics::GraphicsFactory;
-using Shared::Sound::SoundFactory;
-using Shared::Graphics::Gl::GraphicsFactoryGl;
 
-namespace Shared{ namespace Platform{
+
+
+
+namespace Glest {
 
 // =====================================================
 //	class FactoryRepository
@@ -50,6 +50,6 @@ public:
 	SoundFactory *getSoundFactory(const std::string &name);
 };
 
-}}//end namespace
+}//end namespace
 
 #endif

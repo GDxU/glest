@@ -15,11 +15,11 @@
 #include "sound.h"
 #include "stb_vorbis.h"
 
-using namespace Shared::Platform;
 
 
 
-namespace Shared{ namespace Sound{
+
+namespace Glest {
 
 // =====================================================
 //	class WavSoundFileLoader
@@ -242,4 +242,4 @@ SoundFileLoaderFactory *SoundFileLoaderFactory::getInstance(){
 	return &soundFileLoaderFactory;
 }
 
-}}//end namespace
+}//end namespace

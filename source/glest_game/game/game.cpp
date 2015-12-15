@@ -24,11 +24,8 @@
 #include "checksum.h"
 #include "auto_test.h"
 
-using namespace Shared::Graphics;
-using namespace Shared::Util;
-using namespace Shared::Platform;
 
-namespace Glest{ namespace Game{
+namespace Glest {
 
 // =====================================================
 // 	class Game
@@ -873,4 +870,4 @@ void Game::showMessageBox(const std::string &text, const std::string &header, bo
 	}
 }
 
-}}//end namespace
+}//end namespace

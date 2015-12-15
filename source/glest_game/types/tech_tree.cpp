@@ -21,10 +21,10 @@
 #include "platform_util.h"
 #include "game_util.h"
 
-using namespace Shared::Util;
-using namespace Shared::Xml;
 
-namespace Glest{ namespace Game{
+
+
+namespace Glest {
 
 // =====================================================
 // 	class TechTree
@@ -186,4 +186,4 @@ float TechTree::getDamageMultiplier(const AttackType *att, const ArmorType *art)
 	return damageMultiplierTable.getDamageMultiplier(att, art);
 }
 
-}}//end namespace
+}//end namespace

@@ -19,7 +19,7 @@
 
 
 
-namespace Shared{ namespace Util{
+namespace Glest {
 
 // =====================================================
 //	class Checksum
@@ -67,4 +67,4 @@ void Checksum::addFile(const std::string &path){
 	fclose(file);
 }
 
-}}//end namespace
+}//end namespace

@@ -16,9 +16,9 @@
 #include "texture_gl.h"
 #include "interpolation.h"
 
-using namespace Shared::Platform;
 
-namespace Shared{ namespace Graphics{ namespace Gl{
+
+namespace Glest {
 
 // =====================================================
 //	class MyClass
@@ -213,4 +213,4 @@ void ModelRendererGl::renderMeshNormals(const Mesh *mesh){
 	glEnd();
 }
 
-}}}//end namespace
+}//end namespace

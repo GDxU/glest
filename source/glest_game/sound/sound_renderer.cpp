@@ -16,10 +16,10 @@
 #include "sound_interface.h"
 #include "factory_repository.h"
 
-using namespace Shared::Graphics;
-using namespace Shared::Sound;
 
-namespace Glest{ namespace Game{
+
+
+namespace Glest {
 
 const int SoundRenderer::ambientFade= 6000;
 const float SoundRenderer::audibleDist= 50.f;
@@ -118,4 +118,4 @@ void SoundRenderer::loadConfig(){
 	ambientVolume= config.getInt("SoundVolumeAmbient")/100.f;
 }
 
-}}//end namespace
+}//end namespace

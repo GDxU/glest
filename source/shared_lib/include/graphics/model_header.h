@@ -14,12 +14,12 @@
 
 #include "types.h"
 
-using Shared::Platform::uint8;
-using Shared::Platform::uint16;
-using Shared::Platform::uint32;
-using Shared::Platform::float32;
 
-namespace Shared{ namespace Graphics{
+
+
+
+
+namespace Glest {
 
 #pragma pack(push, 1) 
 
@@ -113,6 +113,6 @@ struct MeshHeaderV2{
 	uint8 texName[64];
 };
 
-}}//end namespace
+}//end namespace
 
 #endif

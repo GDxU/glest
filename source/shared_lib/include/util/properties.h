@@ -25,7 +25,7 @@
 
 
 
-namespace Shared{ namespace Util{
+namespace Glest {
 
 // =====================================================
 //	class Properties
@@ -73,6 +73,6 @@ public:
 
 };
 
-}}//end namespace
+}//end namespace
 
 #endif

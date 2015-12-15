@@ -20,14 +20,13 @@
 #include "game.h"
 #include "config.h"
 
-using namespace Shared::Util;
-using namespace Shared::Graphics;
+
 
 // =====================================================
 // 	class AiInterface
 // =====================================================
 
-namespace Glest{ namespace Game{
+namespace Glest {
 
 AiInterface::AiInterface(Game &game, int factionIndex, int teamIndex){
 	this->world= game.getWorld();
@@ -230,4 +229,4 @@ bool AiInterface::isFreeCells(const Vec2i &pos, int size, Field field){
     return world->getMap()->isFreeCells(pos, size, field);
 }
 
-}}//end namespace
+}//end namespace

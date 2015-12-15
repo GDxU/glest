@@ -16,7 +16,7 @@
 #include "context.h"
 
 
-namespace Shared{ namespace Graphics{
+namespace Glest {
 
 // =====================================================
 //	class GraphicsInterface
@@ -41,4 +41,4 @@ void GraphicsInterface::setCurrentContext(Context *context){
 	currentContext->makeCurrent();
 }
 
-}}//end namespace
+}//end namespace

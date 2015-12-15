@@ -18,9 +18,9 @@
 #include "conversion.h"
 #include "ai.h"
 
-using Shared::Util::intToStr;
 
-namespace Glest{ namespace Game{
+
+namespace Glest {
 
 // =====================================================
 // 	class AiInterface  
@@ -87,6 +87,6 @@ private:
 	std::string getLogFilename() const	{return "ai"+intToStr(factionIndex)+".log";}
 };
 
-}}//end namespace
+}//end namespace
 
 #endif

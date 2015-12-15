@@ -19,9 +19,9 @@
 
 
 
-using Shared::Platform::uint8;
 
-namespace Shared{ namespace Graphics{
+
+namespace Glest {
 
 class TextureParams;
 
@@ -140,6 +140,6 @@ public:
 	const PixmapCube *getPixmap() const	{return &pixmap;}
 };
 
-}}//end namespace
+}//end namespace
 
 #endif

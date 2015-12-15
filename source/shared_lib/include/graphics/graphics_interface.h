@@ -12,7 +12,7 @@
 #ifndef _SHARED_GRAPHICS_GRAPHICSINTERFACE_H_
 #define _SHARED_GRAPHICS_GRAPHICSINTERFACE_H_
 
-namespace Shared{ namespace Graphics{
+namespace Glest {
 
 class GraphicsFactory;
 class Context;
@@ -47,6 +47,6 @@ public:
 	GraphicsFactory *getFactory() const		{return graphicsFactory;}
 };
 
-}}//end namespace
+}//end namespace
 
 #endif

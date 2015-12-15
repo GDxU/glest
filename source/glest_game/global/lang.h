@@ -14,9 +14,9 @@
 
 #include "properties.h"
 
-namespace Glest{ namespace Game{
+namespace Glest {
 
-using Shared::Util::Properties;
+
 
 // =====================================================
 // 	class Lang
@@ -41,6 +41,6 @@ public:
 	std::string getScenarioString(const std::string &s);
 };
 
-}}//end namespace
+}//end namespace
 
 #endif

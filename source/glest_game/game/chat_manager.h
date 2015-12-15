@@ -17,7 +17,7 @@
 
 
 
-namespace Glest{ namespace Game{
+namespace Glest {
 
 class Console;
 
@@ -49,6 +49,6 @@ public:
 	std::string getText() const		{return text;}
 };
 
-}}//end namespace
+}//end namespace
 
 #endif

@@ -16,7 +16,7 @@
 #include "graphics_interface.h"
 #include "graphics_factory.h"
 
-namespace Shared{ namespace Graphics{
+namespace Glest {
 
 // =====================================================
 //	class ShaderManager
@@ -71,4 +71,4 @@ FragmentShader *ShaderManager::newFragmentShader(){
 	return fs;
 }
 
-}}//end namespace
+}//end namespace

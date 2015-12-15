@@ -19,10 +19,10 @@
 
 
 
-namespace Glest{ namespace Game{
+namespace Glest {
 
-using Shared::Graphics::Model;
-using Shared::Graphics::Vec3f;
+
+
 
 // =====================================================
 // 	class ObjectType  
@@ -58,6 +58,6 @@ public:
 	bool isATree() const			{return objectClass==tree1 || objectClass==tree2;}
 };
 
-}}//end namespace
+}//end namespace
 
 #endif

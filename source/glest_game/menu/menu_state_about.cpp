@@ -18,7 +18,7 @@
 #include "menu_state_options.h"
 
 
-namespace Glest{ namespace Game{
+namespace Glest {
 
 // =====================================================
 // 	class MenuStateAbout
@@ -88,4 +88,4 @@ void MenuStateAbout::render(){
 	}
 }
 
-}}//end namespace
+}//end namespace

@@ -15,7 +15,7 @@
 #include "vec.h"
 #include "model.h"
 
-namespace Shared{ namespace Graphics{
+namespace Glest {
 
 // =====================================================
 //	class InterpolationData
@@ -40,6 +40,6 @@ public:
 	void updateNormals(float t, bool cycle);
 };
 
-}}//end namespace
+}//end namespace
 
 #endif

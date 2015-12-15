@@ -17,14 +17,14 @@
 #include "particle.h"
 #include "skill_type.h"
 
-namespace Glest{ namespace Game{
+namespace Glest {
 
-using Shared::Graphics::ParticleSystem;
-using Shared::Graphics::Vec4f;
-using Shared::Graphics::Vec2f;
-using Shared::Graphics::Vec3f;
-using Shared::Graphics::Vec2i;
-using Shared::Graphics::Model;
+
+
+
+
+
+
 
 class Map;
 class Faction;
@@ -293,6 +293,6 @@ private:
 	CommandResult undoCommand(Command *command);
 };
 
-}}// end namespace
+}// end namespace
 
 #endif

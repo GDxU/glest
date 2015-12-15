@@ -17,9 +17,9 @@
 #include "util.h"
 #include "leak_dumper.h"
 
-namespace Shared{ namespace Sound{ namespace Ds8{
+namespace Glest {
 
-using namespace Util;
+
 
 // =====================================================
 //	class SoundBuffer
@@ -486,4 +486,4 @@ long dsVolume(float floatVolume){
 	return clamp(vol, DSBVOLUME_MIN, DSBVOLUME_MAX);
 }
 
-}}}//end namespace
+}//end namespace

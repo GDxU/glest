@@ -18,7 +18,7 @@
 
 
 
-namespace Shared{ namespace Xml{
+namespace Glest {
 
 const int strSize= 256;
 
@@ -125,6 +125,6 @@ public:
 };
 
 
-}}//end namespace
+}//end namespace
 
 #endif

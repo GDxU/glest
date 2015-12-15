@@ -25,10 +25,10 @@
 #include "renderer.h"
 #include "game_util.h"
 
-using namespace Shared::Util;
-using namespace Shared::Xml;
 
-namespace Glest{ namespace Game{
+
+
+namespace Glest {
 
 // =====================================================
 // 	class UpgradeType
@@ -205,4 +205,4 @@ void TotalUpgrade::incLevel(const UnitType *ut){
 	armor+= ut->getArmor()*50/100;
 }
 
-}}//end namespace
+}//end namespace

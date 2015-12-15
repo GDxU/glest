@@ -19,7 +19,7 @@
 
 
 
-namespace Shared{ namespace Graphics{
+namespace Glest {
 
 // =====================================================
 //	class FontManager
@@ -44,6 +44,6 @@ public:
 	void end();
 };
 
-}}//end namespace
+}//end namespace
 
 #endif

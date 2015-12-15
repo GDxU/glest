@@ -15,7 +15,7 @@
 #include "program.h"
 #include "stats.h"
 
-namespace Glest{ namespace Game{
+namespace Glest {
 
 // =====================================================
 // 	class BattleEnd  
@@ -36,6 +36,6 @@ public:
 	virtual void mouseDownLeft(int x, int y);
 };
 
-}}//end namespace
+}//end namespace
 
 #endif

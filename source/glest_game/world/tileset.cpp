@@ -19,11 +19,11 @@
 #include "renderer.h"
 #include "game_util.h"
 
-using namespace Shared::Util;
-using namespace Shared::Xml;
-using namespace Shared::Graphics;
 
-namespace Glest{ namespace Game{
+
+
+
+namespace Glest {
 
 // =====================================================
 // 	class AmbientSounds
@@ -248,4 +248,4 @@ void Tileset::addSurfTex(int leftUp, int rightUp, int leftDown, int rightDown, V
 
 }
 
-}}// end namespace
+}// end namespace

@@ -22,13 +22,7 @@
 
 
 
-
-
-
-
-using Shared::Util::Random;
-
-namespace Glest{ namespace Game{
+namespace Glest {
 
 class AiInterface;
 class AiRule;
@@ -186,6 +180,6 @@ public:
     void harvest(int unitIndex);
 };
 
-}}//end namespace
+}//end namespace
 
 #endif

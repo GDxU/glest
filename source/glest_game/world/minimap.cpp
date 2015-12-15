@@ -19,9 +19,9 @@
 #include "config.h"
 #include "object.h"
 
-using namespace Shared::Graphics;
 
-namespace Glest{ namespace Game{
+
+namespace Glest {
 
 // =====================================================
 // 	class Minimap
@@ -152,4 +152,4 @@ void Minimap::computeTexture(const World *world){
 	}
 }
 
-}}//end namespace
+}//end namespace

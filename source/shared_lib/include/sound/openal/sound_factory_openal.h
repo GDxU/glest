@@ -12,7 +12,7 @@
 #include "sound_factory.h"
 #include "sound_player_openal.h"
 
-namespace Shared{ namespace Sound{ namespace OpenAL{
+namespace Glest {
 
 // ===============================
 //	class SoundFactoryOpenAL
@@ -23,6 +23,6 @@ public:
 	virtual SoundPlayer* newSoundPlayer()	{return new SoundPlayerOpenAL();}	
 };
 
-}}}//end namespace
+}//end namespace
 
 #endif

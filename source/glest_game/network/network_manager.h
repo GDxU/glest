@@ -19,9 +19,9 @@
 #include "server_interface.h"
 #include "client_interface.h"
 
-using Shared::Util::Checksum;
 
-namespace Glest{ namespace Game{
+
+namespace Glest {
 
 // =====================================================
 //	class NetworkManager
@@ -52,6 +52,6 @@ public:
 	ClientInterface* getClientInterface();
 };
 
-}}//end namespace
+}//end namespace
 
 #endif

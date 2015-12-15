@@ -25,7 +25,7 @@
 
 
 
-namespace Shared{ namespace Util{
+namespace Glest {
 
 // =====================================================
 //	class SingleFactoryBase
@@ -85,6 +85,6 @@ public:
 	}
 };
 
-}}//end namespace
+}//end namespace
 
 #endif

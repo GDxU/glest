@@ -20,7 +20,7 @@
 
 
 
-namespace Glest{ namespace Game{
+namespace Glest {
 
 struct PlayerStats{
 	PlayerStats();
@@ -75,6 +75,6 @@ public:
 	void harvest(int harvesterFactionIndex, int amount);
 };
 
-}}//end namespace
+}//end namespace
 
 #endif

@@ -21,10 +21,7 @@
 
 
 
-using namespace Shared::Graphics;
-using namespace Shared::Util;
-
-namespace Glest{ namespace Game{
+namespace Glest {
 
 // =====================================================
 // 	class PathFinder
@@ -301,4 +298,4 @@ bool PathFinder::openPos(const Vec2i &sucPos){
 	return false;
 }
 
-}} //end namespace
+} //end namespace

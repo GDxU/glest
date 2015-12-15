@@ -19,9 +19,9 @@
 
 
 
-using Shared::Graphics::Vec2f;
 
-namespace Glest{ namespace Game{
+
+namespace Glest {
 
 class Map;
 
@@ -71,6 +71,6 @@ public:
 	const WaterSplash *getWaterSplash(int i) const	{return &waterSplashes[i];}
 };
 
-}}//end namespace
+}//end namespace
 
 #endif

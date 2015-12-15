@@ -12,7 +12,7 @@
 #include "texture.h"
 
 
-namespace Shared{ namespace Graphics{
+namespace Glest {
 
 // =====================================================
 //	class Texture
@@ -65,4 +65,4 @@ void TextureCube::loadFace(const std::string &path, int face){
 	pixmap.loadFace(path, face);
 }
 
-}}//end namespace
+}//end namespace

@@ -12,7 +12,7 @@
 #ifndef _GLEST_GAME_GAMECONSTANTS_H_
 #define _GLEST_GAME_GAMECONSTANTS_H_
 
-namespace Glest{ namespace Game{
+namespace Glest {
 
 // =====================================================
 //	class GameConstants
@@ -36,6 +36,6 @@ public:
 	static const int networkExtraLatency= 200;
 };
 
-}}//end namespace
+}//end namespace
 
 #endif

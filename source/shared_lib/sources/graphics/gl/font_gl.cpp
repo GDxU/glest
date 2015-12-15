@@ -14,9 +14,9 @@
 #include "opengl.h"
 #include "context_gl.h"
 
-namespace Shared{ namespace Graphics{ namespace Gl{
+namespace Glest {
 
-using namespace Platform;
+
 
 // =====================================================
 //	class Font2DGl
@@ -73,4 +73,4 @@ void Font3DGl::end(){
 	assertGl();
 }
 
-}}}//end namespace
+}//end namespace

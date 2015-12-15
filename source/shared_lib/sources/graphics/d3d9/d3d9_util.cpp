@@ -1,6 +1,6 @@
 #include "d3d9_util.h"
 
-namespace Shared{ namespace Graphics{ namespace D3d9{
+namespace Glest {
 
 std::string d3dErrorToStr(HRESULT result){
 	switch(result){
@@ -18,4 +18,4 @@ std::string d3dErrorToStr(HRESULT result){
 	}
 }
 
-}}}//end namespace
+}//end namespace

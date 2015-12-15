@@ -16,7 +16,7 @@
 
 #include "vec.h"
 
-namespace Shared{ namespace Graphics{
+namespace Glest {
 
 const float pi= 3.1415926f;
 const float sqrt2= 1.41421356f;
@@ -227,6 +227,6 @@ inline T radToDeg(T rad){
 	return (rad*360)/(2*pi);
 }
 
-}}//end namespace
+}//end namespace
 
 #endif

@@ -3,7 +3,7 @@
 #include <cassert>
 
 
-namespace Shared{ namespace Util{
+namespace Glest {
 
 // =====================================================
 //	class Random
@@ -42,4 +42,4 @@ float Random::randRange(float min, float max){
 	return res;
 }
 
-}}//end namespace
+}//end namespace

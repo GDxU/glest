@@ -26,9 +26,9 @@
 
 
 
-using Shared::Platform::int64;
 
-namespace Shared{ namespace Platform{
+
+namespace Glest {
 
 // =====================================================
 //	class PerformanceTimer
@@ -105,6 +105,6 @@ void showCursor(bool b);
 bool isKeyDown(int virtualKey);
 std::string getCommandLine();
 
-}}//end namespace
+}//end namespace
 
 #endif

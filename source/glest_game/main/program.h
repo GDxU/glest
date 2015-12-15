@@ -16,15 +16,11 @@
 #include "platform_util.h"
 #include "window_gl.h"
 #include "socket.h"
+#include "window.h"
 
-using Shared::Graphics::Context;
-using Shared::Platform::WindowGl;
-using Shared::Platform::SizeState;
-using Shared::Platform::MouseState;
-using Shared::Platform::PerformanceTimer;
-using Shared::Platform::Ip;
 
-namespace Glest{ namespace Game{
+
+namespace Glest {
 
 class Program;
 class MainWindow;
@@ -108,6 +104,6 @@ private:
 	void restoreDisplaySettings();
 };
 
-}} //end namespace
+} //end namespace
 
 #endif

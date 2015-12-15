@@ -22,11 +22,8 @@
 #include "config.h"
 #include "platform_util.h"
 
-using namespace Shared::Graphics;
-using namespace Shared::Util;
-using namespace Shared::Platform;
 
-namespace Glest{ namespace Game{
+namespace Glest {
 
 // =====================================================
 // 	class Commander
@@ -306,4 +303,4 @@ Command* Commander::buildCommand(const NetworkCommand* networkCommand) const{
 	return command;
 }
 
-}}//end namespace
+}//end namespace

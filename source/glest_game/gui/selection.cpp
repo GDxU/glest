@@ -19,7 +19,7 @@
 
 
 
-namespace Glest{ namespace Game{
+namespace Glest {
 
 // =====================================================
 // 	class Selection
@@ -201,4 +201,4 @@ void Selection::unitEvent(UnitObserver::Event event, const Unit *unit){
 	}
 }
 
-}}//end namespace 
+}//end namespace 

@@ -19,7 +19,7 @@
 //	class Thread
 // =====================================================
 
-namespace Shared{ namespace Platform{
+namespace Glest {
 
 class Thread{
 public:
@@ -62,6 +62,6 @@ public:
 	void v();
 };
 
-}}//end namespace
+}//end namespace
 
 #endif

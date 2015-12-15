@@ -17,7 +17,7 @@
 #include "menu_state_options.h"
 
 
-namespace Glest{ namespace Game{
+namespace Glest {
 
 // =====================================================
 // 	class MenuStateGraphicInfo
@@ -64,4 +64,4 @@ void MenuStateGraphicInfo::render(){
 	renderer.renderLabel(&labelMoreInfo);
 }
 
-}}//end namespace
+}//end namespace

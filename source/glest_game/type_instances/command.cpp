@@ -13,7 +13,7 @@
 
 #include "command_type.h"
 
-namespace Glest{ namespace Game{
+namespace Glest {
 
 // =====================================================
 // 	class Command
@@ -56,4 +56,4 @@ void Command::setUnit(Unit *unit){
      this->unitRef= unit;
 }
 
-}}//end namespace
+}//end namespace

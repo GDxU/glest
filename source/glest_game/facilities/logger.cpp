@@ -19,9 +19,8 @@
 
 
 
-using namespace Shared::Graphics;
 
-namespace Glest{ namespace Game{
+namespace Glest {
 
 // =====================================================
 //	class Logger
@@ -91,4 +90,4 @@ void Logger::renderLoadingScreen(){
 	renderer.swapBuffers();
 }
 
-}}//end namespace
+}//end namespace

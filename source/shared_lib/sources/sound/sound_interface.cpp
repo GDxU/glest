@@ -12,7 +12,7 @@
 #include "sound_interface.h"
 
 
-namespace Shared{ namespace Sound{	
+namespace Glest {
 
 // =====================================================
 //	class SoundInterface
@@ -31,4 +31,4 @@ SoundPlayer *SoundInterface::newSoundPlayer(){
 	return soundFactory->newSoundPlayer();
 }
 
-}}//end namespace
+}//end namespace

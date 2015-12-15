@@ -24,9 +24,9 @@
 
 
 
-namespace Shared{ namespace Graphics{ namespace Gl{
+namespace Glest {
 
-using Util::intToStr;
+
 
 // =====================================================
 //	Globals
@@ -66,6 +66,6 @@ void inline _assertGl(const char *file, int line){
 	
 #endif
 
-}}}//end namespace
+}//end namespace
 
 #endif

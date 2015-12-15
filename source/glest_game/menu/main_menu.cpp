@@ -28,13 +28,7 @@
 #include "menu_state_root.h"
 
 
-using namespace Shared::Sound;
-using namespace Shared::Platform;
-using namespace Shared::Util;
-using namespace Shared::Graphics;
-using namespace	Shared::Xml;
-
-namespace Glest{ namespace Game{
+namespace Glest {
 
 // =====================================================
 // 	class MainMenu
@@ -190,4 +184,4 @@ MenuState::MenuState(Program *program, MainMenu *mainMenu, const std::string &st
 
 
 
-}}//end namespace
+}//end namespace

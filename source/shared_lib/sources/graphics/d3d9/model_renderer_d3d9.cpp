@@ -10,7 +10,7 @@
 
 #include "leak_dumper.h"
 
-namespace Shared{ namespace Graphics{ namespace D3d9{
+namespace Glest {
 
 // ===============================================
 //	class ModelRendererD3d9
@@ -170,4 +170,4 @@ void ModelRendererD3d9::readyBuffers(int newPointCount, int newIndexCount){
 	}
 }
 
-}}}//end namespace
+}//end namespace

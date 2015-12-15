@@ -14,9 +14,9 @@
 #include "metrics.h"
 #include "command_type.h"
 
-using namespace Shared::Graphics;
 
-namespace Glest{ namespace Game{
+
+namespace Glest {
 
 // =====================================================
 // 	class Display
@@ -79,4 +79,4 @@ int Display::computeUpY(int index) const{
 	return Metrics::getInstance().getDisplayH() - (index/cellSideCount)*imageSize - imageSize;
 }
 
-}}//end namespace
+}//end namespace

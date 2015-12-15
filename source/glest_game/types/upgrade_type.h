@@ -12,12 +12,11 @@
 #ifndef _GLEST_GAME_UPGRADETYPE_H_
 #define _GLEST_GAME_UPGRADETYPE_H_
 
+
 #include "element_type.h"
 #include "checksum.h"
 
-using Shared::Util::Checksum;
-
-namespace Glest{ namespace Game{
+namespace Glest {
 
 class TechTree;
 class FactionType;
@@ -83,6 +82,6 @@ public:
 	void incLevel(const UnitType *ut);
 };
 
-}}//end namespace
+}//end namespace
 
 #endif

@@ -6,7 +6,7 @@
 
 
 
-namespace Shared{ namespace Graphics{
+namespace Glest {
 
 // =====================================================
 //	class VertexBuffer
@@ -57,6 +57,6 @@ public:
 	void setIndexPointer(void *pointer);
 };
 
-}}//end namespace
+}//end namespace
 
 #endif

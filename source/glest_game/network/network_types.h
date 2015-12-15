@@ -19,12 +19,12 @@
 
 
 
-using Shared::Platform::int8;
-using Shared::Platform::int16;
-using Shared::Platform::int32;
-using Shared::Graphics::Vec2i;
 
-namespace Glest{ namespace Game{
+
+
+
+
+namespace Glest {
 
 // =====================================================
 //	class NetworkString
@@ -73,6 +73,6 @@ public:
 	int getTargetId() const								{return targetId;}
 };
 
-}}//end namespace
+}//end namespace
 
 #endif

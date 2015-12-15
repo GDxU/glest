@@ -12,7 +12,7 @@
 #ifndef _SHARED_UTIL_RANDOM_H_
 #define _SHARED_UTIL_RANDOM_H_
 
-namespace Shared{ namespace Util{
+namespace Glest {
 
 // =====================================================
 //	class Random
@@ -36,6 +36,6 @@ public:
 	float randRange(float min, float max);
 };
 
-}}//end namespace
+}//end namespace
 
 #endif

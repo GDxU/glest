@@ -17,9 +17,10 @@
 
 
 
-using namespace Shared::Platform;
 
-namespace Shared{ namespace Sound{
+
+
+namespace Glest {
 
 // =====================================================
 //	class SoundInfo
@@ -105,6 +106,6 @@ public:
 	void restart();
 };
 
-}}//end namespace
+}//end namespace
 
 #endif

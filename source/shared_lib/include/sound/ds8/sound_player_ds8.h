@@ -22,7 +22,7 @@
 
 
 
-namespace Shared{ namespace Sound{ namespace Ds8{
+namespace Glest {
 
 // =====================================================
 //	class SoundBuffer
@@ -100,7 +100,7 @@ private:
 // =====================================================
 //	class SoundPlayerDs8  
 //
-///	SoundPlayer implementation using Direct Sound 8
+///	SoundPlayer implementation 
 // =====================================================
 
 class SoundPlayerDs8: public SoundPlayer{
@@ -131,6 +131,6 @@ private:
 
 long dsVolume(float floatVolume);
 
-}}}//end namespace
+}//end namespace
 
 #endif

@@ -14,15 +14,15 @@
 #include "model.h"
 #include "vec.h"
 
-namespace Glest{ namespace Game{
+namespace Glest {
 
 class ObjectType;
 class ResourceType;
 class Resource;
 
-using Shared::Graphics::Model;
-using Shared::Graphics::Vec2i;
-using Shared::Graphics::Vec3f;
+
+
+
 
 // =====================================================
 // 	class Object
@@ -54,6 +54,6 @@ public:
 	void setResource(const ResourceType *resourceType, const Vec2i &pos);
 };
 
-}}//end namespace
+}//end namespace
 
 #endif

@@ -20,7 +20,7 @@
 
 
 
-namespace Shared{ namespace Graphics{
+namespace Glest {
 
 // =====================================================
 //	class TextRenderer2D
@@ -48,6 +48,6 @@ public:
 	virtual void end()= 0;
 };
 
-}}//end namespace
+}//end namespace
 
 #endif

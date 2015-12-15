@@ -6,7 +6,7 @@
 
 #include <d3d9.h> 
 
-namespace Shared{ namespace Graphics{ namespace D3d9{
+namespace Glest {
 
 // ===============================
 //	class ModelRendererD3d9  
@@ -48,6 +48,6 @@ private:
 	void readyBuffers(int newPointCount, int newIndexCount);	
 };
 
-}}}//end namespace
+}//end namespace
 
 #endif

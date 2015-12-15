@@ -18,7 +18,7 @@
 
 
 
-namespace Glest{ namespace Game{
+namespace Glest {
 
 class Gui;
 
@@ -72,6 +72,6 @@ public:
 	virtual void unitEvent(UnitObserver::Event event, const Unit *unit);
 };
 
-}}//end namespace
+}//end namespace
 
 #endif

@@ -20,10 +20,10 @@
 #include "tech_tree.h"
 #include "config.h"
 
-using namespace Shared::Graphics;
-using namespace Shared::Util;
 
-namespace Glest{ namespace Game{
+
+
+namespace Glest {
 
 // =====================================================
 // 	class Cell
@@ -686,4 +686,4 @@ const Vec2i &PosQuadIterator::getPos(){
 	return pos;
 }
       
-}}//end namespace
+}//end namespace

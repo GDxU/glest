@@ -20,7 +20,7 @@
 
 
 
-namespace Glest{ namespace Game{
+namespace Glest {
 
 // =====================================================
 //	class Logger  
@@ -57,6 +57,6 @@ public:
 	void clear();
 };
 
-}}//end namespace
+}//end namespace
 
 #endif

@@ -18,7 +18,7 @@
 #include "game.h"
 
 
-namespace Glest{ namespace Game{
+namespace Glest {
 
 // =====================================================
 //	class AutoTest
@@ -78,4 +78,4 @@ void AutoTest::updateBattleEnd(Program *program){
 	program->setState(new MainMenu(program));
 }
 
-}}//end namespace
+}//end namespace

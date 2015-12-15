@@ -10,7 +10,7 @@
 
 
 
-namespace Shared{ namespace Graphics{ namespace D3d9{
+namespace Glest {
 
 // ===============================================
 //	class ContextD3d9
@@ -71,4 +71,4 @@ void ContextD3d9::reset(){
 }
 
 
-}}}//end namespace
+}//end namespace

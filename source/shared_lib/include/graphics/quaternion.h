@@ -20,7 +20,7 @@
 
 
 
-namespace Shared{ namespace Graphics{
+namespace Glest {
 
 // =====================================================
 //	class AxisAngle
@@ -93,6 +93,6 @@ public:
 	Vec3f getLocalZAxis() const;
 };
 
-}}//end namespace
+}//end namespace
 
 #endif

@@ -18,10 +18,10 @@
 #include "sound_container.h"
 #include "checksum.h"
 
-namespace Glest{ namespace Game{
+namespace Glest {
 
-using Shared::Sound::StaticSound;
-using Shared::Util::Checksum;
+
+
 
 class UpgradeType;
 class UnitType;
@@ -183,7 +183,7 @@ private:
     void computeFirstCtOfClass();
 };
 
-}}//end namespace
+}//end namespace
 
 
 #endif

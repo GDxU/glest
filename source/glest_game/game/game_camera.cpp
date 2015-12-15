@@ -15,9 +15,9 @@
 #include "game_constants.h"
 #include "metrics.h"
 
-using namespace Shared::Graphics;
 
-namespace Glest{ namespace Game{
+
+namespace Glest {
 
 // =====================================================
 // 	class GameCamera
@@ -231,4 +231,4 @@ void GameCamera::moveUp(float d){
 	pos.y+= d;
 }
 
-}}//end namespace
+}//end namespace

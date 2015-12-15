@@ -12,7 +12,7 @@
 #include "stats.h"
 
 
-namespace Glest{ namespace Game{
+namespace Glest {
 
 PlayerStats::PlayerStats(){
 	victory= false;
@@ -50,4 +50,4 @@ void Stats::harvest(int harvesterFactionIndex, int amount){
 	playerStats[harvesterFactionIndex].resourcesHarvested+= amount;
 }
 
-}}//end namespace
+}//end namespace

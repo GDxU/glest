@@ -15,9 +15,9 @@
 #include "properties.h"
 #include "main_menu.h"
 
-using Shared::Util::Properties;
 
-namespace Glest{ namespace Game{
+
+namespace Glest {
 
 class NetworkMessageIntro;
 
@@ -58,6 +58,6 @@ public:
 private:
 	void connectToServer();
 };
-}}//end namespace
+}//end namespace
 
 #endif

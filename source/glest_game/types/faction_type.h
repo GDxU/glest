@@ -16,9 +16,9 @@
 #include "upgrade_type.h"
 #include "sound.h"
 
-using Shared::Sound::StrSound;
 
-namespace Glest{ namespace Game{
+
+namespace Glest {
 
 // =====================================================
 // 	class FactionType
@@ -64,6 +64,6 @@ public:
 	int getStartingResourceAmount(const ResourceType *resourceType) const;
 };
 
-}}//end namespace
+}//end namespace
 
 #endif

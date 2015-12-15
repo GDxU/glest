@@ -14,13 +14,13 @@
 // This header contains things that should not be used outside the platform/sdl
 // directory
 
-namespace Shared{ namespace Platform{ namespace Private{
-
-extern bool shouldBeFullscreen;
-extern int ScreenWidth;
-extern int ScreenHeight;
-
-}}}
+namespace Glest {
+    namespace Private {
+        extern bool shouldBeFullscreen;
+        extern int ScreenWidth;
+        extern int ScreenHeight;
+    }
+}
 
 #endif
 

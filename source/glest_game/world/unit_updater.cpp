@@ -28,10 +28,10 @@
 #include "faction.h"
 #include "network_manager.h"
 
-using namespace Shared::Graphics;
-using namespace Shared::Util;
 
-namespace Glest{ namespace Game{
+
+
+namespace Glest {
 
 // =====================================================
 // 	class UnitUpdater
@@ -847,4 +847,4 @@ void ParticleDamager::update(ParticleSystem *particleSystem){
 	delete this;
 }
 
-}}//end namespace
+}//end namespace

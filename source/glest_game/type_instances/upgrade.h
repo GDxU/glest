@@ -17,7 +17,7 @@
 
 
 
-namespace Glest{ namespace Game{
+namespace Glest {
 
 class Unit;
 class UpgradeType;
@@ -83,6 +83,6 @@ public:
 	void computeTotalUpgrade(const Unit *unit, TotalUpgrade *totalUpgrade) const;
 };
 
-}}//end namespace
+}//end namespace
 
 #endif

@@ -14,14 +14,15 @@
 
 #include "pixmap.h"
 #include "texture.h"
+#include "renderer.h"
 
-namespace Glest{ namespace Game{
+namespace Glest {
 
-using Shared::Graphics::Vec4f;
-using Shared::Graphics::Vec3f;
-using Shared::Graphics::Vec2i;
-using Shared::Graphics::Pixmap2D;
-using Shared::Graphics::Texture2D;
+
+
+
+
+
 
 class World;
 
@@ -64,6 +65,6 @@ private:
 	void computeTexture(const World *world);
 };
 
-}}//end namespace 
+}//end namespace 
 
 #endif

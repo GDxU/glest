@@ -22,12 +22,12 @@
 
 
 
-using Shared::Graphics::Pixmap2D;
-using Shared::Graphics::Texture2D;
-using Shared::Graphics::Vec2i;
-using Shared::Graphics::Vec2f;
 
-namespace Glest{ namespace Game{
+
+
+
+
+namespace Glest {
 
 // =====================================================
 //	class SurfaceInfo
@@ -84,6 +84,6 @@ private:
 	void checkDimensions(const Pixmap2D *p);
 };
 
-}}//end namespace
+}//end namespace
 
 #endif

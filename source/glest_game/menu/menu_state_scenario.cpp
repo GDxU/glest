@@ -22,9 +22,9 @@
 #include "game.h"
 
 
-namespace Glest{ namespace Game{
+namespace Glest {
 
-using namespace	Shared::Xml;
+
 
 // =====================================================
 // 	class MenuStateScenario
@@ -238,4 +238,4 @@ ControlType MenuStateScenario::strToControllerType(const std::string &str){
     throw std::runtime_error("Unknown controller type: " + str);
 }
 
-}}//end namespace
+}//end namespace

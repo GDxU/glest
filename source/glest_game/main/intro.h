@@ -22,13 +22,13 @@
 
 
 
-using Shared::Graphics::Vec2i;
-using Shared::Graphics::Vec2f;
-using Shared::Graphics::Vec3f;
-using Shared::Graphics::Font2D;
-using Shared::Graphics::Texture2D;
 
-namespace Glest{ namespace Game{
+
+
+
+
+
+namespace Glest {
 
 // =====================================================
 //	class Text
@@ -80,6 +80,6 @@ public:
 	virtual void mouseUpLeft(int x, int y);
 };
 
-}}//end namespace
+}//end namespace
 
 #endif

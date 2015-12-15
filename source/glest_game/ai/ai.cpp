@@ -20,10 +20,10 @@
 #include "program.h"
 #include "config.h"
 
-using namespace Shared::Graphics;
-using namespace Shared::Util;
 
-namespace Glest{ namespace Game{
+
+
+namespace Glest {
 
 // =====================================================
 // 	class ProduceTask
@@ -427,4 +427,4 @@ void Ai::harvest(int unitIndex){
 	}
 }
 
-}}//end namespace
+}//end namespace

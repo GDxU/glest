@@ -14,7 +14,7 @@
 #include "graphics_interface.h"
 #include "graphics_factory.h"
 
-namespace Shared{ namespace Graphics{
+namespace Glest {
 
 // =====================================================
 //	class ModelManager
@@ -50,4 +50,4 @@ void ModelManager::end(){
 }
 
 
-}}//end namespace
+}//end namespace

@@ -22,17 +22,17 @@
 #include "surface_atlas.h"
 #include "checksum.h"
 
-namespace Glest{ namespace Game{
+namespace Glest {
 
-using Shared::Xml::XmlNode;
-using Shared::Sound::StaticSound;
-using Shared::Sound::StrSound;
-using Shared::Graphics::Model;
-using Shared::Graphics::Vec3f;
-using Shared::Graphics::Texture2D;
-using Shared::Graphics::Texture3D;
-using Shared::Util::Random;
-using Shared::Util::Checksum;
+
+
+
+
+
+
+
+
+
 
 
 
@@ -155,6 +155,6 @@ public:
 	AmbientSounds *getAmbientSounds() {return &ambientSounds;}
 };
 
-}} //end namespace
+} //end namespace
 
 #endif

@@ -3,7 +3,7 @@
 
 #include "text_renderer.h"
 
-namespace Shared{ namespace Graphics{ namespace D3d9{
+namespace Glest {
 
 // ===============================
 //	class TextRenderer2DD3d9  
@@ -20,6 +20,6 @@ public:
 	virtual void end();
 };
 
-}}}//end namespace
+}//end namespace
 
 #endif

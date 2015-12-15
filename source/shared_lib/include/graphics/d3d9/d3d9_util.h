@@ -13,7 +13,7 @@
 
 
 
-namespace Shared{ namespace Graphics{ namespace D3d9{
+namespace Glest {
 
 std::string d3dErrorToStr(HRESULT result);
 
@@ -23,6 +23,6 @@ inline void checkResult(HRESULT result, const std::string &functionCall){
 	}
 }
 
-}}}//end namespace
+}//end namespace
 
 #endif

@@ -28,7 +28,7 @@
 
 
 
-namespace Shared{ namespace Graphics{
+namespace Glest {
 
 class Model;
 class Mesh;
@@ -170,6 +170,6 @@ private:
 	void buildInterpolationData() const;
 };
 
-}}//end namespace
+}//end namespace
 
 #endif

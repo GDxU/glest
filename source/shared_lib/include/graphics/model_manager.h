@@ -19,7 +19,7 @@
 
 
 
-namespace Shared{ namespace Graphics{
+namespace Glest {
 
 class TextureManager;
 
@@ -47,6 +47,6 @@ public:
 	void setTextureManager(TextureManager *textureManager)	{this->textureManager= textureManager;}
 };
 
-}}//end namespace
+}//end namespace
 
 #endif

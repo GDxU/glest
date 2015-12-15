@@ -7,7 +7,7 @@
 #include <d3d9.h>
 #include <d3dx9shader.h>
 
-namespace Shared{ namespace Graphics{ namespace D3d9{
+namespace Glest {
 
 // ===============================
 //	class ShaderProgramD3d9  
@@ -104,6 +104,6 @@ public:
 	IDirect3DPixelShader9 *getD3dPixelShader() const	{return d3dPixelShader;}
 };
 
-}}}//end namespace
+}//end namespace
 
 #endif

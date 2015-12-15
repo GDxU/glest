@@ -15,7 +15,7 @@
 #include "sound_factory.h"
 #include "sound_player_ds8.h"
 
-namespace Shared{ namespace Sound{ namespace Ds8{
+namespace Glest {
 
 // =====================================================
 //	class SoundFactoryDs8
@@ -26,6 +26,6 @@ public:
 	virtual SoundPlayer *newSoundPlayer()	{return new SoundPlayerDs8();}	
 };
 
-}}}//end namespace
+}//end namespace
 
 #endif

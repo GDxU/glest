@@ -17,10 +17,10 @@
 #include "particle.h"
 #include "random.h"
 
-using Shared::Graphics::ParticleObserver;
-using Shared::Util::Random;
 
-namespace Glest{ namespace Game{
+
+
+namespace Glest {
 
 class Unit;
 class Map;
@@ -108,6 +108,6 @@ public:
 	virtual void update(ParticleSystem *particleSystem);
 };
 
-}}//end namespace
+}//end namespace
 
 #endif

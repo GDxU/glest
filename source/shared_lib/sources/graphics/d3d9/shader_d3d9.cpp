@@ -12,7 +12,7 @@
 
 
 
-namespace Shared{ namespace Graphics{ namespace D3d9{
+namespace Glest {
 
 // ===============================================
 //	class ShaderD3d9
@@ -251,4 +251,4 @@ bool PixelShaderD3d9::compile(std::string &messages){
 	return true;
 }
 
-}}}//end namespace
+}//end namespace

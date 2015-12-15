@@ -13,7 +13,7 @@
 
 #include <SDL_types.h>
 
-namespace Shared{ namespace Platform{
+namespace Glest {
 
 // These don't have a real meaning in the SDL port
 typedef void* WindowHandle;
@@ -32,6 +32,6 @@ typedef Sint32 int32;
 typedef Uint32 uint32;
 typedef Sint64 int64;
 
-}}//end namespace
+}//end namespace
 
 #endif

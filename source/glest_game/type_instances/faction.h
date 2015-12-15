@@ -25,9 +25,9 @@
 
 
 
-using Shared::Graphics::Texture2D;
 
-namespace Glest{ namespace Game{
+
+namespace Glest {
 
 class Unit;
 class TechTree;
@@ -131,6 +131,6 @@ private:
 	void resetResourceAmount(const ResourceType *rt);
 };
 
-}}//end namespace
+}//end namespace
 
 #endif

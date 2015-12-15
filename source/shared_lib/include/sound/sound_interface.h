@@ -14,7 +14,7 @@
 
 #include "sound_factory.h"
 
-namespace Shared{ namespace Sound{
+namespace Glest {
 
 // =====================================================
 //	class SoundInterface
@@ -37,6 +37,6 @@ public:
 	SoundPlayer *newSoundPlayer();
 };
 
-}}//end namespace
+}//end namespace
 
 #endif

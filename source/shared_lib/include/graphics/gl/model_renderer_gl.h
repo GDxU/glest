@@ -16,7 +16,7 @@
 #include "model.h"
 #include "opengl.h"
 
-namespace Shared{ namespace Graphics{ namespace Gl{
+namespace Glest {
 
 // =====================================================
 //	class ModelRendererGl
@@ -45,6 +45,6 @@ private:
 	void renderMeshNormals(const Mesh *mesh);
 };
 
-}}}//end namespace
+}//end namespace
 
 #endif

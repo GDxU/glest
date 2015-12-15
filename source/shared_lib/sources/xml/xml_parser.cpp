@@ -27,9 +27,9 @@
 
 
 
-namespace Shared{ namespace Xml{
+namespace Glest {
 
-using namespace Util;
+
 
 // =====================================================
 //	class XmlTree
@@ -92,7 +92,7 @@ XmlNode::XmlNode(const tinyxml2::XMLElement* node)
 
     while (attr)
     {
-        attributes.push_back(new Shared::Xml::XmlAttribute(attr->Name(), attr->Value()));
+        attributes.push_back(new XmlAttribute(attr->Name(), attr->Value()));
 
         attr = attr->Next();
     }
@@ -282,4 +282,4 @@ const std::string &XmlAttribute::getRestrictedValue() const
 	return value;
 }
 
-}}//end namespace
+}//end namespace

@@ -19,13 +19,13 @@
 #include "math_util.h"
 #include "random.h"
 
-using namespace Shared::Util;
 
 
 
-namespace Shared{ namespace Graphics{
 
-using namespace Util;
+namespace Glest {
+
+
 
 // =====================================================
 //	file structs
@@ -873,4 +873,4 @@ void PixmapCube::loadFaceTga(const std::string &path, int face){
 	faces[face].loadTga(path);
 }
 
-}}//end namespace
+}//end namespace

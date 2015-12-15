@@ -31,11 +31,11 @@
 #include "random.h"
 #include "game_constants.h"
 
-namespace Glest{ namespace Game{
+namespace Glest {
 
-using Shared::Graphics::Quad2i;
-using Shared::Graphics::Rect2i;
-using Shared::Util::Random;
+
+
+
 
 class Faction;
 class Unit;
@@ -160,6 +160,6 @@ private:
 	void exploreCells(const Vec2i &newPos, int sightRange, int teamIndex);
 };
 
-}}//end namespace
+}//end namespace
 
 #endif

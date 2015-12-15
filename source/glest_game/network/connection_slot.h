@@ -18,12 +18,12 @@
 
 #include "network_interface.h"
 
-using Shared::Platform::ServerSocket;
-using Shared::Platform::Socket;
 
 
 
-namespace Glest{ namespace Game{
+
+
+namespace Glest {
 
 class ServerInterface;
 
@@ -57,6 +57,6 @@ private:
 	void close();
 };
 
-}}//end namespace
+}//end namespace
 
 #endif

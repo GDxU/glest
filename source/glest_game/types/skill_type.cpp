@@ -21,10 +21,10 @@
 #include "tech_tree.h"
 #include "faction_type.h"
 
-using namespace Shared::Util;
-using namespace Shared::Graphics;
 
-namespace Glest{ namespace Game{
+
+
+namespace Glest {
 
 // =====================================================
 // 	class SkillType
@@ -375,4 +375,4 @@ SkillTypeFactory &SkillTypeFactory::getInstance(){
 	return ctf;
 }
 
-}} //end namespace 
+} //end namespace 

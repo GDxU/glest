@@ -17,7 +17,7 @@
 #include "graphics_factory.h"
 
 
-namespace Shared{ namespace Graphics{
+namespace Glest {
 
 // =====================================================
 //	class TextureManager
@@ -92,4 +92,4 @@ TextureCube *TextureManager::newTextureCube(){
 	return textureCube;
 }
 
-}}//end namespace
+}//end namespace

@@ -15,9 +15,9 @@
 #include "platform_util.h"
 #include "util.h"
 
-namespace Shared{ namespace Sound{ namespace OpenAL{
+namespace Glest {
 
-using namespace Util;
+
 
 SoundSource::SoundSource()
 {
@@ -424,5 +424,5 @@ void SoundPlayerOpenAL::checkAlError(const char* message)
 	}
 }
 
-}}} // end of namespace
+} // end of namespace
 

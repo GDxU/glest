@@ -15,9 +15,9 @@
 #include "sound.h"
 #include "types.h"
 
-using Shared::Platform::uint32;
 
-namespace Shared{ namespace Sound{
+
+namespace Glest {
 
 // =====================================================
 //	class SoundPlayerParams
@@ -50,6 +50,6 @@ public:
 	virtual void updateStreams()= 0;
 };
 
-}}//end namespace
+}//end namespace
 
 #endif

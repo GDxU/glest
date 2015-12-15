@@ -15,11 +15,11 @@
 #include "tileset.h"
 #include "sound.h"
 
-namespace Glest{ namespace Game{
+namespace Glest {
 
-using Shared::Sound::StrSound;
-using Shared::Sound::StrSound;
-using Shared::Sound::StaticSound;
+
+
+
 
 
 // =====================================================
@@ -53,6 +53,6 @@ private:
 	bool isAproxTime(float time);
 };
 
-}} //end namespace
+} //end namespace
 
 #endif

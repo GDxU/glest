@@ -18,13 +18,13 @@
 #include "sdl_private.h"
 #include "noimpl.h"
 
-using namespace Shared::Util;
+
 
 
 
 SDL_Window* getWindow();
 
-namespace Shared{ namespace Platform{
+namespace Glest {
 
 // =======================================
 //               WINDOW               
@@ -116,8 +116,8 @@ void Window::setText(std::string text) {
 void Window::setSize(int w, int h) {
 	this->w = w;
 	this->h = h;
-	Private::ScreenWidth = w;
-	Private::ScreenHeight = h;
+    Private::ScreenWidth = w;
+    Private::ScreenHeight = h;
 }
 
 void Window::setPos(int x, int y)  {
@@ -310,4 +310,4 @@ char Window::getKey(SDL_Keysym keysym) {
 	return 0;
 }
 
-}}//end namespace
+}//end namespace

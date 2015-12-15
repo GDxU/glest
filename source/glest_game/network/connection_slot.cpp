@@ -21,9 +21,9 @@
 
 
 
-using namespace Shared::Util;
 
-namespace Glest{ namespace Game{
+
+namespace Glest {
 
 // =====================================================
 //	class ClientConnection
@@ -96,4 +96,4 @@ void ConnectionSlot::close(){
 	socket= NULL;
 }
 
-}}//end namespace
+}//end namespace

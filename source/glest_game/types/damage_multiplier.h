@@ -17,7 +17,7 @@
 
 
 
-namespace Glest{ namespace Game{
+namespace Glest {
 
 // ===============================
 // 	class AttackType  
@@ -75,6 +75,6 @@ public:
 	void setDamageMultiplier(const AttackType *att, const ArmorType *art, float value);
 };
 
-}}//end namespace
+}//end namespace
 
 #endif

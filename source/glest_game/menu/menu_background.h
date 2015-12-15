@@ -19,16 +19,16 @@
 #include "model.h"
 #include "random.h"
 
-using Shared::Graphics::RainParticleSystem;
-using Shared::Graphics::FireParticleSystem;
-using Shared::Graphics::Camera;
-using Shared::Graphics::Vec3f;
-using Shared::Graphics::Vec2f;
-using Shared::Graphics::Texture2D;
-using Shared::Graphics::Model;
-using Shared::Util::Random;
 
-namespace Glest{ namespace Game{
+
+
+
+
+
+
+
+
+namespace Glest {
 
 // ===========================================================
 // 	class MenuBackground  
@@ -98,7 +98,7 @@ private:
 	Vec2f computeRaindropPos();
 };
 
-}} //end namespace
+} //end namespace
 
 #endif
 

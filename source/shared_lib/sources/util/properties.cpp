@@ -20,7 +20,7 @@
 
 
 
-namespace Shared{ namespace Util{
+namespace Glest {
 
 // =====================================================
 //	class Properties
@@ -168,4 +168,4 @@ std::string Properties::toString(){
 	return rStr;
 }
 
-}}//end namepsace
+}//end namepsace

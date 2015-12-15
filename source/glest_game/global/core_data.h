@@ -19,13 +19,15 @@
 #include "texture.h"
 #include "sound_container.h"
 
-namespace Glest{ namespace Game{
 
-using Shared::Graphics::Texture2D;
-using Shared::Graphics::Texture3D;
-using Shared::Graphics::Font2D;
-using Shared::Sound::StrSound;
-using Shared::Sound::StaticSound;
+
+namespace Glest {
+
+
+
+
+
+
 
 // =====================================================
 // 	class CoreData  
@@ -93,6 +95,6 @@ private:
 	int computeFontSize(int size);
 };
 
-}} //end namespace
+} //end namespace
 
 #endif

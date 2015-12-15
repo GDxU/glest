@@ -17,9 +17,9 @@
 #include "ai_interface.h"
 #include "unit.h"
 
-using Shared::Graphics::Vec2i;
 
-namespace Glest{ namespace Game{
+
+namespace Glest {
 
 // =====================================================
 //	class AiRule
@@ -851,4 +851,4 @@ void AiRuleExpand::execute(){
 	ai->addPriorityTask(new BuildTask(storeType, expandPos));
 }
 
-}}//end namespace 
+}//end namespace 

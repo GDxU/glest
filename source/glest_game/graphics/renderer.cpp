@@ -25,11 +25,8 @@
 #include "faction.h"
 #include "factory_repository.h"
 
-using namespace Shared::Graphics;
-using namespace Shared::Graphics::Gl;
-using namespace Shared::Util;
 
-namespace Glest { namespace Game{
+namespace Glest {
 
 // =====================================================
 // 	class MeshCallbackTeamColor
@@ -2850,4 +2847,4 @@ Texture2D::Filter Renderer::strToTextureFilter(const std::string &s){
     throw std::runtime_error("Error converting from std::string to FilterType, found: " + s);
 }
 
-}}//end namespace
+}//end namespace

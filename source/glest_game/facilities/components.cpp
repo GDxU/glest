@@ -22,7 +22,7 @@
 
 
 
-namespace Glest{ namespace Game{
+namespace Glest {
 
 // =====================================================
 //	class GraphicComponent
@@ -245,4 +245,4 @@ bool GraphicMessageBox::mouseClick(int x, int y, int &clickedButton){
 	return false;
 }
 
-}}//end namespace
+}//end namespace

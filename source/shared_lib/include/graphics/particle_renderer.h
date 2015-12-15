@@ -14,7 +14,7 @@
 
 #include "particle.h"
 
-namespace Shared{ namespace Graphics{
+namespace Glest {
 
 class ModelRenderer;
 
@@ -33,6 +33,6 @@ public:
 	virtual void renderSingleModel(AttackParticleSystem *ps, ModelRenderer *mr)=0;
 };
 
-}}//end namespace
+}//end namespace
 
 #endif

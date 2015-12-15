@@ -12,7 +12,7 @@
 #include "context.h"
 
 
-namespace Shared{ namespace Graphics{
+namespace Glest {
 
 // =====================================================
 //	class Context
@@ -24,4 +24,4 @@ Context::Context(){
 	stencilBits= 0;
 }
 
-}}//end namespace
+}//end namespace

@@ -19,14 +19,14 @@
 #include "conversion.h"
 #include "util.h"
 
-using namespace Shared::Platform;
 
 
 
 
-namespace Shared{ namespace Graphics{
 
-using namespace Util;
+namespace Glest {
+
+
 
 // =====================================================
 //	class Mesh
@@ -520,4 +520,4 @@ void Model::saveS3d(const std::string &path){
 	fclose(f);*/
 }
 
-}}//end namespace
+}//end namespace

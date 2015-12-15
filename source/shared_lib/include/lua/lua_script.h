@@ -21,9 +21,9 @@
 
 
 
-using Shared::Graphics::Vec2i;
 
-namespace Shared{ namespace Lua{
+
+namespace Glest {
 
 typedef lua_State LuaHandle;
 typedef int(*LuaFunction)(LuaHandle*);
@@ -77,6 +77,6 @@ private:
 	void throwLuaError(const std::string &message) const;
 };
 
-}}//end namespace
+}//end namespace
 
 #endif

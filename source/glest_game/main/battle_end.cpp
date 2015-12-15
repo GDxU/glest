@@ -25,9 +25,9 @@
 #include "auto_test.h"
 
 
-using namespace Shared::Util;
 
-namespace Glest{ namespace Game{
+
+namespace Glest {
 
 // =====================================================
 // 	class BattleEnd  
@@ -140,4 +140,4 @@ void BattleEnd::mouseDownLeft(int x, int y){
 	program->setState(new MainMenu(program));
 }
 
-}}//end namespace
+}//end namespace

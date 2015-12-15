@@ -12,7 +12,7 @@
 #include "camera.h"
 
 
-namespace Shared{ namespace Graphics{
+namespace Glest {
 
 // =====================================================
 //	class Camera
@@ -49,4 +49,4 @@ void Camera::addRoll(float amount){
 	orientation*= q;
 }
 
-}}//end namespace
+}//end namespace

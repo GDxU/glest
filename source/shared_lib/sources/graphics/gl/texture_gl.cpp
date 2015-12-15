@@ -18,9 +18,9 @@
 
 
 
-namespace Shared{ namespace Graphics{ namespace Gl{
+namespace Glest {
 
-using namespace Platform;
+
 
 GLint toWrapModeGl(Texture::WrapMode wrapMode){
 	switch(wrapMode){
@@ -370,4 +370,4 @@ void TextureCubeGl::end(){
 	}
 }
 
-}}}//end namespace
+}//end namespace

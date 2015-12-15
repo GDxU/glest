@@ -21,7 +21,7 @@
 
 
 
-namespace Shared{ namespace Util{
+namespace Glest {
 
 std::string lastDir(const std::string &s){
 	size_t i= s.find_last_of('/');
@@ -167,4 +167,4 @@ bool fileExists(const std::string &path){
 	return false;
 }
 
-}}//end namespace
+}//end namespace

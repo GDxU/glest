@@ -4,7 +4,7 @@
 #include "texture.h"
 #include <d3d9.h> 
 
-namespace Shared{ namespace Graphics{ namespace D3d9{
+namespace Glest {
 
 // ===============================
 //	class Texture2DD3d9  
@@ -36,6 +36,6 @@ public:
 	virtual void end();
 };
 
-}}}//end namespace
+}//end namespace
 
 #endif

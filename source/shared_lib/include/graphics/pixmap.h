@@ -19,15 +19,15 @@
 
 
 
-using Shared::Platform::int8;
-using Shared::Platform::uint8;
-using Shared::Platform::int16;
-using Shared::Platform::uint16;
-using Shared::Platform::int32;
-using Shared::Platform::uint32;
-using Shared::Platform::float32;
 
-namespace Shared{ namespace Graphics{
+
+
+
+
+
+
+
+namespace Glest {
 
 // =====================================================
 //	class PixmapIo
@@ -263,6 +263,6 @@ public:
 	const Pixmap2D *getFace(int face) const	{return &faces[face];}
 };
 
-}}//end namespace
+}//end namespace
 
 #endif

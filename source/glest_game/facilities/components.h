@@ -22,9 +22,9 @@
 
 
 
-using Shared::Graphics::Font2D;
 
-namespace Glest{ namespace Game{
+
+namespace Glest {
 
 // ===========================================================
 // 	class GraphicComponent
@@ -179,6 +179,6 @@ public:
     bool mouseClick(int x, int y, int &clickedButton);
 };
 
-}}//end namespace
+}//end namespace
 
 #endif

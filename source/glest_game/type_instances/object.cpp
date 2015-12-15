@@ -20,9 +20,9 @@
 #include "util.h"
 #include "random.h"
 
-using namespace Shared::Util;
 
-namespace Glest{ namespace Game{
+
+namespace Glest {
 
 
 // =====================================================
@@ -60,4 +60,4 @@ void Object::setResource(const ResourceType *resourceType, const Vec2i &pos){
 	resource->init(resourceType, pos);
 }
 
-}}//end namespace
+}//end namespace

@@ -15,7 +15,7 @@
 #include "vec.h"
 #include "quaternion.h"
 
-namespace Shared{ namespace Graphics{
+namespace Glest {
 
 // =====================================================
 //	class Camera
@@ -43,6 +43,6 @@ public:
 	void addRoll(float amount);
 };
 
-}}//end namespace
+}//end namespace
 
 #endif

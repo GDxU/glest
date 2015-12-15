@@ -1,13 +1,3 @@
-// ==============================================================
-//	This file is part of Glest (www.glest.org)
-//
-//	Copyright (C) 2001-2008 Martiño Figueroa
-//
-//	You can redistribute this code and/or modify it under 
-//	the terms of the GNU General Public License as published 
-//	by the Free Software Foundation; either version 2 of the 
-//	License, or (at your option) any later version
-// ==============================================================
 
 #ifndef _GLEST_GAME_COMMANDTYPE_H_
 #define _GLEST_GAME_COMMANDTYPE_H_
@@ -20,15 +10,20 @@
 #include "xml_parser.h"
 #include "sound_container.h"
 
-namespace Glest{ namespace Game{
+namespace Glest {
 
-using Shared::Util::MultiFactory;
+
 
 class UnitUpdater;
 class Unit;
 class UnitType;
 class TechTree;
 class FactionType;
+class TotalUpgrade;
+class StopSkillType;
+class MoveSkillType;
+class AttackSkillType;
+class BuildSkillType;
 
 enum CommandClass{
 	ccStop,
@@ -171,9 +166,10 @@ class BuildCommandType: public CommandType{
 private:
     const MoveSkillType* moveSkillType;
     const BuildSkillType* buildSkillType;
-	std::vector<const UnitType*> buildings;
     SoundContainer startSounds;
     SoundContainer builtSounds;
+
+    std::vector<const UnitType*> buildings;
 
 public:
     BuildCommandType();
@@ -338,6 +334,6 @@ public:
 	static CommandTypeFactory &getInstance();
 };
 
-}}//end namespace
+}//end namespace
 
 #endif

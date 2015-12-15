@@ -5,7 +5,7 @@
 
 #include <d3dx9.h>
 
-namespace Shared{ namespace Graphics{ namespace D3d9{
+namespace Glest {
 
 // ===============================
 //	class FontD3d9  
@@ -21,6 +21,6 @@ public:
 	virtual void end();
 };
 
-}}}//end namespace
+}//end namespace
 
 #endif

@@ -16,9 +16,9 @@
 #include "network_manager.h"
 #include "lang.h"
 
-using namespace Shared::Platform;
 
-namespace Glest{ namespace Game{
+
+namespace Glest {
 
 // =====================================================
 //	class ChatManager
@@ -99,4 +99,4 @@ void ChatManager::updateNetwork(){
 	}
 }
 	
-}}//end namespace
+}//end namespace

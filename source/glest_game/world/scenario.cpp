@@ -18,12 +18,12 @@
 #include "util.h"
 #include "game_util.h"
 
-using namespace Shared::Xml;
-using namespace Shared::Util;
 
 
 
-namespace Glest{ namespace Game{
+
+
+namespace Glest {
 
 // =====================================================
 //	class Scenario
@@ -69,4 +69,4 @@ std::string Scenario::getFunctionName(const XmlNode *scriptNode){
 	return name;
 }
 
-}}//end namespace
+}//end namespace

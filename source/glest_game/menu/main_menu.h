@@ -21,7 +21,7 @@
 #include "menu_background.h"
 #include "game_settings.h"
 
-namespace Glest{ namespace Game{
+namespace Glest {
 
 //misc consts
 struct MapInfo{
@@ -116,6 +116,6 @@ public:
 	const Camera *getCamera() const			{return &camera;}
 };
 
-}}//end namespace
+}//end namespace
 
 #endif

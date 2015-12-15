@@ -14,7 +14,7 @@
 
 #include "config.h"
 
-namespace Glest{ namespace Game{
+namespace Glest {
 
 // =====================================================
 //	class Metrics
@@ -62,6 +62,6 @@ public:
 	bool isInMinimap(int x, int y) const;
 };
 
-}}//end namespace
+}//end namespace
 
 #endif

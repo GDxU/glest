@@ -14,7 +14,7 @@
 #include "util.h"
 
 
-namespace Glest{ namespace Game{
+namespace Glest {
 
 // =====================================================
 // 	class Config
@@ -69,4 +69,4 @@ std::string Config::toString(){
 	return properties.toString();
 }
 
-}}// end namespace
+}// end namespace

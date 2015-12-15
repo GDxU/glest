@@ -21,9 +21,9 @@
 
 
 
-using Shared::Platform::ServerSocket;
 
-namespace Glest{ namespace Game{
+
+namespace Glest {
 
 // =====================================================
 //	class ServerInterface
@@ -67,6 +67,6 @@ private:
 	void updateListen();
 };
 
-}}//end namespace
+}//end namespace
 
 #endif

@@ -15,9 +15,9 @@
 #include "context_gl.h"
 #include "window.h"
 
-using Shared::Graphics::Gl::ContextGl;
 
-namespace Shared{ namespace Platform{
+
+namespace Glest {
 
 // =====================================================
 //	class WindowGl
@@ -33,6 +33,6 @@ public:
 	void swapBuffersGl();
 };
 
-}}//end namespace
+}//end namespace
 
 #endif

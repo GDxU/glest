@@ -19,7 +19,7 @@
 
 
 
-namespace Shared{ namespace Graphics{
+namespace Glest {
 
 // =====================================================
 //	class TextureManager
@@ -53,6 +53,6 @@ public:
 };
 
 
-}}//end namespace
+}//end namespace
 
 #endif

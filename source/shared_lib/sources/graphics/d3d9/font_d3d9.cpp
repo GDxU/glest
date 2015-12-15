@@ -11,7 +11,7 @@
 
 
 
-namespace Shared{ namespace Graphics{ namespace D3d9{
+namespace Glest {
 
 // ===============================================
 //	class Font2DD3d9
@@ -36,4 +36,4 @@ void Font2DD3d9::end(){
 }
 
 
-}}}//end namespace
+}//end namespace

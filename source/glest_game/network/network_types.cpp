@@ -12,7 +12,7 @@
 #include "network_types.h"
 
 
-namespace Glest{ namespace Game{
+namespace Glest {
 
 // =====================================================
 //	class NetworkCommand
@@ -29,4 +29,4 @@ NetworkCommand::NetworkCommand(int networkCommandType, int unitId, int commandTy
 }
 
 
-}}//end namespace
+}//end namespace

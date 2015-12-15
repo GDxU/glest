@@ -19,7 +19,7 @@
 
 
 
-namespace Shared{ namespace Graphics{
+namespace Glest {
 
 // =====================================================
 //	class ShaderManager
@@ -49,6 +49,6 @@ public:
 	const std::string &getLogString() const	{return logString;}
 };
 
-}}//end namespace
+}//end namespace
 
 #endif

@@ -15,7 +15,7 @@
 
 #include <cmath>
 
-namespace Shared{ namespace Graphics{
+namespace Glest {
 
 template<typename T> class Vec2;
 template<typename T> class Vec3;
@@ -438,6 +438,6 @@ typedef Vec4<char> Vec4c;
 typedef Vec4<float> Vec4f;
 typedef Vec4<double> Vec4d;
 
-}} //enmd namespace
+} //enmd namespace
 
 #endif

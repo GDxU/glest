@@ -20,9 +20,9 @@
 #include "selection.h"
 #include "random.h"
 
-using Shared::Util::Random;
 
-namespace Glest{ namespace Game{
+
+namespace Glest {
 
 class Unit;
 class World;
@@ -196,6 +196,6 @@ private:
 	bool computeTarget(const Vec2i &screenPos, Vec2i &targetPos, const Unit *&targetUnit);
 };
 
-}} //end namespace
+} //end namespace
 
 #endif

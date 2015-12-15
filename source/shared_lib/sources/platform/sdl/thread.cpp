@@ -14,7 +14,7 @@
 
 #include "noimpl.h"
 
-namespace Shared{ namespace Platform{ 
+namespace Glest {
 
 // =====================================
 //          Threads                    
@@ -64,4 +64,4 @@ void Mutex::v() {
 	SDL_mutexV(mutex);
 }
 
-}}//end namespace
+}//end namespace

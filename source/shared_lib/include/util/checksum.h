@@ -18,10 +18,10 @@
 
 
 
-using Shared::Platform::int32;
-using Shared::Platform::int8;
 
-namespace Shared{ namespace Util{
+
+
+namespace Glest {
 
 // =====================================================
 //	class Checksum
@@ -44,6 +44,6 @@ public:
 	void addFile(const std::string &path);
 };
 
-}}//end namespace
+}//end namespace
 
 #endif

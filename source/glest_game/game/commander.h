@@ -21,9 +21,9 @@
 
 
 
-namespace Glest{ namespace Game{
+namespace Glest {
 
-using Shared::Graphics::Vec2i;
+
 
 class World;
 class Unit;
@@ -64,6 +64,6 @@ private:
 	Command* buildCommand(const NetworkCommand* networkCommand) const;
 };
 
-}} //end namespace
+} //end namespace
 
 #endif

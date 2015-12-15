@@ -13,7 +13,7 @@
 //#include "sound_factory_ds8.h"
 #include "sound_factory_openal.h"
 
-namespace Shared{ namespace Platform{
+namespace Glest {
 
 // =====================================================
 //	class FactoryRepository
@@ -39,7 +39,7 @@ SoundFactory *FactoryRepository::getSoundFactory(const std::string &name) {
 
 FactoryRepository::FactoryRepository()
 {
-    _soundFactory = new Shared::Sound::OpenAL::SoundFactoryOpenAL;
+    _soundFactory = new SoundFactoryOpenAL;
 }
 
 FactoryRepository::~FactoryRepository()
@@ -47,4 +47,4 @@ FactoryRepository::~FactoryRepository()
     delete _soundFactory;
 }
 
-}}//end namespace
+}//end namespace

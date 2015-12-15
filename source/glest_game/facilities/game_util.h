@@ -19,9 +19,9 @@
 
 
 
-using Shared::Util::sharedLibVersionString;
 
-namespace Glest{ namespace Game{
+
+namespace Glest {
 
 extern const std::string mailString;
 extern const std::string glestVersionString;
@@ -36,6 +36,6 @@ std::string getTeammateRole(int i);
 
 std::string formatString(const std::string &str);
 
-}}//end namespace
+}//end namespace
 
 #endif

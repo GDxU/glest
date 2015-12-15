@@ -25,7 +25,7 @@
 #include "socket.h"
 
 
-namespace Glest{ namespace Game{
+namespace Glest {
 
 // =====================================================
 // 	class MenuStateNewGame
@@ -94,4 +94,4 @@ void MenuStateNewGame::update(){
 	}
 }
 
-}}//end namespace
+}//end namespace

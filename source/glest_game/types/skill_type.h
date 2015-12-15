@@ -22,14 +22,14 @@
 #include "factory.h"
 #include "sound_container.h"
 
-using Shared::Sound::StaticSound;
-using Shared::Xml::XmlNode;
-using Shared::Graphics::Vec3f;
-using Shared::Graphics::Model;
 
-namespace Glest{ namespace Game{
 
-using Shared::Util::MultiFactory;
+
+
+
+namespace Glest {
+
+
 
 class ParticleSystemTypeProjectile;
 class ParticleSystemTypeSplash;
@@ -279,6 +279,6 @@ public:
 	static SkillTypeFactory &getInstance();
 };
 
-}}//end namespace
+}//end namespace
 
 #endif

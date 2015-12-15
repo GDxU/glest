@@ -17,11 +17,8 @@
 #include "config.h"
 #include "util.h"
 
-using namespace Shared::Sound;
-using namespace Shared::Graphics;
-using namespace Shared::Util;
 
-namespace Glest{ namespace Game{
+namespace Glest {
 
 // =====================================================
 // 	class CoreData
@@ -140,4 +137,4 @@ int CoreData::computeFontSize(int size){
 
 // ================== PRIVATE ========================
 
-}}//end namespace
+}//end namespace

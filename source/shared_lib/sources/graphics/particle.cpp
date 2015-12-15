@@ -18,9 +18,9 @@
 #include "particle_renderer.h"
 #include "math_util.h"
 
-using namespace Shared::Util;
 
-namespace Shared{ namespace Graphics{
+
+namespace Glest {
 
 // =====================================================
 //	class ParticleSystem
@@ -675,4 +675,4 @@ void ParticleManager::end(){
 	}
 }
 
-}}//end namespace
+}//end namespace

@@ -25,7 +25,7 @@
 #include "texture_gl.h"
 #include "font_gl.h"
 
-namespace Shared{ namespace Graphics{ namespace Gl{
+namespace Glest {
 
 // =====================================================
 //	class GraphicsFactoryGl
@@ -60,6 +60,6 @@ public:
 	virtual ParticleRenderer *newParticleRenderer()	{return new ParticleRendererGl();}
 };
 
-}}}//end namespace
+}//end namespace
 
 #endif

@@ -26,7 +26,7 @@
 #include "auto_test.h"
 
 
-namespace Glest{ namespace Game{
+namespace Glest {
 
 // =====================================================
 // 	class MenuStateRoot
@@ -112,4 +112,4 @@ void MenuStateRoot::update(){
 	}
 }
 
-}}//end namespace
+}//end namespace

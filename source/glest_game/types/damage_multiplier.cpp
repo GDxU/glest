@@ -12,7 +12,7 @@
 #include "damage_multiplier.h"
 
 
-namespace Glest{ namespace Game{
+namespace Glest {
 
 // =====================================================
 // 	class DamageMultiplierTable
@@ -45,4 +45,4 @@ void DamageMultiplierTable::setDamageMultiplier(const AttackType *att, const Arm
 	values[attackTypeCount*art->getId()+att->getId()]= value;
 }
 
-}}//end namespaces
+}//end namespaces

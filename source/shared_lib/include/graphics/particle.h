@@ -22,9 +22,9 @@
 
 
 
-using Shared::Util::Random;
 
-namespace Shared{ namespace Graphics{
+
+namespace Glest {
 
 class ParticleSystem;
 class FireParticleSystem;
@@ -369,6 +369,6 @@ public:
 	void end();
 }; 
 
-}}//end namespace
+}//end namespace
 
 #endif

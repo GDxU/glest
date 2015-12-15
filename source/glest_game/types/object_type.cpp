@@ -13,7 +13,7 @@
 
 #include "renderer.h"
 
-namespace Glest{ namespace Game{
+namespace Glest {
 
 // =====================================================
 // 	class ObjectType
@@ -36,4 +36,4 @@ void ObjectType::loadModel(const std::string &path){
 	models.push_back(model);
 }
 
-}}//end namespace
+}//end namespace

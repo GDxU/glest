@@ -14,7 +14,7 @@
 #include "config.h"
 #include "map.h"
 
-namespace Glest{ namespace Game{
+namespace Glest {
 
 // =====================================================
 //	class WaterSplash
@@ -64,4 +64,4 @@ void WaterEffects::addWaterSplash(const Vec2f &pos){
 	waterSplashes.push_back(WaterSplash(pos));
 }
 
-}}//end namespace
+}//end namespace

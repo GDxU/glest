@@ -25,7 +25,7 @@
 
 
 
-namespace Shared{ namespace Graphics{ namespace Gl{
+namespace Glest {
 
 // =====================================================
 //	class ShaderProgramGl
@@ -109,6 +109,6 @@ public:
 	virtual void init();
 };
 
-}}}//end namespace
+}//end namespace
 
 #endif

@@ -26,7 +26,7 @@
 
 
 
-namespace Glest{ namespace Game{
+namespace Glest {
 
 class GraphicMessageBox;
 
@@ -131,6 +131,6 @@ private:
 	void showMessageBox(const std::string &text, const std::string &header, bool toggle);
 };
 
-}}//end namespace
+}//end namespace
 
 #endif

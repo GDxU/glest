@@ -19,12 +19,12 @@
 
 #include "socket.h"
 
-using Shared::Platform::Ip;
-using Shared::Platform::ClientSocket;
 
 
 
-namespace Glest{ namespace Game{
+
+
+namespace Glest {
 
 // =====================================================
 //	class ClientInterface
@@ -77,6 +77,6 @@ private:
 	void waitForMessage();
 };
 
-}}//end namespace
+}//end namespace
 
 #endif

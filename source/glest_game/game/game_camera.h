@@ -15,12 +15,12 @@
 #include "vec.h"
 #include "math_util.h"
 
-namespace Glest{ namespace Game{
+namespace Glest {
 
-using Shared::Graphics::Quad2i;
-using Shared::Graphics::Vec3f;
-using Shared::Graphics::Vec3b;
-using Shared::Graphics::Vec2f;
+
+
+
+
 
 class Config;
 
@@ -109,6 +109,6 @@ private:
     void moveUp(float dist);
 };
 
-}} //end namespace
+} //end namespace
 
 #endif

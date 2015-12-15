@@ -20,7 +20,7 @@
 
 
 
-namespace Shared{ namespace Sound{ namespace OpenAL{
+namespace Glest {
 
 class SoundSource {
 public:
@@ -82,7 +82,7 @@ protected:
 // ==============================================================
 //	class SoundPlayerSDL
 //
-///	SoundPlayer implementation using SDL_mixer
+///	SoundPlayer implementation 
 // ==============================================================
 
 class SoundPlayerOpenAL : public SoundPlayer {
@@ -120,7 +120,7 @@ private:
 	SoundPlayerParams params;
 };
 
-}}}//end namespace
+}//end namespace
 
 #endif
 

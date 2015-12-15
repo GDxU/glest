@@ -18,10 +18,10 @@
 #include "xml_parser.h"
 #include "game_util.h"
 
-using namespace Shared::Util;
-using namespace Shared::Xml;
 
-namespace Glest{ namespace Game{
+
+
+namespace Glest {
 
 // =====================================================
 // 	class ResourceType
@@ -120,4 +120,4 @@ ResourceClass ResourceType::strToRc(const std::string &s){
     throw std::runtime_error("Error converting from std::string ro resourceClass, found: " + s);
 }
 
-}}//end namespace
+}//end namespace

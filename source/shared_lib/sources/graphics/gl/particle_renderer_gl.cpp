@@ -16,7 +16,7 @@
 #include "model_renderer.h"
 #include "math_util.h"
 
-namespace Shared{ namespace Graphics{ namespace Gl{
+namespace Glest {
 
 // =====================================================
 //	class ParticleRendererGl
@@ -289,4 +289,4 @@ void ParticleRendererGl::setBlendMode(ParticleSystem::BlendMode blendMode){
 	}
 }
 
-}}} //end namespace
+} //end namespace

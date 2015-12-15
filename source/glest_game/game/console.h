@@ -23,7 +23,7 @@
 
 
 
-namespace Glest{ namespace Game{
+namespace Glest {
 
 // =====================================================
 // 	class Console
@@ -64,6 +64,6 @@ public:
 	bool isEmpty();
 };
 
-}}//end namespace
+}//end namespace
 
 #endif

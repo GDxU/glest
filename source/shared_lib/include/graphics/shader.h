@@ -16,7 +16,7 @@
 #include "matrix.h"
 #include "texture.h"
 
-namespace Shared{ namespace Graphics{
+namespace Glest {
 
 // =====================================================
 //	class ShaderProgram
@@ -81,6 +81,6 @@ public:
 	void load(const std::string &path);
 };
 
-}}//end namespace
+}//end namespace
 
 #endif

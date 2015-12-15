@@ -15,7 +15,7 @@
 #include "config.h"
 #include "game_constants.h"
 
-namespace Glest{ namespace Game{
+namespace Glest {
 
 // =====================================================
 // 	class TimeFlow
@@ -87,4 +87,4 @@ bool TimeFlow::isAproxTime(float time){
 	return (this->time>=time) && (this->time<time+timeInc);
 }
 
-}}//end namespace
+}//end namespace

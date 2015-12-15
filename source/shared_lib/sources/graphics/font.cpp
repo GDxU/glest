@@ -18,7 +18,7 @@
 #include <wingdi.h>
 #include <windef.h>
 
-namespace Shared{ namespace Graphics{
+namespace Glest {
 
 // =====================================================
 //	class FontMetrics
@@ -190,4 +190,4 @@ void *getGlProcAddress(const char *procName) {
     return proc;
 }
 
-}}//end namespace
+}//end namespace

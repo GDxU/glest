@@ -24,9 +24,9 @@
 #include <string>
 #include "font.h"
 
-namespace Shared{ namespace Graphics{ namespace Gl{
+namespace Glest {
 
-//using Platform::PlatformContextGl;
+//
 
 // =====================================================
 //	class ContextGl
@@ -48,6 +48,6 @@ public:
 };
 
 
-}}}//end namespace
+}//end namespace
 
 #endif

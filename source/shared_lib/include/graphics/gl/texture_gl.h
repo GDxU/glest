@@ -15,7 +15,7 @@
 #include "texture.h"
 #include "opengl.h"
 
-namespace Shared{ namespace Graphics{ namespace Gl{
+namespace Glest {
 
 // =====================================================
 //	class TextureGl
@@ -69,6 +69,6 @@ public:
 	virtual void end();
 };
 
-}}}//end namespace
+}//end namespace
 
 #endif

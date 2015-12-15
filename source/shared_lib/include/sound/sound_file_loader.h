@@ -25,11 +25,9 @@
 
 
 
-namespace Shared{ namespace Sound{
+namespace Glest {
 
-using Platform::uint32;
-using Platform::int8;
-using Util::MultiFactory;
+
 
 class SoundInfo;
 
@@ -102,6 +100,6 @@ public:
 	static SoundFileLoaderFactory * getInstance();
 };
 
-}}//end namespace
+}//end namespace
 
 #endif

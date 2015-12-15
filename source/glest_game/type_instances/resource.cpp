@@ -14,10 +14,10 @@
 #include "conversion.h"
 #include "resource_type.h"
 
-using namespace Shared::Graphics;
-using namespace Shared::Util;
 
-namespace Glest{ namespace Game{
+
+
+namespace Glest {
 
 // =====================================================
 // 	class Resource
@@ -55,4 +55,4 @@ bool Resource::decAmount(int i){
      return true;
 }
 
-}}//end namespace
+}//end namespace

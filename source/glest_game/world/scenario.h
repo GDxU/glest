@@ -24,9 +24,9 @@
 
 
 
-using Shared::Xml::XmlNode;
 
-namespace Glest{ namespace Game{
+
+namespace Glest {
 
 // =====================================================
 //	class Script
@@ -68,6 +68,6 @@ private:
 	std::string getFunctionName(const XmlNode *scriptNode);
 };
 
-}}//end namespace
+}//end namespace
 
 #endif

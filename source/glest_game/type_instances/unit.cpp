@@ -23,10 +23,10 @@
 #include "core_data.h"
 #include "renderer.h"
 
-using namespace Shared::Graphics;
-using namespace Shared::Util;
 
-namespace Glest{ namespace Game{
+
+
+namespace Glest {
 
 // =====================================================
 // 	class UnitPath
@@ -970,4 +970,4 @@ CommandResult Unit::undoCommand(Command *command){
 }
 
 
-}}//end namespace
+}//end namespace

@@ -18,9 +18,9 @@
 
 
 
-using Shared::Graphics::Vec2i;
 
-namespace Glest{ namespace Game{
+
+namespace Glest {
 
 class Map;
 class Unit;
@@ -75,6 +75,6 @@ private:
 	bool openPos(const Vec2i &sucPos);
 };
 
-}}//end namespace
+}//end namespace
 
 #endif

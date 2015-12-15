@@ -17,7 +17,7 @@
 #include "faction_type.h"
 #include "damage_multiplier.h"
 
-namespace Glest{ namespace Game{
+namespace Glest {
 
 // =====================================================
 // 	class TechTree
@@ -59,6 +59,6 @@ public:
 	float getDamageMultiplier(const AttackType *att, const ArmorType *art) const;
 };
 
-}} //end namespace
+} //end namespace
 
 #endif

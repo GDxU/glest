@@ -19,12 +19,12 @@
 #include "platform_util.h"
 
 
-using namespace Shared::Platform;
-using namespace Shared::Util;
 
 
 
-namespace Glest{ namespace Game{
+
+
+namespace Glest {
 
 // =====================================================
 //	class NetworkInterface
@@ -74,4 +74,4 @@ GameNetworkInterface::GameNetworkInterface(){
 	quit= false;
 }
 
-}}//end namespace
+}//end namespace

@@ -19,12 +19,12 @@
 #include "game_settings.h"
 
 
-using namespace Shared::Platform;
-using namespace Shared::Util;
 
 
 
-namespace Glest{ namespace Game{
+
+
+namespace Glest {
 
 // =====================================================
 //	class NetworkMessage
@@ -215,4 +215,4 @@ void NetworkMessageQuit::send(Socket* socket) const{
 	NetworkMessage::send(socket, &data, sizeof(data));
 }
 
-}}//end namespace
+}//end namespace

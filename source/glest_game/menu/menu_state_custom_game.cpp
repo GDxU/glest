@@ -25,9 +25,9 @@
 #include "game.h"
 
 
-namespace Glest{ namespace Game{
+namespace Glest {
 
-using namespace Shared::Util;
+
 
 // =====================================================
 // 	class MenuStateCustomGame
@@ -421,4 +421,4 @@ void MenuStateCustomGame::updateNetworkSlots(){
 	}
 }
 
-}}//end namespace
+}//end namespace

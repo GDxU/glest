@@ -20,9 +20,9 @@
 
 
 
-using Shared::Graphics::Vec2i;
 
-namespace Glest{ namespace Game{
+
+namespace Glest {
 
 class Ai;
 class Unit;
@@ -310,6 +310,6 @@ public:
 	virtual void execute();
 };
 
-}}//end namespace 
+}//end namespace 
 
 #endif

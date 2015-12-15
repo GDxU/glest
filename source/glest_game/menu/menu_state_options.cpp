@@ -19,9 +19,9 @@
 #include "util.h"
 
 
-using namespace Shared::Util;
 
-namespace Glest{ namespace Game{
+
+namespace Glest {
 
 // =====================================================
 // 	class MenuStateOptions
@@ -223,4 +223,4 @@ void MenuStateOptions::saveConfig(){
 	SoundRenderer::getInstance().loadConfig();
 }
 
-}}//end namespace
+}//end namespace

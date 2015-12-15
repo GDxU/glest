@@ -22,10 +22,10 @@
 
 
 
-using namespace Shared::Platform;
-using namespace Shared::Util;
 
-namespace Glest{ namespace Game{
+
+
+namespace Glest {
 
 // =====================================================
 //	class ClientInterface
@@ -270,4 +270,4 @@ void ClientInterface::waitForMessage(){
 	}
 }
 
-}}//end namespace
+}//end namespace

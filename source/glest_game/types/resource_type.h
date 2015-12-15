@@ -16,10 +16,10 @@
 #include "model.h"
 #include "checksum.h"
 
-namespace Glest{ namespace Game{
+namespace Glest {
 
-using Shared::Graphics::Model;
-using Shared::Util::Checksum;
+
+
 
 enum ResourceClass{
 	rcTech,		
@@ -57,6 +57,6 @@ public:
 	static ResourceClass strToRc(const std::string &s);
 };
 
-}} //end namespace
+} //end namespace
 
 #endif

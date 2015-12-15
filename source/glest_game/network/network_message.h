@@ -16,11 +16,11 @@
 #include "game_constants.h"
 #include "network_types.h"
 
-using Shared::Platform::Socket;
-using Shared::Platform::int8;
-using Shared::Platform::int16;
 
-namespace Glest{ namespace Game{
+
+
+
+namespace Glest {
 
 class GameSettings;
 
@@ -247,6 +247,6 @@ public:
 	virtual void send(Socket* socket) const;
 };
 
-}}//end namespace
+}//end namespace
 
 #endif

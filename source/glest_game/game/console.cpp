@@ -18,7 +18,7 @@
 #include "sound_renderer.h"
 #include "core_data.h"
 
-namespace Glest{ namespace Game{
+namespace Glest {
 
 // =====================================================
 // 	class Console
@@ -61,4 +61,4 @@ bool Console::isEmpty(){
 }
          
 
-}}//end namespace
+}//end namespace

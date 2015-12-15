@@ -22,10 +22,10 @@
 
 
 
-using namespace Shared::Platform;
-using namespace Shared::Util;
 
-namespace Glest{ namespace Game{
+
+
+namespace Glest {
 
 // =====================================================
 //	class ServerInterface
@@ -241,4 +241,4 @@ void ServerInterface::updateListen(){
 	serverSocket.listen(openSlotCount);
 }
 
-}}//end namespace
+}//end namespace

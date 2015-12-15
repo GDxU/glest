@@ -13,9 +13,9 @@
 
 #include "util.h"
 
-using namespace Shared::Util;
 
-namespace Glest{ namespace Game{
+
+namespace Glest {
 
 // =====================================================
 // 	class SoundContainer
@@ -41,4 +41,4 @@ StaticSound *SoundContainer::getRandSound() const{
 	}
 }
 
-}}//end namespace
+}//end namespace

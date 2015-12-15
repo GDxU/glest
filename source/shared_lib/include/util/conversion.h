@@ -17,7 +17,7 @@
 
 
 
-namespace Shared{ namespace Util{
+namespace Glest {
 
 bool strToBool(const std::string &s);
 int strToInt(const std::string &s);
@@ -33,6 +33,6 @@ std::string intToHex(int i);
 std::string floatToStr(float f);
 std::string doubleToStr(double f);
 
-}}//end namespace
+}//end namespace
 
 #endif

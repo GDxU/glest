@@ -14,7 +14,7 @@
 
 #include "main_menu.h"
 
-namespace Glest{ namespace Game{
+namespace Glest {
 
 // ===============================
 // 	class MenuStateOptions  
@@ -54,6 +54,6 @@ private:
 	void saveConfig();
 };
 
-}}//end namespace
+}//end namespace
 
 #endif

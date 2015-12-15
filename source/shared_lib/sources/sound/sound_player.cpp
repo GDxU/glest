@@ -12,7 +12,7 @@
 #include "sound_player.h"
 
 
-namespace Shared{ namespace Sound{
+namespace Glest {
 
 // =====================================================
 //	class SoundPlayerParams
@@ -24,4 +24,4 @@ SoundPlayerParams::SoundPlayerParams(){
 	strBufferSize= 44050*2*2*2;	//2 second buffer
 }
 
-}}//end namespace
+}//end namespace

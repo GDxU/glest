@@ -14,7 +14,7 @@
 #include "opengl.h"
 #include "font_gl.h"
 
-namespace Shared{ namespace Graphics{ namespace Gl{
+namespace Glest {
 
 // =====================================================
 //	class TextRenderer2DGl
@@ -138,4 +138,4 @@ void TextRenderer3DGl::end(){
 	assertGl();
 }
 
-}}}//end namespace
+}//end namespace

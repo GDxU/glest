@@ -25,9 +25,9 @@
 #include "socket.h"
 
 
-namespace Glest{ namespace Game{
+namespace Glest {
 
-using namespace Shared::Util;
+
 
 // ===============================
 // 	class MenuStateJoinGame  
@@ -273,4 +273,4 @@ void MenuStateJoinGame::connectToServer(){
 	config.save();
 }
 
-}}//end namespace
+}//end namespace

@@ -14,7 +14,7 @@
 
 #include "model.h"
 
-namespace Shared{ namespace Graphics{ namespace Gl{
+namespace Glest {
 
 // =====================================================
 //	class ModelGl
@@ -26,6 +26,6 @@ public:
 	virtual void end(){}
 };
 
-}}}//end namespace
+}//end namespace
 
 #endif

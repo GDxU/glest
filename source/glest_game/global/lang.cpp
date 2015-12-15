@@ -18,9 +18,7 @@
 
 
 
-using namespace Shared::Util;
-
-namespace Glest{ namespace Game{
+namespace Glest {
 
 // =====================================================
 // 	class Lang
@@ -73,4 +71,4 @@ std::string Lang::getScenarioString(const std::string &s){
 	}
 }
 
-}}//end namespace
+}//end namespace
