@@ -15,7 +15,6 @@
 
 #include "graphics_interface.h"
 #include "context_gl.h"
-#include "gl_wrap.h"
 #include "leak_dumper.h"
 
 using namespace Shared::Platform; 
@@ -109,7 +108,7 @@ const char *getGlExtensions(){
 
 const char *getGlPlatformExtensions(){
 	Context *c= GraphicsInterface::getInstance().getCurrentContext();
-	return getPlatformExtensions(static_cast<ContextGl*>(c)->getPlatformContextGl());
+    return "";// getPlatformExtensions(static_cast<ContextGl*>(c)->getPlatformContextGl());
 }
 
 int getGlMaxLights(){

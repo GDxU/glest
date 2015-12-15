@@ -238,7 +238,7 @@ bool ask(std::string message) {
 }
 
 void exceptionMessage(const std::exception &excp) {
-	std::cerr << "Exception: " << excp.what() << std::endl;
+    SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR, "Exception", excp.what(), getWindow());
 }
 
 

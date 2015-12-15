@@ -12,7 +12,7 @@
 #include "font_gl.h"
 
 #include "opengl.h"
-#include "gl_wrap.h"
+#include "context_gl.h"
 #include "leak_dumper.h"
 
 namespace Shared{ namespace Graphics{ namespace Gl{

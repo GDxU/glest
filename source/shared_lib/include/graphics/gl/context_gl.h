@@ -13,11 +13,20 @@
 #define _SHARED_GRAPHICS_GL_CONTEXTGL_H_ 
 
 #include "context.h"
-#include "gl_wrap.h"
+
+#include <SDL.h>
+#define GL_GLEXT_PROTOTYPES
+
+#include <GL/glew.h>
+//#include <SDL_opengl.h>
+
+#include "GL/GLU.h"
+#include <string>
+#include "font.h"
 
 namespace Shared{ namespace Graphics{ namespace Gl{
 
-using Platform::PlatformContextGl;
+//using Platform::PlatformContextGl;
 
 // =====================================================
 //	class ContextGl
@@ -25,7 +34,7 @@ using Platform::PlatformContextGl;
 
 class ContextGl: public Context{
 protected:
-	PlatformContextGl pcgl;
+	//PlatformContextGl pcgl;
 
 public:
 	virtual void init();
@@ -35,8 +44,9 @@ public:
 	virtual void makeCurrent();
 	virtual void swapBuffers();
 
-	const PlatformContextGl *getPlatformContextGl() const	{return &pcgl;}
+	//const PlatformContextGl *getPlatformContextGl() const	{return &pcgl;}
 };
+
 
 }}}//end namespace
 

@@ -13,6 +13,7 @@
 #define _SHARED_GRAPHICS_FONT_H_
 
 #include <string>
+#include "context.h"
 
 
 
@@ -106,6 +107,10 @@ public:
 	void setDepth(float depth)		{this->depth= depth;}
 };
 
+void createGlFontBitmaps(uint32 &base, const std::string &type, int size, int width, int charCount, FontMetrics &metrics);
+void createGlFontOutlines(uint32 &base, const std::string &type, int width, float depth, int charCount, FontMetrics &metrics);
+//const char *getPlatformExtensions(const PlatformContextGl *pcgl);
+void* getGlProcAddress(const char *procName);
 }}//end namespace
 
 #endif

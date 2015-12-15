@@ -10,7 +10,7 @@
 // ==============================================================
 #include "window_gl.h"
 
-#include "gl_wrap.h"
+#include "context_gl.h"
 #include "graphics_interface.h"
 #include "leak_dumper.h"
 
