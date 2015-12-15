@@ -10,17 +10,17 @@ find_package(LUA51)
 set(inc_path 
 
     ${CMAKE_CURRENT_SOURCE_DIR}/shared_lib
-    ${CMAKE_CURRENT_SOURCE_DIR}/shared_lib/include
-    ${CMAKE_CURRENT_SOURCE_DIR}/shared_lib/include/graphics
-    ${CMAKE_CURRENT_SOURCE_DIR}/shared_lib/include/lua
-    ${CMAKE_CURRENT_SOURCE_DIR}/shared_lib/include/platform
-    ${CMAKE_CURRENT_SOURCE_DIR}/shared_lib/include/platform/sdl
-    ${CMAKE_CURRENT_SOURCE_DIR}/shared_lib/include/platform/win32
-    ${CMAKE_CURRENT_SOURCE_DIR}/shared_lib/include/sound
-    ${CMAKE_CURRENT_SOURCE_DIR}/shared_lib/include/sound/openal
-    ${CMAKE_CURRENT_SOURCE_DIR}/shared_lib/include/util
-    ${CMAKE_CURRENT_SOURCE_DIR}/shared_lib/include/xml
-    ${CMAKE_CURRENT_SOURCE_DIR}/shared_lib/include/graphics/gl
+    ${CMAKE_CURRENT_SOURCE_DIR}/shared_lib/graphics
+    ${CMAKE_CURRENT_SOURCE_DIR}/shared_lib/lua
+    ${CMAKE_CURRENT_SOURCE_DIR}/shared_lib/platform
+    ${CMAKE_CURRENT_SOURCE_DIR}/shared_lib/platform/sdl
+    ${CMAKE_CURRENT_SOURCE_DIR}/shared_lib/platform/win32
+    ${CMAKE_CURRENT_SOURCE_DIR}/shared_lib/sound
+    ${CMAKE_CURRENT_SOURCE_DIR}/shared_lib/sound/openal
+    ${CMAKE_CURRENT_SOURCE_DIR}/shared_lib/util
+    ${CMAKE_CURRENT_SOURCE_DIR}/shared_lib/xml
+    ${CMAKE_CURRENT_SOURCE_DIR}/shared_lib/graphics/gl
+    
 
     ${LUA_INCLUDE_DIR}
     ${DEPS_INCLUDE}
