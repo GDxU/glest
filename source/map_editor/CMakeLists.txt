@@ -1,1 +1,2 @@
-setup_exe(editor)
+setup_tool(editor)
+

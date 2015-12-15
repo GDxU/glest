@@ -5,24 +5,24 @@
 #include "types.h"
 #include "random.h"
 
-using Shared::Platform::int8;
-using Shared::Platform::int32;
-using Shared::Platform::float32;
-using Shared::Util::Random;
 
-struct MapFileHeader{
-	int32 version;
-	int32 maxPlayers;
-	int32 width;
-	int32 height;
-	int32 altFactor;
-	int32 waterLevel;
-	int8 title[128];
-	int8 author[128];
-	int8 description[256];
-};
 
-namespace Glest{ namespace MapEditor{
+
+
+namespace Glest{ 
+    struct MapFileHeader{
+        int32 version;
+        int32 maxPlayers;
+        int32 width;
+        int32 height;
+        int32 altFactor;
+        int32 waterLevel;
+        int8 title[128];
+        int8 author[128];
+        int8 description[256];
+    };
+
+    namespace MapEditor{
 
 // ===============================================
 //	class Map
@@ -47,10 +47,10 @@ private:
     }; 
 
 	Random random;
-    string title;
-    string author;
-    string desc;
-    string recScn;
+    std::string title;
+    std::string author;
+    std::string desc;
+    std::string recScn;
     int type;
     int h;
 	int w;
@@ -76,16 +76,16 @@ public:
 
 	void setRefAlt(int x, int y); 
 	void setAdvanced(int altFactor, int waterLevel);
-    void setTitle(const string &title);
-    void setDesc(const string &desc);
-    void setAuthor(const string &author);
+    void setTitle(const std::string &title);
+    void setDesc(const std::string &desc);
+    void setAuthor(const std::string &author);
 	
 	int getH() const			{return h;}
 	int getW() const			{return w;}
 	int getMaxPlayers() const	{return maxPlayers;}
-	string getTitle() const		{return title;}
-	string getDesc() const		{return desc;}
-	string getAuthor() const	{return author;}
+    std::string getTitle() const		{ return title; }
+    std::string getDesc() const		{ return desc; }
+    std::string getAuthor() const	{ return author; }
 
     void changeHeight(int x, int y, int height, int radius);
 	void changeSurface(int x, int y, int surface, int radius);
@@ -102,8 +102,8 @@ public:
 	void randomize();
 	void switchSurfaces(int surf1, int surf2);
 
-    void loadFromFile(const string &path);
-    void saveToFile(const string &path);
+    void loadFromFile(const std::string &path);
+    void saveToFile(const std::string &path);
 
 public:
 	void resetHeights(int height);

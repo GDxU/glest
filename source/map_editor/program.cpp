@@ -2,7 +2,7 @@
 
 #include "util.h" 
 
-using namespace Shared::Util;
+
 
 namespace Glest{ namespace MapEditor{
 
@@ -82,15 +82,15 @@ void Program::resetPlayers(int maxPlayers){
      map->resetPlayers(maxPlayers);
 }
 
-void Program::setMapTitle(const string &title){
+void Program::setMapTitle(const std::string &title){
      map->setTitle(title);
 }
  
-void Program::setMapDesc(const string &desc){
+void Program::setMapDesc(const std::string &desc){
      map->setDesc(desc);
 }
 
-void Program::setMapAuthor(const string &author){
+void Program::setMapAuthor(const std::string &author){
      map->setAuthor(author);
 }
 
@@ -121,11 +121,11 @@ void Program::setMapAdvanced(int altFactor, int waterLevel){
      map->setAdvanced(altFactor, waterLevel);
 }
 
-void Program::loadMap(const string &path){
+void Program::loadMap(const std::string &path){
      map->loadFromFile(path);
 }
 
-void Program::saveMap(const string &path){
+void Program::saveMap(const std::string &path){
      map->saveToFile(path);
 }
 

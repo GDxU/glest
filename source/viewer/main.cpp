@@ -6,14 +6,9 @@
 #include "graphics_interface.h"
 #include "util.h"
 
-using namespace Shared::Platform; 
-using namespace Shared::Graphics;
-using namespace Shared::Graphics::Gl;
-using namespace Shared::Util;
-
 using namespace std;
 
-namespace Shared{ namespace G3dViewer{
+namespace Glest {
 
 // ===============================================
 // 	class MainWindow
@@ -145,7 +140,7 @@ void MainWindow::onMenuFileLoad(wxCommandEvent &event){
 	if(fileDialog.ShowModal()==wxID_OK){
 		delete model;
 		Model *tmpModel= new ModelGl();
-		renderer->loadTheModel(tmpModel, fileDialog.GetPath().c_str());
+        renderer->loadTheModel(tmpModel, fileDialog.GetPath().ToStdString());
 		model= tmpModel;
 		GetStatusBar()->SetStatusText(getModelInfo().c_str());
 	}
@@ -299,6 +294,6 @@ int App::OnExit(){
 	return 0;
 }
 
-}}//end namespace
+}//end namespace
 
-IMPLEMENT_APP(Shared::G3dViewer::App)
+IMPLEMENT_APP(Glest::App)

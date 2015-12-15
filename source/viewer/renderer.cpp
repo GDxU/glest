@@ -5,10 +5,9 @@
 #include "graphics_interface.h"
 #include "graphics_factory_gl.h"
 
-using namespace Shared::Graphics;
-using namespace Shared::Graphics::Gl;
 
-namespace Shared{ namespace G3dViewer{
+
+namespace Glest {
 
 // ===============================================
 // 	class MeshCallbackTeamColor
@@ -244,7 +243,7 @@ void Renderer::toggleGrid(){
 	grid= grid? false: true;
 }
 
-void Renderer::loadTheModel(Model *model, string file){
+void Renderer::loadTheModel(Model *model, std::string file){
 	model->setTextureManager(textureManager);
 	model->loadG3d(file);
 	textureManager->init();
@@ -269,4 +268,4 @@ void Renderer::renderTheModel(Model *model, float f){
 	}
 }
 
-}}//end namespace
+}//end namespace

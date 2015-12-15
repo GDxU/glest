@@ -1,2 +1,2 @@
 
-setup_exe(configuration)
+setup_tool(configuration)

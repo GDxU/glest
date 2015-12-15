@@ -6,18 +6,13 @@
 #include "model.h"
 #include "texture.h"
 
-using Shared::Graphics::ModelRenderer;
-using Shared::Graphics::TextureManager;
-using Shared::Graphics::Model;
-using Shared::Graphics::Texture2D;
+
 
 #include "model_renderer.h"
 
-using Shared::Graphics::MeshCallback;
-using Shared::Graphics::Mesh;
-using Shared::Graphics::Texture;
 
-namespace Shared{ namespace G3dViewer{
+
+namespace Glest {
 
 // ===============================================
 // 	class MeshCallbackTeamColor
@@ -83,10 +78,10 @@ public:
 	void toggleWireframe();
 	void toggleGrid();
 
-	void loadTheModel(Model *model, string file);
+	void loadTheModel(Model *model, std::string file);
 	void renderTheModel(Model *model, float f);
 };
 
-}}//end namespace
+}//end namespace
 
 #endif

@@ -1,1 +1,1 @@
-setup_exe(view)
+setup_tool(view)

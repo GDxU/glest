@@ -3,8 +3,6 @@
 #include <cmath>
 #include <stdexcept>
 
-using namespace Shared::Util;
-using namespace std;
 
 namespace Glest{ namespace MapEditor{
 
@@ -211,22 +209,22 @@ bool Map::inside(int x, int y){
 
 void Map::reset(int w, int h, float alt, int surf){
 	if (w<16 || h<16){
-		throw runtime_error("Size of map must be at least 16x16");
+		throw std::runtime_error("Size of map must be at least 16x16");
 		return;
 	}
 
 	if (w>1024 || h>1024){
-		throw runtime_error("Size of map can be at most 1024x1024");
+		throw std::runtime_error("Size of map can be at most 1024x1024");
 		return;
 	}
 
 	if (alt<0 || alt>20){
-		throw runtime_error("Height must be in the range 0-20");
+		throw std::runtime_error("Height must be in the range 0-20");
 		return;
 	}
 
 	if (surf<1 || surf>5){
-		throw runtime_error("Surface must be in the range 1-5");
+		throw std::runtime_error("Surface must be in the range 1-5");
 		return;
 	}
 	
@@ -255,22 +253,22 @@ void Map::reset(int w, int h, float alt, int surf){
 
 void Map::resize(int w, int h, float alt, int surf){
 	if (w<16 || h<16){
-		throw runtime_error("Size of map must be at least 16x16");
+		throw std::runtime_error("Size of map must be at least 16x16");
 		return;
 	}
 
 	if (w>1024 || h>1024){
-		throw runtime_error("Size of map can be at most 1024x1024");
+		throw std::runtime_error("Size of map can be at most 1024x1024");
 		return;
 	}
 
 	if (alt<0 || alt>20){
-		throw runtime_error("Height must be in the range 0-20");
+		throw std::runtime_error("Height must be in the range 0-20");
 		return;
 	}
 
 	if (surf<1 || surf>5){
-		throw runtime_error("Surface must be in the range 1-5");
+		throw std::runtime_error("Surface must be in the range 1-5");
 		return;
 	}
 	
@@ -321,7 +319,7 @@ void Map::resize(int w, int h, float alt, int surf){
 
 void Map::resetPlayers(int maxPlayers){
 	if (maxPlayers<1 || maxPlayers>4){
-		throw runtime_error("Max Players must be in the range 1-4");
+		throw std::runtime_error("Max Players must be in the range 1-4");
 		return;
 	}
 	
@@ -337,15 +335,15 @@ void Map::resetPlayers(int maxPlayers){
 	}
 }
 
-void Map::setTitle(const string &title){
+void Map::setTitle(const std::string &title){
 	this->title= title;
 }
 
-void Map::setDesc(const string &desc){
+void Map::setDesc(const std::string &desc){
 	this->desc= desc;
 }
 
-void Map::setAuthor(const string &author){
+void Map::setAuthor(const std::string &author){
 	this->author= author;
 }
 
@@ -399,11 +397,11 @@ void Map::switchSurfaces(int surf1, int surf2){
 		}
 	}
 	else{
-		throw runtime_error("Incorrect surfaces");
+		throw std::runtime_error("Incorrect surfaces");
 	}
 }
 
-void Map::loadFromFile(const string &path){
+void Map::loadFromFile(const std::string &path){
 
 	FILE *f1= fopen(path.c_str(), "rb");
 	if(f1!=NULL){
@@ -457,12 +455,12 @@ void Map::loadFromFile(const string &path){
 		fclose(f1);
 	}
 	else{
-		throw runtime_error("error opening map file: "+ path);
+		throw std::runtime_error("error opening map file: "+ path);
 	}
 }
 
           
-void Map::saveToFile(const string &path){
+void Map::saveToFile(const std::string &path){
      
 	FILE *f1= fopen(path.c_str(), "wb");
 	if(f1!=NULL){
@@ -518,7 +516,7 @@ void Map::saveToFile(const string &path){
 
 	}
 	else{
-		throw runtime_error("Error opening map file: "+ path);
+		throw std::runtime_error("Error opening map file: "+ path);
 	}
 
 	void randomHeight(int x, int y, int height);

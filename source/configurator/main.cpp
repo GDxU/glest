@@ -10,7 +10,7 @@
 
 using namespace std;
 
-namespace Configurator{
+namespace Glest{
 
 // ===============================================
 // 	class MainWindow
@@ -194,4 +194,4 @@ int App::OnExit(){
 
 }//end namespace
 
-IMPLEMENT_APP(Configurator::App)
+IMPLEMENT_APP(Glest::App)

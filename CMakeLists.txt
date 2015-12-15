@@ -37,7 +37,12 @@ set(DEPS_INCLUDE
     #${CMAKE_CURRENT_SOURCE_DIR}/deps/xxtea
     #${CMAKE_CURRENT_SOURCE_DIR}/deps/zlib
     ${CMAKE_CURRENT_SOURCE_DIR}/deps/stb
+
+    C:/wxWidgets-3.0.2/include
 )
+
+set(deps_lib_dir C:/wxWidgets-3.0.2/lib/vc_lib)
+set(deps_lib )
 
 add_subdirectory(source)
 add_subdirectory(deps)

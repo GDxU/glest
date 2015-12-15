@@ -3,8 +3,9 @@
 #include <ctime>
 
 #include "conversion.h"
+#include "wx/filedlg.h"
 
-using namespace Shared::Util;
+
 
 using namespace std;
 
@@ -227,7 +228,7 @@ void MainWindow::onMenuFileSave(wxCommandEvent &event){
 void MainWindow::onMenuFileSaveAs(wxCommandEvent &event){
 	string fileName;
 	
-	wxFileDialog fileDialog(this, wxT("Select file"), wxT(""), wxT(""), wxT("*.gbm"), wxSAVE);
+    wxFileDialog fileDialog(this, wxT("Select file"), wxT(""), wxT(""), wxT("*.gbm"), wxFD_SAVE);
 	fileDialog.SetWildcard(wxT("Glest Binary Map (*.gbm)|*.gbm"));
 	if(fileDialog.ShowModal()==wxID_OK){
 		fileName= fileDialog.GetPath().ToAscii();

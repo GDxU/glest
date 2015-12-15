@@ -13,7 +13,7 @@
 using std::pair;
 using std::map;
 
-namespace Configurator{
+namespace Glest{
 
 // ===============================
 // 	class MainWindow
@@ -96,6 +96,6 @@ public:
 
 }//end namespace
 
-DECLARE_APP(Configurator::App)
+DECLARE_APP(Glest::App)
 
 #endif

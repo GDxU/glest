@@ -11,12 +11,8 @@
 #include "util.h"
 #include "window.h"
 
-using Shared::Platform::Window;
-using Shared::Platform::MouseState;
 
-using std::string;
-
-namespace Shared{ namespace G3dViewer{
+namespace Glest {
 
 class GlCanvas;
 
@@ -29,8 +25,8 @@ private:
 	DECLARE_EVENT_TABLE()
 
 public:
-	static const string versionString;
-	static const string winHeader;
+	static const std::string versionString;
+    static const std::string winHeader;
 
 	enum MenuId{
 		miFileLoad,
@@ -58,7 +54,7 @@ private:
 	wxMenu *menuCustomColor;
 
 	Model *model;
-	string modelPath;
+	std::string modelPath;
 
 	float speed;
 	float anim;
@@ -67,7 +63,7 @@ private:
 	Renderer::PlayerColor playerColor;
 
 public:
-	MainWindow(const string &modelPath);
+	MainWindow(const std::string &modelPath);
 	~MainWindow();
 
 	void Notify();
@@ -87,7 +83,7 @@ public:
 	void onMouseMove(wxMouseEvent &event);
 	void onTimer(wxTimerEvent &event);
 
-	string getModelInfo();
+	std::string getModelInfo();
 };
 
 // =====================================================
@@ -122,8 +118,8 @@ public:
 	virtual int OnExit();
 };
 
-}}//end namespace
+}//end namespace
 
-DECLARE_APP(Shared::G3dViewer::App)
+DECLARE_APP(Glest::App)
 
 #endif

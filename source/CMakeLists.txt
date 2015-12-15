@@ -61,8 +61,10 @@ macro(global_define)
 endmacro()
 
 macro(define_files name)
-    file(GLOB_RECURSE SRC_FILES ${CMAKE_CURRENT_SOURCE_DIR} *.cpp *.h *.c)
-    global_define()
+    file(GLOB SRC_FILES ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp)
+    include_directories(${inc_path})
+    add_definitions(-D_CRT_SECURE_NO_WARNINGS)
+    link_directories(${DEPS_LIB})
 endmacro()
 
 macro(setup_lib name)
@@ -79,19 +81,24 @@ macro(setup_lib name)
      )
 endmacro()
 
-macro(setup_exe name)
+macro(setup_tool name)
     define_files(name)
+
+#add_definitions(-DUNICODE -D_UNICODE)
+
+    link_directories(${deps_lib_dir})
     add_executable(${name} ${SRC_FILES})
     target_link_libraries(${name} lib)
+    target_link_libraries(editor ${deps_lib})
 endmacro()
 
 
 #add_subdirectory(engine)
-
-#add_subdirectory(glest_map_editor)
-#add_subdirectory(g3d_viewer)
-#add_subdirectory(configurator)
 #add_subdirectory(game)
+#add_subdirectory(map_editor)
+#add_subdirectory(configurator)
+#add_subdirectory(viewer)
+
 
 
 
@@ -129,6 +136,8 @@ game/world/*.cpp
 LIST(APPEND SRC_FILES ${LIB_SRC_FILES})
 
 global_define()
+
+
 
 add_executable(GLEST ${SRC_FILES})
 

@@ -40,13 +40,13 @@ public:
 	void randomizeMapHeights();
 	void randomizeMap();
 	void switchMapSurfaces(int surf1, int surf2);
-    void loadMap(const string &path);
-    void saveMap(const string &path);
+    void loadMap(const std::string &path);
+    void saveMap(const std::string &path);
 
 	//map misc
-	void setMapTitle(const string &title);
-    void setMapDesc(const string &desc);
-    void setMapAuthor(const string &author);
+    void setMapTitle(const std::string &title);
+    void setMapDesc(const std::string &desc);
+    void setMapAuthor(const std::string &author);
     void setMapAdvanced(int altFactor, int waterLevel);
 
 	//misc

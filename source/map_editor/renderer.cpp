@@ -6,8 +6,6 @@
 
 #include "vec.h"
 
-using namespace Shared::Graphics;
-using namespace Shared::Graphics::Gl;
 
 namespace Glest{ namespace MapEditor{
 

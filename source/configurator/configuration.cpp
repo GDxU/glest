@@ -8,10 +8,9 @@
 #include "util/conversion.h"
 
 using namespace std;
-using namespace Shared::Xml;
-using namespace Shared::Util;
 
-namespace Configurator{
+
+namespace Glest{
 
 // ===============================================
 // 	class Configuration

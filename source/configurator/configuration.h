@@ -11,9 +11,9 @@
 using std::string;
 using std::vector;
 
-using Shared::Xml::XmlNode;
 
-namespace Configurator{
+
+namespace Glest{
 
 class Field;
 class FieldGroup;
