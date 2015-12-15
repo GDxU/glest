@@ -19,7 +19,6 @@
 #include "unit.h"
 #include "program.h"
 #include "config.h"
-#include "leak_dumper.h"
 
 using namespace Shared::Graphics;
 using namespace Shared::Util;

@@ -25,7 +25,6 @@
 #include "sound_renderer.h"
 #include "util.h"
 #include "faction.h"
-#include "leak_dumper.h"
 
 using namespace Shared::Graphics;
 using namespace Shared::Util;

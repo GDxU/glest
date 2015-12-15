@@ -21,7 +21,6 @@
 #include "console.h"
 #include "config.h"
 #include "platform_util.h"
-#include "leak_dumper.h"
 
 using namespace Shared::Graphics;
 using namespace Shared::Util;

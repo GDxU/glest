@@ -15,7 +15,6 @@
 #include "lang.h"
 #include "game_camera.h"
 
-#include "leak_dumper.h"
 
 using namespace Shared::Platform;
 using namespace Shared::Lua;

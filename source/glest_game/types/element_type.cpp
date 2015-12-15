@@ -21,7 +21,6 @@
 #include "logger.h"
 #include "lang.h"
 #include "renderer.h"
-#include "leak_dumper.h"
 
 using namespace Shared::Util;
 

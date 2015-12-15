@@ -21,7 +21,6 @@
 #include "logger.h"
 #include "sound_renderer.h"
 #include "game_settings.h"
-#include "leak_dumper.h"
 
 using namespace Shared::Graphics;
 using namespace Shared::Util;

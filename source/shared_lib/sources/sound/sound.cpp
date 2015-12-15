@@ -14,7 +14,6 @@
 #include <fstream>
 #include <stdexcept>
 
-#include "leak_dumper.h"
 
 namespace Shared{ namespace Sound{
 // =====================================================

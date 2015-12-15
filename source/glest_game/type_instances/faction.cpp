@@ -20,7 +20,6 @@
 #include "sound_renderer.h"
 #include "renderer.h"
 #include "tech_tree.h"
-#include "leak_dumper.h"
 
 using namespace Shared::Util;
 

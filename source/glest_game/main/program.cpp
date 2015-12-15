@@ -21,13 +21,11 @@
 #include "main.h"
 #include "sound_renderer.h"
 #include "logger.h"
-#include "profiler.h"
 #include "core_data.h"
 #include "metrics.h"
 #include "network_manager.h"
 #include "menu_state_custom_game.h"
 #include "menu_state_join_game.h"
-#include "leak_dumper.h"
 
 using namespace Shared::Util;
 using namespace Shared::Graphics;

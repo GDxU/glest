@@ -2,7 +2,6 @@
 
 #include <cassert>
 
-#include "leak_dumper.h"
 
 namespace Shared{ namespace Util{
 

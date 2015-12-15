@@ -11,7 +11,6 @@
 
 #include "context.h"
 
-#include "leak_dumper.h"
 
 namespace Shared{ namespace Graphics{
 

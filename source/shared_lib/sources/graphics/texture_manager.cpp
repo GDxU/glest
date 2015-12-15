@@ -16,7 +16,6 @@
 #include "graphics_interface.h"
 #include "graphics_factory.h"
 
-#include "leak_dumper.h"
 
 namespace Shared{ namespace Graphics{
 

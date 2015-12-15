@@ -27,7 +27,6 @@
 #include "object.h"
 #include "faction.h"
 #include "network_manager.h"
-#include "leak_dumper.h"
 
 using namespace Shared::Graphics;
 using namespace Shared::Util;

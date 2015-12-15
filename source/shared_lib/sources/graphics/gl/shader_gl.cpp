@@ -14,7 +14,6 @@
 #include <fstream>
 
 #include "opengl.h"
-#include "leak_dumper.h"
 
 
 

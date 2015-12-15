@@ -17,14 +17,12 @@
 #include "commander.h"
 #include "battle_end.h"
 #include "sound_renderer.h"
-#include "profiler.h"
 #include "core_data.h"
 #include "metrics.h"
 #include "faction.h"
 #include "network_manager.h"
 #include "checksum.h"
 #include "auto_test.h"
-#include "leak_dumper.h"
 
 using namespace Shared::Graphics;
 using namespace Shared::Util;

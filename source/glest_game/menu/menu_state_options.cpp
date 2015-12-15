@@ -18,7 +18,6 @@
 #include "menu_state_root.h"
 #include "util.h"
 
-#include "leak_dumper.h"
 
 using namespace Shared::Util;
 

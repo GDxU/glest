@@ -15,7 +15,6 @@
 #include "context_gl.h"
 #include "texture_gl.h"
 #include "interpolation.h"
-#include "leak_dumper.h"
 
 using namespace Shared::Platform;
 

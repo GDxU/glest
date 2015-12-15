@@ -11,7 +11,6 @@
 
 #include "camera.h"
 
-#include "leak_dumper.h"
 
 namespace Shared{ namespace Graphics{
 

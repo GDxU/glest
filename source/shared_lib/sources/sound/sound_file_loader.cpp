@@ -11,11 +11,8 @@
 
 #include "sound_file_loader.h"
 
-#include <vorbis/codec.h>
-#include <vorbis/vorbisfile.h>
 
 #include "sound.h"
-#include "leak_dumper.h"
 #include "stb_vorbis.h"
 
 using namespace Shared::Platform;

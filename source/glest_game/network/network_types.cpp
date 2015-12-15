@@ -11,7 +11,6 @@
 
 #include "network_types.h"
 
-#include "leak_dumper.h"
 
 namespace Glest{ namespace Game{
 

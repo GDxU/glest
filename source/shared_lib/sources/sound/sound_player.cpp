@@ -11,7 +11,6 @@
 
 #include "sound_player.h"
 
-#include "leak_dumper.h"
 
 namespace Shared{ namespace Sound{
 

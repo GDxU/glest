@@ -18,7 +18,6 @@
 #include "config.h"
 #include "game_constants.h"
 
-#include "leak_dumper.h"
 
 using namespace Shared::Xml;
 using namespace Shared::Graphics;

@@ -12,7 +12,6 @@
 #include "metrics.h"	
 
 #include "element_type.h"
-#include "leak_dumper.h"
 
 namespace Glest{ namespace Game{
 

@@ -22,7 +22,6 @@
 #include "game_util.h"
 #include "platform_util.h"
 #include "platform_main.h"
-#include "leak_dumper.h"
 
 
 

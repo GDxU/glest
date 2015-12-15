@@ -25,7 +25,6 @@
 #include "socket.h"
 #include "auto_test.h"
 
-#include "leak_dumper.h"
 
 namespace Glest{ namespace Game{
 

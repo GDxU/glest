@@ -20,7 +20,6 @@
 #include "particle_type.h"
 #include "tech_tree.h"
 #include "faction_type.h"
-#include "leak_dumper.h"
 
 using namespace Shared::Util;
 using namespace Shared::Graphics;

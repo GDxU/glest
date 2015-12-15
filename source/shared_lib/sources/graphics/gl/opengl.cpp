@@ -15,7 +15,6 @@
 
 #include "graphics_interface.h"
 #include "context_gl.h"
-#include "leak_dumper.h"
 
 using namespace Shared::Platform; 
 

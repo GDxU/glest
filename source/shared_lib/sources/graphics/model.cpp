@@ -18,7 +18,6 @@
 #include "interpolation.h"
 #include "conversion.h"
 #include "util.h"
-#include "leak_dumper.h"
 
 using namespace Shared::Platform;
 

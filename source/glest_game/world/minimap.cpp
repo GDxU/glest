@@ -18,7 +18,6 @@
 #include "renderer.h"        
 #include "config.h"
 #include "object.h"
-#include "leak_dumper.h"
 
 using namespace Shared::Graphics;
 

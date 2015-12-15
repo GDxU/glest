@@ -14,7 +14,6 @@
 #include <stdexcept>
 
 #include "opengl.h"
-#include "leak_dumper.h"
 
 
 

@@ -12,7 +12,6 @@
 #include "command.h"
 
 #include "command_type.h"
-#include "leak_dumper.h"
 
 namespace Glest{ namespace Game{
 

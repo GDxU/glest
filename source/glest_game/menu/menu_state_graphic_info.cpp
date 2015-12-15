@@ -16,7 +16,6 @@
 #include "core_data.h"
 #include "menu_state_options.h"
 
-#include "leak_dumper.h"
 
 namespace Glest{ namespace Game{
 

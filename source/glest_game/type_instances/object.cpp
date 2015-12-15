@@ -19,7 +19,6 @@
 #include "resource.h"
 #include "util.h"
 #include "random.h"
-#include "leak_dumper.h"
 
 using namespace Shared::Util;
 

@@ -18,7 +18,6 @@
 #include "util.h"
 #include "game_settings.h"
 
-#include "leak_dumper.h"
 
 using namespace Shared::Platform;
 using namespace Shared::Util;

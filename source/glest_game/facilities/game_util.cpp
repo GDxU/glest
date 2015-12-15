@@ -15,7 +15,6 @@
 #include "lang.h"
 #include "game_constants.h"
 #include "config.h"
-#include "leak_dumper.h"
 
 using namespace Shared::Util;
 

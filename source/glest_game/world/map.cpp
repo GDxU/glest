@@ -19,7 +19,6 @@
 #include "logger.h"
 #include "tech_tree.h"
 #include "config.h"
-#include "leak_dumper.h"
 
 using namespace Shared::Graphics;
 using namespace Shared::Util;

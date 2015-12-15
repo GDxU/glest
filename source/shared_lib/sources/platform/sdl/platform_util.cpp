@@ -19,7 +19,6 @@
 
 #include "util.h"
 #include "conversion.h"
-#include "leak_dumper.h"
 #include "sdl_private.h"
 #include "window.h"
 #include "noimpl.h"

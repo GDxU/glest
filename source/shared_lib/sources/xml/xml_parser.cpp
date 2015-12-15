@@ -20,7 +20,6 @@
 // #include <xercesc/util/PlatformUtils.hpp>
 // #include <xercesc/framework/LocalFileFormatTarget.hpp>
 
-#include "leak_dumper.h"
 #include "tinyxml2.h"
 
 

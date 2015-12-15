@@ -24,7 +24,6 @@
 #include "resource.h"
 #include "renderer.h"
 #include "game_util.h"
-#include "leak_dumper.h"
 
 using namespace Shared::Util;
 using namespace Shared::Xml;

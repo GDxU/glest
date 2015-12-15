@@ -20,7 +20,6 @@
 #include "core_data.h"
 #include "metrics.h"
 #include "auto_test.h"
-#include "leak_dumper.h"
 
 using namespace Shared::Graphics;
 

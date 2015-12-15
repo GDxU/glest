@@ -13,7 +13,6 @@
 
 #include "config.h"
 #include "map.h"
-#include "leak_dumper.h"
 
 namespace Glest{ namespace Game{
 

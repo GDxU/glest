@@ -15,7 +15,6 @@
 
 #include "conversion.h"
 #include "platform_util.h"
-#include "leak_dumper.h"
 #include "sdl_private.h"
 #include "noimpl.h"
 

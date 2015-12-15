@@ -21,7 +21,6 @@
 #include "auto_test.h"
 #include "game.h"
 
-#include "leak_dumper.h"
 
 namespace Glest{ namespace Game{
 

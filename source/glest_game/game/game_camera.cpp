@@ -14,7 +14,6 @@
 #include "config.h"
 #include "game_constants.h"
 #include "metrics.h"
-#include "leak_dumper.h"
 
 using namespace Shared::Graphics;
 

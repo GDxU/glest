@@ -24,7 +24,6 @@
 #include "opengl.h"
 #include "faction.h"
 #include "factory_repository.h"
-#include "leak_dumper.h"
 
 using namespace Shared::Graphics;
 using namespace Shared::Graphics::Gl;

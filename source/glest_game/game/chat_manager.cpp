@@ -15,7 +15,6 @@
 #include "console.h"
 #include "network_manager.h"
 #include "lang.h"
-#include "leak_dumper.h"
 
 using namespace Shared::Platform;
 

@@ -24,7 +24,6 @@
 #include "stats.h"
 #include "auto_test.h"
 
-#include "leak_dumper.h"
 
 using namespace Shared::Util;
 

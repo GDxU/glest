@@ -12,7 +12,6 @@
 #include "object_type.h"
 
 #include "renderer.h"
-#include "leak_dumper.h"
 
 namespace Glest{ namespace Game{
 

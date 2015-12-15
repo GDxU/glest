@@ -18,13 +18,11 @@
 #include "unit_type.h"
 #include "sound.h"
 #include "util.h"
-#include "leak_dumper.h"
 #include "graphics_interface.h"
 #include "tech_tree.h"
 #include "faction_type.h"
 #include "unit_updater.h"
 #include "renderer.h"
-#include "leak_dumper.h"
 
 using namespace Shared::Util;
 

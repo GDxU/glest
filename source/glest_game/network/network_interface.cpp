@@ -18,7 +18,6 @@
 #include "conversion.h"
 #include "platform_util.h"
 
-#include "leak_dumper.h"
 
 using namespace Shared::Platform;
 using namespace Shared::Util;

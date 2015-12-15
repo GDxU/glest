@@ -17,7 +17,6 @@
 #include "util.h"
 #include "particle_renderer.h"
 #include "math_util.h"
-#include "leak_dumper.h"
 
 using namespace Shared::Util;
 

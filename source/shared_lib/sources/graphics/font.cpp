@@ -11,7 +11,6 @@
 
 #include "font.h"
 
-#include "leak_dumper.h"
 #include "noimpl.h"
 #include "SDL.h"
 #include <assert.h>

@@ -19,7 +19,6 @@
 #include "object.h"
 #include "game.h"
 #include "config.h"
-#include "leak_dumper.h"
 
 using namespace Shared::Util;
 using namespace Shared::Graphics;

@@ -17,7 +17,6 @@
 #include "xml_parser.h"
 #include "util.h"
 #include "game_util.h"
-#include "leak_dumper.h"
 
 using namespace Shared::Xml;
 using namespace Shared::Util;

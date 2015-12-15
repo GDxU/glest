@@ -16,7 +16,6 @@
 #include "graphics_interface.h"
 #include "config.h"
 #include "util.h"
-#include "leak_dumper.h"
 
 using namespace Shared::Sound;
 using namespace Shared::Graphics;

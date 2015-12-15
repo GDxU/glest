@@ -27,7 +27,6 @@
 #include "socket.h"
 #include "menu_state_root.h"
 
-#include "leak_dumper.h"
 
 using namespace Shared::Sound;
 using namespace Shared::Platform;

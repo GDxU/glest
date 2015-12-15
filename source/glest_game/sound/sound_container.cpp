@@ -12,7 +12,6 @@
 #include "sound_container.h"
 
 #include "util.h"
-#include "leak_dumper.h"
 
 using namespace Shared::Util;
 

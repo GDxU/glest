@@ -22,7 +22,6 @@
 #include "skill_type.h"
 #include "core_data.h"
 #include "renderer.h"
-#include "leak_dumper.h"
 
 using namespace Shared::Graphics;
 using namespace Shared::Util;

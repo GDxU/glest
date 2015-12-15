@@ -1,6 +1,5 @@
 #include "buffer.h"
 
-#include "leak_dumper.h"
 
 namespace Shared{ namespace Graphics{
 

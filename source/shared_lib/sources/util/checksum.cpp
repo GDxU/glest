@@ -15,7 +15,6 @@
 #include <stdexcept>
 
 #include "util.h"
-#include "leak_dumper.h"
 
 
 

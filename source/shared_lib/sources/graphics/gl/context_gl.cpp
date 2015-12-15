@@ -15,11 +15,9 @@
 #include <stdexcept>
 
 #include "opengl.h"
-#include "leak_dumper.h"
 #include "sdl_private.h"
 #include "opengl.h"
 #include "sdl_private.h"
-#include "leak_dumper.h"
 #include "noimpl.h"
 #include "SDL.h"
 #include <iostream>

@@ -15,7 +15,6 @@
 #include "texture_gl.h"
 #include "model_renderer.h"
 #include "math_util.h"
-#include "leak_dumper.h"
 
 namespace Shared{ namespace Graphics{ namespace Gl{
 

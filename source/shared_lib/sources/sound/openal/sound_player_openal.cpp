@@ -14,7 +14,6 @@
 
 #include "platform_util.h"
 #include "util.h"
-#include "leak_dumper.h"
 
 namespace Shared{ namespace Sound{ namespace OpenAL{
 
