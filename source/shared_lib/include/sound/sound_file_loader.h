@@ -18,7 +18,7 @@
 #include "types.h"
 #include "factory.h"
 
-struct OggVorbis_File;
+//struct OggVorbis_File;
 
 
 
@@ -80,7 +80,8 @@ public:
 
 class OggSoundFileLoader: public SoundFileLoader{
 private:
-	OggVorbis_File *vf;
+    void *_vorbis;
+    bool _stereo;
 	FILE *f;
 
 public:

@@ -4,14 +4,6 @@
 
 find_package(OPENGL)
 find_package(OPENAL REQUIRED)
-
-#if (OPENAL_FOUND)
-#    message('1111')
-#
-#    message(${OPENAL_INCLUDE_DIR})
-#    message(${OPENAL_LIBRARY})
-#endif()
-
 find_package(LUA51)
 
 
@@ -80,10 +72,10 @@ macro(setup_lib name)
 
     #message(${OPENAL_LIBRARIES})
     target_link_libraries(${name} SDL2-static tinyxml2 SDL2main
-        libvorbis libvorbisfile libogg 
+        #libvorbis libvorbisfile libogg 
        GLEW
          wsock32 ${LUA_LIBRARIES} ${OPENAL_LIBRARY}
-        user32 gdi32 winmm imm32 ole32 oleaut32 version uuid ws2_32 OpenGL32 GlU32
+        user32 gdi32 winmm imm32 ole32 oleaut32 version uuid ws2_32 OpenGL32 GlU32 stb
      )
 endmacro()
 

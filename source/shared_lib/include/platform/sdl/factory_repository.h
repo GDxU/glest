@@ -18,7 +18,6 @@
 #include "sound_factory.h"
 
 #include "graphics_factory_gl.h"
-#include "sound_factory_openal.h"
 
 
 
@@ -26,7 +25,6 @@
 using Shared::Graphics::GraphicsFactory;
 using Shared::Sound::SoundFactory;
 using Shared::Graphics::Gl::GraphicsFactoryGl;
-using Shared::Sound::OpenAL::SoundFactoryOpenAL;
 
 namespace Shared{ namespace Platform{
 
@@ -36,13 +34,14 @@ namespace Shared{ namespace Platform{
 
 class FactoryRepository{
 private:
-	FactoryRepository(){};
-	FactoryRepository(const FactoryRepository& );
+	FactoryRepository();
+    ~FactoryRepository();
+
 	void operator=(const FactoryRepository& );
 
 private:
 	GraphicsFactoryGl graphicsFactoryGl;
-	SoundFactoryOpenAL soundFactoryOpenAL;
+	SoundFactory* _soundFactory;
 
 public:
 	static FactoryRepository &getInstance();

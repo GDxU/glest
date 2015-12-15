@@ -1,6 +1,6 @@
 
 
-#add_subdirectory(stb)
+add_subdirectory(stb)
 #add_subdirectory(xxtea)
 add_subdirectory(tinyxml2)
 #add_subdirectory(tinycthread)

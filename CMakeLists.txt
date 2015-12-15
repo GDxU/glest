@@ -36,10 +36,7 @@ set(DEPS_INCLUDE
     #${CMAKE_CURRENT_SOURCE_DIR}/deps/kazmath/include
     #${CMAKE_CURRENT_SOURCE_DIR}/deps/xxtea
     #${CMAKE_CURRENT_SOURCE_DIR}/deps/zlib
-)
-set(DEPS_LIB
-    ${CMAKE_CURRENT_SOURCE_DIR}/deps/OggDecoder/prebuilt
-
+    ${CMAKE_CURRENT_SOURCE_DIR}/deps/stb
 )
 
 add_subdirectory(source)

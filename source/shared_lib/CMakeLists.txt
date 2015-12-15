@@ -6,6 +6,7 @@ file(GLOB SRC_FILES
     #${CMAKE_CURRENT_SOURCE_DIR}/sources/platform/win32/*.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/sources/sound/*.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/sources/sound/openal/*.cpp
+    #${CMAKE_CURRENT_SOURCE_DIR}/sources/sound/ds8/*.cpp
 
     ${CMAKE_CURRENT_SOURCE_DIR}/sources/util/*.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/sources/xml/*.cpp
