@@ -32,7 +32,7 @@ public:
 	virtual ~ProgramState(){};
 
 	virtual void render()=0;
-	virtual void update(){};
+	virtual void update(float) = 0;
 	virtual void updateCamera(){};
 	virtual void tick(){};
 	virtual void init(){};
@@ -59,10 +59,8 @@ private:
 private:
     ProgramState *programState;
 		    
-	PerformanceTimer fpsTimer;
-	PerformanceTimer updateTimer;
-	PerformanceTimer updateCameraTimer;
-
+    float timeStep_;
+	HiresTimer fpsTimer_;
     WindowGl *window;
 
 public:
@@ -93,6 +91,7 @@ private:
 	void init(WindowGl *window);
 	void setDisplaySettings();
 	void restoreDisplaySettings();
+    void ApplyFrameLimit();
 };
 
 } //end namespace

@@ -70,7 +70,7 @@ public:
 	MenuBackground *getMenuBackground()	{return &menuBackground;}
 
     virtual void render();
-    virtual void update();
+    virtual void update(float);
 	virtual void tick();
 	virtual void init();
     virtual void mouseMove(int x, int y, const MouseState *mouseState);

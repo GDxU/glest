@@ -127,63 +127,29 @@ void WavSoundFileLoader::restart(){
 // =======================================
 
 void OggSoundFileLoader::open(const std::string &path, SoundInfo *soundInfo){
-// 	f= fopen(path.c_str(), "rb");
-// 	if(f==NULL){
-// 		throw std::runtime_error("Can't open ogg file: "+path);
-// 	}
-
-// 	vf= new OggVorbis_File();
-// 	if (ov_open_callbacks(f, vf, NULL, 0, OV_CALLBACKS_DEFAULT) < 0)
-// 		throw std::runtime_error("Vorbis Can't open ogg file: " + path);
-// 
-// 	vorbis_info *vi= ov_info(vf, -1);
-// 
-// 	soundInfo->setChannels(vi->channels);
-// 	soundInfo->setsamplesPerSecond(vi->rate);
-// 	soundInfo->setBitsPerSample(16);
-// 	soundInfo->setSize(static_cast<uint32>(ov_pcm_total(vf, -1))*2);
     int error;
-    stb_vorbis* vorbis;
 
-    vorbis = stb_vorbis_open_filename(path.c_str(), &error, 0);
+    _vorbis = stb_vorbis_open_filename(path.c_str(), &error, 0);
 
-    stb_vorbis_info info = stb_vorbis_get_info(vorbis);
+    if (_vorbis)
+    {
+        stb_vorbis_info info = stb_vorbis_get_info(static_cast<stb_vorbis*>(_vorbis));
 
-    soundInfo->setBitsPerSample(16);
-    soundInfo->setsamplesPerSecond(info.sample_rate);
-    soundInfo->setChannels(info.channels);
+        soundInfo->setBitsPerSample(16);
+        soundInfo->setsamplesPerSecond(info.sample_rate);
+        soundInfo->setChannels(info.channels);
 
-    soundInfo->setSize(info.max_frame_size);
+        soundInfo->setSize(info.max_frame_size);
 
-//     stb_vorbis_stream_length_in_seconds(vorbis);
-//     stb_vorbis_stream_length_in_samples(vorbis);
+    //     stb_vorbis_stream_length_in_seconds(vorbis);
+    //     stb_vorbis_stream_length_in_samples(vorbis);
 
-    _stereo = info.channels > 1;
-    _vorbis = vorbis;
-
-        //(unsigned char*)data_, dataSize_, &error, 0);
-
-    // 	soundInfo->setsamplesPerSecond(vi->rate);
-    // 	soundInfo->setBitsPerSample(16);
-    // 	soundInfo->setSize(static_cast<uint32>(ov_pcm_total(vf, -1))*2);
-
+        _stereo = info.channels > 1;
+    }
 }
 
 uint32 OggSoundFileLoader::read(int8 *dest, uint32 numBytes){
-// 	int section;
-// 	int totalBytesRead= 0;
-// 
-// 	while(size>0){
-// 		int bytesRead= ov_read(vf, reinterpret_cast<char*> (samples), size,
-// 							   0, 2, 1, &section);
-// 		if(bytesRead==0){
-// 			break;
-// 		}
-// 		size-= bytesRead;
-// 		samples+= bytesRead;
-// 		totalBytesRead+= bytesRead; 
-// 	}
-// 	return totalBytesRead;
+
     stb_vorbis* vorbis = static_cast<stb_vorbis*>(_vorbis);
 
     unsigned channels = _stereo ? 2 : 1;
@@ -205,13 +171,8 @@ uint32 OggSoundFileLoader::read(int8 *dest, uint32 numBytes){
 
 void OggSoundFileLoader::close(){
 
-    stb_vorbis_close((stb_vorbis*)_vorbis);
-// 
-// 	if(vf!=NULL){
-// 		ov_clear(vf);
-// 		delete vf;
-// 		vf= 0;
-// 	}
+    if (_vorbis)
+        stb_vorbis_close((stb_vorbis*)_vorbis);
 }
 
 void OggSoundFileLoader::restart(){

@@ -88,7 +88,7 @@ public:
     //init
     virtual void load();
     virtual void init();
-	virtual void update();
+    virtual void update(float);
 	virtual void updateCamera();
 	virtual void render();
 	virtual void tick();

@@ -33,7 +33,7 @@ BattleEnd::~BattleEnd(){
 	SoundRenderer::getInstance().playMusic(CoreData::getInstance().getMenuMusic());
 }
 
-void BattleEnd::update(){
+void BattleEnd::update(float){
 	if(Config::getInstance().getBool("AutoTest")){
 		AutoTest::getInstance().updateBattleEnd(program);
 	}

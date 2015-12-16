@@ -190,7 +190,7 @@ void Game::init(){
 // ==================== update ==================== 
 
 //update
-void Game::update(){
+void Game::update(float){
 	
 	// a) Updates non dependant on speed
 

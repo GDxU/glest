@@ -44,33 +44,82 @@ int ScreenHeight;
 
 }
 
+
+
+static long long HiresTick()
+{
+#ifdef _WIN32
+//     if (HiresTimer::IsSupported())
+//     {
+        LARGE_INTEGER counter;
+        QueryPerformanceCounter(&counter);
+        return counter.QuadPart;
+//     }
+//     else
+//         return timeGetTime();
+#elif __EMSCRIPTEN__
+    return (unsigned)(emscripten_get_now()*1000.0);
+#else
+    struct timeval time;
+    gettimeofday(&time, NULL);
+    return time.tv_sec * 1000000LL + time.tv_usec;
+#endif
+}
+
 // =====================================
 //          PerformanceTimer   
 // =====================================
+long long HiresTimer::frequency = 1000000;
 
-void PerformanceTimer::init(float fps, int maxTimes){
-	times= 0;
-	this->maxTimes= maxTimes;
-
-	lastTicks= SDL_GetTicks();
-
-	updateTicks= static_cast<int>(1000./fps);
+void HiresTimer::Init()
+{
+    static bool isinit = false;
+    if (!isinit)
+    {
+#ifdef _WIN32
+        LARGE_INTEGER frequency;
+        if (QueryPerformanceFrequency(&frequency))
+        {
+            HiresTimer::frequency = frequency.QuadPart;
+        }
+#endif
+    }
 }
 
-bool PerformanceTimer::isTime(){
-	Uint32 thisTicks = SDL_GetTicks();
 
-	if((thisTicks-lastTicks)>=updateTicks && times<maxTimes){
-		lastTicks+= updateTicks;
-		times++;
-		return true;
-	}
-	times= 0;
-	return false;
+HiresTimer::HiresTimer()
+{
+    Init();
 }
 
-void PerformanceTimer::reset(){
-	lastTicks= SDL_GetTicks();
+void HiresTimer::Reset()
+{
+    startTime_ = HiresTick();
+}
+
+long long HiresTimer::GetUSec(bool reset)
+{
+    long long currentTime = HiresTick();
+    long long elapsedTime = currentTime - startTime_;
+
+    // Correct for possible weirdness with changing internal frequency
+    if (elapsedTime < 0)
+        elapsedTime = 0;
+
+    if (reset)
+        startTime_ = currentTime;
+
+    return (elapsedTime * 1000000LL) / frequency;
+}
+
+
+void Time::Sleep(unsigned mSec)
+{
+#ifdef _WIN32
+    ::Sleep(mSec);
+#else
+    usleep(mSec * 1000);
+#endif
 }
 
 // =====================================

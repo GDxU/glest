@@ -25,19 +25,30 @@ namespace Glest {
 //	class PerformanceTimer
 // =====================================================
 
-class PerformanceTimer{
+class HiresTimer
+{
 private:
-	Uint32 lastTicks;
-	Uint32 updateTicks;
 
-	int times;			// number of consecutive times
-	int maxTimes;		// maximum number consecutive times
+    long long startTime_;
+
+    static long long frequency;
+
+    static void Init();
 
 public:
-	void init(float fps, int maxTimes= -1);
-	
-	bool isTime();
-	void reset();
+
+    HiresTimer();
+
+    void Reset();
+    long long GetUSec(bool reset);
+
+    static long long GetFrequency() { return frequency; }
+};
+
+class Time
+{
+public:
+    static void Sleep(unsigned mSec);
 };
 
 // =====================================================

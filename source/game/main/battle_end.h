@@ -21,7 +21,7 @@ private:
 public:
 	BattleEnd(Program *program, const Stats *stats);
 	~BattleEnd();
-	virtual void update();
+    virtual void update(float);
 	virtual void render();
 	virtual void keyDown(char key);
 	virtual void mouseDownLeft(int x, int y);

@@ -86,7 +86,7 @@ void MainMenu::render(){
 }
 
 //syncronus update
-void MainMenu::update(){
+void MainMenu::update(float){
 	Renderer::getInstance().updateParticleManager(rsMenu);
 	mouse2dAnim= (mouse2dAnim +1) % Renderer::maxMouse2dAnim;
 	menuBackground.update();

@@ -30,7 +30,7 @@ GameCamera::GameCamera(){
     state= sGame;
 
 	//config
-	speed= 15.f / GameConstants::cameraFps;
+	speed= 15.f / GameConstants::updateFps;
 	clampBounds= !Config::getInstance().getBool("PhotoMode");
     
 	vAng= startingVAng;

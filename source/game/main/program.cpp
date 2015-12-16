@@ -31,6 +31,7 @@ const int Program::maxTimes= 10;
 // ===================== PUBLIC ======================== 
 
 Program::Program(){
+    timeStep_ = 0;
 	programState= NULL;
 }
 
@@ -106,26 +107,43 @@ void Program::keyPress(char c){
 
 void Program::loop(){
 
-	//render
-	programState->render();
+    programState->update(timeStep_);
 
-	//update camera
-	while(updateCameraTimer.isTime()){
-		programState->updateCamera();
-	}
+    programState->updateCamera();
 
-	//update world
-	while(updateTimer.isTime()){
-		GraphicComponent::update();
-		programState->update();
-		SoundRenderer::getInstance().update();
-		NetworkManager::getInstance().update();
-	}
+    GraphicComponent::update();
+    SoundRenderer::getInstance().update();
+    NetworkManager::getInstance().update();
 	
-	//fps timer
-	while(fpsTimer.isTime()){
-		programState->tick();
-	}
+    programState->render();
+	programState->tick();
+
+    ApplyFrameLimit();
+}
+
+
+void Program::ApplyFrameLimit()
+{
+    long long targetMax = 1000000LL / GameConstants::updateFps;
+    long long elapsed = 0;
+
+    for (;;)
+    {
+        elapsed = fpsTimer_.GetUSec(false);
+        if (elapsed >= targetMax)
+            break;
+
+        // Sleep if 1 ms or more off the frame limiting goal
+        if (targetMax - elapsed >= 1000LL)
+        {
+            unsigned sleepTime = (unsigned)((targetMax - elapsed) / 1000LL);
+            Time::Sleep(sleepTime);
+        }
+    }
+
+    elapsed = fpsTimer_.GetUSec(true);
+
+    timeStep_ = elapsed / 1000000.0f;
 }
 
 void Program::resize(SizeState sizeState){
@@ -151,10 +169,6 @@ void Program::setState(ProgramState *programState){
 	this->programState= programState;
 	programState->load();
 	programState->init();
-
-	updateTimer.reset();
-	updateCameraTimer.reset();
-	fpsTimer.reset();
 }
 		
 void Program::exit(){
@@ -179,9 +193,7 @@ void Program::init(WindowGl *window){
 	window->create();
 		
 	//timers
-	fpsTimer.init(1, maxTimes);
-	updateTimer.init(GameConstants::updateFps, maxTimes);
-	updateCameraTimer.init(GameConstants::cameraFps, maxTimes);
+    fpsTimer_.Reset();// 1, maxTimes);
 
     //log start
 	Logger &logger= Logger::getInstance();
