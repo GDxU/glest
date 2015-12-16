@@ -8,6 +8,9 @@
 #include <cstring>
 #include <cstdio>
 
+#include "Windows.h"
+#include <stringapiset.h>
+
 
 
 
@@ -156,6 +159,21 @@ bool fileExists(const std::string &path){
 		return true;
 	}
 	return false;
+}
+
+bool String2WString(const std::string& in, std::wstring& out)
+{
+    int nLen = (int)in.length();
+    out.resize(nLen);
+    
+    return 0 != MultiByteToWideChar(CP_ACP, 0, (LPCSTR)in.c_str(), nLen, (LPWSTR)out.c_str(), nLen);
+}
+
+bool WString2String(const std::wstring& in, std::string& out)
+{
+    int nLen = (int)in.length();
+    out.resize(nLen);
+    return 0 != WideCharToMultiByte(CP_ACP, 0, (LPCWSTR)in.c_str(), nLen, (LPSTR)out.c_str(), nLen, NULL, NULL);
 }
 
 }//end namespace

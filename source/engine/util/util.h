@@ -12,6 +12,9 @@ namespace Glest {
 
 const std::string sharedLibVersionString= "v0.4.1";
 
+bool String2WString(const std::string& in, std::wstring& out);
+bool WString2String(const std::wstring& in, std::string& out);
+
 //string fcs
 std::string lastDir(const std::string &s);
 std::string lastFile(const std::string &s);

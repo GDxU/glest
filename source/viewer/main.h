@@ -3,14 +3,15 @@
 
 #include <string>
 
-#include <wx/wx.h>
-#include <wx/timer.h>
-#include <wx/glcanvas.h>
 
+#include "GL/glew.h"
 #include "renderer.h"
 #include "util.h"
 #include "window.h"
 
+#include <wx/wx.h>
+#include <wx/timer.h>
+#include <wx/glcanvas.h>
 
 namespace Glest {
 

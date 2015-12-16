@@ -70,10 +70,11 @@ endmacro()
 macro(setup_lib name)
     global_define(name)
 
+add_definitions(-DUNICODE -D_UNICODE)
     add_library(${name}  STATIC ${SRC_FILES})
 
     #message(${OPENAL_LIBRARIES})
-    target_link_libraries(${name} SDL2-static tinyxml2 SDL2main
+    target_link_libraries(${name} SDL2-static tinyxml2 #SDL2main
         #libvorbis libvorbisfile libogg 
        GLEW
          wsock32 ${LUA_LIBRARIES} ${OPENAL_LIBRARY}
@@ -84,12 +85,13 @@ endmacro()
 macro(setup_tool name)
     define_files(name)
 
-#add_definitions(-DUNICODE -D_UNICODE)
+add_definitions(-DUNICODE -D_UNICODE)
 
     link_directories(${deps_lib_dir})
     add_executable(${name} ${SRC_FILES})
-    target_link_libraries(${name} lib)
-    target_link_libraries(editor ${deps_lib})
+    target_link_libraries(${name} engine)
+    target_link_libraries(${name} ${deps_lib})
+    set_target_properties(${name} PROPERTIES WIN32_EXECUTABLE "true")
 endmacro()
 
 

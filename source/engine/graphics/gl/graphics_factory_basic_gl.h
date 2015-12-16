@@ -3,10 +3,10 @@
 #ifndef _SHARED_GRAPHICS_GL_GRAPHICSFACTORYBASICGL_H_
 #define _SHARED_GRAPHICS_GL_GRAPHICSFACTORYBASICGL_H_
 
+#include "context_gl.h"
 #include "graphics_factory.h"
 #include "text_renderer_gl.h"
 #include "model_renderer_gl.h"
-#include "context_gl.h"
 #include "model_gl.h"
 #include "texture_gl.h"
 #include "font_gl.h"

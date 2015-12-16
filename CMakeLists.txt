@@ -42,7 +42,59 @@ set(DEPS_INCLUDE
 )
 
 set(deps_lib_dir C:/wxWidgets-3.0.2/lib/vc_lib)
-set(deps_lib )
+set(deps_lib comctl32 uuid rpcrt4
+#wxbase30u.lib
+#wxbase30u_net.lib
+#wxbase30u_xml.lib
+#wxexpat.lib
+#wxjpeg.lib
+#wxmsw30u_adv.lib
+#wxmsw30u_aui.lib
+#wxmsw30u_core.lib
+#wxmsw30u_gl.lib
+#wxmsw30u_html.lib
+#wxmsw30u_media.lib
+#wxmsw30u_propgrid.lib
+#wxmsw30u_qa.lib
+#wxmsw30u_ribbon.lib
+#wxmsw30u_richtext.lib
+#wxmsw30u_stc.lib
+#wxmsw30u_webview.lib
+#wxmsw30u_xrc.lib
+#wxpng.lib
+#wxregexu.lib
+#wxscintilla.lib
+#wxtiff.lib
+#wxzlib.lib
+
+wxbase30ud.lib
+wxmsw30ud_core.lib
+wxmsw30ud_gl.lib
+wxpngd.lib
+wxzlibd.lib
+
+#wxbase30ud_net.lib
+#wxbase30ud_xml.lib
+#wxexpatd.lib
+#wxjpegd.lib
+#wxmsw30ud_adv.lib
+#wxmsw30ud_aui.lib
+#wxmsw30ud_html.lib
+#wxmsw30ud_media.lib
+#wxmsw30ud_propgrid.lib
+#wxmsw30ud_qa.lib
+#wxmsw30ud_ribbon.lib
+#wxmsw30ud_richtext.lib
+#wxmsw30ud_stc.lib
+#wxmsw30ud_webview.lib
+#wxmsw30ud_xrc.lib
+#wxscintillad.lib
+#wxregexud.lib
+#wxtiffd.lib
+
+
+
+    )
 
 add_subdirectory(source)
 add_subdirectory(deps)

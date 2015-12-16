@@ -14,4 +14,4 @@ file(GLOB SRC_FILES
 
 list(APPEND SRC_FILES ${CMAKE_CURRENT_SOURCE_DIR}/platform/win32/socket.cpp)
 
-setup_lib(lib)
+setup_lib(engine)

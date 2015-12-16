@@ -160,16 +160,19 @@ void findAll(const std::string &path, std::vector<std::string> &results, bool cu
 		mypath += "*";
 	}
 
-	std::string dir = getDirectory(mypath);
-	normalizePath(&dir);
+    std::wstring wpath;
 
-	WIN32_FIND_DATA info;
-	HANDLE handle = FindFirstFile(mypath.c_str(), &info);
+    String2WString(mypath, wpath);
+
+	WIN32_FIND_DATAW info;
+    HANDLE handle = FindFirstFileW(wpath.c_str(), &info);
 	if (handle != INVALID_HANDLE_VALUE)
 	{
 		do
 		{
-			std::string filename = info.cFileName;
+            std::string filename;
+            WString2String(info.cFileName, filename);
+
 			if (!filename.empty() && filename != "." &&filename != "..")
 				//!(info.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY) &&
 				//!(info.dwFileAttributes & FILE_ATTRIBUTE_HIDDEN) &&
@@ -177,7 +180,7 @@ void findAll(const std::string &path, std::vector<std::string> &results, bool cu
 				results.push_back(filename);
 			}
 
-		} while (FindNextFile(handle, &info));
+		} while (FindNextFileW(handle, &info));
 
 		FindClose(handle);
 	}

@@ -8,6 +8,7 @@
 #include <Windows.h>
 #include <wingdi.h>
 #include <windef.h>
+#include "util.h"
 
 namespace Glest {
 
@@ -100,10 +101,13 @@ void createGlFontBitmaps(uint32 &base, const std::string &type, int size, int wi
     glXUseXFont(fontInfo->fid, 0, charCount, base);
     XFreeFont(display, fontInfo);
 #else
-    HFONT font = CreateFont(
+    std::wstring wtype;
+    String2WString(type, wtype);
+
+    HFONT font = CreateFontW(
         size, 0, 0, 0, width, 0, FALSE, FALSE, ANSI_CHARSET,
         OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS, PROOF_QUALITY,
-        DEFAULT_PITCH, type.c_str());
+        DEFAULT_PITCH, wtype.c_str());
 
     assert(font != NULL);
 
@@ -146,10 +150,15 @@ void createGlFontBitmaps(uint32 &base, const std::string &type, int size, int wi
 
 void createGlFontOutlines(uint32 &base, const std::string &type, int width,
     float depth, int charCount, FontMetrics &metrics) {
-    HFONT font = CreateFont(
+
+    std::wstring wtype;
+
+    String2WString(type, wtype);
+
+    HFONT font = CreateFontW(
         10, 0, 0, 0, width, 0, FALSE, FALSE, ANSI_CHARSET,
         OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS, PROOF_QUALITY,
-        DEFAULT_PITCH, type.c_str());
+        DEFAULT_PITCH, wtype.c_str());
 
     assert(font != NULL);
 

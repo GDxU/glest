@@ -18,10 +18,7 @@ const string MainWindow::versionString= "v1.3.4";
 const string MainWindow::winHeader= "G3D viewer " + versionString + " - Built: " + __DATE__;
 
 MainWindow::MainWindow(const string &modelPath): 
-	wxFrame(
-		NULL, -1, winHeader.c_str(), 
-		wxPoint(Renderer::windowX, Renderer::windowY), 
-		wxSize(Renderer::windowW, Renderer::windowH))
+	wxFrame(NULL, wxID_ANY, winHeader.c_str())
 {
 	renderer= Renderer::getInstance();
 	this->modelPath= modelPath;
@@ -246,8 +243,7 @@ END_EVENT_TABLE()
 //	class GlCanvas
 // =====================================================
 
-GlCanvas::GlCanvas(MainWindow *	mainWindow):
-	wxGLCanvas(mainWindow, -1)
+GlCanvas::GlCanvas(MainWindow *	mainWindow): wxGLCanvas(mainWindow, -1, nullptr)
 {
 	this->mainWindow = mainWindow;
 }
