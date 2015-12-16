@@ -21,6 +21,7 @@ set(inc_path
     ${CMAKE_CURRENT_SOURCE_DIR}/engine/xml
     ${CMAKE_CURRENT_SOURCE_DIR}/engine/graphics/gl
     
+    ${CMAKE_CURRENT_SOURCE_DIR}/engine/Urho3D
 
     ${LUA_INCLUDE_DIR}
     ${DEPS_INCLUDE}
@@ -85,7 +86,7 @@ endmacro()
 macro(setup_tool name)
     define_files(name)
 
-add_definitions(-DUNICODE -D_UNICODE)
+    add_definitions(-DUNICODE -D_UNICODE)
 
     link_directories(${deps_lib_dir})
     add_executable(${name} ${SRC_FILES})
@@ -105,16 +106,21 @@ endmacro()
 
 
 file(GLOB LIB_SRC_FILES 
-    engine/graphics/gl/*.cpp
-    engine/graphics/*.cpp
-    engine/lua/*.cpp
-    engine/platform/sdl/*.cpp
-    #engine/platform/win32/*.cpp
-    engine/sound/*.cpp
-    engine/sound/openal/*.cpp
+        #engine/platform/win32/*.cpp
     #engine/sound/ds8/*.cpp
-    engine/util/*.cpp
-    engine/xml/*.cpp
+    #engine/Urho3D/Container/*.cpp                
+    #engine/Urho3D/IO/*.cpp                
+    #engine/Urho3D/Core/*.cpp                
+    #engine/Urho3D/Math/*.cpp  
+                  
+    engine/xml/*.cpp                
+    engine/lua/*.cpp                
+    engine/util/*.cpp               
+    engine/sound/*.cpp              
+    engine/graphics/*.cpp               
+    engine/graphics/gl/*.cpp                
+    engine/platform/sdl/*.cpp               
+    engine/sound/openal/*.cpp               
 )
 
 list(APPEND LIB_SRC_FILES ${CMAKE_CURRENT_SOURCE_DIR}/engine/platform/win32/socket.cpp)

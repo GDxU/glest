@@ -27,7 +27,7 @@
 				<name value="Windowed"/>
 				<variable-name value="Windowed"/>
 				<description value="Execute in a window"/>
-				<default value="0"/>
+				<default value="1"/>
 			</field>
 			<field type="Enum">
 				<name value="Depth bits"/>
