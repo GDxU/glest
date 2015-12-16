@@ -11,14 +11,14 @@
 namespace Glest {
     
 
-class Intro: public ProgramState
+class Logo: public ProgramState
 {
 private:
     float timer_;
     float alpha_;
 
 public:
-	Intro(Program *program);
+	Logo(Program *program);
     virtual void update(float);
 	virtual void render();
 	virtual void keyDown(char key);

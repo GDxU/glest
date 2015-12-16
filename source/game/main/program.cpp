@@ -7,7 +7,7 @@
 #include "config.h"
 #include "game.h"
 #include "main_menu.h"
-#include "intro.h"
+#include "logo.h"
 #include "world.h"
 #include "main.h"
 #include "sound_renderer.h"
@@ -37,7 +37,7 @@ Program::Program(){
 
 void Program::initNormal(WindowGl *window){
 	init(window);
-	setState(new Intro(this));
+	setState(new Logo(this));
 }
 
 void Program::initServer(WindowGl *window){

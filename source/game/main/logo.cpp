@@ -1,5 +1,5 @@
 
-#include "intro.h"	
+#include "logo.h"	
 
 #include "main_menu.h"
 #include "util.h"
@@ -20,7 +20,7 @@
 
 namespace Glest { 
 
-Intro::Intro(Program *program):
+Logo::Logo(Program *program):
 	ProgramState(program)
 {
     timer_ = 0;
@@ -30,7 +30,7 @@ Intro::Intro(Program *program):
 	soundRenderer.playMusic(CoreData::getInstance().getIntroMusic());
 }
 
-void Intro::update(float dt){
+void Logo::update(float dt){
     timer_ += dt;
         
     if (timer_ <= 1.0f)
@@ -46,7 +46,7 @@ void Intro::update(float dt){
 		AutoTest::getInstance().updateIntro(program);
 }
 
-void Intro::render(){
+void Logo::render(){
 	
     Renderer &renderer = Renderer::getInstance();
 
@@ -64,11 +64,11 @@ void Intro::render(){
 	renderer.swapBuffers();
 }
 
-void Intro::keyDown(char key){
+void Logo::keyDown(char key){
 	mouseUpLeft(0, 0);
 }
 
-void Intro::mouseUpLeft(int x, int y){
+void Logo::mouseUpLeft(int x, int y){
 	SoundRenderer &soundRenderer= SoundRenderer::getInstance();
 	soundRenderer.stopMusic(CoreData::getInstance().getIntroMusic());
 	soundRenderer.playMusic(CoreData::getInstance().getMenuMusic());
