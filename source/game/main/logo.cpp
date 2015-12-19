@@ -60,8 +60,6 @@ void Logo::render(){
 
     renderer.renderTextureQuad(w / 2 - 128, h / 2 - 64, 256, 128, coreData.getLogoTexture(), alpha_);
     renderer.renderText(glestVersionString, coreData.getMenuFontNormal(), alpha_, w / 2 + 64, h / 2 - 32);
-
-	renderer.swapBuffers();
 }
 
 void Logo::keyDown(char key){

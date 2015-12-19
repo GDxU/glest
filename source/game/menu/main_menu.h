@@ -61,7 +61,6 @@ private:
 	//shared
     int mouseX, mouseY;
     int mouse2dAnim;
-	int fps, lastFps;
 
 public:
 	MainMenu(Program *program);

@@ -36,9 +36,6 @@ MainMenu::MainMenu(Program *program):
 	state= NULL;
 	this->program= program;
 
-	fps= 0;
-	lastFps= 0;
-
 	setState(new MenuStateRoot(program, this));
 }
 
@@ -60,8 +57,6 @@ void MainMenu::render(){
 	Renderer &renderer= Renderer::getInstance();
 	CoreData &coreData= CoreData::getInstance();
 
-	fps++;
-
     renderer.clearBuffers();
 	
 	//3d
@@ -75,14 +70,6 @@ void MainMenu::render(){
 	renderer.reset2d();
 	state->render();
     renderer.renderMouse2d(mouseX, mouseY, mouse2dAnim);
-
-    if(config.getBool("DebugMode")){
-		renderer.renderText(
-			"FPS: " + intToStr(lastFps), 
-			coreData.getMenuFontNormal(), Vec3f(1.f), 10, 10, false);
-    }
-
-	renderer.swapBuffers();
 }
 
 //syncronus update
@@ -94,8 +81,6 @@ void MainMenu::update(float){
 }
 
 void MainMenu::tick(){
-	lastFps= fps;
-	fps= 0;
 }
 
 //event magangement: mouse click

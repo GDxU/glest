@@ -31,7 +31,8 @@ const int Program::maxTimes= 10;
 // ===================== PUBLIC ======================== 
 
 Program::Program(){
-    timeStep_ = 0;
+    _timeStep = 0;
+	fps_ = 0;
 	programState= NULL;
 }
 
@@ -107,7 +108,7 @@ void Program::keyPress(char c){
 
 void Program::loop(){
 
-    programState->update(timeStep_);
+    programState->update(_timeStep);
 
     programState->updateCamera();
 
@@ -118,7 +119,19 @@ void Program::loop(){
     programState->render();
 	programState->tick();
 
-    ApplyFrameLimit();
+	Renderer &renderer = Renderer::getInstance();
+	if (_fpsDisplayTimer.GetUSec(false) >= 500000)
+	{
+		fps_ = 1.0f / _timeStep;
+		_fpsDisplayTimer.Reset();
+	}
+
+	CoreData &coreData = CoreData::getInstance();
+	renderer.renderText("FPS: " + floatToStr(fps_), coreData.getMenuFontNormal(), Vec3f(1.f), 10, 10, false);
+
+	renderer.swapBuffers();
+	
+	ApplyFrameLimit();
 }
 
 
@@ -129,7 +142,7 @@ void Program::ApplyFrameLimit()
 
     for (;;)
     {
-        elapsed = fpsTimer_.GetUSec(false);
+        elapsed = _fpsTimer.GetUSec(false);
         if (elapsed >= targetMax)
             break;
 
@@ -141,9 +154,9 @@ void Program::ApplyFrameLimit()
         }
     }
 
-    elapsed = fpsTimer_.GetUSec(true);
+    elapsed = _fpsTimer.GetUSec(true);
 
-    timeStep_ = elapsed / 1000000.0f;
+    _timeStep = elapsed / 1000000.0f;
 }
 
 void Program::resize(SizeState sizeState){
@@ -193,7 +206,8 @@ void Program::init(WindowGl *window){
 	window->create();
 		
 	//timers
-    fpsTimer_.Reset();// 1, maxTimes);
+    _fpsTimer.Reset();// 1, maxTimes);
+	_fpsDisplayTimer.Reset();
 
     //log start
 	Logger &logger= Logger::getInstance();

@@ -120,7 +120,6 @@ void BattleEnd::render(){
 	textRenderer->render(header, lm+250, bm+550);
 
 	textRenderer->end();
-	renderer.swapBuffers();
 }
 
 void BattleEnd::keyDown(char key){

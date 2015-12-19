@@ -59,8 +59,12 @@ private:
 private:
     ProgramState *programState;
 		    
-    float timeStep_;
-	HiresTimer fpsTimer_;
+    float _timeStep;
+
+	float fps_;
+	HiresTimer _fpsTimer;
+	HiresTimer _fpsDisplayTimer;
+
     WindowGl *window;
 
 public:

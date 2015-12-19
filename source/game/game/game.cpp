@@ -258,7 +258,6 @@ void Game::render(){
 	renderFps++;
 	render3d();
 	render2d();
-	Renderer::getInstance().swapBuffers();
 }
 
 // ==================== tick ==================== 
