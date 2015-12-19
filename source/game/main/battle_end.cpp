@@ -10,7 +10,7 @@
 #include "renderer.h"
 #include "main_menu.h"
 #include "sound_renderer.h"
-#include "components.h"
+#include "UIElements.h"
 #include "metrics.h"
 #include "stats.h"
 #include "auto_test.h"

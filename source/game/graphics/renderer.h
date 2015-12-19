@@ -11,31 +11,14 @@
 #include "font.h"
 #include "matrix.h"
 #include "selection.h"
-#include "components.h"
 #include "texture.h"
 #include "model_manager.h"
 #include "graphics_factory_gl.h"
 #include "font_manager.h"
 #include "camera.h"
+#include "UIElements.h"
 
 namespace Glest {
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

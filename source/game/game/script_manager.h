@@ -9,8 +9,8 @@
 #include "lua_script.h"
 #include "vec.h"
 
-#include "components.h"
 #include "game_constants.h"
+#include "UIElements.h"
 
 
 
