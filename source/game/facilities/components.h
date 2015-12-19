@@ -5,8 +5,10 @@
 
 #include <string>
 #include <vector>
+#include <list>
 
 #include "font.h"
+#include "vec.h"
 
 
 
@@ -16,20 +18,22 @@
 
 
 namespace Glest {
-
+	class Renderer;
+	class Texture2D;
 // ===========================================================
 // 	class GraphicComponent
 //
 //	OpenGL renderer GUI components
 // ===========================================================
 
-class GraphicComponent{
+class Widget{
 public:
 	static const float animSpeed;
 	static const float fadeSpeed;
 
 protected:
     int x, y, w, h;
+	int id;
     std::string text;
 	const Font2D *font; 
 	bool enabled;
@@ -38,39 +42,57 @@ protected:
 	static float fade;
 
 public:
-	GraphicComponent();
-	virtual ~GraphicComponent(){}
+	Widget();
+	virtual ~Widget(){}
 
-    void init(int x, int y, int w, int h);
+	void init(int x, int y, int w, int h);
 
-	int getX() const				{return x;}
-	int getY() const				{return y;}
-	int getW() const				{return w;}
-	int getH() const				{return h;}
-	const std::string &getText() const	{return text;}
-	const Font2D *getFont() const	{return font;}
-	bool getEnabled() const			{return enabled;}
+	void setId(int id) { this->id = id; }
+	int getId() const { return id; }
 
-	void setX(int x)					{this->x= x;}
-	void setY(int y)					{this->y= y;}
-	void setText(const std::string &text)	{this->text= text;}
-	void setFont(const Font2D *font)	{this->font= font;}
-	void setEnabled(bool enabled)		{this->enabled= enabled;}
+	int getX() const				{ return x; }
+	int getY() const				{ return y; }
+	int getW() const				{ return w; }
+	int getH() const				{ return h; }
+	const std::string &getText() const	{ return text; }
+	const Font2D *getFont() const	{ return font; }
+	bool getEnabled() const			{ return enabled; }
 
-    virtual bool mouseMove(int x, int y);
-    virtual bool mouseClick(int x, int y);
+	void setX(int x)					{ this->x = x; }
+	void setY(int y)					{ this->y = y; }
+	void setW(int w)					{ this->w = w; }
+	void setH(int h)					{ this->h = h; }
+	void setText(const std::string &text)	{ this->text = text; }
+	void setFont(const Font2D *font)	{ this->font = font; }
+	void setEnabled(bool enabled)		{ this->enabled = enabled; }
+
+	virtual bool mouseMove(int x, int y);
+	virtual bool mouseClick(int x, int y);
+	virtual void draw(Renderer* render);
 
 	static void update();
 	static void resetFade();
-	static float getAnim()	{return anim;}
-	static float getFade()	{return fade;}
+	static float getAnim()	{ return anim; }
+	static float getFade()	{ return fade; }
+};
+
+class GraphicImage : public Widget
+{
+public:
+	virtual void draw(Renderer* render);
+	virtual void init(int x, int y, int w, int h);
+
+	void setTexture(Texture2D* tex);
+
+protected:
+	Texture2D* _texture;
 };
 
 // ===========================================================
 // 	class GraphicLabel  
 // ===========================================================
 
-class GraphicLabel: public GraphicComponent{
+class GraphicLabel: public Widget{
 public:
 	static const int defH;
 	static const int defW;
@@ -84,34 +106,32 @@ public:
 	bool getCentered() const	{return centered;}
 
 	void setCentered(bool centered)	{this->centered= centered;}
+	virtual void draw(Renderer* render);
 };
 
 // ===========================================================
 // 	class GraphicButton  
 // ===========================================================
 
-class GraphicButton: public GraphicComponent{
-public:
-	static const int defH;
-	static const int defW;
-	
+class GraphicButton: public Widget{
 private:
 	bool lighted;
 		
 public:
-	void init(int x, int y, int w=defW, int h=defH);
+	void init(int x, int y, int w, int h);
 
 	bool getLighted() const			{return lighted;}
 	
 	void setLighted(bool lighted)	{this->lighted= lighted;}
 	virtual bool mouseMove(int x, int y);  
+	virtual void draw(Renderer* render);
 };
 
 // ===========================================================
 // 	class GraphicListBox  
 // ===========================================================
 
-class GraphicListBox: public GraphicComponent{
+class GraphicListBox: public Widget{
 public:
 	static const int defH;
 	static const int defW;
@@ -137,13 +157,34 @@ public:
     
     virtual bool mouseMove(int x, int y);
     virtual bool mouseClick(int x, int y);
+	virtual void draw(Renderer* render);
 };
+
+
+class UI
+{
+public:
+
+	GraphicButton* addButton(const std::string& text, int x, int y, int w, int h);
+	GraphicLabel* addLabel(const std::string& text, int x, int y);
+	GraphicImage* addImage(Texture2D* tex, int x, int y, int w = -1, int h = -1);
+
+
+	virtual Widget* mouseMove(int x, int y);
+	virtual Widget* mouseClick(int x, int y);
+	void draw();
+
+protected:
+
+	std::list<Widget*> _element;
+};
+
 
 // ===========================================================
 // 	class GraphicMessageBox  
 // ===========================================================
 
-class GraphicMessageBox: public GraphicComponent{
+class GraphicMessageBox: public Widget{
 public:
 	static const int defH;
 	static const int defW;

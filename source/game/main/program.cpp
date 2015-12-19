@@ -112,7 +112,7 @@ void Program::loop(){
 
     programState->updateCamera();
 
-    GraphicComponent::update();
+    Widget::update();
     SoundRenderer::getInstance().update();
     NetworkManager::getInstance().update();
 	

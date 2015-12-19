@@ -8,6 +8,7 @@
 #include "metrics.h"
 #include "core_data.h"
 #include "platform_util.h"
+#include "renderer.h"
 
 
 
@@ -19,16 +20,16 @@ namespace Glest {
 //	class GraphicComponent
 // =====================================================
 
-float GraphicComponent::anim= 0.f;
-float GraphicComponent::fade= 0.f;
-const float GraphicComponent::animSpeed= 0.02f;
-const float GraphicComponent::fadeSpeed= 0.01f;
+float Widget::anim= 0.f;
+float Widget::fade= 0.f;
+const float Widget::animSpeed= 0.02f;
+const float Widget::fadeSpeed= 0.01f;
 
-GraphicComponent::GraphicComponent(){
+Widget::Widget(){
 	enabled= true;
 }
 
-void GraphicComponent::init(int x, int y, int w, int h){
+void Widget::init(int x, int y, int w, int h){
     this->x= x;
     this->y= y;
     this->w= w;
@@ -37,7 +38,7 @@ void GraphicComponent::init(int x, int y, int w, int h){
 	enabled= true;
 }
 
-bool GraphicComponent::mouseMove(int x, int y){
+bool Widget::mouseMove(int x, int y){
     return 
         x > this->x &&
         y > this->y &&
@@ -45,18 +46,23 @@ bool GraphicComponent::mouseMove(int x, int y){
         y < this->y + h;
 }
 
-bool GraphicComponent::mouseClick(int x, int y){
+bool Widget::mouseClick(int x, int y){
     return mouseMove(x, y);
 }
 
-void GraphicComponent::update(){
+void Widget::draw(Renderer* render)
+{
+
+}
+
+void Widget::update(){
 	fade+= fadeSpeed;
 	anim+= animSpeed;
 	if(fade>1.f) fade= 1.f;
 	if(anim>1.f) anim= 0.f;
 }
 
-void GraphicComponent::resetFade(){
+void Widget::resetFade(){
 	fade= 0.f;
 }
 
@@ -68,26 +74,34 @@ const int GraphicLabel::defH= 20;
 const int GraphicLabel::defW= 70;
 
 void GraphicLabel::init(int x, int y, int w, int h, bool centered){
-	GraphicComponent::init(x, y, w, h);
+	Widget::init(x, y, w, h);
 	this->centered= centered;
+}
+
+void GraphicLabel::draw(Renderer* render)
+{
+	render->renderLabel(this);
 }
 
 // =====================================================
 //	class GraphicButton
 // =====================================================
 
-const int GraphicButton::defH= 22;
-const int GraphicButton::defW= 90;
 
 void GraphicButton::init(int x, int y, int w, int h){
-	GraphicComponent::init(x, y, w, h);
+	Widget::init(x, y, w, h);
     lighted= false;
 }
 
 bool GraphicButton::mouseMove(int x, int y){
-    bool b= GraphicComponent::mouseMove(x, y);
+    bool b= Widget::mouseMove(x, y);
     lighted= b;
     return b;
+}
+
+void GraphicButton::draw(Renderer* render)
+{
+	render->renderButton(this);
 }
 
 // =====================================================
@@ -98,7 +112,7 @@ const int GraphicListBox::defH= 22;
 const int GraphicListBox::defW= 140;
 
 void GraphicListBox::init(int x, int y, int w, int h){
-	GraphicComponent::init(x, y, w, h);
+	Widget::init(x, y, w, h);
 
 	graphButton1.init(x, y, 22, h);
     graphButton2.init(x+w-22, y, 22, h);
@@ -167,19 +181,26 @@ bool GraphicListBox::mouseClick(int x, int y){
 	return false;
 }
 
+void GraphicListBox::draw(Renderer* render)
+{
+	render->renderListBox(this);
+}
+
 // =====================================================
 //	class GraphicMessageBox
 // =====================================================
 
 const int GraphicMessageBox::defH= 240;
 const int GraphicMessageBox::defW= 350;
+const int GraphicButton_defH = 22;
+const int GraphicButton_defW = 90;
 
 void GraphicMessageBox::init(const std::string &button1Str, const std::string &button2Str){
 	init(button1Str);
 
-	button1.init(x+(w-GraphicButton::defW)/4, y+25);
+	button1.init(x + (w - GraphicButton_defW) / 4, y + 25, GraphicButton_defW, GraphicButton_defH);
 	button1.setText(button1Str);
-	button2.init(x+3*(w-GraphicButton::defW)/4, y+25);
+	button2.init(x + 3 * (w - GraphicButton_defW) / 4, y + 25, GraphicButton_defW, GraphicButton_defH);
 	button2.setText(button2Str);
 	buttonCount= 2;
 }
@@ -195,7 +216,7 @@ void GraphicMessageBox::init(const std::string &button1Str){
 	x= (metrics.getVirtualW()-w)/2;
 	y= (metrics.getVirtualH()-h)/2;
 
-	button1.init(x+(w-GraphicButton::defW)/2, y+25);
+	button1.init(x + (w - GraphicButton_defW) / 2, y + 25, GraphicButton_defW, GraphicButton_defH);
 	button1.setText(button1Str);
 	buttonCount= 1;
 }
@@ -234,6 +255,88 @@ bool GraphicMessageBox::mouseClick(int x, int y, int &clickedButton){
 		}
 	}
 	return false;
+}
+
+GraphicButton* UI::addButton(const std::string& text, int x, int y, int w /*= -1*/, int h /*= -1*/)
+{
+	GraphicButton* btn = new GraphicButton;
+
+	btn->init(x, y, w, h);
+	btn->setText(text);
+
+	_element.push_back(btn);
+
+	return btn;
+}
+
+GraphicLabel* UI::addLabel(const std::string& text, int x, int y)
+{
+	GraphicLabel* btn = new GraphicLabel;
+
+	btn->init(x, y);
+	btn->setText(text);
+
+	_element.push_back(btn);
+	return btn;
+}
+
+GraphicImage* UI::addImage(Texture2D* tex, int x, int y, int w /*= -1*/, int h /*= -1*/)
+{
+	GraphicImage* btn = new GraphicImage;
+
+	w = (w != -1) ? w : tex->getPixmap()->getW();
+	h = (h != -1) ? h : tex->getPixmap()->getH();
+	btn->init(x, y, w, h);
+	btn->setTexture(tex);
+
+	_element.push_back(btn);
+
+	return btn;
+}
+
+void UI::draw()
+{
+	Renderer& render = Renderer::getInstance();
+	for (std::list<Widget*>::iterator iter = _element.begin(); iter != _element.end(); iter++)
+	{
+		(*iter)->draw(&render);
+	}
+}
+
+Widget* UI::mouseMove(int x, int y)
+{
+	for (std::list<Widget*>::iterator iter = _element.begin(); iter != _element.end(); iter++)
+	{
+		if ((*iter)->mouseMove(x, y))
+			return *iter;
+	}
+	return NULL;
+}
+
+Widget* UI::mouseClick(int x, int y)
+{
+	for (std::list<Widget*>::iterator iter = _element.begin(); iter != _element.end(); iter++)
+	{
+		if ((*iter)->mouseClick(x, y))
+			return *iter;
+	}
+	return NULL;
+}
+
+
+void GraphicImage::draw(Renderer* render)
+{
+	render->renderTextureQuad(x, y, w, h, _texture, getFade());
+}
+
+void GraphicImage::init(int x, int y, int w, int h)
+{
+	Widget::init(x, y, w, h);
+}
+
+void GraphicImage::setTexture(Texture2D* tex)
+{
+	_texture = tex;
 }
 
 }//end namespace

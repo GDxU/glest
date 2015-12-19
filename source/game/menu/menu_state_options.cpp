@@ -25,8 +25,8 @@ MenuStateOptions::MenuStateOptions(Program *program, MainMenu *mainMenu):
 	Config &config= Config::getInstance();
 
 	//create
-	buttonReturn.init(200, 150, 125);	
-	buttonAutoConfig.init(375, 150, 125);
+	buttonReturn.init(200, 150, 125, 25);	
+	buttonAutoConfig.init(375, 150, 125, 25);
 
 	//labels
 	labelVolumeFx.init(200, 530);

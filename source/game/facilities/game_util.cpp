@@ -22,24 +22,6 @@ std::string getNetworkVersionString(){
     return glestVersionString + " - " + std::string(__DATE__) + " - " + std::string(__TIME__);
 }
 
-std::string getAboutString1(int i){
-	switch(i){
-	case 0: return "Glest " + glestVersionString + " (" + "Shared Library " + sharedLibVersionString + ")";
-    case 1: return "Built: " + std::string(__DATE__);
-	case 2: return "Copyright 2001-2009 The Glest Team";
-	}
-	return "";
-}
-
-std::string getAboutString2(int i){
-	switch(i){
-	case 0: return "Web: http://glest.org";
-	case 1: return "Mail: " + mailString;
-	case 2: return "Irc: irc://irc.freenode.net/glest";
-	}
-	return "";
-}
-
 std::string getTeammateName(int i){
 	switch(i){
 	case 0: return "Martiño Figueroa";

@@ -20,63 +20,41 @@ MenuStateAbout::MenuStateAbout(Program *program, MainMenu *mainMenu):
 {
 	Lang &lang= Lang::getInstance();
 	
-	//init
-	buttonReturn.init(460, 100, 125);
-	buttonReturn.setText(lang.get("Return"));
+	_ui.addButton(lang.get("Return"), 460, 100, 125, 25);
 	
-	for(int i= 0; i<aboutStringCount1; ++i){
-		labelAbout1[i].init(100, 650-i*20);
-		labelAbout1[i].setText(getAboutString1(i));
-	}
+	_ui.addLabel("Glest " + glestVersionString + " (" + "Shared Library " + sharedLibVersionString + ")", 100, 650 - 0 * 20);
+	_ui.addLabel("Built: " + std::string(__DATE__), 100, 650 - 1 * 20);
+	_ui.addLabel("Copyright 2001-2009 The Glest Team", 100, 650 - 2 * 20);
 
-	for(int i= 0; i<aboutStringCount2; ++i){
-		labelAbout2[i].init(460, 650-i*20);
-		labelAbout2[i].setText(getAboutString2(i));
-	}
-	
-	for(int i= 0; i<teammateCount; ++i){
-		labelTeammateName[i].init(100+i*180, 500);
-		labelTeammateRole[i].init(100+i*180, 520);
-		labelTeammateName[i].setText(getTeammateName(i));
-		labelTeammateRole[i].setText(getTeammateRole(i));
-	}
+	_ui.addLabel("Web: http://glest.org", 460, 650 - 0 * 20);
+	_ui.addLabel("Mail: " + mailString, 460, 650 - 1 * 20);
+	_ui.addLabel("Irc: irc://irc.freenode.net/glest", 460, 650 - 2 * 20);
 
-	labelTeammateName[5].init(360, 160);
-	labelTeammateRole[5].init(360, 180);
-	labelTeammateName[6].init(540, 160);
-	labelTeammateRole[6].init(540, 180);
+	for (int i = 0; i < 7; ++i){
+		_ui.addLabel(getTeammateName(i), 100 + i * 180, 500);
+		_ui.addLabel(getTeammateRole(i), 100 + i * 180, 520);
+	}
 }
 
 void MenuStateAbout::mouseClick(int x, int y, MouseButton mouseButton){
 
+	Widget* w = _ui.mouseClick(x, y);
+	
+	if (!w) return;
+
 	CoreData &coreData=  CoreData::getInstance();
 	SoundRenderer &soundRenderer= SoundRenderer::getInstance();
+	soundRenderer.playFx(coreData.getClickSoundA());
 
-	if(buttonReturn.mouseClick(x, y)){
-		soundRenderer.playFx(coreData.getClickSoundA());
-		mainMenu->setState(new MenuStateRoot(program, mainMenu));
-    }     
-
+	mainMenu->setState(new MenuStateRoot(program, mainMenu));
 }
 
 void MenuStateAbout::mouseMove(int x, int y, const MouseState *ms){
-	buttonReturn.mouseMove(x, y);
+	_ui.mouseMove(x, y);
 }
 
 void MenuStateAbout::render(){
-	Renderer &renderer= Renderer::getInstance();
-
-	renderer.renderButton(&buttonReturn);
-	for(int i= 0; i<aboutStringCount1; ++i){
-		renderer.renderLabel(&labelAbout1[i]);
-	}
-	for(int i= 0; i<aboutStringCount2; ++i){
-		renderer.renderLabel(&labelAbout2[i]);
-	}
-	for(int i= 0; i<teammateCount; ++i){
-		renderer.renderLabel(&labelTeammateName[i]);
-		renderer.renderLabel(&labelTeammateRole[i]);
-	}
+	_ui.draw();
 }
 
 }//end namespace

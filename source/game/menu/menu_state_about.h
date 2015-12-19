@@ -13,18 +13,8 @@ namespace Glest {
 
 class MenuStateAbout: public MenuState{
 public:
-	static const int aboutStringCount1= 3;
-	static const int aboutStringCount2= 3;
-	static const int teammateCount= 7;
+	UI _ui;
 
-private:
-	GraphicButton buttonReturn;
-	GraphicLabel labelAbout1[aboutStringCount1];
-	GraphicLabel labelAbout2[aboutStringCount2];
-	GraphicLabel labelTeammateName[teammateCount];
-	GraphicLabel labelTeammateRole[teammateCount];
-
-public:
 	MenuStateAbout(Program *program, MainMenu *mainMenu);
 
 	void mouseClick(int x, int y, MouseButton mouseButton);

@@ -27,56 +27,40 @@ MenuStateNewGame::MenuStateNewGame(Program *program, MainMenu *mainMenu):
 {
 	Lang &lang= Lang::getInstance();
 
-	buttonCustomGame.init(425, 350, 150);
-    buttonScenario.init(425, 310, 150);
-    buttonTutorial.init(425, 270, 150);
-    buttonReturn.init(425, 230, 150);
-
-	buttonCustomGame.setText(lang.get("CustomGame"));
-	buttonScenario.setText(lang.get("Scenario"));
-	buttonTutorial.setText(lang.get("Tutorial"));
-	buttonReturn.setText(lang.get("Return"));
+	_ui.addButton(lang.get("CustomGame"), 425, 350, 150, 25)->setId(1);
+	_ui.addButton(lang.get("Scenario"), 425, 310, 150, 25)->setId(2);
+	_ui.addButton(lang.get("Tutorial"), 425, 270, 150, 25)->setId(3);
+	_ui.addButton(lang.get("Return"), 425, 230, 150, 25)->setId(4);
 
 	NetworkManager::getInstance().end();
 }
 
 void MenuStateNewGame::mouseClick(int x, int y, MouseButton mouseButton){
 
+	Widget* cmp = _ui.mouseClick(x, y);
+
+	if (!cmp) return;
+
 	CoreData &coreData=  CoreData::getInstance();
 	SoundRenderer &soundRenderer= SoundRenderer::getInstance();
 
-	if(buttonCustomGame.mouseClick(x, y)){
-		soundRenderer.playFx(coreData.getClickSoundB());
-		mainMenu->setState(new MenuStateCustomGame(program, mainMenu));
-    }  
-	else if(buttonScenario.mouseClick(x, y)){
-		soundRenderer.playFx(coreData.getClickSoundB());
-		mainMenu->setState(new MenuStateScenario(program, mainMenu, "scenarios"));
-    }  
-	else if(buttonTutorial.mouseClick(x, y)){
-		soundRenderer.playFx(coreData.getClickSoundB());
-		mainMenu->setState(new MenuStateScenario(program, mainMenu, "tutorials"));
-    }     
-    else if(buttonReturn.mouseClick(x, y)){ 
-		soundRenderer.playFx(coreData.getClickSoundB());
-		mainMenu->setState(new MenuStateRoot(program, mainMenu));
-    }
+	soundRenderer.playFx(coreData.getClickSoundB());
+
+	switch (cmp->getId())
+	{
+	case 1: mainMenu->setState(new MenuStateCustomGame(program, mainMenu)); break;
+	case 2: mainMenu->setState(new MenuStateScenario(program, mainMenu, "scenarios")); break;
+	case 3: mainMenu->setState(new MenuStateScenario(program, mainMenu, "tutorials")); break;
+	case 4: mainMenu->setState(new MenuStateRoot(program, mainMenu)); break;
+	}
 }
 
 void MenuStateNewGame::mouseMove(int x, int y, const MouseState *ms){
-	buttonCustomGame.mouseMove(x, y);
-    buttonScenario.mouseMove(x, y);
-    buttonTutorial.mouseMove(x, y);
-    buttonReturn.mouseMove(x, y);
+	_ui.mouseMove(x, y);
 }
 
 void MenuStateNewGame::render(){
-	Renderer &renderer= Renderer::getInstance();
-
-	renderer.renderButton(&buttonCustomGame);
-	renderer.renderButton(&buttonScenario);
-	renderer.renderButton(&buttonTutorial);
-	renderer.renderButton(&buttonReturn);
+	_ui.draw();
 }
 
 void MenuStateNewGame::update(){

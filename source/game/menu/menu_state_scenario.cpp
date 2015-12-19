@@ -33,8 +33,8 @@ MenuStateScenario::MenuStateScenario(Program *program, MainMenu *mainMenu, const
     labelInfo.init(350, 350);
 	labelInfo.setFont(CoreData::getInstance().getMenuFontNormal());
 
-    buttonReturn.init(350, 200, 125);
-	buttonPlayNow.init(525, 200, 125);
+	buttonReturn.init(350, 200, 125, 25);
+	buttonPlayNow.init(525, 200, 125, 25);
 
     listBoxScenario.init(350, 400, 190);
 	labelScenario.init(350, 430);

@@ -33,8 +33,8 @@ MenuStateCustomGame::MenuStateCustomGame(Program *program, MainMenu *mainMenu, b
     std::vector<std::string> results, teamItems, controlItems;
 
 	//create
-	buttonReturn.init(350, 200, 125);
-	buttonPlayNow.init(525, 200, 125);
+	buttonReturn.init(350, 200, 125, 25);
+	buttonPlayNow.init(525, 200, 125, 25);
 
     //map listBox
     findAll("maps/*.gbm", results, true);

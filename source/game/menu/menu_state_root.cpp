@@ -26,75 +26,54 @@ namespace Glest {
 MenuStateRoot::MenuStateRoot(Program *program, MainMenu *mainMenu): 
 	MenuState(program, mainMenu, "root")
 {
-	Lang &lang= Lang::getInstance();
+	Lang &lang = Lang::getInstance();
 
-	buttonNewGame.init(425, 350, 150);
-    buttonJoinGame.init(425, 310, 150);
-    buttonOptions.init(425, 270, 150);
-    buttonAbout.init(425, 230, 150);
-    buttonExit.init(425, 190, 150);
-	labelVersion.init(520, 440);
+	_ui.addButton(lang.get("NewGame"), 425, 350, 150, 25)->setId(1);
+	_ui.addButton(lang.get("JoinGame"), 425, 310, 150, 25)->setId(2);
+	_ui.addButton(lang.get("Options"), 425, 270, 150, 25)->setId(3);
+	_ui.addButton(lang.get("About"), 425, 230, 150, 25)->setId(4);
+	_ui.addButton(lang.get("Exit"), 425, 190, 150, 25)->setId(5);
 
-	buttonNewGame.setText(lang.get("NewGame"));
-	buttonJoinGame.setText(lang.get("JoinGame"));
-	buttonOptions.setText(lang.get("Options"));
-	buttonAbout.setText(lang.get("About")); 
-	buttonExit.setText(lang.get("Exit"));
-	labelVersion.setText(glestVersionString);
+	const Metrics &metrics = Metrics::getInstance();
+	Texture2D* tex = CoreData::getInstance().getLogoTexture();
+
+	float w = (float)tex->getPixmap()->getW();
+	float h = (float)tex->getPixmap()->getH();
+
+	int displayW = w * 0.6f;
+	int displayH = h * 0.6f;
+
+	_ui.addImage(tex, metrics.getVirtualW() / 2 - displayW / 2, metrics.getVirtualH() / 2 + displayH / 4, displayW, displayH);
+
+	_ui.addLabel(glestVersionString, 520, 440);
 }
 
 void MenuStateRoot::mouseClick(int x, int y, MouseButton mouseButton){
+	Widget* btn = _ui.mouseMove(x, y);
+
+	if (!btn)
+		return;
 
 	CoreData &coreData=  CoreData::getInstance();
 	SoundRenderer &soundRenderer= SoundRenderer::getInstance();
+	soundRenderer.playFx(coreData.getClickSoundB());
 
-	if(buttonNewGame.mouseClick(x, y)){
-		soundRenderer.playFx(coreData.getClickSoundB());
-		mainMenu->setState(new MenuStateNewGame(program, mainMenu));
-    }  
-	else if(buttonJoinGame.mouseClick(x, y)){
-		soundRenderer.playFx(coreData.getClickSoundB());
-		mainMenu->setState(new MenuStateJoinGame(program, mainMenu));
-    }    
-    else if(buttonOptions.mouseClick(x, y)){ 
-		soundRenderer.playFx(coreData.getClickSoundB());
-		mainMenu->setState(new MenuStateOptions(program, mainMenu));
-    }
-    else if(buttonAbout.mouseClick(x, y)){ 
-		soundRenderer.playFx(coreData.getClickSoundB());
-		mainMenu->setState(new MenuStateAbout(program, mainMenu));
-    }
-    else if(buttonExit.mouseClick(x, y)){
-		soundRenderer.playFx(coreData.getClickSoundA());
-		program->exit();
-    }
+	switch (btn->getId())
+	{
+	case 1: mainMenu->setState<MenuStateNewGame>(); break;
+	case 2: mainMenu->setState<MenuStateJoinGame>(); break;
+	case 3: mainMenu->setState<MenuStateOptions>(); break;
+	case 4: mainMenu->setState<MenuStateAbout>(); break;
+	case 5: program->exit(); break;
+	}
 }
 
 void MenuStateRoot::mouseMove(int x, int y, const MouseState *ms){
-	buttonNewGame.mouseMove(x, y);
-    buttonJoinGame.mouseMove(x, y);
-    buttonOptions.mouseMove(x, y);
-    buttonAbout.mouseMove(x, y); 
-    buttonExit.mouseMove(x,y);
+	_ui.mouseMove(x, y);
 }
 
 void MenuStateRoot::render(){
-	Renderer &renderer= Renderer::getInstance();
-	CoreData &coreData= CoreData::getInstance();
-	const Metrics &metrics= Metrics::getInstance();
-	
-	int w= 300;
-	int h= 150;
-
-	renderer.renderTextureQuad(
-		(metrics.getVirtualW()-w)/2, 475-h/2, w, h, 
-		coreData.getLogoTexture(), GraphicComponent::getFade());
-	renderer.renderButton(&buttonNewGame);
-	renderer.renderButton(&buttonJoinGame);
-	renderer.renderButton(&buttonOptions);
-	renderer.renderButton(&buttonAbout);
-	renderer.renderButton(&buttonExit);
-	renderer.renderLabel(&labelVersion);
+	_ui.draw();
 }
 
 void MenuStateRoot::update(){

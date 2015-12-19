@@ -17,7 +17,7 @@ namespace Glest {
 MenuStateGraphicInfo::MenuStateGraphicInfo(Program *program, MainMenu *mainMenu): 
 	MenuState(program, mainMenu, "info")
 {
-	buttonReturn.init(387, 100, 125);
+	buttonReturn.init(387, 100, 125, 25);
 	labelInfo.init(100, 700);
 	labelMoreInfo.init(100, 500);
 	labelMoreInfo.setFont(CoreData::getInstance().getMenuFontSmall());

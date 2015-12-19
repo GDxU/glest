@@ -37,10 +37,10 @@ MenuStateJoinGame::MenuStateJoinGame(Program *program, MainMenu *mainMenu, bool 
 	servers.load(serverFileName);
 
 	//buttons
-	buttonReturn.init(325, 300, 125);
+	buttonReturn.init(325, 300, 125, 25);
 	buttonReturn.setText(lang.get("Return"));
 
-	buttonConnect.init(475, 300, 125);
+	buttonConnect.init(475, 300, 125, 25);
 	buttonConnect.setText(lang.get("Connect"));
 
 	//server type label

@@ -13,10 +13,7 @@ namespace Glest {
 
 class MenuStateNewGame: public MenuState{
 private:
-	GraphicButton buttonCustomGame;
-	GraphicButton buttonScenario;
-	GraphicButton buttonTutorial;
-	GraphicButton buttonReturn;
+	UI _ui;
 
 public:
 	MenuStateNewGame(Program *program, MainMenu *mainMenu);

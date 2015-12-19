@@ -20,8 +20,6 @@ extern const std::string networkVersionString;
 
 std::string getCrashDumpFileName();
 std::string getNetworkVersionString();
-std::string getAboutString1(int i);
-std::string getAboutString2(int i);
 std::string getTeammateName(int i);
 std::string getTeammateRole(int i);
 

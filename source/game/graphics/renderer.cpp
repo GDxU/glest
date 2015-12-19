@@ -808,7 +808,7 @@ void Renderer::renderLabel(const GraphicLabel *label){
 		textPos= Vec2i(x, y+h/4);
 	}
 
-	renderText(label->getText(), label->getFont(), GraphicComponent::getFade(), textPos.x, textPos.y, label->getCentered());
+	renderText(label->getText(), label->getFont(), Widget::getFade(), textPos.x, textPos.y, label->getCentered());
 
 	glPopAttrib();
 }
@@ -832,7 +832,7 @@ void Renderer::renderButton(const GraphicButton *button){
 	glBindTexture(GL_TEXTURE_2D, static_cast<Texture2DGl*>(backTexture)->getHandle());
 
 	//button
-	Vec4f color= Vec4f(1.f, 1.f, 1.f, GraphicComponent::getFade());
+	Vec4f color= Vec4f(1.f, 1.f, 1.f, Widget::getFade());
 	glColor4fv(color.ptr());	
 
 	glBegin(GL_TRIANGLE_STRIP);
@@ -853,7 +853,7 @@ void Renderer::renderButton(const GraphicButton *button){
 	glDisable(GL_TEXTURE_2D);
 	
 	//lighting
-	float anim= GraphicComponent::getAnim();
+	float anim= Widget::getAnim();
 	if(anim>0.5f) anim= 1.f-anim; 
 	
 	if(button->getLighted()){

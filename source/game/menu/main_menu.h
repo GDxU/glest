@@ -78,9 +78,14 @@ public:
 	virtual void keyDown(char key);
 	virtual void keyPress(char key);
     
-	void setState(MenuState *state);
-};
+	template<typename StateType>
+	void setState()
+	{
+		setState(new StateType(program, this));
+	}
 
+	void setState(MenuState*);
+};
 
 // ===============================
 // 	class MenuState  
