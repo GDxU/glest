@@ -13,6 +13,8 @@
 #include "game_util.h"
 #include "platform_util.h"
 #include "platform_main.h"
+#include "MyGUI.h"
+
 
 
 
@@ -131,6 +133,15 @@ int glestMain(int argc, char** argv){
 		while(Window::handleEvent()){
 			program->loop();
 		}
+
+	}
+	catch (MyGUI::Exception& _e) {
+#if MYGUI_PLATFORM == MYGUI_PLATFORM_WIN32
+		MessageBoxA(NULL, _e.getFullDescription().c_str(), "An exception has occured", MB_OK | MB_ICONERROR | MB_TASKMODAL);
+#else
+		std::cerr << "An exception has occured" << " : " << _e.getFullDescription().c_str();
+#endif
+		throw;
 	}
     catch (const std::exception &e){
 		restoreVideoMode();

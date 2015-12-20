@@ -14,3 +14,5 @@ add_subdirectory(SDL2-2.0.3)
 if (WIN32)
     add_subdirectory(GLEW)
 endif()
+
+add_subdirectory(MYGUI)

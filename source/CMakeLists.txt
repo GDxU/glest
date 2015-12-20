@@ -153,6 +153,7 @@ add_executable(GLEST ${SRC_FILES})
     target_link_libraries(GLEST SDL2-static tinyxml2 SDL2main
         #libvorbis libvorbisfile libogg 
        GLEW
+       MYGUI
          wsock32 ${LUA_LIBRARIES} ${OPENAL_LIBRARY}
         user32 gdi32 winmm imm32 ole32 oleaut32 version uuid ws2_32 OpenGL32 GlU32 stb
      )

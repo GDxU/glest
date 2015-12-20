@@ -17,6 +17,7 @@
 #include "network_manager.h"
 #include "menu_state_custom_game.h"
 #include "menu_state_join_game.h"
+#include "..\BaseDemoManager.h"
 
 
 
@@ -105,9 +106,9 @@ void Program::keyUp(char key){
 void Program::keyPress(char c){
 	programState->keyPress(c);
 }
-
+base::BaseDemoManager* app = new base::BaseDemoManager;
 void Program::loop(){
-
+	Renderer &renderer = Renderer::getInstance();
     programState->update(_timeStep);
 
     programState->updateCamera();
@@ -119,7 +120,7 @@ void Program::loop(){
     programState->render();
 	programState->tick();
 
-	Renderer &renderer = Renderer::getInstance();
+	
 	if (_fpsDisplayTimer.GetUSec(false) >= 500000)
 	{
 		fps_ = 1.0f / _timeStep;
@@ -129,8 +130,10 @@ void Program::loop(){
 	CoreData &coreData = CoreData::getInstance();
 	renderer.renderText("FPS: " + floatToStr(fps_), coreData.getMenuFontNormal(), Vec3f(1.f), 10, 10, false);
 
+
+
+	app->run();
 	renderer.swapBuffers();
-	
 	ApplyFrameLimit();
 }
 
@@ -205,6 +208,7 @@ void Program::init(WindowGl *window){
 	window->setSize(config.getInt("ScreenWidth"), config.getInt("ScreenHeight"));
 	window->create();
 		
+
 	//timers
     _fpsTimer.Reset();// 1, maxTimes);
 	_fpsDisplayTimer.Reset();
@@ -234,6 +238,12 @@ void Program::init(WindowGl *window){
 	//sound
 	SoundRenderer &soundRenderer= SoundRenderer::getInstance();
 	soundRenderer.init(window);
+
+	app->create();
+	app->addResourceLocation(app->getRootMedia() + "/Demos/Demo_Colour");
+	app->addResourceLocation(app->getRootMedia() + "/Common/Demos");
+	//MyGUI::LayoutManager::getInstance().loadLayout("Wallpaper.layout");
+	MyGUI::LayoutManager::getInstance().loadLayout("ColourPanel.layout");
 }
 
 void Program::setDisplaySettings(){

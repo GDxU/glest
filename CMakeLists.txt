@@ -38,6 +38,12 @@ set(DEPS_INCLUDE
     #${CMAKE_CURRENT_SOURCE_DIR}/deps/zlib
     ${CMAKE_CURRENT_SOURCE_DIR}/deps/stb
 
+    ${CMAKE_CURRENT_SOURCE_DIR}/deps/MYGUI/MyGUIEngine/include
+    ${CMAKE_CURRENT_SOURCE_DIR}/deps/MYGUI/Common
+    ${CMAKE_CURRENT_SOURCE_DIR}/deps/MYGUI/Common/Input/SDL
+    ${CMAKE_CURRENT_SOURCE_DIR}/deps/MYGUI/Common/Base/OpenGL
+    ${CMAKE_CURRENT_SOURCE_DIR}/deps/MYGUI/Platforms/OpenGL/OpenGLPlatform/include
+
     C:/wxWidgets-3.0.2/include
 )
 
