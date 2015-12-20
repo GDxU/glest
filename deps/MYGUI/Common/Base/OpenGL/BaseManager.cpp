@@ -7,7 +7,8 @@
 #include "BaseManager.h"
 #include "MyGUI_Diagnostic.h"
 
-#include "SDL_image.h"
+//#include "SDL_image.h"
+
 #include "GL/glew.h"
 #include "../../stb/stb_image.h"
 

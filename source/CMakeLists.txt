@@ -145,7 +145,7 @@ LIST(APPEND SRC_FILES ${LIB_SRC_FILES})
 
 global_define()
 
-
+add_definitions(-DMYGUI_STATIC)
 
 add_executable(GLEST ${SRC_FILES})
 

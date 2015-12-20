@@ -33,3 +33,4 @@ add_definitions(-DMYGUI_STATIC)
 
 add_library(MYGUI STATIC ${SRC_FILES})
 
+    target_link_libraries(MYGUI stb GLEW)
