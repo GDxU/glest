@@ -13,26 +13,7 @@ namespace Glest {
 
 class MenuStateOptions: public MenuState{
 private:
-	GraphicButton buttonReturn;	
-	GraphicButton buttonAutoConfig;	
-	
-	GraphicLabel labelLang;
-	GraphicLabel labelShadows;
-	GraphicLabel labelFilter;
-	GraphicLabel labelTextures3D;
-	GraphicLabel labelLights;
-	GraphicLabel labelVolumeFx;
-	GraphicLabel labelVolumeAmbient;
-	GraphicLabel labelVolumeMusic;
-	GraphicListBox listBoxLang;
-	GraphicListBox listBoxShadows;
-	GraphicListBox listBoxFilter;
-	GraphicListBox listBoxTextures3D;
-	GraphicListBox listBoxLights;
-	GraphicListBox listBoxVolumeFx;
-	GraphicListBox listBoxVolumeAmbient;
-	GraphicListBox listBoxVolumeMusic;
-	GraphicListBox listBoxMusicSelect;
+	UI _ui;
 
 public:
 	MenuStateOptions(Program *program, MainMenu *mainMenu);

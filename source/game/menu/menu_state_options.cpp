@@ -24,91 +24,74 @@ MenuStateOptions::MenuStateOptions(Program *program, MainMenu *mainMenu):
 	Lang &lang= Lang::getInstance();
 	Config &config= Config::getInstance();
 
-	//create
-	buttonReturn.init(200, 150, 125, 25);	
-	buttonAutoConfig.init(375, 150, 125, 25);
-
-	//labels
-	labelVolumeFx.init(200, 530);
-	labelVolumeAmbient.init(200, 500);
-	labelVolumeMusic.init(200, 470);
-
-	labelLang.init(200, 400);
-	
-	labelFilter.init(200, 340);
-	labelShadows.init(200, 310);
-	labelTextures3D.init(200, 280);
-	labelLights.init(200, 250);
-
 	//list boxes
-	listBoxVolumeFx.init(350, 530, 80);
-	listBoxVolumeAmbient.init(350, 500, 80);
-	listBoxVolumeMusic.init(350, 470, 80);
-	listBoxMusicSelect.init(350, 440, 150);
+	GraphicListBox* listBoxVolumeFx        = _ui.addListBox(350, 530, 80, 25); listBoxVolumeFx->setId(11);
+	GraphicListBox* listBoxVolumeAmbient   = _ui.addListBox(350, 500, 80, 25); listBoxVolumeAmbient->setId(12);
+	GraphicListBox* listBoxVolumeMusic     = _ui.addListBox(350, 470, 80, 25); listBoxVolumeMusic->setId(13);
+	//GraphicListBox* listBoxMusicSelect     = _ui.addListBox(350, 440, 150, 25); listBoxMusicSelect->setId(14);
+	GraphicListBox* listBoxLang            = _ui.addListBox(350, 400, 170, 25); listBoxLang->setId(15);
+	GraphicListBox* listBoxFilter          = _ui.addListBox(350, 340, 170, 25); listBoxFilter->setId(16);
+	GraphicListBox* listBoxShadows         = _ui.addListBox(350, 310, 170, 25); listBoxShadows->setId(17);
+	GraphicListBox* listBoxTextures3D      = _ui.addListBox(350, 280, 80, 25); listBoxTextures3D->setId(18);
+	GraphicListBox* listBoxLights          = _ui.addListBox(350, 250, 80, 25); listBoxLights->setId(19);
 
-	listBoxLang.init(350, 400, 170);
-	
-	listBoxFilter.init(350, 340, 170);
-	listBoxShadows.init(350, 310, 170);
-	listBoxTextures3D.init(350, 280, 80);
-	listBoxLights.init(350, 250, 80);
+    _ui.addLabel(lang.get("FxVolume"), 200, 530);
+    _ui.addLabel(lang.get("AmbientVolume"), 200, 500);
+    _ui.addLabel(lang.get("MusicVolume"), 200, 470);
+	_ui.addLabel(lang.get("Language"), 200, 400);
+    _ui.addLabel(lang.get("Filter"), 200, 340);
+	_ui.addLabel(lang.get("Shadows"), 200, 310);
+	_ui.addLabel(lang.get("Textures3D"), 200, 280);
+	_ui.addLabel(lang.get("MaxLights"), 200, 250);
 
-	//set text
-	buttonReturn.setText(lang.get("Return"));
-	buttonAutoConfig.setText(lang.get("AutoConfig"));
-	labelLang.setText(lang.get("Language"));
-	labelShadows.setText(lang.get("Shadows"));
-	labelFilter.setText(lang.get("Filter"));
-	labelTextures3D.setText(lang.get("Textures3D"));
-	labelLights.setText(lang.get("MaxLights"));
-	labelVolumeFx.setText(lang.get("FxVolume"));
-	labelVolumeAmbient.setText(lang.get("AmbientVolume"));
-	labelVolumeMusic.setText(lang.get("MusicVolume"));
+	_ui.addButton(lang.get("Return"), 200, 150, 125, 25)->setId(1);
+	_ui.addButton(lang.get("AutoConfig"), 375, 150, 125, 25)->setId(2);
 
-	//sound
 
 	//lang
     std::vector<std::string> langResults;
 	findAll("data/lang/*.lng", langResults, true);
-	if(langResults.empty()){
-        throw std::runtime_error("There is no lang file");
+
+	for (std::string& lang : langResults)
+	{
+		listBoxLang->pushBackItem(lang);
 	}
-    listBoxLang.setItems(langResults);
-	listBoxLang.setSelectedItem(config.getString("Lang"));
+
+	listBoxLang->setSelectedItem(config.getString("Lang"));
 	
 	//shadows
 	for(int i= 0; i<Renderer::sCount; ++i){
-		listBoxShadows.pushBackItem(lang.get(Renderer::shadowsToStr(static_cast<Renderer::Shadows>(i))));
+		listBoxShadows->pushBackItem(lang.get(Renderer::shadowsToStr(static_cast<Renderer::Shadows>(i))));
 	}
 
 	std::string str= config.getString("Shadows");
-	listBoxShadows.setSelectedItemIndex(clamp(Renderer::strToShadows(str), 0, Renderer::sCount-1));
+	listBoxShadows->setSelectedItemIndex(clamp(Renderer::strToShadows(str), 0, Renderer::sCount-1));
 
 	//filter
-	listBoxFilter.pushBackItem("Bilinear");
-	listBoxFilter.pushBackItem("Trilinear");
-	listBoxFilter.setSelectedItem(config.getString("Filter"));
+	listBoxFilter->pushBackItem("Bilinear");
+	listBoxFilter->pushBackItem("Trilinear");
+	listBoxFilter->setSelectedItem(config.getString("Filter"));
 
 	//textures 3d
-	listBoxTextures3D.pushBackItem(lang.get("No"));
-	listBoxTextures3D.pushBackItem(lang.get("Yes"));
-	listBoxTextures3D.setSelectedItemIndex(clamp(config.getInt("Textures3D"), 0, 1));
+	listBoxTextures3D->pushBackItem(lang.get("No"));
+	listBoxTextures3D->pushBackItem(lang.get("Yes"));
+	listBoxTextures3D->setSelectedItemIndex(clamp(config.getInt("Textures3D"), 0, 1));
 
 	//lights
 	for(int i= 1; i<=8; ++i){
-		listBoxLights.pushBackItem(intToStr(i));
+		listBoxLights->pushBackItem(intToStr(i));
 	}
-	listBoxLights.setSelectedItemIndex(clamp(config.getInt("MaxLights")-1, 0, 7));
+	listBoxLights->setSelectedItemIndex(clamp(config.getInt("MaxLights")-1, 0, 7));
 
 	//sound
 	for(int i=0; i<=100; i+=5){
-		listBoxVolumeFx.pushBackItem(intToStr(i));
-		listBoxVolumeAmbient.pushBackItem(intToStr(i));
-		listBoxVolumeMusic.pushBackItem(intToStr(i));
+		listBoxVolumeFx->pushBackItem(intToStr(i));
+		listBoxVolumeAmbient->pushBackItem(intToStr(i));
+		listBoxVolumeMusic->pushBackItem(intToStr(i));
 	}
-	listBoxVolumeFx.setSelectedItem(intToStr(config.getInt("SoundVolumeFx")/5*5));
-	listBoxVolumeAmbient.setSelectedItem(intToStr(config.getInt("SoundVolumeAmbient")/5*5));
-	listBoxVolumeMusic.setSelectedItem(intToStr(config.getInt("SoundVolumeMusic")/5*5));
+	listBoxVolumeFx->setSelectedItem(intToStr(config.getInt("SoundVolumeFx")/5*5));
+	listBoxVolumeAmbient->setSelectedItem(intToStr(config.getInt("SoundVolumeAmbient")/5*5));
+	listBoxVolumeMusic->setSelectedItem(intToStr(config.getInt("SoundVolumeMusic")/5*5));
 }
 
 void MenuStateOptions::mouseClick(int x, int y, MouseButton mouseButton){
@@ -118,92 +101,63 @@ void MenuStateOptions::mouseClick(int x, int y, MouseButton mouseButton){
 	CoreData &coreData= CoreData::getInstance();
 	SoundRenderer &soundRenderer= SoundRenderer::getInstance();
 
-	if(buttonReturn.mouseClick(x, y)){
+	Widget* w = _ui.mouseClick(x, y);
+	GraphicListBox* listbox = dynamic_cast<GraphicListBox*>(w);
+
+	if (!w) return;
+
+	switch (w->getId())
+	{
+	case 1:
 		soundRenderer.playFx(coreData.getClickSoundA());
 		mainMenu->setState(new MenuStateRoot(program, mainMenu));
-    }  
-	else if(buttonAutoConfig.mouseClick(x, y)){
+		break;
+	case 2:
 		soundRenderer.playFx(coreData.getClickSoundA());
 		Renderer::getInstance().autoConfig();
-		saveConfig();
 		mainMenu->setState(new MenuStateOptions(program, mainMenu));
-	}
-	else if(listBoxLang.mouseClick(x, y)){
-		config.setString("Lang", listBoxLang.getSelectedItem());
+		break;
+	case 11:
+		config.setString("SoundVolumeFx", listbox->getSelectedItem());
+		break;
+	case 12:
+		config.setString("SoundVolumeAmbient", listbox->getSelectedItem());
+		break;
+	case 13:
+		CoreData::getInstance().getMenuMusic()->setVolume(strToInt(listbox->getSelectedItem()) / 100.f);
+		config.setString("SoundVolumeMusic", listbox->getSelectedItem());
+		break;
+	case 14:
+		break;
+	case 15:
+		config.setString("Lang", listbox->getSelectedItem());
 		lang.loadStrings(config.getString("Lang"));
-		saveConfig();
 		mainMenu->setState(new MenuStateOptions(program, mainMenu));
-		
+		break;
+	case 16:
+		config.setString("Filter", listbox->getSelectedItem());
+		break;
+	case 17: 
+		config.setString("Shadows", Renderer::shadowsToStr(static_cast<Renderer::Shadows>(listbox->getSelectedItemIndex())));
+		break;
+	case 18:
+		config.setInt("Textures3D", listbox->getSelectedItemIndex());
+		break;
+	case 19:
+		config.setInt("MaxLights", listbox->getSelectedItemIndex() + 1);
+		break;
+	default:
+		break;
 	}
-	else if(listBoxShadows.mouseClick(x, y)){
-		int index= listBoxShadows.getSelectedItemIndex();
-		config.setString("Shadows", Renderer::shadowsToStr(static_cast<Renderer::Shadows>(index)));
-		saveConfig();
-	}
-	else if(listBoxFilter.mouseClick(x, y)){
-		config.setString("Filter", listBoxFilter.getSelectedItem());
-		saveConfig();
-	}
-	else if(listBoxTextures3D.mouseClick(x, y)){
-		config.setInt("Textures3D", listBoxTextures3D.getSelectedItemIndex());
-		saveConfig();
-	}
-	else if(listBoxLights.mouseClick(x, y)){
-		config.setInt("MaxLights", listBoxLights.getSelectedItemIndex()+1);
-		saveConfig();
-	}
-	else if(listBoxVolumeFx.mouseClick(x, y)){
-		config.setString("SoundVolumeFx", listBoxVolumeFx.getSelectedItem());
-		saveConfig();
-	}
-	else if(listBoxVolumeAmbient.mouseClick(x, y)){
-		config.setString("SoundVolumeAmbient", listBoxVolumeAmbient.getSelectedItem());
-		saveConfig();
-	}
-	else if(listBoxVolumeMusic.mouseClick(x, y)){
-		CoreData::getInstance().getMenuMusic()->setVolume(strToInt(listBoxVolumeMusic.getSelectedItem())/100.f);
-		config.setString("SoundVolumeMusic", listBoxVolumeMusic.getSelectedItem());
-		saveConfig();
-	}
-
-
+	saveConfig();
 }
 
 void MenuStateOptions::mouseMove(int x, int y, const MouseState *ms){
-	buttonReturn.mouseMove(x, y);
-	buttonAutoConfig.mouseMove(x, y);
-	listBoxLang.mouseMove(x, y);
-	listBoxVolumeFx.mouseMove(x, y);
-	listBoxVolumeAmbient.mouseMove(x, y);
-	listBoxVolumeMusic.mouseMove(x, y);
-	listBoxLang.mouseMove(x, y);
-	listBoxFilter.mouseMove(x, y);
-	listBoxShadows.mouseMove(x, y);
-	listBoxTextures3D.mouseMove(x, y);
-	listBoxLights.mouseMove(x, y);
+	_ui.mouseMove(x, y);
 }
 
 void MenuStateOptions::render(){
-	Renderer &renderer= Renderer::getInstance();
-
-	renderer.renderButton(&buttonReturn);
-	renderer.renderButton(&buttonAutoConfig);
-	renderer.renderListBox(&listBoxLang);
-	renderer.renderListBox(&listBoxShadows);
-	renderer.renderListBox(&listBoxTextures3D);
-	renderer.renderListBox(&listBoxLights);
-	renderer.renderListBox(&listBoxFilter);
-	renderer.renderListBox(&listBoxVolumeFx);
-	renderer.renderListBox(&listBoxVolumeAmbient);
-	renderer.renderListBox(&listBoxVolumeMusic);
-	renderer.renderLabel(&labelLang);
-	renderer.renderLabel(&labelShadows);
-	renderer.renderLabel(&labelTextures3D);
-	renderer.renderLabel(&labelLights);
-	renderer.renderLabel(&labelFilter);
-	renderer.renderLabel(&labelVolumeFx);
-	renderer.renderLabel(&labelVolumeAmbient);
-	renderer.renderLabel(&labelVolumeMusic);
+	_ui.draw();
 }
 
 void MenuStateOptions::saveConfig(){

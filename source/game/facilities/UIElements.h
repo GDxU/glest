@@ -150,10 +150,10 @@ public:
 	const GraphicButton *getButton1() const	{return &graphButton1;}
 	const GraphicButton *getButton2() const	{return &graphButton2;}
 
-    void pushBackItem(std::string item);
+    void pushBackItem(const std::string& item);
     void setItems(const std::vector<std::string> &items);
 	void setSelectedItemIndex(int index);
-    void setSelectedItem(std::string item);
+	void setSelectedItem(const std::string& item);
     
     virtual bool mouseMove(int x, int y);
     virtual bool mouseClick(int x, int y);
@@ -168,6 +168,8 @@ public:
 	GraphicButton* addButton(const std::string& text, int x, int y, int w, int h);
 	GraphicLabel* addLabel(const std::string& text, int x, int y);
 	GraphicImage* addImage(Texture2D* tex, int x, int y, int w = -1, int h = -1);
+
+	GraphicListBox* addListBox(int x, int y, int w, int h);
 
 
 	virtual Widget* mouseMove(int x, int y);

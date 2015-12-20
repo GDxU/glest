@@ -122,7 +122,7 @@ void GraphicListBox::init(int x, int y, int w, int h){
 }       
 
 //queryes
-void GraphicListBox::pushBackItem(std::string item){
+void GraphicListBox::pushBackItem(const std::string& item){
     items.push_back(item);
     setSelectedItemIndex(0);
 }
@@ -138,7 +138,7 @@ void GraphicListBox::setSelectedItemIndex(int index){
     setText(getSelectedItem());
 }
 
-void GraphicListBox::setSelectedItem(std::string item){
+void GraphicListBox::setSelectedItem(const std::string& item){
     std::vector<std::string>::iterator iter;
 
     iter= find(items.begin(), items.end(), item);
@@ -275,6 +275,16 @@ GraphicLabel* UI::addLabel(const std::string& text, int x, int y)
 
 	btn->init(x, y);
 	btn->setText(text);
+
+	_element.push_back(btn);
+	return btn;
+}
+
+GraphicListBox* UI::addListBox(int x, int y, int w, int h)
+{
+	GraphicListBox* btn = new GraphicListBox;
+
+	btn->init(x, y, w, h);
 
 	_element.push_back(btn);
 	return btn;
