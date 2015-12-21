@@ -157,9 +157,7 @@ void Program::loop(){
         CoreData &coreData = CoreData::getInstance();
         renderer.renderText("FPS: " + floatToStr(fps_), coreData.getMenuFontNormal(), Vec3f(1.f), 10, 10, false);
 
-        window->run();
-
-        window->swapBuffersGl();
+        window->drawOneFrame();
         ApplyFrameLimit();
     }
 }

@@ -78,8 +78,8 @@ void Logger::renderLoadingScreen(){
 		current, coreData.getMenuFontNormal(), 1.0f, 
 		metrics.getVirtualW()/4, 
 		62*metrics.getVirtualH()/100, false);
-	
-    Window::swapBuffersGl();
+
+    Window::swapBuffer();
 }
 
 }//end namespace

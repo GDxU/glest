@@ -26,9 +26,13 @@ namespace base
 		virtual ~BaseManager();
 
 		virtual void prepare();
-		bool create(int _width = 1024, int _height = 768);
-		void destroy();
-		void run();
+        bool create(int _width, int _height, bool windowed);
+
+        int getW() { return mWidth; }
+        int getH() { return mHeight; }
+
+        void destroy();
+        void drawOneFrame();
 		void quit();
 
 		void setWindowCaption(const std::wstring& _text);
@@ -39,6 +43,8 @@ namespace base
 		void addResourceLocation(const std::string& _name, bool _recursive = false);
 
 		MyGUI::MapString getStatistic() { return MyGUI::MapString(); }
+
+        static void swapBuffer();
 
 	/*internal:*/
 		void _windowResized(int w, int h);
@@ -69,7 +75,6 @@ namespace base
 	private:
 		//void resizeRender(int _width, int _height);
 		bool createRender(int _width, int _height, bool _windowed);
-		void drawOneFrame();
 		void destroyRender();
 		void* convertPixelData(SDL_Surface *_image, MyGUI::PixelFormat& _myGuiPixelFormat);
 		void updateSDL_Keycode();
@@ -87,6 +92,9 @@ namespace base
 		bool	mWindowOn;
 		SDL_Keycode	mKeyCode;
 		bool mTextUpdated;
+
+        int mWidth, mHeight;
+        bool mFullScreen;
 	};
 
 } // namespace base

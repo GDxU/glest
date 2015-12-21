@@ -6,11 +6,6 @@
 
 namespace Glest {
 
-// These don't have a real meaning in the SDL port
-typedef void* WindowHandle;
-typedef void* DeviceContextHandle;
-typedef void* GlContextHandle;  	
-
 typedef float float32;
 typedef double float64;
 // don't use Sint8 here because that is defined as signed char

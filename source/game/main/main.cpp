@@ -27,16 +27,6 @@ SDL_Window* getWindow();
 
 namespace Glest {
 
-    static Window* global_window = 0;
-
-
-    void Window::initGl(){
-       
-    }
-
-    void Window::swapBuffersGl(){
-    }
-
     bool Window::handleEvent() {
         while (SDL_PollEvent(&mEvent) != 0)
         {
@@ -52,9 +42,9 @@ namespace Glest {
                         && (mEvent.key.keysym.mod & (KMOD_LALT | KMOD_RALT))) {
                         toggleFullscreen();
                     }
-                    global_window->eventKeyDown(getKey(mEvent.key.keysym));
+                    eventKeyDown(getKey(mEvent.key.keysym));
                     //global_window->eventKeyPress(static_cast<char>(event.key.keysym.unicode));
-                    global_window->eventKeyPress(static_cast<char>(mEvent.key.keysym.sym));
+                    eventKeyPress(static_cast<char>(mEvent.key.keysym.sym));
                 }
                 break;
             case SDL_TEXTINPUT:
@@ -63,7 +53,7 @@ namespace Glest {
                 break;
             case SDL_KEYUP:
                 if (!keyReleased(mEvent.key))
-                    global_window->eventKeyUp(getKey(mEvent.key.keysym));
+                    eventKeyUp(getKey(mEvent.key.keysym));
                 break;
                 // mouse events
             case SDL_MOUSEMOTION:
@@ -73,20 +63,19 @@ namespace Glest {
                     ms.leftMouse = (mEvent.motion.state & SDL_BUTTON_LMASK) != 0;
                     ms.rightMouse = (mEvent.motion.state & SDL_BUTTON_RMASK) != 0;
                     ms.centerMouse = (mEvent.motion.state & SDL_BUTTON_MMASK) != 0;
-                    global_window->eventMouseMove(mEvent.motion.x, mEvent.motion.y, &ms);
+                    eventMouseMove(mEvent.motion.x, mEvent.motion.y, &ms);
                     break;
                 }
                 break;
             case SDL_MOUSEBUTTONDOWN:
                 if (!mousePressed(mEvent.button))
-                    global_window->handleMouseDown(mEvent);
+                    handleMouseDown(mEvent);
 
                 break;
             case SDL_MOUSEBUTTONUP:
                 if (!mouseReleased(mEvent.button))
                 {
-                    global_window->eventMouseUp(mEvent.button.x,
-                        mEvent.button.y, getMouseButton(mEvent.button.button));
+                    eventMouseUp(mEvent.button.x, mEvent.button.y, getMouseButton(mEvent.button.button));
                 }
                 break;
             case SDL_MOUSEWHEEL:
@@ -126,32 +115,8 @@ namespace Glest {
         return true;
     }
 
-
-    std::string Window::getText() {
-        return SDL_GetWindowTitle(getWindow());
-    }
-
-    float Window::getAspect() {
-        return static_cast<float>(getClientH()) / getClientW();
-    }
-
     void Window::setText(std::string text) {
         SDL_SetWindowTitle(getWindow(), text.c_str());
-    }
-
-    void Window::setSize(int w, int h) {
-        this->w = w;
-        this->h = h;
-
-        SDL_SetWindowSize(getWindow(), w, h);
-    }
-
-    void Window::create(int w, int h, bool fullscreen) {
-        this->w = w;
-        this->h = h;
-        _fullscreen = fullscreen;
-        initGl();
-        base::BaseManager::create(w, h);
     }
 
     void Window::destroy() {
@@ -160,10 +125,10 @@ namespace Glest {
         SDL_PushEvent(&event);
     }
 
+
     void Window::toggleFullscreen() {
-        //SDL_WM_ToggleFullScreen(SDL_GetVideoSurface());
-        global_window->_fullscreen = !global_window->_fullscreen;
-        SDL_SetWindowFullscreen(getWindow(), !!global_window->_fullscreen);
+        mFullScreen = !mFullScreen;
+        SDL_SetWindowFullscreen(getWindow(), mFullScreen);
     }
 
     void Window::handleMouseDown(SDL_Event event) {
@@ -336,7 +301,6 @@ Window::Window(Program *program){
 	this->program= program;
 
     memset(lastMouseDown, 0, sizeof(lastMouseDown));
-    global_window = this;
 }
 
 Window::~Window(){
@@ -426,9 +390,9 @@ int glestMain(int argc, char** argv){
 			program->initNormal(mainWindow);
 		}
 		
-        mainWindow->addResourceLocation(mainWindow->getRootMedia() + "/Demos/Demo_Colour");
+        mainWindow->addResourceLocation(mainWindow->getRootMedia() + "/Demos/Demo_Gui");
         mainWindow->addResourceLocation(mainWindow->getRootMedia() + "/Common/Demos");
-        MyGUI::LayoutManager::getInstance().loadLayout("ColourPanel.layout");
+        MyGUI::LayoutManager::getInstance().loadLayout("MainPanel.layout");
 
 	    program->loop();
 	}

@@ -69,39 +69,18 @@ private:
     int lastMouseX[3];
     int lastMouseY[3];
 
-protected:
-    int w, h;
-    bool _fullscreen;
-
 public:
     bool handleEvent();
 
-    WindowHandle getHandle()	{ return 0; }
-    std::string getText();
-    int getX()					{ return 0; }
-    int getY()					{ return 0; }
-    int getW()					{ return w; }
-    int getH()					{ return h; }
-
-    //component state
-    int getClientW()			{ return getW(); }
-    int getClientH()			{ return getH(); }
-    float getAspect();
-
     //object state
     void setText(std::string text);
-    void setSize(int w, int h);
-    void setPos(int x, int y);
     void setEnabled(bool enabled);
     void setVisible(bool visible);
 
     void showCursor(bool show);
 
-    //misc
-    void create(int w, int h, bool fullscreen);
     void destroy();
     void minimize();
-
 
     virtual void eventMouseDown(int x, int y, MouseButton mouseButton);
     virtual void eventMouseUp(int x, int y, MouseButton mouseButton);
@@ -119,12 +98,7 @@ public:
 
     static MouseButton getMouseButton(int sdlButton);
     static char getKey(SDL_Keysym keysym);
-    static void toggleFullscreen();
-
-    static void swapBuffersGl();
-
-protected:
-    void initGl();
+    void toggleFullscreen();
 };
 
 }//end namespace

@@ -52,11 +52,11 @@ namespace base
 		setInputViewSize(w, h);
 	}
 
-	bool BaseManager::create(int _width, int _height)
+    bool BaseManager::create(int _width, int _height, bool windowed)
 	{
-		const unsigned int width = _width;
-		const unsigned int height = _height;
-		bool windowed = true;
+        mWidth = _width;
+        mHeight = _height;
+        mFullScreen = !windowed;
 
         SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 2);
         SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1);
@@ -70,7 +70,7 @@ namespace base
 
         int flags = SDL_WINDOW_OPENGL;
 #if 0
-        if (_fullscreen)
+        if (mFullScreen)
             flags |= SDL_WINDOW_FULLSCREEN;
 #endif
         SDL_Window* screen = SDL_CreateWindow("Cocos2d SDL ", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, _width, _height, flags);
@@ -110,7 +110,7 @@ namespace base
 
 		mWindowOn = true;
 
-		if (!createRender(width, height, windowed))
+		if (!createRender(mWidth, mHeight, windowed))
 		{
 			return false;
 		}
@@ -123,18 +123,26 @@ namespace base
 
 		// this needs to be called before createScene() since some demos require
 		// screen size to properly position the widgets
-		_windowResized(width, height);
+		_windowResized(mWidth, mHeight);
 
 		createScene();
 
 		return true;
 	}
 
-	void BaseManager::run()
-	{
-        drawOneFrame();
+    void BaseManager::swapBuffer()
+    {
+        glFlush();
         SDL_GL_SwapWindow(s_window);
-	}
+    }
+
+    void BaseManager::drawOneFrame()
+    {
+        if (mPlatform)
+            mPlatform->getRenderManagerPtr()->drawOneFrame();
+
+        swapBuffer();
+    }
 
 	void BaseManager::destroy()
 	{
@@ -306,14 +314,6 @@ namespace base
 	bool BaseManager::createRender(int _width, int _height, bool _windowed)
 	{
 		return true;
-	}
-
-	void BaseManager::drawOneFrame()
-	{
-		if (mPlatform)
-			mPlatform->getRenderManagerPtr()->drawOneFrame();
-
-		//SDL_GL_SwapWindow(mWindow);
 	}
 
 	void BaseManager::destroyRender()
