@@ -414,6 +414,19 @@ namespace base
 		case 4: _format = MyGUI::PixelFormat::R8G8B8A8; break;
 		}
 
+        if (bpp == 4 || bpp == 3)
+        {
+            char c;//rgb[a] -> bgr[a]
+            for (unsigned int i = 0; i < w * h; i++)
+            {
+                c = ret[i * bpp];
+                ret[i * bpp] = ret[i * bpp + 2];
+                ret[i * bpp + 2] = c;
+            }
+        }
+
+        stbi_image_free(image);
+
 		return ret;
 #if sdl_img
 		void* result = nullptr;

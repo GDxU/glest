@@ -4,8 +4,8 @@
 file(GLOB SRC_FILES
     ${CMAKE_CURRENT_SOURCE_DIR}/MyGUIEngine/src/*.cpp
 
-    ${CMAKE_CURRENT_SOURCE_DIR}/Common/Base/OpenGL/*.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/Common/Input/SDL/*.cpp
+    #${CMAKE_CURRENT_SOURCE_DIR}/Common/Base/OpenGL/*.cpp
+    #${CMAKE_CURRENT_SOURCE_DIR}/Common/Input/SDL/*.cpp
 
     ${CMAKE_CURRENT_SOURCE_DIR}/Platforms/OpenGL/OpenGLPlatform/src/*.cpp
 )
