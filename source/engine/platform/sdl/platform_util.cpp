@@ -20,13 +20,13 @@
 #include "util.h"
 #include "conversion.h"
 #include "sdl_private.h"
-#include "window.h"
 #include "noimpl.h"
 
 #include <Windows.h>
 #include <minwinbase.h>
 #include <winbase.h>
 #include <wtypes.h>
+#include "main.h"
 
 
 

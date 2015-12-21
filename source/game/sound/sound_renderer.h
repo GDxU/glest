@@ -5,7 +5,6 @@
 
 #include "sound.h"
 #include "sound_player.h"
-#include "window.h"
 #include "vec.h"
 
 namespace Glest {
@@ -40,7 +39,7 @@ public:
 	//misc
 	~SoundRenderer();
 	static SoundRenderer &getInstance();
-	void init(Window *window);
+	void init();
 	void update();
 	SoundPlayer *getSoundPlayer() const	{return soundPlayer;}
 

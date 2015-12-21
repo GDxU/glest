@@ -73,7 +73,7 @@ public:
 	const Vec3f &getPos() const	{return pos;}
 
     //set
-	void setRotate(int rotate)	{this->rotate= rotate;}
+	void setRotate(int rotate)	{this->rotate= (float)rotate;}
 	void setPos(Vec2f pos);
 
 	void setMoveX(float f)		{this->stopMove.x= false; this->move.x= f;}

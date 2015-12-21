@@ -2,10 +2,10 @@
 
 #include "chat_manager.h"
 
-#include "window.h"
 #include "console.h"
 #include "network_manager.h"
 #include "lang.h"
+#include "main.h"
 
 
 

@@ -4,16 +4,14 @@
 #define _GLEST_GAME_PROGRAM_H_
 
 #include "platform_util.h"
-#include "window.h"
 #include "socket.h"
-#include "window.h"
+#include "main.h"
 
 
 
 namespace Glest {
 
 class Program;
-class MainWindow;
 
 // =====================================================
 // 	class ProgramState  

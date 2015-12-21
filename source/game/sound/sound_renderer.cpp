@@ -23,7 +23,7 @@ SoundRenderer::SoundRenderer(){
 	loadConfig();
 }
 
-void SoundRenderer::init(Window *window){
+void SoundRenderer::init(){
 	SoundInterface &si= SoundInterface::getInstance();
 	FactoryRepository &fr= FactoryRepository::getInstance();
 	Config &config= Config::getInstance();

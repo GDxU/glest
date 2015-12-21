@@ -288,7 +288,7 @@ void Program::init(Window *window){
 
 	//sound
 	SoundRenderer &soundRenderer= SoundRenderer::getInstance();
-	soundRenderer.init(window);
+	soundRenderer.init();
 
 	app->create();
 	app->addResourceLocation(app->getRootMedia() + "/Demos/Demo_Colour");
