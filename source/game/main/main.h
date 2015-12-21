@@ -6,7 +6,7 @@
 #include <ctime>
 
 #include "program.h"
-#include "window_gl.h"
+#include "window.h"
 
 
 
@@ -19,7 +19,7 @@ namespace Glest {
 ///	Main program window
 // =====================================================
 
-class MainWindow: public WindowGl
+class MainWindow: public Window
 {
 private:
     Program* program;

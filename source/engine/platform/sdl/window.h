@@ -67,6 +67,7 @@ enum WindowStyle{
 
 class Window {
 private:
+
 	Uint32 lastMouseDown[3];
 	int lastMouseX[3];
 	int lastMouseY[3];
@@ -105,7 +106,7 @@ public:
 	void destroy();
 	void minimize();
 
-protected:
+
 	virtual void eventCreate(){}
 	virtual void eventMouseDown(int x, int y, MouseButton mouseButton){}
 	virtual void eventMouseUp(int x, int y, MouseButton mouseButton){}
@@ -123,13 +124,17 @@ protected:
 	virtual void eventClose(){};
 	virtual void eventDestroy(){};
 
-private:
+
 	/// needed to detect double clicks
 	void handleMouseDown(SDL_Event event);
 
 	static MouseButton getMouseButton(int sdlButton);
 	static char getKey(SDL_Keysym keysym);
     static void toggleFullscreen();
+
+    void initGl(int colorBits, int depthBits, int stencilBits);
+    void makeCurrentGl();
+    static void swapBuffersGl();
 };
 
 }//end namespace

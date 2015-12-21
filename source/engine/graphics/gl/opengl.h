@@ -8,7 +8,7 @@
 #include <string>
 
 #include "conversion.h"
-#include "context_gl.h"
+#include "GL/glew.h"
 
 
 

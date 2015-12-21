@@ -37,12 +37,12 @@ Program::Program(){
 	programState= NULL;
 }
 
-void Program::initNormal(WindowGl *window){
+void Program::initNormal(Window *window){
 	init(window);
 	setState(new Logo(this));
 }
 
-void Program::initServer(WindowGl *window){
+void Program::initServer(Window *window){
 	MainMenu* mainMenu= NULL;
 	
 	init(window);
@@ -51,7 +51,7 @@ void Program::initServer(WindowGl *window){
 	mainMenu->setState(new MenuStateCustomGame(this, mainMenu, true));
 }
 
-void Program::initClient(WindowGl *window, const Ip &serverIp){
+void Program::initClient(Window *window, const Ip &serverIp){
 	MainMenu* mainMenu= NULL;
 	
 	init(window);
@@ -106,35 +106,86 @@ void Program::keyUp(char key){
 void Program::keyPress(char c){
 	programState->keyPress(c);
 }
+
+
+bool Program::handleEvent() {
+    SDL_Event event;
+    while (SDL_PollEvent(&event)) {
+        try {
+            switch (event.type) {
+            case SDL_QUIT:
+                return false;
+            case SDL_MOUSEBUTTONDOWN:
+                window->handleMouseDown(event);
+                break;
+            case SDL_MOUSEBUTTONUP: {
+                                        window->eventMouseUp(event.button.x,
+                                            event.button.y, window->getMouseButton(event.button.button));
+                                        break;
+            }
+            case SDL_MOUSEMOTION: {
+                                      MouseState ms;
+                                      ms.leftMouse = (event.motion.state & SDL_BUTTON_LMASK) != 0;
+                                      ms.rightMouse = (event.motion.state & SDL_BUTTON_RMASK) != 0;
+                                      ms.centerMouse = (event.motion.state & SDL_BUTTON_MMASK) != 0;
+                                      window->eventMouseMove(event.motion.x, event.motion.y, &ms);
+                                      break;
+            }
+            case SDL_KEYDOWN:
+                /* handle ALT+Return */
+                if (event.key.keysym.sym == SDLK_RETURN
+                    && (event.key.keysym.mod & (KMOD_LALT | KMOD_RALT))) {
+                    window->toggleFullscreen();
+                }
+                window->eventKeyDown(window->getKey(event.key.keysym));
+                //global_window->eventKeyPress(static_cast<char>(event.key.keysym.unicode));
+                window->eventKeyPress(static_cast<char>(event.key.keysym.sym));
+                break;
+            case SDL_KEYUP:
+                window->eventKeyUp(window->getKey(event.key.keysym));
+                break;
+            }
+        }
+        catch (std::exception& e) {
+            std::cerr << "Couldn't process event: " << e.what() << "\n";
+        }
+    }
+
+    return true;
+}
+
+
 base::BaseDemoManager* app = new base::BaseDemoManager;
 void Program::loop(){
 	Renderer &renderer = Renderer::getInstance();
-    programState->update(_timeStep);
 
-    programState->updateCamera();
+    while (handleEvent()){
+        programState->update(_timeStep);
 
-    Widget::update();
-    SoundRenderer::getInstance().update();
-    NetworkManager::getInstance().update();
-	
-    programState->render();
-	programState->tick();
+        programState->updateCamera();
 
-	
-	if (_fpsDisplayTimer.GetUSec(false) >= 500000)
-	{
-		fps_ = 1.0f / _timeStep;
-		_fpsDisplayTimer.Reset();
-	}
+        Widget::update();
+        SoundRenderer::getInstance().update();
+        NetworkManager::getInstance().update();
 
-	CoreData &coreData = CoreData::getInstance();
-	renderer.renderText("FPS: " + floatToStr(fps_), coreData.getMenuFontNormal(), Vec3f(1.f), 10, 10, false);
+        programState->render();
+        programState->tick();
 
 
+        if (_fpsDisplayTimer.GetUSec(false) >= 500000)
+        {
+            fps_ = 1.0f / _timeStep;
+            _fpsDisplayTimer.Reset();
+        }
 
-	app->run();
-	renderer.swapBuffers();
-	ApplyFrameLimit();
+        CoreData &coreData = CoreData::getInstance();
+        renderer.renderText("FPS: " + floatToStr(fps_), coreData.getMenuFontNormal(), Vec3f(1.f), 10, 10, false);
+
+        app->run();
+
+        window->swapBuffersGl();
+        ApplyFrameLimit();
+    }
 }
 
 
@@ -193,7 +244,7 @@ void Program::exit(){
 
 // ==================== PRIVATE ==================== 
 
-void Program::init(WindowGl *window){
+void Program::init(Window *window){
 
 	this->window= window;
 	Config &config= Config::getInstance();

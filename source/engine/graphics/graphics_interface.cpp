@@ -4,7 +4,6 @@
 
 #include <cstddef>
 
-#include "context.h"
 
 
 namespace Glest {
@@ -15,7 +14,6 @@ namespace Glest {
 
 GraphicsInterface::GraphicsInterface(){
 	graphicsFactory= NULL;
-	currentContext= NULL;
 }
 
 GraphicsInterface &GraphicsInterface::getInstance(){
@@ -25,11 +23,6 @@ GraphicsInterface &GraphicsInterface::getInstance(){
 
 void GraphicsInterface::setFactory(GraphicsFactory *graphicsFactory){
 	this->graphicsFactory= graphicsFactory;
-}
-
-void GraphicsInterface::setCurrentContext(Context *context){
-	this->currentContext= context;
-	currentContext->makeCurrent();
 }
 
 }//end namespace

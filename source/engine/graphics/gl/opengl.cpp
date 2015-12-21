@@ -5,7 +5,6 @@
 #include <stdexcept>
 
 #include "graphics_interface.h"
-#include "context_gl.h"
 
 
 
@@ -97,7 +96,6 @@ const char *getGlExtensions(){
 }
 
 const char *getGlPlatformExtensions(){
-	Context *c= GraphicsInterface::getInstance().getCurrentContext();
     return "";// getPlatformExtensions(static_cast<ContextGl*>(c)->getPlatformContextGl());
 }
 

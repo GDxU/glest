@@ -7,6 +7,7 @@
 #include "core_data.h"
 #include "metrics.h"
 #include "lang.h"
+#include "window.h"
 
 
 
@@ -78,7 +79,7 @@ void Logger::renderLoadingScreen(){
 		metrics.getVirtualW()/4, 
 		62*metrics.getVirtualH()/100, false);
 	
-	renderer.swapBuffers();
+    Window::swapBuffersGl();
 }
 
 }//end namespace

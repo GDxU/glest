@@ -21,7 +21,7 @@ set(inc_path
     ${CMAKE_CURRENT_SOURCE_DIR}/engine/xml
     ${CMAKE_CURRENT_SOURCE_DIR}/engine/graphics/gl
     
-    ${CMAKE_CURRENT_SOURCE_DIR}/engine/Urho3D
+    ${CMAKE_CURRENT_SOURCE_DIR}/engine/mygui
 
     ${LUA_INCLUDE_DIR}
     ${DEPS_INCLUDE}
@@ -116,6 +116,7 @@ file(GLOB LIB_SRC_FILES
     engine/xml/*.cpp                
     engine/lua/*.cpp                
     engine/util/*.cpp               
+    engine/mygui/*.cpp               
     engine/sound/*.cpp              
     engine/graphics/*.cpp               
     engine/graphics/gl/*.cpp                

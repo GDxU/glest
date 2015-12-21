@@ -3,9 +3,8 @@
 #ifndef _GLEST_GAME_PROGRAM_H_
 #define _GLEST_GAME_PROGRAM_H_
 
-#include "context.h"
 #include "platform_util.h"
-#include "window_gl.h"
+#include "window.h"
 #include "socket.h"
 #include "window.h"
 
@@ -65,15 +64,15 @@ private:
 	HiresTimer _fpsTimer;
 	HiresTimer _fpsDisplayTimer;
 
-    WindowGl *window;
+    Window *window;
 
 public:
     Program();
     ~Program();
 
-	void initNormal(WindowGl *window);
-	void initServer(WindowGl *window);
-	void initClient(WindowGl *window, const Ip &serverIp);
+    void initNormal(Window *window);
+    void initServer(Window *window);
+    void initClient(Window *window, const Ip &serverIp);
 	
 	//main
     void mouseDownLeft(int x, int y);
@@ -92,10 +91,11 @@ public:
 	void exit();
 	
 private:
-	void init(WindowGl *window);
+    void init(Window *window);
 	void setDisplaySettings();
 	void restoreDisplaySettings();
     void ApplyFrameLimit();
+    bool handleEvent();
 };
 
 } //end namespace

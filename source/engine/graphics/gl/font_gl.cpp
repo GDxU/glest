@@ -3,7 +3,6 @@
 #include "font_gl.h"
 
 #include "opengl.h"
-#include "context_gl.h"
 
 namespace Glest {
 

@@ -3,7 +3,6 @@
 #include "model_renderer_gl.h"
 
 #include "opengl.h"
-#include "context_gl.h"
 #include "texture_gl.h"
 #include "interpolation.h"
 

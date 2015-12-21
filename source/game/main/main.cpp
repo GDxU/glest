@@ -129,11 +129,8 @@ int glestMain(int argc, char** argv){
 			program->initNormal(mainWindow);
 		}
 
-		//main loop
-		while(Window::handleEvent()){
-			program->loop();
-		}
-
+		
+	    program->loop();
 	}
 	catch (MyGUI::Exception& _e) {
 #if MYGUI_PLATFORM == MYGUI_PLATFORM_WIN32

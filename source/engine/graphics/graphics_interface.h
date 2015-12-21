@@ -6,7 +6,6 @@
 namespace Glest {
 
 class GraphicsFactory;
-class Context;
 
 // =====================================================
 //	class GraphicsInterface  
@@ -17,7 +16,6 @@ class Context;
 class GraphicsInterface{
 private:
 	GraphicsFactory *graphicsFactory;
-	Context *currentContext;
 
 private:
 	friend class TextureManager;
@@ -32,9 +30,7 @@ public:
 	static GraphicsInterface &getInstance();
 
 	void setFactory(GraphicsFactory *graphicsFactory);
-	void setCurrentContext(Context *context);	
 
-	Context *getCurrentContext() const		{return currentContext;}
 	GraphicsFactory *getFactory() const		{return graphicsFactory;}
 };
 

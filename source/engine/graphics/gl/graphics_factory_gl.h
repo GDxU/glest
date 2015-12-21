@@ -11,7 +11,6 @@
 #include "text_renderer_gl.h"
 #include "model_renderer_gl.h"
 #include "particle_renderer_gl.h"
-#include "context_gl.h"
 #include "model_gl.h"
 #include "texture_gl.h"
 #include "font_gl.h"
@@ -24,8 +23,6 @@ namespace Glest {
 
 class GraphicsFactoryGl: public GraphicsFactory{
 public:
-	//context
-	virtual Context *newContext()					{return new ContextGl();}
 
 	//textures
 	virtual TextureManager *newTextureManager()		{return new TextureManager();}

@@ -369,7 +369,8 @@ void Renderer::renderParticleManager(ResourceScope rs){
 
 void Renderer::swapBuffers(){
 	glFlush();
-	GraphicsInterface::getInstance().getCurrentContext()->swapBuffers();
+
+    Window::swapBuffersGl();
 }
 
 // ==================== lighting ==================== 
