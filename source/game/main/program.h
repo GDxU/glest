@@ -90,7 +90,6 @@ public:
 private:
     void init(Window *window);
     void ApplyFrameLimit();
-    bool handleEvent();
 };
 
 } //end namespace

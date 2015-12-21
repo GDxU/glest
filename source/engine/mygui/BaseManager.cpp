@@ -1,8 +1,4 @@
-/*!
-	@file
-	@author		Albert Semenov
-	@date		05/2009
-*/
+
 #include "Precompiled.h"
 #include "BaseManager.h"
 #include "MyGUI_Diagnostic.h"
@@ -10,15 +6,19 @@
 //#include "SDL_image.h"
 
 #include "GL/glew.h"
-#include "../../stb/stb_image.h"
+#include "stb_image.h"
 
 #ifdef MYGUI_CHECK_MEMORY_LEAKS
 #	undef new
 #	undef delete
 #endif
 
-// имя класса окна
-const char* WND_CLASS_NAME = "MyGUI_Demo_window";
+
+static SDL_Window* s_window = NULL;
+
+SDL_Window* getWindow() {
+    return s_window;
+}
 
 namespace base
 {
@@ -58,16 +58,56 @@ namespace base
 		const unsigned int height = _height;
 		bool windowed = true;
 
-		// create window and position it at the center of the screen
-		//SDL_DisplayMode currDisp;
-		//MYGUI_ASSERT(SDL_GetCurrentDisplayMode(0, &currDisp) == 0, "Failed to retrieve screen info.");
-// 		int left = (currDisp.w - width) / 2;
-// 		int top = (currDisp.h - height) / 2;
+        SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 2);
+        SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1);
 
-		//mWindow = SDL_CreateWindow("OpenGL Render Window", left, top, width, height, SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE);
-		//MYGUI_ASSERT(mWindow != nullptr, "Failed to create SDL window.");
-// 		mContext = SDL_GL_CreateContext(mWindow);
-// 		MYGUI_ASSERT(mContext != nullptr, "Failed to create SDL context.");
+        SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
+        // 	SDL_GL_SetAttribute(SDL_GL_RED_SIZE, 1);
+        // 	SDL_GL_SetAttribute(SDL_GL_GREEN_SIZE, 1);
+        // 	SDL_GL_SetAttribute(SDL_GL_BLUE_SIZE, 1);
+        // 	SDL_GL_SetAttribute(SDL_GL_STENCIL_SIZE, stencilBits);
+        SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 24);
+
+        int flags = SDL_WINDOW_OPENGL;
+#if 0
+        if (_fullscreen)
+            flags |= SDL_WINDOW_FULLSCREEN;
+#endif
+        SDL_Window* screen = SDL_CreateWindow("Cocos2d SDL ", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, _width, _height, flags);
+
+        SDL_GL_CreateContext(screen);
+
+        if (glewInit() != GLEW_OK)
+            std::cout << "GLEW init false";
+
+        if (GLEW_ARB_vertex_shader && GLEW_ARB_fragment_shader)
+        {
+            std::cout << "Ready for GLSL\n";
+        }
+        else
+        {
+            std::cout << "Not totally ready :(\n";
+        }
+
+        if (glewIsSupported("GL_VERSION_2_0"))
+        {
+            std::cout << "Ready for OpenGL 2.0\n";
+        }
+        else
+        {
+            std::cout << "OpenGL 2.0 not supported\n";
+        }
+
+        SDL_GL_SetSwapInterval(1);
+
+        s_window = screen;
+
+        if (screen == 0) {
+            std::ostringstream msg;
+            msg << "Couldn't set video mode " << _width << "x" << _height << " depth-buffer). SDL Error is: " << SDL_GetError();
+            throw std::runtime_error(msg.str());
+        }
+
 		mWindowOn = true;
 
 		if (!createRender(width, height, windowed))
@@ -92,74 +132,8 @@ namespace base
 
 	void BaseManager::run()
 	{
-// 		while (!mExit)
-// 		{
-			while (SDL_PollEvent(&mEvent) != 0)
-			{
-				switch (mEvent.type)
-				{
-				// keyboard events
-				case SDL_KEYDOWN:
-					mKeyCode = mEvent.key.keysym.sym;
-					keyPressed(mKeyCode, nullptr);
-					break;
-				case SDL_TEXTINPUT:
-					mKeyCode = SDLK_UNKNOWN;
-					keyPressed(mKeyCode, &mEvent.text);
-					break;
-				case SDL_KEYUP:
-					keyReleased(mEvent.key);
-					break;
-				// mouse events
-				case SDL_MOUSEMOTION:
-					mouseMoved(mEvent.motion);
-					break;
-				case SDL_MOUSEBUTTONDOWN:
-					mousePressed(mEvent.button);
-					break;
-				case SDL_MOUSEBUTTONUP:
-					mouseReleased(mEvent.button);
-					break;
-				case SDL_MOUSEWHEEL:
-					mouseWheelMoved(mEvent.wheel);
-					break;
-					// drop file events
-				case SDL_DROPFILE:
-					break;
-					// windows events
-				case SDL_WINDOWEVENT:
-					switch (mEvent.window.event)
-					{
-					case SDL_WINDOWEVENT_CLOSE:
-						mExit = true;
-						break;
-					case SDL_WINDOWEVENT_RESIZED:
-						_windowResized(mEvent.window.data1, mEvent.window.data2);
-						break;
-					case SDL_WINDOWEVENT_SHOWN:
-					case SDL_WINDOWEVENT_RESTORED:
-					case SDL_WINDOWEVENT_EXPOSED:
-					case SDL_WINDOWEVENT_MAXIMIZED:
-						mWindowOn = true;
-						break;
-					case SDL_WINDOWEVENT_MINIMIZED:
-					case SDL_WINDOWEVENT_HIDDEN:
-						mWindowOn = false;
-					default:
-						break;
-					}
-					break;
-				default:
-					break;
-				}
-			}
-// 			glClearColor(0, 0, 0, 1);
-// 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-			drawOneFrame();
-// 			if (!mWindowOn)
-// 				SDL_Delay(50);
-		//}
+        drawOneFrame();
+        SDL_GL_SwapWindow(s_window);
 	}
 
 	void BaseManager::destroy()
@@ -283,50 +257,50 @@ namespace base
 		mPlatform->getDataManagerPtr()->addResourceLocation(_name, _recursive);
 	}
 
-	void BaseManager::injectMouseMove(int _absx, int _absy, int _absz)
+    bool BaseManager::injectMouseMove(int _absx, int _absy, int _absz)
 	{
 		if (!mGUI)
-			return;
+			return false;
 
-		MyGUI::InputManager::getInstance().injectMouseMove(_absx, _absy, _absz);
+        return MyGUI::InputManager::getInstance().injectMouseMove(_absx, _absy, _absz);
 	}
 
-	void BaseManager::injectMousePress(int _absx, int _absy, MyGUI::MouseButton _id)
+	bool BaseManager::injectMousePress(int _absx, int _absy, MyGUI::MouseButton _id)
 	{
 		if (!mGUI)
-			return;
+            return false;
 
-		MyGUI::InputManager::getInstance().injectMousePress(_absx, _absy, _id);
+        return MyGUI::InputManager::getInstance().injectMousePress(_absx, _absy, _id);
 	}
 
-	void BaseManager::injectMouseRelease(int _absx, int _absy, MyGUI::MouseButton _id)
+    bool BaseManager::injectMouseRelease(int _absx, int _absy, MyGUI::MouseButton _id)
 	{
 		if (!mGUI)
-			return;
+            return false;
 
-		MyGUI::InputManager::getInstance().injectMouseRelease(_absx, _absy, _id);
+		return MyGUI::InputManager::getInstance().injectMouseRelease(_absx, _absy, _id);
 	}
 
-	void BaseManager::injectKeyPress(MyGUI::KeyCode _key, MyGUI::Char _text)
+    bool BaseManager::injectKeyPress(MyGUI::KeyCode _key, MyGUI::Char _text)
 	{
 		if (!mGUI)
-			return;
+			return false;
 
-		if (_key == MyGUI::KeyCode::Escape)
-		{
-			mExit = true;
-			return;
-		}
+// 		if (_key == MyGUI::KeyCode::Escape)
+// 		{
+// 			mExit = true;
+// 			return false;
+// 		}
 
-		MyGUI::InputManager::getInstance().injectKeyPress(_key, _text);
+		return MyGUI::InputManager::getInstance().injectKeyPress(_key, _text);
 	}
 
-	void BaseManager::injectKeyRelease(MyGUI::KeyCode _key)
+    bool BaseManager::injectKeyRelease(MyGUI::KeyCode _key)
 	{
 		if (!mGUI)
-			return;
+			return false;
 
-		MyGUI::InputManager::getInstance().injectKeyRelease(_key);
+		return MyGUI::InputManager::getInstance().injectKeyRelease(_key);
 	}
 
 	bool BaseManager::createRender(int _width, int _height, bool _windowed)

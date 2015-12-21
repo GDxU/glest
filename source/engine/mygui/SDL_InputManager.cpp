@@ -204,33 +204,26 @@ namespace input
 
 	void InputManager::computeMouseMove()
 	{
-		if (mMouseMove)
-		{
-			injectMouseMove(mMouseX, mMouseY, mMouseZ);
-			mMouseMove = false;
-		}
+
 	}
 
 	bool InputManager::mouseMoved(const SDL_MouseMotionEvent &evt)
 	{
 		mMouseX = evt.x;
 		mMouseY = evt.y;
-		mMouseMove = true;
-		return true;
+        return injectMouseMove(mMouseX, mMouseY, mMouseZ);
 	}
 
 	bool InputManager::mousePressed(const SDL_MouseButtonEvent &evt)
 	{
 		computeMouseMove();
-		injectMousePress(mMouseX, mMouseY, mSDLMouseMap[evt.button]);
-		return true;
+        return injectMousePress(mMouseX, mMouseY, mSDLMouseMap[evt.button]);
 	}
 
 	bool InputManager::mouseReleased(const SDL_MouseButtonEvent &evt )
 	{
 		computeMouseMove();
-		injectMouseRelease(mMouseX, mMouseY, mSDLMouseMap[evt.button]);
-		return true;
+        return injectMouseRelease(mMouseX, mMouseY, mSDLMouseMap[evt.button]);
 	}
 
 	bool InputManager::keyPressed(SDL_Keycode key, const SDL_TextInputEvent* evt)
@@ -240,18 +233,21 @@ namespace input
 		}
 		MyGUI::KeyCode myGuiKeyCode = mSDLVKeyMap[key];
 		if (evt == nullptr) {
-			injectKeyPress(myGuiKeyCode, NULL);
+            return injectKeyPress(myGuiKeyCode, NULL);
 		} 
 		else 
 		{
 			MyGUI::UString ustring(evt->text);
 			MyGUI::UString::utf32string utf32string = ustring.asUTF32();
+            bool ret = false;
+
 			for (MyGUI::UString::utf32string::const_iterator it = utf32string.begin(); it != utf32string.end(); ++it)
 			{
-				injectKeyPress(myGuiKeyCode, *it);
+                ret |= injectKeyPress(myGuiKeyCode, *it);
 			}
-		}
-		return true;
+
+            return ret;
+        }
 	}
 
 	bool InputManager::keyReleased(const SDL_KeyboardEvent &key)
@@ -259,14 +255,12 @@ namespace input
 		if (mSDLVKeyMap.count(key.keysym.sym) == 0) {
 			return false;
 		}
-		injectKeyRelease(mSDLVKeyMap[key.keysym.sym]);
-		return true;
+        return injectKeyRelease(mSDLVKeyMap[key.keysym.sym]);
 	}
 
 	bool InputManager::mouseWheelMoved(const SDL_MouseWheelEvent &evt)
 	{
 		mMouseZ += evt.y;
-		mMouseMove = true;
 		return true;
 	}
 

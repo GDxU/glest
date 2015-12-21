@@ -276,21 +276,6 @@ void exceptionMessage(const std::exception &excp) {
     SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR, "Exception", excp.what(), getWindow());
 }
 
-
-int getScreenW() {
-    int w, h;
-    SDL_GL_GetDrawableSize(getWindow(), &w, &h);
-	//return SDL_GetVideoSurface()->w;
-    return w;
-}
-
-int getScreenH() {
-    int w, h;
-    SDL_GL_GetDrawableSize(getWindow(), &w, &h);
-    //return SDL_GetVideoSurface()->h;
-    return h;
-}
-
 void sleep(int millis) {
 	SDL_Delay(millis);
 }

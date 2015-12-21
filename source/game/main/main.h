@@ -7,6 +7,7 @@
 #include "SDL_events.h"
 #include "types.h"
 #include <string>
+#include "BaseManager.h"
 
 
 
@@ -51,7 +52,7 @@ namespace Glest {
         bool centerMouse;
     };
 
-class Window
+class Window : public base::BaseManager
 {
 private:
     Program* program;
@@ -73,7 +74,7 @@ protected:
     bool _fullscreen;
 
 public:
-    static bool handleEvent();
+    bool handleEvent();
 
     WindowHandle getHandle()	{ return 0; }
     std::string getText();
@@ -93,6 +94,8 @@ public:
     void setPos(int x, int y);
     void setEnabled(bool enabled);
     void setVisible(bool visible);
+
+    void showCursor(bool show);
 
     //misc
     void create(int w, int h, bool fullscreen);

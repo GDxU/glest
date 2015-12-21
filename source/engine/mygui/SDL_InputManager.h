@@ -24,11 +24,11 @@ namespace input
 		void setInputViewSize(int _width, int _height);
 		
 		// following five methods are to be implemented in BaseManager class
-		virtual void injectMouseMove(int _absx, int _absy, int _absz){}
-		virtual void injectMousePress(int _absx, int _absy, MyGUI::MouseButton _id){}
-		virtual void injectMouseRelease(int _absx, int _absy, MyGUI::MouseButton _id){}
-		virtual void injectKeyPress(MyGUI::KeyCode _key, MyGUI::Char _text){}
-		virtual void injectKeyRelease(MyGUI::KeyCode _key){}
+        virtual bool injectMouseMove(int _absx, int _absy, int _absz) = 0;
+        virtual bool injectMousePress(int _absx, int _absy, MyGUI::MouseButton _id) = 0;
+        virtual bool injectMouseRelease(int _absx, int _absy, MyGUI::MouseButton _id) = 0;
+        virtual bool injectKeyPress(MyGUI::KeyCode _key, MyGUI::Char _text) = 0;
+        virtual bool injectKeyRelease(MyGUI::KeyCode _key) = 0;
 
 		virtual void onFileDrop(const std::wstring& _filename) { }
 		virtual bool onWinodwClose(size_t _handle) { return true; }

@@ -98,9 +98,6 @@ void message(std::string message);
 bool ask(std::string message);
 void exceptionMessage(const std::exception &excp);
 
-int getScreenW();
-int getScreenH();
-
 void sleep(int millis);
 
 void showCursor(bool b);

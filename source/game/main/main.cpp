@@ -21,13 +21,9 @@
 #include "noimpl.h"
 #include "SDL_main.h"
 
+SDL_Window* getWindow();
 
 
-static SDL_Window* s_window = NULL;
-
-SDL_Window* getWindow() {
-    return s_window;
-}
 
 namespace Glest {
 
@@ -35,101 +31,95 @@ namespace Glest {
 
 
     void Window::initGl(){
-        SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 2);
-        SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1);
-
-        SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
-        // 	SDL_GL_SetAttribute(SDL_GL_RED_SIZE, 1);
-        // 	SDL_GL_SetAttribute(SDL_GL_GREEN_SIZE, 1);
-        // 	SDL_GL_SetAttribute(SDL_GL_BLUE_SIZE, 1);
-        // 	SDL_GL_SetAttribute(SDL_GL_STENCIL_SIZE, stencilBits);
-        SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 24);
-
-        int flags = SDL_WINDOW_OPENGL;
-#if 0
-        if (_fullscreen)
-            flags |= SDL_WINDOW_FULLSCREEN;
-#endif
-        SDL_Window* screen = SDL_CreateWindow("Cocos2d SDL ", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, w, h, flags);
-
-        SDL_GL_CreateContext(screen);
-
-        if (glewInit() != GLEW_OK)
-            std::cout << "GLEW init false";
-
-        if (GLEW_ARB_vertex_shader && GLEW_ARB_fragment_shader)
-        {
-            std::cout << "Ready for GLSL\n";
-        }
-        else
-        {
-            std::cout << "Not totally ready :(\n";
-        }
-
-        if (glewIsSupported("GL_VERSION_2_0"))
-        {
-            std::cout << "Ready for OpenGL 2.0\n";
-        }
-        else
-        {
-            std::cout << "OpenGL 2.0 not supported\n";
-        }
-
-        SDL_GL_SetSwapInterval(1);
-
-        s_window = screen;
-
-        if (screen == 0) {
-            std::ostringstream msg;
-            msg << "Couldn't set video mode " << w << "x" << h << " depth-buffer). SDL Error is: " << SDL_GetError();
-            throw std::runtime_error(msg.str());
-        }
+       
     }
 
     void Window::swapBuffersGl(){
-        SDL_GL_SwapWindow(s_window);
     }
 
     bool Window::handleEvent() {
-        SDL_Event event;
-        while (SDL_PollEvent(&event)) {
-            try {
-                switch (event.type) {
-                case SDL_QUIT:
-                    return false;
-                case SDL_MOUSEBUTTONDOWN:
-                    global_window->handleMouseDown(event);
-                    break;
-                case SDL_MOUSEBUTTONUP: {
-                                            global_window->eventMouseUp(event.button.x,
-                                                event.button.y, getMouseButton(event.button.button));
-                                            break;
-                }
-                case SDL_MOUSEMOTION: {
-                                          MouseState ms;
-                                          ms.leftMouse = (event.motion.state & SDL_BUTTON_LMASK) != 0;
-                                          ms.rightMouse = (event.motion.state & SDL_BUTTON_RMASK) != 0;
-                                          ms.centerMouse = (event.motion.state & SDL_BUTTON_MMASK) != 0;
-                                          global_window->eventMouseMove(event.motion.x, event.motion.y, &ms);
-                                          break;
-                }
-                case SDL_KEYDOWN:
+        while (SDL_PollEvent(&mEvent) != 0)
+        {
+            switch (mEvent.type)
+            {
+                // keyboard events
+            case SDL_KEYDOWN:
+                mKeyCode = mEvent.key.keysym.sym;
+                if (!keyPressed(mKeyCode, nullptr))
+                {
                     /* handle ALT+Return */
-                    if (event.key.keysym.sym == SDLK_RETURN
-                        && (event.key.keysym.mod & (KMOD_LALT | KMOD_RALT))) {
+                    if (mEvent.key.keysym.sym == SDLK_RETURN
+                        && (mEvent.key.keysym.mod & (KMOD_LALT | KMOD_RALT))) {
                         toggleFullscreen();
                     }
-                    global_window->eventKeyDown(getKey(event.key.keysym));
+                    global_window->eventKeyDown(getKey(mEvent.key.keysym));
                     //global_window->eventKeyPress(static_cast<char>(event.key.keysym.unicode));
-                    global_window->eventKeyPress(static_cast<char>(event.key.keysym.sym));
-                    break;
-                case SDL_KEYUP:
-                    global_window->eventKeyUp(getKey(event.key.keysym));
+                    global_window->eventKeyPress(static_cast<char>(mEvent.key.keysym.sym));
+                }
+                break;
+            case SDL_TEXTINPUT:
+                mKeyCode = SDLK_UNKNOWN;
+                keyPressed(mKeyCode, &mEvent.text);
+                break;
+            case SDL_KEYUP:
+                if (!keyReleased(mEvent.key))
+                    global_window->eventKeyUp(getKey(mEvent.key.keysym));
+                break;
+                // mouse events
+            case SDL_MOUSEMOTION:
+                if (!mouseMoved(mEvent.motion))
+                {
+                    MouseState ms;
+                    ms.leftMouse = (mEvent.motion.state & SDL_BUTTON_LMASK) != 0;
+                    ms.rightMouse = (mEvent.motion.state & SDL_BUTTON_RMASK) != 0;
+                    ms.centerMouse = (mEvent.motion.state & SDL_BUTTON_MMASK) != 0;
+                    global_window->eventMouseMove(mEvent.motion.x, mEvent.motion.y, &ms);
                     break;
                 }
-            }
-            catch (std::exception& e) {
-                std::cerr << "Couldn't process event: " << e.what() << "\n";
+                break;
+            case SDL_MOUSEBUTTONDOWN:
+                if (!mousePressed(mEvent.button))
+                    global_window->handleMouseDown(mEvent);
+
+                break;
+            case SDL_MOUSEBUTTONUP:
+                if (!mouseReleased(mEvent.button))
+                {
+                    global_window->eventMouseUp(mEvent.button.x,
+                        mEvent.button.y, getMouseButton(mEvent.button.button));
+                }
+                break;
+            case SDL_MOUSEWHEEL:
+                mouseWheelMoved(mEvent.wheel);
+                break;
+                // drop file events
+            case SDL_DROPFILE:
+                break;
+                // windows events
+            case SDL_WINDOWEVENT:
+                switch (mEvent.window.event)
+                {
+                case SDL_WINDOWEVENT_CLOSE:
+                    mExit = true;
+                    break;
+                case SDL_WINDOWEVENT_RESIZED:
+                    _windowResized(mEvent.window.data1, mEvent.window.data2);
+                    break;
+                case SDL_WINDOWEVENT_SHOWN:
+                case SDL_WINDOWEVENT_RESTORED:
+                case SDL_WINDOWEVENT_EXPOSED:
+                case SDL_WINDOWEVENT_MAXIMIZED:
+                    mWindowOn = true;
+                    break;
+                case SDL_WINDOWEVENT_MINIMIZED:
+                case SDL_WINDOWEVENT_HIDDEN:
+                    mWindowOn = false;
+                default:
+                    break;
+                }
+                break;
+            default:
+                break;
             }
         }
 
@@ -156,30 +146,12 @@ namespace Glest {
         SDL_SetWindowSize(getWindow(), w, h);
     }
 
-    void Window::setPos(int x, int y)  {
-        if (x != 0 || y != 0) {
-            NOIMPL;
-            return;
-        }
-    }
-
-    void Window::minimize() {
-        NOIMPL;
-    }
-
-    void Window::setEnabled(bool enabled) {
-        NOIMPL;
-    }
-
-    void Window::setVisible(bool visible) {
-        NOIMPL;
-    }
-
     void Window::create(int w, int h, bool fullscreen) {
         this->w = w;
         this->h = h;
         _fullscreen = fullscreen;
         initGl();
+        base::BaseManager::create(w, h);
     }
 
     void Window::destroy() {
@@ -423,6 +395,11 @@ void Window::eventClose(){
 	program= NULL;
 }
 
+void Window::showCursor(bool show)
+{
+    SDL_ShowCursor(show ? SDL_ENABLE : SDL_DISABLE);
+}
+
 // =====================================================
 // Main
 // =====================================================
@@ -435,10 +412,6 @@ int glestMain(int argc, char** argv){
     exceptionHandler.install(getCrashDumpFileName());
 
 	try{
-		Config &config = Config::getInstance();
-
-		showCursor(config.getBool("Windowed"));
-		
 		program= new Program();
 		mainWindow= new Window(program);
 
@@ -452,8 +425,11 @@ int glestMain(int argc, char** argv){
 		else{
 			program->initNormal(mainWindow);
 		}
-
 		
+        mainWindow->addResourceLocation(mainWindow->getRootMedia() + "/Demos/Demo_Colour");
+        mainWindow->addResourceLocation(mainWindow->getRootMedia() + "/Common/Demos");
+        MyGUI::LayoutManager::getInstance().loadLayout("ColourPanel.layout");
+
 	    program->loop();
 	}
 	catch (MyGUI::Exception& _e) {

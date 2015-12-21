@@ -51,11 +51,11 @@ namespace base
 
 		virtual void setupResources();
 
-		virtual void injectMouseMove(int _absx, int _absy, int _absz);
-		virtual void injectMousePress(int _absx, int _absy, MyGUI::MouseButton _id);
-		virtual void injectMouseRelease(int _absx, int _absy, MyGUI::MouseButton _id);
-		virtual void injectKeyPress(MyGUI::KeyCode _key, MyGUI::Char _text);
-		virtual void injectKeyRelease(MyGUI::KeyCode _key);
+		virtual bool injectMouseMove(int _absx, int _absy, int _absz);
+        virtual bool injectMousePress(int _absx, int _absy, MyGUI::MouseButton _id);
+        virtual bool injectMouseRelease(int _absx, int _absy, MyGUI::MouseButton _id);
+        virtual bool injectKeyPress(MyGUI::KeyCode _key, MyGUI::Char _text);
+        virtual bool injectKeyRelease(MyGUI::KeyCode _key);
 
 		virtual void createGui();
 		virtual void destroyGui();
@@ -74,7 +74,7 @@ namespace base
 		void* convertPixelData(SDL_Surface *_image, MyGUI::PixelFormat& _myGuiPixelFormat);
 		void updateSDL_Keycode();
 
-	private:
+    protected:
 		MyGUI::Gui* mGUI;
 		MyGUI::OpenGLPlatform* mPlatform;
 
