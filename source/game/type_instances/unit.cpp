@@ -118,7 +118,7 @@ Unit::Unit(int id, const Vec2i &pos, const UnitType *type, Faction *faction, Map
 
 	float rot= 0.f;
 
-	random.init(id);
+	random.init();
 	rot+= random.randRange(-5, 5);
 	
 	rotation= rot;

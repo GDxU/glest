@@ -20,11 +20,13 @@ private:
 	
 public:
 	Random();
-	void init(int seed);
+	void init();
 
 	int rand();
 	int randRange(int min, int max);
 	float randRange(float min, float max);
+
+    bool Bool() { return rand() == 0; }
 };
 
 }//end namespace

@@ -81,7 +81,7 @@ void AmbientSounds::load(const std::string &dir, const XmlNode *xmlNode){
 
 void Tileset::load(const std::string &dir, Checksum *checksum){
 	
-	random.init(time(NULL));
+	random.init();
 
 	std::string name= lastDir(dir);
 	std::string path= dir+"/"+name+".xml";

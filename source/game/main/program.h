@@ -82,7 +82,6 @@ public:
     void keyUp(char key);
     void keyPress(char c);
 	void loop();
-	void resize(SizeState sizeState);
 
 	//misc
 	void setState(ProgramState *programState);
@@ -90,8 +89,6 @@ public:
 	
 private:
     void init(Window *window);
-	void setDisplaySettings();
-	void restoreDisplaySettings();
     void ApplyFrameLimit();
     bool handleEvent();
 };

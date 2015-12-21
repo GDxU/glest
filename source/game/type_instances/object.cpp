@@ -23,7 +23,7 @@ namespace Glest {
 Object::Object(ObjectType *objectType, const Vec3f &pos){
 	Random random;
 
-	random.init(static_cast<int>(pos.x*pos.z));
+	random.init();
 
 	this->objectType= objectType;
 	resource= NULL;

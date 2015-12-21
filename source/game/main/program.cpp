@@ -64,9 +64,6 @@ Program::~Program(){
 	delete programState;
 	
 	Renderer::getInstance().end();
-	
-	//restore video mode
-	restoreDisplaySettings();
 }
 
 void Program::mouseDownLeft(int x, int y){    
@@ -213,22 +210,6 @@ void Program::ApplyFrameLimit()
     _timeStep = elapsed / 1000000.0f;
 }
 
-void Program::resize(SizeState sizeState){
-	
-	switch(sizeState){
-	case ssMinimized:
-		//restoreVideoMode();
-		break;
-	case ssMaximized:
-	case ssRestored:
-		//setDisplaySettings();
-		//renderer.reloadResources();
-		break;
-	}
-}
-
-// ==================== misc ==================== 
-
 void Program::setState(ProgramState *programState){
 	
 	delete this->programState;
@@ -248,19 +229,8 @@ void Program::init(Window *window){
 
 	this->window= window;
 	Config &config= Config::getInstance();
-	
-    //set video mode
-	setDisplaySettings();
 
-	//window
-	window->setText("Glest");
-	window->setStyle(config.getBool("Windowed")? wsWindowedFixed: wsFullscreen);
-	window->setPos(0, 0);
-	window->setSize(config.getInt("ScreenWidth"), config.getInt("ScreenHeight"));
-	window->create();
-		
-
-	//timers
+    //timers
     _fpsTimer.Reset();// 1, maxTimes);
 	_fpsDisplayTimer.Reset();
 
@@ -273,57 +243,19 @@ void Program::init(Window *window){
 	Lang &lang= Lang::getInstance();
 	lang.loadStrings(config.getString("Lang"));
     
-	//render
-	Renderer &renderer= Renderer::getInstance();
-
-	window->initGl(config.getInt("ColorBits"), config.getInt("DepthBits"), config.getInt("StencilBits"));
-	window->makeCurrentGl();
-		
-	//coreData, needs renderer, but must load before renderer init
-	CoreData &coreData= CoreData::getInstance();
-    coreData.load();
-
-	//init renderer (load global textures)
-	renderer.init();
-
-	//sound
-	SoundRenderer &soundRenderer= SoundRenderer::getInstance();
-	soundRenderer.init();
+    //window
+    window->setText("Glest");
+    window->create(config.getInt("ScreenWidth"), config.getInt("ScreenHeight"), config.getBool("Windowed"));
+	
+    CoreData::getInstance().load(); //coreData, needs renderer, but must load before renderer init
+    Renderer::getInstance().init();	//init renderer (load global textures)
+    SoundRenderer::getInstance().init();
 
 	app->create();
 	app->addResourceLocation(app->getRootMedia() + "/Demos/Demo_Colour");
 	app->addResourceLocation(app->getRootMedia() + "/Common/Demos");
-	//MyGUI::LayoutManager::getInstance().loadLayout("Wallpaper.layout");
+
 	MyGUI::LayoutManager::getInstance().loadLayout("ColourPanel.layout");
-}
-
-void Program::setDisplaySettings(){
-
-	Config &config= Config::getInstance();
-	 
-	if(!config.getBool("Windowed")){
-		
-		int freq= config.getInt("RefreshFrequency");
-		int colorBits= config.getInt("ColorBits");
-		int screenWidth= config.getInt("ScreenWidth");
-		int screenHeight= config.getInt("ScreenHeight");
-		
-		if(!(changeVideoMode(screenWidth, screenHeight, colorBits, freq) ||
-			changeVideoMode(screenWidth, screenHeight, colorBits, 0)))
-		{
-            throw std::runtime_error(
-				"Error setting video mode: " + 
-				intToStr(screenWidth) + "x" + intToStr(screenHeight) + "x" + intToStr(colorBits));
-		} 
-	}
-}
-
-void Program::restoreDisplaySettings(){
-	Config &config= Config::getInstance();
- 		
-	if(!config.getBool("Windowed")){
-		restoreVideoMode();	
-	}
 }
 
 }//end namespace

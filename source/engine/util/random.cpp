@@ -1,6 +1,9 @@
 #include "random.h"
 
 #include <cassert>
+#include <time.h>
+#include <stdlib.h>
+#include <math.h>
 
 
 namespace Glest {
@@ -9,37 +12,33 @@ namespace Glest {
 //	class Random
 // =====================================================
 
-const int Random::m= 714025;
-const int Random::a= 1366;
-const int Random::b= 150889;
+static bool _inited = false;
 
 Random::Random(){
-	lastNumber= 0;
 }
 
-void Random::init(int seed){
-	lastNumber= seed % m;
+void Random::init(){
+    if (!_inited) 
+    {
+        srand((unsigned int)time(NULL));
+        _inited = true;
+    }
 }
 
 int Random::rand(){
-	lastNumber= (a*lastNumber + b) % m;
-	return lastNumber;
+	return ::rand() % INT_MAX;
 }
 
 int Random::randRange(int min, int max){
 	assert(min<=max);
-	int diff= max-min;
-	int res= min + static_cast<int>(static_cast<float>(diff+1)*Random::rand() / m);
-	assert(res>=min && res<=max);
-	return res;
+    double r = (double)(::rand() % RAND_MAX) / (double)RAND_MAX;
+    return (int)(r*(max - min + 1) + min);
 }
 
 float Random::randRange(float min, float max){
-	assert(min<=max);
-	float rand01= static_cast<float>(Random::rand())/(m-1);
-	float res= min+(max-min)*rand01;
-	assert(res>=min && res<=max);
-	return res;
+    assert(min <= max);
+    double r = (double)(::rand() % RAND_MAX) / (double)RAND_MAX;
+    return (float)(r*(max - min) + min);
 }
 
 }//end namespace

@@ -19,7 +19,6 @@
 
 #include "util.h"
 #include "conversion.h"
-#include "sdl_private.h"
 #include "noimpl.h"
 
 #include <Windows.h>
@@ -35,16 +34,6 @@ SDL_Window* getWindow();
 
 
 namespace Glest {
-
-namespace Private{
-
-bool shouldBeFullscreen = false;
-int ScreenWidth;
-int ScreenHeight;
-
-}
-
-
 
 static long long HiresTick()
 {
@@ -265,11 +254,6 @@ void findAll(const std::string &path, std::vector<std::string> &results, bool cu
 			results.at(i)=cutLastExt(results.at(i));
 		}
 	}
-}
-
-bool changeVideoMode(int resW, int resH, int colorBits, int ) {
-	Private::shouldBeFullscreen = true;
-	return true;
 }
 
 void restoreVideoMode() {

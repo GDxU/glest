@@ -22,7 +22,7 @@ const time_t AutoTest::gameTime = 60*20;
 
 AutoTest::AutoTest(){
 	gameStartTime = invalidTime;
-	random.init(time(NULL));
+	random.init();
 }
 
 AutoTest & AutoTest::getInstance(){

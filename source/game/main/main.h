@@ -27,12 +27,6 @@ namespace Glest {
         mbCenter
     };
 
-    enum SizeState{
-        ssMaximized,
-        ssMinimized,
-        ssRestored
-    };
-
     // keycode constants (unfortunately designed after DirectInput and therefore not
     // very specific)
     // They also have to fit into a char. The positive numbers seem to be equal
@@ -57,13 +51,6 @@ namespace Glest {
         bool centerMouse;
     };
 
-    enum WindowStyle{
-        wsFullscreen,
-        wsWindowedFixed,
-        wsWindowedResizable
-    };
-
-
 class Window
 {
 private:
@@ -83,6 +70,7 @@ private:
 
 protected:
     int w, h;
+    bool _fullscreen;
 
 public:
     static bool handleEvent();
@@ -101,14 +89,13 @@ public:
 
     //object state
     void setText(std::string text);
-    void setStyle(WindowStyle windowStyle);
     void setSize(int w, int h);
     void setPos(int x, int y);
     void setEnabled(bool enabled);
     void setVisible(bool visible);
 
     //misc
-    void create();
+    void create(int w, int h, bool fullscreen);
     void destroy();
     void minimize();
 
@@ -121,7 +108,6 @@ public:
     virtual void eventKeyUp(char key);
     virtual void eventKeyPress(char c);
     virtual void eventActivate(bool activated);
-    virtual void eventResize(SizeState sizeState);
     virtual void eventClose();
 
 
@@ -132,9 +118,10 @@ public:
     static char getKey(SDL_Keysym keysym);
     static void toggleFullscreen();
 
-    void initGl(int colorBits, int depthBits, int stencilBits);
-    void makeCurrentGl();
     static void swapBuffersGl();
+
+protected:
+    void initGl();
 };
 
 }//end namespace
